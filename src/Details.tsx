@@ -1,3 +1,4 @@
+import type React from "react";
 import type { ReactNode } from "react";
 import { categoryColor } from "./graph";
 import { categoryPath, describeAxiom, describeEdge, isA, versesCited } from "./ontology";
@@ -45,26 +46,27 @@ function Citations({ c, ctx }: { c: CitationsT; ctx: Ctx }) {
   const other = sctx(meta.tradition.scripture.other);
   const parallel = meta.tradition.bibleRole === "parallel";
   const bibleBlock = (
-    <>
-      <div className="cite-kind">
-        {parallel ? "Bible parallel (not scripture in this tradition)" : "Bible"} · {bible.label}
-      </div>
+    <section className="cite-sec">
+      <h5>
+        {parallel ? "Bible parallel" : "Bible"} <span>{bible.label}</span>
+        {parallel && <em> · not scripture in this tradition</em>}
+      </h5>
       {c.scripture.bible === "none-cited" ? (
-        <em className="muted small">{parallel ? "No parallel Bible passage" : "No Bible verse cited by the authority"}</em>
+        <p className="cite-none">{parallel ? "No parallel passage." : "No Bible verse cited by the authority."}</p>
       ) : (
         <div className={parallel ? "parallel" : undefined}>
           <ScriptureList items={c.scripture.bible} ctx={bible} />
         </div>
       )}
-    </>
+    </section>
   );
   const otherBlock = c.scripture.other?.length ? (
-    <>
-      <div className="cite-kind">
-        {meta.tradition.otherScriptureLabel} · {other.label}
-      </div>
+    <section className="cite-sec">
+      <h5>
+        {meta.tradition.otherScriptureLabel} <span>{other.label}</span>
+      </h5>
       <ScriptureList items={c.scripture.other} ctx={other} />
-    </>
+    </section>
   ) : null;
   return (
     <div className="citations">
@@ -79,23 +81,30 @@ function Citations({ c, ctx }: { c: CitationsT; ctx: Ctx }) {
           {otherBlock}
         </>
       )}
-      <div className="cite-kind">Authority</div>
-      {c.authority.map((a, i) => (
-        <div key={i} className="authority">
-          <span className={`tier tier-${tierRank(a.tier)}`}>{tierLabel(a.tier)}</span>
-          <span className="source">
-            {a.url ? (
-              <a href={a.url} target="_blank" rel="noreferrer">
-                {a.source}
-              </a>
-            ) : (
-              a.source
-            )}
-            {a.ref && <span className="muted">, {a.ref}</span>}
-          </span>
-          {a.quote && <blockquote>{a.quote}</blockquote>}
-        </div>
-      ))}
+      <section className="cite-sec">
+        <h5>Authority</h5>
+        {c.authority.map((a, i) => (
+          <div key={i} className="authority">
+            <div className="auth-line">
+              <span className={`tier-dot tier-${tierRank(a.tier)}`} title={tierLabel(a.tier)} />
+              <span className="source">
+                {a.url ? (
+                  <a href={a.url} target="_blank" rel="noreferrer">
+                    {a.source}
+                  </a>
+                ) : (
+                  a.source
+                )}
+                {a.ref && <span className="muted"> · {a.ref}</span>}
+              </span>
+              <span className="tier-tag" title={tierLabel(a.tier)}>
+                {tierLabel(a.tier).replace(/\s*\(.*\)\s*$/, "")}
+              </span>
+            </div>
+            {a.quote && <blockquote>{a.quote}</blockquote>}
+          </div>
+        ))}
+      </section>
     </div>
   );
 }
@@ -108,7 +117,7 @@ function CategoryPath({ categoryId, ctx }: { categoryId: string; ctx: Ctx }) {
           {i > 0 && <span className="sep">›</span>}
           <button
             className="crumb"
-            style={{ borderColor: categoryColor(ctx.t.meta, c.id) }}
+            style={{ "--dot": categoryColor(ctx.t.meta, c.id) } as React.CSSProperties}
             title={c.definition}
             onClick={() => ctx.onSelect({ side: ctx.side, kind: "category", id: c.id })}
           >
@@ -130,15 +139,14 @@ function TopicChips({ ids, ctx }: { ids?: string[]; ctx: Ctx }) {
   if (!items.length) return null;
   return (
     <div className="topic-chips">
-      {items.map((it) => (
-        <button
-          key={it.id}
-          className="topic-chip"
-          title={`${it.source.source}, ${it.source.ref ?? ""}`}
-          onClick={() => ctx.onSelect({ kind: "topic", id: it.registry[0] })}
-        >
-          {it.label}
-        </button>
+      <span className="meta-label">Topics</span>
+      {items.map((it, i) => (
+        <span key={it.id}>
+          {i > 0 && <span className="dot-sep">·</span>}
+          <button className="topic-chip" title={`${it.source.source}, ${it.source.ref ?? ""}`} onClick={() => ctx.onSelect({ kind: "topic", id: it.registry[0] })}>
+            {it.label}
+          </button>
+        </span>
       ))}
     </div>
   );
@@ -211,10 +219,11 @@ function NodeDetail({ id, ctx, bridged }: { id: string; ctx: Ctx; bridged?: bool
       <TopicChips ids={[...new Set([...edges.flatMap((e) => edgeTopicIds(ctx.t, e.id)), ...(n.attributes ?? []).flatMap((a) => a.topics ?? [])])]} ctx={ctx} />
       {ref && (
         <div className="referent">
-          <button className="chip ref-chip" onClick={() => ctx.onSelect({ kind: "referent", id: ref.id })}>
-            Referent: {ref.canonical}
+          <span className="meta-label">Referent</span>
+          <button className="link" onClick={() => ctx.onSelect({ kind: "referent", id: ref.id })}>
+            {ref.canonical}
           </button>
-          <span className="muted"> also called {ref.aliases[meta.tradition.id]?.join(", ")}</span>
+          {!!ref.aliases[meta.tradition.id]?.length && <span className="muted"> · also {ref.aliases[meta.tradition.id]!.join(", ")}</span>}
         </div>
       )}
       {n.description && <p>{n.description}</p>}

@@ -9,7 +9,7 @@ import { categoryColor, maxDegree, neighborhood, type Grouping, type View } from
 import { categoryPath, versesCited } from "./ontology";
 import type { Tradition } from "./schema";
 import { marksFor, selectedReferent, type Selection, type Side } from "./selection";
-import { focusTopics, KIND_LABEL, possessive, spotlightIds, statusGlyph, topicCoverage, type FocusKind } from "./topics";
+import { focusTopics, KIND_LABEL, possessive, spotlightIds, topicCoverage, type FocusKind } from "./topics";
 import { ValidatorProvider } from "./validator/state";
 
 type Mode = "single" | "compare";
@@ -483,18 +483,11 @@ function Compare() {
               <optgroup key={kind} label={KIND_LABEL[kind]}>
                 {focusList
                   .filter((f) => f.kind === kind)
-                  .map((f) => {
-                    // Subjects are plain names; topics and debates show a per-side status glyph.
-                    const sides = single ? (["left"] as Side[]) : (["left", "right"] as Side[]);
-                    const glyphs =
-                      f.kind === "subject" ? "" : `${sides.map((sd) => statusGlyph(topicCoverage(trads[sd], f.id), f.kind)).join(" ")}  `;
-                    return (
-                      <option key={f.id} value={f.id}>
-                        {glyphs}
-                        {f.label}
-                      </option>
-                    );
-                  })}
+                  .map((f) => (
+                    <option key={f.id} value={f.id}>
+                      {f.label}
+                    </option>
+                  ))}
               </optgroup>
             ))}
           </select>

@@ -7,11 +7,11 @@
 topics:
   # --- Doctrine ---
   - { id: topic.scripture, kind: doctrine, label: "Scripture, revelation & authority" }
-  - { id: topic.god, kind: doctrine, label: "God" }
-  - { id: topic.godhead, kind: doctrine, label: "Trinity / Godhead" }
+  - { id: topic.god, kind: doctrine, label: "God: nature & attributes" }
+  - { id: topic.godhead, kind: doctrine, label: "Trinity / Godhead: the divine persons" }
   - { id: topic.christ, kind: doctrine, label: "Christ: person and nature" }
   - { id: topic.incarnation, kind: doctrine, label: "Incarnation & virgin birth" }
-  - { id: topic.holy-spirit, kind: doctrine, label: "Holy Spirit" }
+  - { id: topic.holy-spirit, kind: doctrine, label: "The Spirit: role & gifts" }
   - { id: topic.creation, kind: doctrine, label: "Creation" }
   - { id: topic.providence, kind: doctrine, label: "Providence" }
   - { id: topic.angels, kind: doctrine, label: "Angels & spirit beings" }
@@ -20,15 +20,15 @@ topics:
   - { id: topic.prophethood, kind: doctrine, label: "Prophets & prophethood" }
   - { id: topic.imamate, kind: doctrine, label: "Imamate" }
   - { id: topic.predestination, kind: doctrine, label: "Divine decree, justice & free will" }
-  - { id: topic.church, kind: doctrine, label: "Church, community & authority" }
+  - { id: topic.church, kind: doctrine, label: "Church & community" }
 
   # --- Salvation ---
   - { id: topic.atonement, kind: salvation, label: "Atonement & redemption" }
   - { id: topic.salvation, kind: salvation, label: "Salvation, grace & justification" }
   - { id: topic.sacraments, kind: salvation, label: "Sacraments & ordinances" }
   - { id: topic.resurrection, kind: salvation, label: "Resurrection" }
-  - { id: topic.afterlife, kind: salvation, label: "Death, judgment & afterlife" }
-  - { id: topic.last-things, kind: salvation, label: "Kingdom & last things" }
+  - { id: topic.afterlife, kind: salvation, label: "Death & the afterlife" }
+  - { id: topic.last-things, kind: salvation, label: "Judgment, Kingdom & last things" }
 
   # --- Life & worship ---
   - { id: topic.worship, kind: life, label: "Worship" }

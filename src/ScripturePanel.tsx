@@ -31,22 +31,21 @@ function OriginalPanel({ e }: { e: OriginalEntry }) {
   const lang = e.lang === "grc" ? "Greek" : "Hebrew";
   const focus = e.words.filter((w, i, all) => w.focus && all.findIndex((x) => x.focus && x.lemma === w.lemma) === i);
   return (
-    <div className="original">
-      <div className="original-head">
+    <div className={`original ${full ? "open" : ""}`}>
+      <button className="original-head" onClick={() => setFull(!full)} aria-expanded={full} title={full ? "Hide notes" : "Show notes and interlinear"}>
         <span className="lang-tag">{lang}</span>
         {focus.map((w, i) => (
           <span key={i} className="focus-word" title={`${w.parse}${w.strongs ? ` · ${w.strongs}` : ""}`}>
-            <span className={e.lang === "hbo" ? "heb" : "grk"}>{w.form}</span> <em>{w.translit}</em>{" "}
-            <span className="gloss">"{w.gloss}"</span>
+            <span className={e.lang === "hbo" ? "heb" : "grk"}>{w.form}</span> <em>{w.translit}</em> <span className="gloss">"{w.gloss}"</span>
           </span>
         ))}
-        <button className="link small" onClick={() => setFull(!full)}>
-          {full ? "hide interlinear" : "interlinear"}
-        </button>
-      </div>
-      <p className="why">{e.why}</p>
+        <span className="caret" aria-hidden>
+          {full ? "▾" : "▸"}
+        </span>
+      </button>
       {full && (
         <>
+          <p className="why">{e.why}</p>
           <div className={`orig-text ${e.lang === "hbo" ? "heb rtl" : "grk"}`}>{e.text}</div>
           <table className="interlinear">
             <thead>
@@ -114,13 +113,14 @@ function PassageCard({ p, ctx }: { p: Passage; ctx: ScriptureCtx }) {
   return (
     <div className="passage">
       <button
-        className={`chip verse ${shared.length ? "shared" : ""}`}
+        className={`vref ${shared.length ? "shared" : ""}`}
         title={shared.length ? `Also cited by ${ctx.otherName}: ${shared.join(", ")}` : "Show every claim citing this verse"}
         onClick={() => ctx.onVerse(shared[0] ?? verses[0])}
       >
         {p.ref}
-        {shared.length > 0 && <span className="shared-dot">⇄</span>}
+        {shared.length > 0 && <span className="shared-dot" aria-label={`also cited by ${ctx.otherName}`} />}
       </button>
+      <div className="vbody">
       {text ? (
         <span className="verse-text">
           <Highlighted text={shown} phrase={p.highlight} />
@@ -141,6 +141,7 @@ function PassageCard({ p, ctx }: { p: Passage; ctx: ScriptureCtx }) {
       {originals.map((e) => (
         <OriginalPanel key={e.ref} e={e} />
       ))}
+      </div>
     </div>
   );
 }

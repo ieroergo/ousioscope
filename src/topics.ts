@@ -127,14 +127,5 @@ export function spotlightIds(t: Tradition, c: Pick<TopicCoverage, "nodes" | "edg
   return out;
 }
 
-/** Short per-side status glyph for the topic picker. */
-export function statusGlyph(c: TopicCoverage, kind: FocusKind): string {
-  if (kind === "debate") {
-    const s = c.stance?.stance;
-    return s === "affirms" ? "✓" : s === "rejects" || s === "condemns" ? "✗" : s === "reframes" ? "≈" : "·";
-  }
-  return c.status === "modeled" ? "●" : c.status === "outline" ? "◐" : "○";
-}
-
 /** "Catholic's", "Jehovah's Witnesses'". */
 export const possessive = (name: string) => (name.endsWith("s") ? `${name}'` : `${name}'s`);

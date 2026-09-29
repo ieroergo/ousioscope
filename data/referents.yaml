@@ -43,7 +43,7 @@ referents:
       ar: [Rūḥ al-Qudus, al-Rūḥ]
 
   - id: ref.godhead
-    canonical: God (the Godhead)
+    canonical: God as a whole (the Godhead / Allah)
     aliases:
       catholic: [the Godhead, the one God, the divine substance, essence or nature]
       lds: [the Godhead]
@@ -55,7 +55,7 @@ referents:
       ar: [Allāh]
 
   - id: ref.heavens-earth
-    canonical: The heavens and the earth
+    canonical: The created world (heavens and earth)
     aliases:
       catholic: [heaven and earth, all creation, "all that is, seen and unseen"]
       lds: [the heavens and the earth, the earth]
