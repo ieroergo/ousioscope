@@ -1,11 +1,11 @@
 import type { Core } from "cytoscape";
-import { useCallback, useEffect, useMemo, useState, type CSSProperties, type PointerEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from "react";
 import { crosswalkLinks } from "./crosswalk";
 import { CrosswalkOverlay } from "./CrosswalkOverlay";
 import { dataset, errors } from "./data";
 import { CrosswalkDetail, Details, Sources, type Ctx } from "./Details";
 import { GraphPane } from "./GraphPane";
-import { categoryColor, neighborhood, type Grouping, type View } from "./graph";
+import { categoryColor, maxDegree, neighborhood, type Grouping, type View } from "./graph";
 import { categoryPath, versesCited } from "./ontology";
 import type { Tradition } from "./schema";
 import { marksFor, selectedReferent, type Selection, type Side } from "./selection";
@@ -42,16 +42,152 @@ function usePanelWidth(): [number, (e: PointerEvent<HTMLDivElement>) => void] {
   return [width, start];
 }
 
-const GROUPINGS: { value: Grouping; label: string; title: string }[] = [
-  { value: "containers", label: "Boxes", title: "Grouping: top-level categories drawn as boxes around their members" },
-  { value: "nodes", label: "Nodes", title: "Grouping: each category is its own node, linked by 'is a' edges, so it can be selected and compared" },
-  { value: "color", label: "Color", title: "Grouping: category shown by color only" },
-];
+const MAX_DEGREE = 99;
 
-const HOPS = [
-  { label: "1 hop", value: 1 },
-  { label: "2 hops", value: 2 },
-  { label: "All", value: 99 },
+/**
+ * Degrees of relationship from the focused subject: 1..5 steps, then "Max". The top of the range adapts to how far
+ * this tradition's graph actually reaches (if it reaches 3 degrees, the range is 1, 2, Max).
+ */
+function DegreeSlider({ max, value, onChange }: { max: number; value: number; onChange: (v: number) => void }) {
+  if (max < 1) return null;
+  const steps = Math.min(max, 5) + (max > 5 ? 1 : 0);
+  const toStep = (v: number) => (v >= max || v === MAX_DEGREE ? steps : Math.min(v, steps));
+  const fromStep = (k: number) => (k === steps ? MAX_DEGREE : k);
+  const step = toStep(value);
+  const label = step === steps ? `Max (${max}°)` : `${step}°`;
+  return (
+    <label className="degree-slider" title="Degrees of relationship from the focused subject">
+      <span>Degrees</span>
+      <input type="range" min={1} max={steps} step={1} value={step} disabled={steps === 1} onChange={(e) => onChange(fromStep(+e.target.value))} />
+      <output>{label}</output>
+    </label>
+  );
+}
+
+/** Gear button with a small popover for per-pane settings; a dot marks non-default settings. */
+function PaneSettings({ active, label, children }: { active: boolean; label: string; children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const close = (e: MouseEvent | KeyboardEvent) => {
+      if (e instanceof KeyboardEvent ? e.key === "Escape" : !ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", close);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, [open]);
+  return (
+    <div className="pane-settings" ref={ref}>
+      <button className={`gear ${open ? "on" : ""}`} title={label} aria-label={label} aria-expanded={open} onClick={() => setOpen(!open)}>
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden>
+          <path
+            fill="currentColor"
+            d="M11.3 1.5l.4 2.2c.5.2 1 .5 1.4.8l2.1-.8 1.3 2.3-1.7 1.4c.1.5.1 1.1 0 1.6l1.7 1.4-1.3 2.3-2.1-.8c-.4.3-.9.6-1.4.8l-.4 2.2H8.7l-.4-2.2c-.5-.2-1-.5-1.4-.8l-2.1.8-1.3-2.3 1.7-1.4a4.8 4.8 0 010-1.6L3.5 6l1.3-2.3 2.1.8c.4-.3.9-.6 1.4-.8l.4-2.2h2.6zM10 7a3 3 0 100 6 3 3 0 000-6z"
+          />
+        </svg>
+        {active && <span className="gear-dot" />}
+      </button>
+      {open && <div className="settings-pop">{children}</div>}
+    </div>
+  );
+}
+
+const Icon = ({ d, children }: { d?: string; children?: ReactNode }) => (
+  <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    {d ? <path d={d} /> : children}
+  </svg>
+);
+const ICONS = {
+  isolate: (
+    <Icon>
+      <circle cx="10" cy="10" r="3.2" fill="currentColor" />
+      <path d="M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2" />
+    </Icon>
+  ),
+  context: (
+    <Icon>
+      <circle cx="10" cy="10" r="2.6" fill="currentColor" />
+      <circle cx="4" cy="5" r="1.4" opacity=".45" />
+      <circle cx="16" cy="5.5" r="1.4" opacity=".45" />
+      <circle cx="5" cy="15.5" r="1.4" opacity=".45" />
+      <circle cx="15.5" cy="15" r="1.4" opacity=".45" />
+    </Icon>
+  ),
+  single: <Icon d="M4 4.5h12v11H4z" />,
+  compare: <Icon d="M2.5 4.5h6.5v11H2.5zM11 4.5h6.5v11H11z" />,
+  model: (
+    <Icon>
+      <circle cx="5" cy="6" r="2" />
+      <circle cx="15" cy="5" r="2" />
+      <circle cx="10" cy="15" r="2" />
+      <path d="M7 6l6-.8M6.1 7.7l2.8 5.6M14 6.9l-3 6.3" />
+    </Icon>
+  ),
+  metamodel: <Icon d="M10 3v4M10 7H5v4M10 7h5v4M3 11h4v5H3zM13 11h4v5h-4zM8 2h4v3H8z" />,
+  boxes: (
+    <Icon>
+      <rect x="2.5" y="3.5" width="15" height="13" rx="2.5" strokeDasharray="2.4 2" />
+      <circle cx="7" cy="10" r="1.8" />
+      <circle cx="13" cy="10" r="1.8" />
+    </Icon>
+  ),
+  nodes: <Icon d="M10 3.5a2 2 0 110 .01M5 15.5a2 2 0 110 .01M15 15.5a2 2 0 110 .01M9 5.5L6 13.6M11 5.5l3 8.1" />,
+  color: (
+    <Icon>
+      <circle cx="6.5" cy="7" r="2.6" fill="#e0954a" stroke="none" />
+      <circle cx="13.5" cy="7" r="2.6" fill="#5b8def" stroke="none" />
+      <circle cx="10" cy="13.5" r="2.6" fill="#3fa99a" stroke="none" />
+    </Icon>
+  ),
+  crosswalk: <Icon d="M3 4v12M17 4v12M6 7.5h8M11.5 5l2.5 2.5-2.5 2.5M14 12.5H6M8.5 10L6 12.5 8.5 15" />,
+};
+
+interface ModeOption<T> {
+  value: T;
+  label: string;
+  def: string;
+  icon: ReactNode;
+}
+
+/** Icon-only segmented switch; hovering (or focusing) a button shows its name and definition. */
+function ModeSwitch<T extends string>({ name, options, value, onChange }: { name: string; options: ModeOption<T>[]; value: T; onChange: (v: T) => void }) {
+  return (
+    <div className="segmented icon-seg" role="radiogroup" aria-label={name}>
+      {options.map((o) => (
+        <button key={o.value} role="radio" aria-checked={value === o.value} aria-label={`${o.label}: ${o.def}`} className={value === o.value ? "on" : ""} onClick={() => onChange(o.value)}>
+          {o.icon}
+          <span className="tip" role="tooltip">
+            <strong>
+              {name}: {o.label}
+            </strong>
+            {o.def}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const FOCUS_MODES: ModeOption<FocusMode>[] = [
+  { value: "isolate", label: "Isolate", def: "Show only the claims under the current subject or topic.", icon: ICONS.isolate },
+  { value: "context", label: "In context", def: "Show the whole graph and dim everything outside the current subject or topic.", icon: ICONS.context },
+];
+const LAYOUT_MODES: ModeOption<Mode>[] = [
+  { value: "single", label: "Single", def: "One tradition fills the canvas.", icon: ICONS.single },
+  { value: "compare", label: "Compare", def: "Two traditions side by side, each on its own canvas.", icon: ICONS.compare },
+];
+const VIEWS: ModeOption<View>[] = [
+  { value: "model", label: "Model", def: "The claims: named beings and the relationships a tradition asserts between them.", icon: ICONS.model },
+  { value: "metamodel", label: "Metamodel", def: "The categories: a tradition's kinds of being, how they nest, and which relationships connect them.", icon: ICONS.metamodel },
+];
+const GROUPINGS: ModeOption<Grouping>[] = [
+  { value: "containers", label: "Boxes", def: "Top-level categories are drawn as boxes around their members.", icon: ICONS.boxes },
+  { value: "nodes", label: "Nodes", def: "Each category is its own node, linked by 'is a' edges, so it can be selected and compared.", icon: ICONS.nodes },
+  { value: "color", label: "Color", def: "Category is shown by color only; the cleanest graph of claims.", icon: ICONS.color },
 ];
 
 export function App() {
@@ -111,7 +247,9 @@ function Compare() {
     setIdsRaw(next);
     setSel(focus ? focusSelection(focus) : null);
   };
-  const [hops, setHops] = useState(99);
+  /** Degrees of relationship shown around a focused subject, per canvas (MAX_DEGREE = everything reachable). */
+  const [degrees, setDegrees] = useState<Record<Side, number>>({ left: MAX_DEGREE, right: MAX_DEGREE });
+  const [layoutKey, setLayoutKey] = useState<Record<Side, number>>({ left: 0, right: 0 });
   const [minTier, setMinTier] = useState<Record<Side, number>>({ left: 99, right: 99 });
   const focusList = useMemo(() => focusTopics(referents, topics), [referents, topics]);
   const focusTopic = focusList.find((f) => f.id === focus);
@@ -159,8 +297,8 @@ function Compare() {
   const focusCoverage = useMemo(() => {
     if (!focus) return undefined;
     if (coverage) return coverage;
-    const around = (t: Tradition) => {
-      const nodes = neighborhood(t, focus, hops);
+    const around = (t: Tradition, side: Side) => {
+      const nodes = neighborhood(t, focus, degrees[side]);
       const edges = t.model.edges.filter((e) => nodes.has(e.source) && (!e.target || nodes.has(e.target)));
       return {
         nodes,
@@ -169,11 +307,11 @@ function Compare() {
         axioms: new Set<string>(),
       };
     };
-    return { left: around(trads.left), right: around(trads.right) };
-  }, [focus, coverage, hops, trads.left, trads.right]);
+    return { left: around(trads.left, "left"), right: around(trads.right, "right") };
+  }, [focus, coverage, degrees, trads.left, trads.right]);
   const allNodes = (t: Tradition) => new Set(t.model.nodes.map((n) => n.id));
   // Isolate shows only the focus (empty if nothing is modeled); In context shows everything and dims the rest.
-  const isolate = focusMode === "isolate" && view === "model";
+  const isolate = focusMode === "isolate";
   const visible = useMemo(
     () => ({
       left: focusCoverage && isolate ? focusCoverage.left.nodes : allNodes(trads.left),
@@ -185,6 +323,13 @@ function Compare() {
     () =>
       focusCoverage && !isolate
         ? { left: spotlightIds(trads.left, focusCoverage.left, view), right: spotlightIds(trads.right, focusCoverage.right, view) }
+        : undefined,
+    [focusCoverage, isolate, trads.left, trads.right, view],
+  );
+  const metaKeep = useMemo(
+    () =>
+      focusCoverage && isolate && view === "metamodel"
+        ? { left: spotlightIds(trads.left, focusCoverage.left, "metamodel"), right: spotlightIds(trads.right, focusCoverage.right, "metamodel") }
         : undefined,
     [focusCoverage, isolate, trads.left, trads.right, view],
   );
@@ -224,9 +369,34 @@ function Compare() {
               ))}
             </select>
           </div>
-          {view === "model" && (
+          {view === "model" && focusTopic?.kind === "subject" && (
+            <DegreeSlider
+              max={maxDegree(t, focusTopic.id)}
+              value={degrees[side]}
+              onChange={(v) => setDegrees({ ...degrees, [side]: v })}
+            />
+          )}
+          <button
+            className="icon-btn"
+            title="Auto-layout: re-arrange this graph"
+            aria-label={`Auto-layout ${t.meta.tradition.shortName} graph`}
+            onClick={() => setLayoutKey({ ...layoutKey, [side]: layoutKey[side] + 1 })}
+          >
+            <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden>
+              <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+                <circle cx="5" cy="5" r="2.2" />
+                <circle cx="15" cy="6.5" r="2.2" />
+                <circle cx="8" cy="15" r="2.2" />
+                <path d="M7 5.6l5.8.6M6 7l1.4 5.8M13.5 8.3l-4 5" />
+              </g>
+            </svg>
+          </button>
+          <PaneSettings
+            active={minTier[side] < t.meta.tradition.tiers.length - 1}
+            label={`${t.meta.tradition.shortName} settings`}
+          >
             <label className="tier-filter" title="Fade claims whose strongest authority is below this tier">
-              Min. tier
+              <span>Minimum authority tier</span>
               <select
                 value={Math.min(minTier[side], t.meta.tradition.tiers.length - 1)}
                 onChange={(e) => setMinTier({ ...minTier, [side]: +e.target.value })}
@@ -237,8 +407,9 @@ function Compare() {
                   </option>
                 ))}
               </select>
+              <small className="muted">Claims backed only by lower tiers are faded (model view).</small>
             </label>
-          )}
+          </PaneSettings>
         </header>
         <GraphPane
           side={side}
@@ -251,6 +422,8 @@ function Compare() {
           onSelect={setSel}
           onInstance={onInstance}
           edgeFilter={focusCoverage && isolate ? focusCoverage[side].edges : undefined}
+          layoutKey={layoutKey[side]}
+          metaKeep={metaKeep?.[side]}
           spotlight={spotlight?.[side]}
           pulse={hover?.side === side ? hover.ids : undefined}
         />
@@ -311,19 +484,14 @@ function Compare() {
                 {focusList
                   .filter((f) => f.kind === kind)
                   .map((f) => {
+                    // Subjects are plain names; topics and debates show a per-side status glyph.
                     const sides = single ? (["left"] as Side[]) : (["left", "right"] as Side[]);
-                    const glyphs = sides
-                      .map((sd) =>
-                        f.kind === "subject"
-                          ? trads[sd].model.nodes.some((n) => n.referent === f.id)
-                            ? "●"
-                            : "○"
-                          : statusGlyph(topicCoverage(trads[sd], f.id), f.kind),
-                      )
-                      .join(" ");
+                    const glyphs =
+                      f.kind === "subject" ? "" : `${sides.map((sd) => statusGlyph(topicCoverage(trads[sd], f.id), f.kind)).join(" ")}  `;
                     return (
                       <option key={f.id} value={f.id}>
-                        {glyphs}  {f.label}
+                        {glyphs}
+                        {f.label}
                       </option>
                     );
                   })}
@@ -331,59 +499,41 @@ function Compare() {
             ))}
           </select>
         </label>
-        {view === "model" && focus && focusTopic?.kind === "subject" && (
-          <div className="segmented" title="How far from the subject to show">
-            {HOPS.map((h) => (
-              <button key={h.value} className={hops === h.value ? "on" : ""} onClick={() => setHops(h.value)}>
-                {h.label}
-              </button>
-            ))}
-          </div>
-        )}
-        {focus && (
-          <div className="segmented" title="Isolate: show only the focus. In context: show everything and dim the rest.">
-            {(["isolate", "context"] as FocusMode[]).map((m) => (
-              <button key={m} className={focusMode === m ? "on" : ""} onClick={() => setFocusMode(m)}>
-                {m === "isolate" ? "Isolate" : "In context"}
-              </button>
-            ))}
-          </div>
-        )}
-        <div className="controls">
-          <div className="segmented" title="Show one tradition, or two side by side">
-            {(["single", "compare"] as Mode[]).map((m) => (
-              <button key={m} className={mode === m ? "on" : ""} onClick={() => setMode(m)}>
-                {m === "single" ? "Single" : "Compare"}
-              </button>
-            ))}
-          </div>
-          <div className="segmented">
-            {(["model", "metamodel"] as View[]).map((v) => (
-              <button key={v} className={view === v ? "on" : ""} onClick={() => setView(v)}>
-                {v === "model" ? "Model" : "Metamodel"}
-              </button>
-            ))}
-          </div>
+        <div className="modes" aria-label="View modes">
+          {focus && (
+            <>
+              <ModeSwitch name="Focus" options={FOCUS_MODES} value={focusMode} onChange={setFocusMode} />
+              <span className="modes-sep" />
+            </>
+          )}
+          <ModeSwitch name="Layout" options={LAYOUT_MODES} value={mode} onChange={setMode} />
+          <span className="modes-sep" />
+          <ModeSwitch name="View" options={VIEWS} value={view} onChange={setView} />
           {view === "model" && (
-            <div className="segmented labeled" title="How category membership is drawn">
-              <span className="seg-label">Categories as</span>
-              {GROUPINGS.map((g) => (
-                <button key={g.value} className={grouping === g.value ? "on" : ""} title={g.title} onClick={() => setGrouping(g.value)}>
-                  {g.label}
-                </button>
-              ))}
-            </div>
+            <>
+              <span className="modes-sep" />
+              <ModeSwitch name="Categories as" options={GROUPINGS} value={grouping} onChange={setGrouping} />
+            </>
           )}
           {!single && (
-            <button
-              className={`toggle-btn ${crosswalkOn ? "on" : ""}`}
-              aria-pressed={crosswalkOn}
-              title="Draw links between corresponding categories of the two traditions"
-              onClick={() => setCrosswalkOn(!crosswalkOn)}
-            >
-              ⟷ Crosswalk
-            </button>
+            <>
+              <span className="modes-sep" />
+              <button
+                className={`icon-toggle ${crosswalkOn ? "on" : ""}`}
+                aria-pressed={crosswalkOn}
+                aria-label="Crosswalk: draw links between corresponding categories of the two traditions"
+                onClick={() => setCrosswalkOn(!crosswalkOn)}
+              >
+                {ICONS.crosswalk}
+                <span className="tip" role="tooltip">
+                  <strong>Crosswalk {crosswalkOn ? "(on)" : "(off)"}</strong>
+                  Draw links between corresponding categories of the two traditions: curated matches, and pairs derived from shared subjects.
+                </span>
+              </button>
+            </>
           )}
+        </div>
+        <div className="controls">
           <button className="panel-toggle" onClick={() => setPanelOpen(!panelOpen)} aria-expanded={panelOpen}>
             {panelOpen ? "Hide details ▸" : "◂ Details"}
           </button>

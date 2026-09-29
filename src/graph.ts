@@ -42,6 +42,17 @@ export function neighborhood(t: Tradition, referent: string | null, hops: number
   return seen;
 }
 
+/** How many degrees out the graph reaches from `referent` (0 if absent or unconnected). */
+export function maxDegree(t: Tradition, referent: string): number {
+  let prev = neighborhood(t, referent, 0).size;
+  if (!prev) return 0;
+  for (let d = 1; ; d++) {
+    const size = neighborhood(t, referent, d).size;
+    if (size === prev) return d - 1;
+    prev = size;
+  }
+}
+
 /** Edge label: verb, "as to" qualifier, and quantifier when the target is a kind. */
 export function edgeLabel(t: Tradition, e: Edge) {
   const d = describeEdge(t, e);
@@ -140,9 +151,23 @@ export function categoryAnchorIds(meta: Metamodel, categoryId: string, view: Vie
   return path.flatMap((c) => [kindNodeId(c.id), ...(grouping === "containers" && c.group ? [`grp:${c.id}`] : [])]);
 }
 
-export function metamodelElements({ meta }: Tradition): ElementDefinition[] {
+/**
+ * `keep` (isolate mode) holds spotlight ids ("cat:", "relType:", "ax:"): only those categories, their ancestors
+ * (so the tree still reads), the relationship types, and the class-level statements are drawn.
+ */
+export function metamodelElements({ meta }: Tradition, keep?: Set<string>): ElementDefinition[] {
   const colors = groupColors(meta);
-  const nodes: ElementDefinition[] = meta.categories.map((c) => ({
+  let kept: Set<string> | undefined;
+  if (keep) {
+    kept = new Set<string>();
+    const addWithAncestors = (id: string) => categoryPath(meta, id).forEach((c) => kept!.add(c.id));
+    meta.categories.filter((c) => keep.has(`cat:${c.id}`)).forEach((c) => addWithAncestors(c.id));
+    for (const a of meta.axioms.filter((x) => keep.has(`ax:${x.id}`))) [a.source, a.target].forEach(addWithAncestors);
+    for (const r of meta.relationships.filter((x) => keep.has(`relType:${x.id}`)))
+      if (!r.domain.some((d) => kept!.has(d)) || !r.range.some((g) => kept!.has(g))) [r.domain[0], r.range[0]].forEach(addWithAncestors);
+  }
+  const has = (cid: string) => !kept || kept.has(cid);
+  const nodes: ElementDefinition[] = meta.categories.filter((c) => has(c.id)).map((c) => ({
     data: {
       id: `cat:${c.id}`,
       label: c.label,
@@ -151,20 +176,24 @@ export function metamodelElements({ meta }: Tradition): ElementDefinition[] {
     classes: c.group ? "category group-category" : "category",
   }));
   const isa: ElementDefinition[] = meta.categories
-    .filter((c) => c.parent)
+    .filter((c) => c.parent && has(c.id) && has(c.parent))
     .map((c) => ({
       data: { id: `isa:${c.id}`, source: `cat:${c.id}`, target: `cat:${c.parent}`, label: "is a" },
       classes: "isa",
     }));
-  const rels: ElementDefinition[] = meta.relationships.flatMap((r) =>
-    r.domain.flatMap((d) =>
-      r.range.map((g) => ({
-        data: { id: `rel:${r.id}:${d}:${g}`, source: `cat:${d}`, target: `cat:${g}`, label: r.label },
-        classes: "reltype",
-      })),
-    ),
-  );
-  const axioms: ElementDefinition[] = meta.axioms.map((a) => {
+  const rels: ElementDefinition[] = meta.relationships
+    .filter((r) => !keep || keep.has(`relType:${r.id}`))
+    .flatMap((r) =>
+      r.domain.flatMap((d) =>
+        r.range
+          .filter((g) => has(d) && has(g))
+          .map((g) => ({
+            data: { id: `rel:${r.id}:${d}:${g}`, source: `cat:${d}`, target: `cat:${g}`, label: r.label },
+            classes: "reltype",
+          })),
+      ),
+    );
+  const axioms: ElementDefinition[] = meta.axioms.filter((a) => !keep || keep.has(`ax:${a.id}`)).map((a) => {
     const d = describeAxiom(meta, a);
     return {
       data: { id: `ax:${a.id}`, source: `cat:${a.source}`, target: `cat:${a.target}`, label: `${d.verb} ${QUANT[a.quantifier]}`.trim() },

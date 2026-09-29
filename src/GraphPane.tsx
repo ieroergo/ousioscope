@@ -125,6 +125,53 @@ const STYLE: StylesheetJson = [
   { selector: "edge.m-hit", style: { width: 3, "line-color": "#d98a1f", "target-arrow-color": "#d98a1f" } },
 ];
 
+/** Fit to the pane, but don't blow a small (e.g. isolated) graph up past a readable size. */
+function fitCapped(instance: Core) {
+  instance.fit(undefined, 16);
+  if (instance.zoom() > 1.3) {
+    instance.zoom(1.3);
+    instance.center();
+  }
+}
+
+/** Force-directed layout for the model, a tree for the metamodel. `animate` is used when re-laying out on request. */
+function runLayout(instance: Core, view: View, animate: boolean) {
+  const opts =
+    view === "model"
+      ? {
+          name: "fcose",
+          quality: "proof",
+          animate,
+          animationDuration: 450,
+          randomize: true,
+          nodeDimensionsIncludeLabels: true,
+          idealEdgeLength: () => 110,
+          nodeRepulsion: () => 9000,
+          edgeElasticity: () => 0.3,
+          nestingFactor: 0.4,
+          nodeSeparation: 90,
+          gravity: 0.2,
+          gravityCompound: 1.2,
+          tile: true,
+          packComponents: true,
+          padding: 16,
+          fit: false,
+        }
+      : {
+          name: "breadthfirst",
+          directed: false,
+          roots: instance.nodes().filter((n) => n.outgoers("edge.isa").empty()),
+          spacingFactor: 1.1,
+          padding: 24,
+          animate,
+          animationDuration: 450,
+          fit: false,
+        };
+  const layout = (view === "model" ? instance.elements() : instance.elements().not("edge.reltype")).layout(opts as unknown as cytoscape.LayoutOptions);
+  layout.one("layoutstop", () => (animate ? instance.animate({ fit: { eles: instance.elements(), padding: 16 }, duration: 300, complete: () => fitCapped(instance) }) : fitCapped(instance)));
+  layout.run();
+}
+
 interface Props {
   side: Side;
   tradition: Tradition;
@@ -141,9 +188,13 @@ interface Props {
   spotlight?: Set<string>;
   /** Element ids to pulse (e.g. while hovering a claim in the detail panel). */
   pulse?: string[];
+  /** Incrementing this re-runs the layout (the "Auto-layout" button). */
+  layoutKey?: number;
+  /** Metamodel isolate: spotlight ids to keep (everything else is left out). */
+  metaKeep?: Set<string>;
 }
 
-export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter, spotlight, pulse }: Props) {
+export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter, spotlight, pulse, layoutKey = 0, metaKeep }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const cy = useRef<Core | null>(null);
   const onSelectRef = useRef(onSelect);
@@ -152,8 +203,8 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
   onInstanceRef.current = onInstance;
 
   const elements = useMemo(
-    () => (view === "model" ? modelElements(tradition, visible, minTier, grouping, edgeFilter) : metamodelElements(tradition)),
-    [tradition, view, visible, minTier, grouping, edgeFilter],
+    () => (view === "model" ? modelElements(tradition, visible, minTier, grouping, edgeFilter) : metamodelElements(tradition, metaKeep)),
+    [tradition, view, visible, minTier, grouping, edgeFilter, metaKeep],
   );
 
   useEffect(() => {
@@ -164,44 +215,7 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
       wheelSensitivity: 0.3,
       layout: { name: "preset" },
     });
-    (view === "model" ? instance.elements() : instance.elements().not("edge.reltype"))
-      .layout(
-        view === "model"
-          ? ({
-              name: "fcose",
-              quality: "proof",
-              animate: false,
-              randomize: true,
-              nodeDimensionsIncludeLabels: true,
-              idealEdgeLength: () => 110,
-              nodeRepulsion: () => 9000,
-              edgeElasticity: () => 0.3,
-              nestingFactor: 0.4,
-              nodeSeparation: 90,
-              gravity: 0.2,
-              gravityCompound: 1.2,
-              tile: true,
-              packComponents: true,
-              padding: 16,
-            } as unknown as cytoscape.LayoutOptions)
-          : ({
-              name: "breadthfirst",
-              directed: false,
-              roots: instance.nodes().filter((n) => n.outgoers("edge.isa").empty()),
-              spacingFactor: 1.1,
-              padding: 24,
-            } as unknown as cytoscape.LayoutOptions),
-      )
-      .run();
-    // Fit to the pane, but don't blow a small (e.g. isolated) graph up past a readable size.
-    const fitCapped = () => {
-      instance.fit(undefined, 16);
-      if (instance.zoom() > 1.3) {
-        instance.zoom(1.3);
-        instance.center();
-      }
-    };
-    fitCapped();
+    runLayout(instance, view, false);
     instance.on("tap", (evt) => {
       const t = evt.target;
       if (t === instance) return onSelectRef.current(null);
@@ -220,7 +234,7 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         instance.resize();
-        fitCapped();
+        fitCapped(instance);
       });
     });
     observer.observe(container.current!);
@@ -273,6 +287,13 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
     for (const id of pulse ?? [])
       for (const gid of [id, `kind:${id}`, `cat:${id}`, `grp:${id}`, `ax:${id}`]) instance.getElementById(gid).addClass("m-pulse");
   }, [pulse, elements]);
+
+  const lastLayoutKey = useRef(layoutKey);
+  useEffect(() => {
+    if (!cy.current || lastLayoutKey.current === layoutKey) return;
+    lastLayoutKey.current = layoutKey;
+    runLayout(cy.current, view, true);
+  }, [layoutKey, view]);
 
   return <div className="graph" ref={container} />;
 }
