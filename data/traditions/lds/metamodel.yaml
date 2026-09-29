@@ -66,12 +66,27 @@ stances:
         - { source: Doctrine and Covenants, ref: D&C 93:21, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p21#p21", quote: "I was in the beginning with the Father, and am the Firstborn" }
   - debate: debate.theotokos
     stance: reframes
-    claims: ["lds.e.mary-bears-jesus", "lds.mary#Title"]
-    summary: 'Mary is "the mother of the Son of God, after the manner of the flesh".'
+    summary: Mary is "the mother of the Son of God, after the manner of the flesh". In 1837, the Book of Mormon text was revised from "the mother of God" to "the mother of the Son of God" to clarify that Mary is mother of the Son in the flesh, distinguishing the Son from the Father.
+    claims:
+      - lds.e.mary-bears-jesus
+      - lds.mary#Title
     citations:
-      scripture: { bible: [Luke 1:35], other: [1 Ne 11:18] }
+      scripture:
+        bible:
+          - Luke 1:35
+        other:
+          - 1 Ne 11:18
       authority:
-        - { source: Book of Mormon, ref: 1 Ne 11:18, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng&id=p18#p18", quote: "the mother of the Son of God, after the manner of the flesh" }
+        - source: Book of Mormon
+          ref: 1 Ne 11:18
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng
+          quote: "And he said unto me: Behold, the virgin whom thou seest is the mother of the Son of God, after the manner of the flesh."
+        - source: Changes to the Book of Mormon, Church History Topics
+          ref: Paragraph 3
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/history/topics/changes-to-the-book-of-mormon?lang=eng
+          quote: For instance, they adjusted references about Jesus in 1 Nephi rendered in the manuscripts and 1830 edition as “the mother of God,” “the Eternal Father,” and “the Everlasting God” to “the mother of the Son of God,” “the Son of the Eternal Father,” and “the Son of the everlasting God,” respectively.
   - debate: debate.ex-nihilo
     stance: rejects
     claims: ["lds.e.jesus-organizes-earth", "lds.e.earth-from-element"]

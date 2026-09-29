@@ -84,9 +84,32 @@ stances:
       authority:
         - { source: Westminster Confession of Faith, ref: WCF 8.2, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "two whole, perfect, and distinct natures, the Godhead and the manhood, were inseparably joined together in one person" }
   - debate: debate.theotokos
-    stance: none
-    claims: ["wcf.e.mary-bears"]
-    summary: The Standards do not use the title. They confess Christ "conceived ... in the womb of the virgin Mary, of her substance" (WCF 8.2).
+    stance: affirms
+    summary: Affirmed in the Chalcedonian sense that the child born of Mary is truly God and man in one person ("God-bearer"). However, the Westminster Standards deliberately omit the title, and Reformed teaching rejects "Mother of God" in any sense implying she originated his deity, possesses maternal superiority, or should be an object of devotion.
+    claims:
+      - wcf.e.mary-bears
+    citations:
+      scripture:
+        bible:
+          - Luke 1:43
+          - Rom 9:5
+          - Gal 4:4
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html
+          quote: The Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father, did, when the fullness of time was come, take upon him man’s nature, with all the essential properties, and common infirmities thereof, yet without sin; being conceived by the power of the Holy Ghost, in the womb of the virgin Mary, of her substance.
+        - source: "Question & Answer: The Orthodox Presbyterian Church, Question 92"
+          ref: OPC QA 92
+          tier: church-published
+          url: https://www.opc.org/qa.html?question_id=92
+          quote: We cannot say that Mary was the mother of God in any sense that makes her the originator of the deity of her son or implies any superiority over Him.
+        - source: "New Horizons: Son of God, Son of Mary (December 2003)"
+          ref: New Horizons Dec 2003
+          tier: church-published
+          url: https://www.opc.org/nh.html?article_id=140
+          quote: Likewise, in Luke 1:43, Mary is called "the mother of my Lord." Lord is one of the words for God...The early church properly declared that Mary should be called the "God-bearer," because she truly gave birth to God (in Jesus Christ). Romans 9:5 similarly speaks of how "Christ, who is God over all, blessed forever," came from Israel according to the flesh.
   - debate: debate.filioque
     stance: affirms
     claims: ["wcf.e.spirit-from-father", "wcf.e.spirit-from-son"]
@@ -121,12 +144,23 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 32.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_32", quote: "their souls, which neither die nor sleep, having an immortal subsistence, immediately return to God who gave them" }
   - debate: debate.inherited-guilt
     stance: affirms
-    claims: ["wcf.e.adam-conveys-manhood", "wcf.adam#Imputed guilt"]
     summary: Adam's guilt is imputed to all his posterity, and a corrupted nature is conveyed to them.
+    claims:
+      - wcf.e.adam-conveys-manhood
+      - wcf.adam#Imputed guilt
+      - wcf.mary#Original sin
     citations:
-      scripture: { bible: [Rom 5:12, Rom 5:19, 1 Cor 15:22] }
+      scripture:
+        bible:
+          - Rom 5:12
+          - Rom 5:19
+          - 1 Cor 15:22
       authority:
-        - { source: Westminster Confession of Faith, ref: WCF 6.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_06", quote: "They being the root of all mankind, the guilt of this sin was imputed" }
+        - source: Westminster Confession of Faith
+          ref: WCF 6.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html
+          quote: They being the root of all mankind, the guilt of this sin was imputed; and the same death in sin, and corrupted nature, conveyed to all their posterity descending from them by ordinary generation.
   - debate: debate.crucifixion
     stance: affirms
     summary: Christ "was crucified, and died".

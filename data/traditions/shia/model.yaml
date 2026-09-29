@@ -259,22 +259,40 @@ nodes:
     label: Mary (Maryam)
     category: Human
     referent: ref.mary
-    description: Chosen and purified above the women of all the worlds. A virgin who bore Jesus.
+    description: Daughter of 'Imran, chosen and purified as the truthful mistress of the women of her world; a devout virgin who guarded her chastity and bore Jesus through Allah's spirit and Word.
     citations:
       scripture:
         bible:
-          - together: [Luke 1:26-27, Luke 1:34]
-            note: 'Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her.'
-        other: [Quran 3:42, Quran 19:20]
+          - together:
+              - Luke 1:26-27
+              - Luke 1:34
+            note: "Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her."
+        other:
+          - Quran 3:42
+          - Quran 19:20
+          - Quran 66:12
+          - Quran 5:75
       authority:
         - source: Qur'an
           ref: Al Imran 3:42
           tier: quran
+        - source: Qur'an
+          ref: At-Tahrim 66:12
+          tier: quran
+        - source: Qur'an
+          ref: Al-Ma'idah 5:75
+          tier: quran
+        - source: Ma'ani al-Akhbar
+          ref: book 1, ch. 40, hadith 1
+          tier: hadith
+          url: https://thaqalayn.net/hadith/28/1/40/1
+          quote: "I said to Abu Abdillah, peace be upon him: Inform me about the saying of Allah’s Messenger, Allah’s blessings be upon him and his Family, with regards to Fatima that she is the Mistress of the women of all the worlds, is she the Mistress of the women of her world? So he said: That is for Maryam; she was the Mistress of the women of her world, whereas Fatima is the Mistress of the women of all the worlds, from the first and the last."
     attributes:
-      - name: Physical nature
-        value: Truthful woman (siddiqah) and physical human who ate food
+      - name: Truthful woman (Siddiqah) and mortality
+        value: A truthful woman (siddiqah) and mortal human who consumed earthly food alongside her son, demonstrating biological need and creatureliness rather than divinity
         topics:
-          - humanity
+          - tawhid
+          - nubuwwah
         citations:
           scripture:
             bible: none-cited
@@ -284,8 +302,77 @@ nodes:
             - source: Qur'an
               ref: Al-Ma'idah 5:75
               tier: quran
-              url: https://quran.com/5/75
-              quote: The Messiah, son of Mary, was no more than a messenger. ˹Many˺ messengers had ˹come and˺ gone before him. His mother was a woman of truth. They both ate food.
+      - name: Deity?
+        value: No; she is not a deity (ilah) beside Allah, and Jesus explicitly disavows before Allah that he or his mother should ever be taken as gods
+        topics:
+          - tawhid
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:116
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:116
+              tier: quran
+      - name: Creaturely contingency
+        value: A created, contingent mortal whom Allah has the absolute power to destroy along with her son and all on earth
+        topics:
+          - tawhid
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:17
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:17
+              tier: quran
+      - name: Devoutness and chastity
+        value: Guarded her chastity, received the spirit breathed into her, and testified with sincere devotion (al-qanitin) to the words and scriptures of her Lord
+        topics:
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 66:12
+          authority:
+            - source: Qur'an
+              ref: At-Tahrim 66:12
+              tier: quran
+      - name: Sign (ayah)
+        value: Made together with her son a singular divine sign (ayah) for all peoples
+        topics:
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 21:91
+          authority:
+            - source: Qur'an
+              ref: Al-Anbiya 21:91
+              tier: quran
+      - name: Rank among women
+        value: Chosen and purified as the mistress of the women of her own world (her historical era), whereas Fatimah al-Zahra is the mistress of the women of all worlds from first to last
+        topics:
+          - nubuwwah
+          - imamah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:42
+          authority:
+            - source: Ma'ani al-Akhbar
+              ref: book 1, ch. 40, hadith 1
+              tier: hadith
+              url: https://thaqalayn.net/hadith/28/1/40/1
+              quote: "I said to Abu Abdillah, peace be upon him: Inform me about the saying of Allah’s Messenger, Allah’s blessings be upon him and his Family, with regards to Fatima that she is the Mistress of the women of all the worlds, is she the Mistress of the women of her world? So he said: That is for Maryam; she was the Mistress of the women of her world, whereas Fatima is the Mistress of the women of all the worlds, from the first and the last."
+            - source: Qur'an
+              ref: Al Imran 3:42
+              tier: quran
 
   - id: shi.heavens-earth
     label: The heavens and the earth
@@ -474,4 +561,17 @@ edges:
       authority:
         - source: Qur'an
           ref: Al Imran 3:59
+          tier: quran
+  - id: shi.e.allah-creates-mary
+    source: shi.allah
+    rel: creates
+    target: shi.mary
+    citations:
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 5:17
+      authority:
+        - source: Qur'an
+          ref: Al-Ma'idah 5:17
           tier: quran

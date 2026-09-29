@@ -136,6 +136,82 @@ nodes:
               ref: 1 Ne 11:18
               tier: standard-works
               url: https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng&id=p18#p18
+      - name: Children with Joseph
+        value: Following the birth of Jesus Christ, Mary had other children; from Matthew 13:55-56 it appears she and Joseph had at least six children together, including four sons (James, Joses, Simon, and Judas) and more than one daughter.
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Mark 6:3
+              - Matt 13:55-56
+              - Gal 1:19
+          authority:
+            - source: Guide to the Scriptures, "Mary, Mother of Jesus"
+              ref: Mary, Mother of Jesus
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/scriptures/gs/mary-mother-of-jesus?lang=eng
+              quote: In the New Testament, a virgin chosen by God the Father to be the mother of His Son in the flesh. After Jesus’ birth, Mary had other children ( Mark 6:3 ).
+            - source: "New Testament Student Manual, Chapter 5: Matthew 13–15"
+              ref: Matthew 13:55–56
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/new-testament-student-manual/introduction-to-matthew/chapter-5?lang=eng
+              quote: "Matthew 13:55–56 provides the most detailed list in the four Gospels of Jesus Christ’s family members. From these verses it appears that following the birth of Jesus Christ, Joseph and Mary had at least six children: James, Joses, Simon, Judas, and more than one daughter."
+      - name: Lineage
+        value: Mary was of Davidic descent; because Jesus was not begotten by Joseph, the blood of King David's posterity was given to the body of Jesus through Mary alone.
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Rom 1:3
+              - Acts 2:30
+              - 2 Tim 2:8
+              - Luke 1:32
+          authority:
+            - source: Jesus the Christ
+              ref: Chapter 7, paragraph 25
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-7?lang=eng
+              quote: That Mary was of Davidic descent is plainly set forth in many scriptures; for since Jesus was to be born of Mary, yet was not begotten by Joseph, who was the reputed, and according to the law of the Jews, the legal, father, the blood of David’s posterity was given to the body of Jesus through Mary alone.
+      - name: Later years
+        value: There is no trustworthy history of her later years; Latter-day revelation confirms the biblical account and affirms that Mary was a pure and chosen vessel and the mother of the Son of God in the flesh, while non-biblical traditions are not accepted as trustworthy history.
+        topics:
+          - christ
+          - scripture
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - 1 Ne 11:13-20
+              - Mosiah 3:8
+              - Alma 7:10
+          authority:
+            - source: Bible Dictionary, "Mary"
+              ref: Entry Mary
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/scriptures/bd/mary?lang=eng
+              quote: There is no trustworthy history of her later years. Latter-day revelation confirms the biblical account and affirms that Mary was a pure and a chosen vessel and the mother of the Son of God in the flesh ( 1 Ne. 11:13–20 ; Mosiah 3:8 ; Alma 7:10 ).
+      - name: Premortal foreordination
+        value: Noble and great in the premortal existence and foreordained to her ministry as the mortal mother of the Son of God. Elder Bruce R. McConkie deduced that she was the greatest female spirit, though this deduction is not canonized doctrine.
+        topics:
+          - plan
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Luke 1:28
+            other:
+              - 1 Ne 11:15
+              - 1 Ne 11:18
+              - Mosiah 3:8
+              - Alma 7:10
+          authority:
+            - source: Ensign (Jan 2019), "Mary, the Mother of Jesus"
+              ref: quoting Bruce R. McConkie, The Mortal Messiah
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/ensign/2019/01/mary-the-mother-of-jesus?lang=eng
+              quote: "Elder Bruce R. McConkie (1915–85) of the Quorum of the Twelve Apostles has written: “Can we speak too highly of her whom the Lord has blessed above all women? There was only one Christ, and there is only one Mary. Each was noble and great in [the premortal existence], and each was foreordained to the ministry he or she performed. We cannot but think that the Father would choose the greatest female spirit to be the mother of his Son, even as he chose the male spirit like unto him to be the Savior. … We should … hold up Mary with that proper esteem which is hers.”"
     citations:
       scripture: { bible: [Isa 7:14, Luke 1:27], other: [Alma 7:10, Mosiah 3:8] }
       authority:
@@ -326,25 +402,36 @@ edges:
     rel: bears
     target: lds.jesus
     asTo: PhysicalBody
-    note: '"The mother of the Son of God, after the manner of the flesh" (1 Ne 11:18).'
+    note: '"The mother of the Son of God, after the manner of the flesh" (1 Ne 11:18). From his mortal mother Mary, Jesus inherited mortality and subjection to hunger, thirst, fatigue, pain, and death.'
     citations:
       scripture:
         bible:
-          - together: [Isa 7:14, Luke 1:27]
+          - together:
+              - Isa 7:14
+              - Luke 1:27
             note: The footnote to "born" in Alma 7:10 pairs Isaiah's prophecy with Luke's account of its fulfillment.
           - Matt 1:16
-        other: [Alma 7:10, 1 Ne 11:18, Mosiah 3:8]
+          - John 10:17-18
+        other:
+          - Alma 7:10
+          - 1 Ne 11:18
+          - Mosiah 3:8
       authority:
         - source: Book of Mormon
           ref: Alma 7:10
           tier: standard-works
-          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p10#p10
-          quote: and bring forth a son, yea, even the Son of God
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng
+          quote: And behold, he shall be born of Mary, at Jerusalem which is the land of our forefathers, she being a virgin, a precious and chosen vessel, who shall be overshadowed and conceive by the power of the Holy Ghost, and bring forth a son, yea, even the Son of God.
         - source: Book of Mormon
           ref: 1 Ne 11:18
           tier: standard-works
-          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng&id=p18#p18
-          quote: the mother of the Son of God, after the manner of the flesh
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng
+          quote: "And he said unto me: Behold, the virgin whom thou seest is the mother of the Son of God, after the manner of the flesh."
+        - source: Gospel Principles
+          ref: "Chapter 11: The Life of Christ, paragraph 19"
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-principles/chapter-11-the-life-of-christ?lang=eng
+          quote: Jesus is the only person on earth to be born of a mortal mother and an immortal Father. That is why He is called the Only Begotten Son. He inherited divine powers from His Father. From His mother He inherited mortality and was subject to hunger, thirst, fatigue, pain, and death.
 
   - id: lds.e.holy-ghost-overshadows-mary
     source: lds.holy-ghost

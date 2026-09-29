@@ -202,21 +202,199 @@ nodes:
     description: Chosen and purified by Allah, a virgin who bore Isa.
     attributes:
       - name: Chosen
-        value: Allah has "chosen you above the women of the worlds"
+        value: Chosen and purified above the women of the worlds of her time, paired in preeminence with Khadijah
         citations:
-          scripture: { bible: [{ ref: Luke 1:28, highlight: "blessed art thou among women" }], other: [{ ref: Quran 3:42, highlight: "chosen you above the women of the worlds" }] }
+          scripture:
+            bible:
+              - ref: Luke 1:28
+                highlight: blessed art thou among women
+            other:
+              - ref: Quran 3:42
+                highlight: chosen you above the women of the worlds
           authority:
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 3:42
               tier: tafsir
-              url: https://quran.com/3:42/tafsirs/en-tafisr-ibn-kathir
-              quote: Allah also chose her because of her virtue over the women of the world.
+              url: https://quran.com/ali-imran/42/tafsirs/en-tafisr-ibn-kathir
+              quote: The Virtue of Maryam Over the Women of Her Time ... The best woman (in her time) was Maryam, daughter of `Imran, and the best woman (of the Prophet's time) is Khadijah (his wife), daughter of Khuwaylid.
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3432
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3432
+              quote: Mary, the daughter of `Imran, was the best among the women
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3815
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3815
+              quote: The best of the world's women is Mary (at her lifetime), and the best of the world's ... women is Khadija (at her lifetime).
+      - name: Dedication in the womb
+        value: Dedicated in the womb to Allah's service by the wife of 'Imran, named Maryam, and placed under divine protection along with her offspring from Satan.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:35
+              - Quran 3:36
+          authority:
+            - source: Qur'an
+              ref: Ali 'Imran 3:35
+              tier: quran
+              url: https://quran.com/ali-imran/35
+              quote: ˹Remember˺ when the wife of ’Imrân said, “My Lord! I dedicate what is in my womb entirely to Your service, ... so accept it from me.
+            - source: Qur'an
+              ref: Ali 'Imran 3:36
+              tier: quran
+              url: https://quran.com/ali-imran/36
+              quote: I have named her Mary, and I seek Your protection for her and her offspring from Satan, the accursed.
+      - name: Protected from Satan at birth
+        value: Uniquely protected along with her son from the prick and touch of Satan at birth, unlike other children of Adam.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:36
+          authority:
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3431
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3431
+              quote: There is none born among the off-spring of Adam, ... but Satan touches it. A child therefore, cries loudly at the time of birth because of the touch of Satan, ... except Mary and her child.
+            - source: Sahih Muslim
+              ref: Muslim 2366a
+              tier: sahih-hadith
+              url: https://sunnah.com/muslim:2366a
+              quote: No child is born but he is pricked by the satan and he begins to weep because of the pricking of the satan except the son of Mary and his mother.
+      - name: Chastity and devout obedience
+        value: Guarded her chastity, testified to the truth of the words and scriptures of her Lord, and was among the devoutly obedient (al-qanitin).
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 66:12
+          authority:
+            - source: Qur'an
+              ref: At-Tahrim 66:12
+              tier: quran
+              url: https://quran.com/at-tahrim/12
+              quote: Mary, the daughter of ’Imrân, who guarded her chastity, so We breathed into her ... through Our angel ... She testified to the words of her Lord and His Scriptures, and was one of the ˹sincerely˺ devout.
+      - name: Woman of truth and mortal sustenance
+        value: A truthful woman (siddiqah) and mortal servant who physically consumed food, refuting divine status through creaturely need.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:75
+              tier: quran
+              url: https://quran.com/al-maidah/75
+              quote: The Messiah, son of Mary, was no more than a messenger. ˹Many˺ messengers had ˹come and˺ gone before him. His mother was a woman of truth. They both ate food.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 5:75
+              tier: tafsir
+              url: https://quran.com/al-maidah/75/tafsirs/en-tafisr-ibn-kathir
+              quote: They both used to eat food) needing nourishment and to relieve the call of nature. Therefore, they are just servants like other servants, not gods
+      - name: Divinity rejected
+        value: Worship of Maryam and taking her as a deity beside Allah is explicitly repudiated; she is a created human servant, not divine.
+        topics:
+          - allah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:116
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:116
+              tier: quran
+              url: https://quran.com/al-maidah/116
+              quote: Did you ever ask the people to worship you and your mother as gods besides Allah?
+      - name: Guardianship and sanctuary provision
+        value: Raised under divine acceptance in the care of Zakariya, miraculously provided with summer fruits in winter and winter fruits in summer directly from Allah.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:37
+          authority:
+            - source: Qur'an
+              ref: Ali 'Imran 3:37
+              tier: quran
+              url: https://quran.com/ali-imran/37
+              quote: So her Lord accepted her graciously and blessed her with a pleasant upbringing—entrusting her to the care of Zachariah. Whenever Zachariah visited her in the sanctuary, he found her supplied with provisions.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:37
+              tier: tafsir
+              url: https://quran.com/ali-imran/37/tafsirs/en-tafisr-ibn-kathir
+              quote: He would find with her the fruits of the summer during winter, and the fruits of the winter during summer.
+      - name: Perfection among women
+        value: Attained the level of human perfection (kamal), interpreted by majority scholars as supreme saintly virtue (walayah and siddiqiyyah) and shared with Asiya, Khadijah, and Fatimah.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:42
+          authority:
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3433
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3433
+              quote: Many men reached the level of perfection, but no woman reached such a level except Mary, the daughter of `Imran and Asia, the wife of Pharaoh.
+            - source: Jami` at-Tirmidhi
+              ref: Tirmidhi 3878
+              tier: sahih-hadith
+              url: https://sunnah.com/tirmidhi:3878
+              quote: "that the Prophet (ﷺ) said: \"Sufficient for you among the women of mankind are Mariam bint 'Imran, Khadijah bint Khuwailid, Fatimah bint Muhammad and Asiyah the wife of Fir'awn.\""
+      - name: Rank of Siddiqah
+        value: Held the rank of Siddiqah (truthful saint) signifying complete belief and trust in Allah; under the majority Sunni position, this confirms she was a saint rather than a prophet.
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+              - Quran 12:109
+          authority:
+            - source: Qur'an
+              ref: Yusuf 12:109
+              tier: quran
+              url: https://quran.com/yusuf/109
+              quote: We only sent before you ˹O Prophet˺ men inspired by Us from among the people of each society.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 5:75
+              tier: tafsir
+              url: https://quran.com/al-maidah/75/tafsirs/en-tafisr-ibn-kathir
+              quote: His mother was a Siddiqah) for she believed in Allah with complete trust in Him. This is the highest rank she was given, which proves that she was not a Prophet.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 12:109
+              tier: tafsir
+              url: https://quran.com/yusuf/109/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah states that He only sent Prophets and Messengers from among men and not from among women, as this Ayah clearly states. ... Shaykh Abu Al-Hasan, `Ali bin Isma`il Al-Ash`ari mentioned that it is the view of Ahlus-Sunnah wal-Jama`ah, that there were no female Prophets, but there were truthful believers from among women. ... Therefore, the best description Allah gave her is Siddiqah.
     citations:
       scripture:
         bible:
-          - together: [Luke 1:26-27, Luke 1:34]
-            note: 'Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her.'
-        other: [Quran 19:20, Quran 3:47]
+          - together:
+              - Luke 1:26-27
+              - Luke 1:34
+            note: "Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her."
+        other:
+          - Quran 19:20
+          - Quran 3:47
       authority:
         - source: Qur'an
           ref: Maryam 19:16-22
@@ -379,23 +557,25 @@ edges:
     source: sun.maryam
     rel: bears
     target: sun.isa
-    note: Conceived miraculously without male parentage through the breathing of the Spirit (Jibril) into Maryam by Allah's leave.
+    note: Conceived as a virgin without the touch of any man through the breathing of the Spirit sent by Allah (Jibril), making mother and son a sign for all peoples.
     citations:
       scripture:
         bible:
           - Luke 1:31
+          - Luke 1:34
         other:
+          - Quran 19:19-21
           - Quran 19:22
-          - Quran 3:45
           - Quran 21:91
+          - Quran 3:45
       authority:
         - source: Qur'an
-          ref: Maryam 19:22
+          ref: Maryam 19:19-21
           tier: quran
         - source: Qur'an
-          ref: Al-Anbya 21:91
+          ref: Al-Anbiya 21:91
           tier: quran
-          url: https://quran.com/21/91
+          url: https://quran.com/al-anbya/91
           quote: And ˹remember˺ the one who guarded her chastity, so We breathed into her through Our angel, ˹Gabriel,˺ ... making her and her son a sign for all peoples.
 
   - id: sun.e.allah-raises-isa

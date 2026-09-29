@@ -105,6 +105,168 @@ nodes:
           ref: WCF 8.2
           tier: confessional
           url: https://www.opc.org/wcf.html#Chapter_08
+    attributes:
+      - name: Original sin
+        value: Conceived by ordinary generation as a descendant of Adam, inheriting imputed guilt and a corrupted nature, from which Christ alone was exempted by his extraordinary conception.
+        topics:
+          - wcf6
+        citations:
+          scripture:
+            bible:
+              - Rom 5:12
+              - Ps 51:5
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 6.3
+              tier: confessional
+              url: https://www.opc.org/wcf.html
+              quote: They being the root of all mankind, the guilt of this sin was imputed; and the same death in sin, and corrupted nature, conveyed to all their posterity descending from them by ordinary generation.
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 501"
+              ref: OPC QA 501
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=501
+              quote: we do not believe in the immaculate conception of Mary, the mother of Jesus. We believe that only Jesus Christ was born without sin.
+      - name: Fulfillment of Genesis 3:15
+        value: A fallen daughter of Adam and Eve who could not save herself, chosen by sovereign grace to be the instrument fulfilling Genesis 3:15 by bearing the conqueror of the serpent.
+        topics:
+          - wcf7
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Gen 3:15
+              - Luke 1:35
+              - Luke 1:46-55
+          authority:
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 629"
+              ref: OPC QA 629
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=629
+              quote: Her blessedness comes not from herself but from the gracious choosing of God for her to be the instrument in his fulfilling Genesis 3:15, sending a conqueror through a woman, since a woman had sinned in eating the forbidden fruit. Many generations of women must have wondered and hoped that they would bear the promised Messiah, but Mary was the one God chose. Mary, like all of humanity descending from Adam and Eve, was in need of a Savior, for she could not save herself or atone for her own sins.
+      - name: Immaculate Conception
+        value: Rejected; Scripture nowhere teaches that Mary was without sin, and in the Magnificat she explicitly confessed God as her Savior, demonstrating that she needed salvation.
+        topics:
+          - wcf6
+        citations:
+          scripture:
+            bible:
+              - Luke 1:46-47
+          authority:
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 366"
+              ref: OPC QA 366
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=366
+              quote: ...as Presbyterians, we reject the doctrine of the Immaculate Conception. The Bible nowhere teaches that Mary was without sin...Rather, if you read the Magnificat in Luke 2 you will see that she called God her Savior—thus admitting she needed to be saved from her sin.
+            - source: "New Horizons: Jesus and His Mother (December 2002)"
+              ref: New Horizons Dec 2002
+              tier: church-published
+              url: https://www.opc.org/nh.html?article_id=175
+              quote: This doctrine was defined by Pope Pius IX in 1854 and teaches that Mary herself, at the first instant of her conception, was preserved immaculate from the stain of original sin...But there is not the slightest support in Scripture for the doctrine of the immaculate conception of Mary...
+      - name: Perpetual virginity
+        value: The Westminster Standards do not affirm or deny perpetual virginity. While earlier Reformed writers defended it, modern denominational publications reject it as unsupported by Scripture, understanding Matthew 1:25 and passages naming Jesus' brothers as indicating subsequent children in an ordinary marriage.
+        topics:
+          - wcf8
+          - wcf24
+        citations:
+          scripture:
+            bible:
+              - Matt 1:25
+              - Matt 12:46
+              - Matt 13:55
+              - Mark 6:2-3
+              - John 2:12
+              - Acts 1:14
+          authority:
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 566"
+              ref: OPC QA 566
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=566
+              quote: '"It is true that our standards do not affirm the perpetual virginity of Mary, the mother of our Lord. Neither do the standards deny it: they do not address the question."'
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 19"
+              ref: OPC QA 19
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=19
+              quote: The words "But he had no union with her until she gave birth to a son" certainly seem to suggest that after Mary gave birth to Jesus, Joseph did have union with her and that, having given birth to one Child, she gave birth to other children as well.
+            - source: "New Horizons: Jesus and His Mother (December 2002)"
+              ref: New Horizons Dec 2002
+              tier: church-published
+              url: https://www.opc.org/nh.html?article_id=175
+              quote: The perpetual virginity of Mary is almost certainly not true. There is nothing explicit in Scripture or derived from Scripture by good and necessary reasoning that favors it. The impression one gains from Scripture is decidedly against it.
+      - name: Assumption and heavenly titles
+        value: Rejected; bodily assumption, enthronement as Queen of Heaven, and titles such as Mediatrix or Co-redemptrix have no scriptural warrant and dishonor Christ as the sole mediator.
+        topics:
+          - wcf8
+          - wcf21
+        citations:
+          scripture:
+            bible:
+              - 1 Tim 2:5
+              - Heb 2:14-15
+              - Heb 7:26
+          authority:
+            - source: "New Horizons: Jesus and His Mother (December 2002)"
+              ref: New Horizons Dec 2002
+              tier: church-published
+              url: https://www.opc.org/nh.html?article_id=175
+              quote: This doctrine teaches that Mary's body was raised from the grave shortly after she died, that her body and soul were reunited, and that she was taken up and enthroned as Queen of Heaven...The problem with all this is that it lacks the sure foundation of the Word of God, and it is highly dishonoring to the person and work of our Lord Jesus Christ, "the only mediator between God and man" (1 Tim. 2:5).
+      - name: Veneration and honor
+        value: Honored as an exemplary servant of the Lord who trusted God in bearing the Messiah. Religious worship, veneration, hyperdulia, and prayers to her are forbidden, because religious worship belongs to God alone and must not be given to any creature or saint.
+        topics:
+          - wcf21
+        citations:
+          scripture:
+            bible:
+              - Luke 1:35
+              - Luke 1:46-55
+              - 1 Tim 2:5
+              - Rom 1:25
+              - Rev 19:10
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 21.2
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: Religious worship is to be given to God, the Father, Son, and Holy Ghost; and to him alone:...not to angels, saints, or any other creature:...and since the fall, not without a Mediator; nor in the mediation of any other but of Christ alone.
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 92"
+              ref: OPC QA 92
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=92
+              quote: ...in the history of the church they have often been used in the interests of exalting Mary beyond Scriptural warrant as an object of devotion, worship, and prayer...Mary was a humble servant of the Lord (by His grace) who was given the unique and amazing privilege of bringing the promised Messiah into the world. He is the Redeemer, He is the Lord, He is the One we must worship...He is the only Mediator between God and men (1 Timothy 2:5).
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 629"
+              ref: OPC QA 629
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=629
+              quote: The Reformed faith honors Mary as a woman who trusted God in a very hard thing, laying hold of God’s promise that her child would be the Son of God (Luke 1:35). The Reformed faith honors but does not exalt or look to Mary for blessings beyond what her Son, Jesus Christ, brings to repentant sinners.
+      - name: Intercession
+        value: Rejected; as a finite creature, Mary cannot hear prayer or search hearts, which is a divine prerogative. Prayer must be made to God alone through Christ's sole mediation; Mary's own witness directs sinners to do whatever Christ commands and pray to him directly.
+        topics:
+          - wcf21
+        citations:
+          scripture:
+            bible:
+              - 1 Tim 2:5
+              - John 2:5
+              - John 14:14
+          authority:
+            - source: Westminster Larger Catechism
+              ref: WLC 181
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: The sinfulness of man, and his distance from God by reason thereof, being so great, as that we can have no access into his presence without a mediator; and there being none in heaven or earth appointed to, or fit for, that glorious work but Christ alone, we are to pray in no other name but his only.
+            - source: Westminster Larger Catechism
+              ref: WLC 179
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: God only being able to search the hearts, hear the requests, pardon the sins, and fulfill the desires of all; and only to be believed in, and worshiped with religious worship; prayer, which is a special part thereof, is to be made by all to him alone, and to none other.
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 566"
+              ref: OPC QA 566
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=566
+              quote: It is also the case, however, that Calvin decidedly rejects the...erroneous doctrines of the intercession of the saints...which has impact on Mariological matters.
+            - source: "New Horizons: Jesus and His Mother (December 2002)"
+              ref: New Horizons Dec 2002
+              tier: church-published
+              url: https://www.opc.org/nh.html?article_id=175
 
   - id: wcf.world
     label: The world and all things therein
@@ -287,14 +449,29 @@ edges:
     source: wcf.spirit
     rel: overshadows
     target: wcf.mary
+    note: Miraculous conception without human paternity; the Holy Spirit preserved Christ from Mary's sinful corruption by an unrevealed divine mystery, not an explained biological mechanism.
     citations:
-      scripture: { bible: [{ ref: Luke 1:35, highlight: "the power of the Most High will overshadow you" }] }
+      scripture:
+        bible:
+          - ref: Luke 1:35
+            highlight: the power of the Most High will overshadow you
+          - Gal 4:4
       authority:
         - source: Westminster Confession of Faith
           ref: WCF 8.2
           tier: confessional
-          url: https://www.opc.org/wcf.html#Chapter_08
-          quote: being conceived by the power of the Holy Ghost, in the womb of the virgin Mary
+          url: https://www.opc.org/wcf.html
+          quote: The Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father, did, when the fullness of time was come, take upon him man’s nature, with all the essential properties, and common infirmities thereof, yet without sin; being conceived by the power of the Holy Ghost, in the womb of the virgin Mary, of her substance.
+        - source: "Question & Answer: The Orthodox Presbyterian Church, Question 531"
+          ref: OPC QA 531
+          tier: church-published
+          url: https://www.opc.org/qa.html?question_id=531
+          quote: God does not specify in greater detail than this how the conception of Jesus by-passed Mary’s own sinfulness to preserve Christ’s sinlessness, but the rest of Scripture, as I indicated above, affirms that Christ did not inherit our sin nature.
+        - source: "New Horizons: The Virgin Birth (December 2002)"
+          ref: New Horizons Dec 2002
+          tier: church-published
+          url: https://www.opc.org/nh.html?article_id=176
+          quote: At his conception, there was somehow a preservation from any taint of sin, from that contamination that would have otherwise proceeded from Mary.
 
   - id: wcf.e.father-creates
     source: wcf.father
