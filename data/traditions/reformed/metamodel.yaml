@@ -61,6 +61,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: affirms
+    claims: ["wcf.e.father-is", "wcf.e.son-is", "wcf.e.spirit-is"]
     summary: Three persons "of one substance, power, and eternity".
     citations:
       scripture: { bible: [Matt 28:19, 2 Cor 13:14] }
@@ -68,6 +69,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 2.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "In the unity of the Godhead there be three persons, of one substance, power, and eternity" }
   - debate: debate.son-created
     stance: rejects
+    claims: ["wcf.e.father-begets"]
     summary: The Son is "very and eternal God", eternally begotten, not created.
     citations:
       scripture: { bible: [John 1:1, John 1:14] }
@@ -75,6 +77,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 8.2, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "The Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father" }
   - debate: debate.two-natures
     stance: affirms
+    claims: ["wcf.e.son-takes-manhood", "wcf.son#Natures and person"]
     summary: Two whole, perfect, and distinct natures in one person, following Chalcedon.
     citations:
       scripture: { bible: [Col 2:9, Rom 9:5] }
@@ -82,9 +85,11 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 8.2, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "two whole, perfect, and distinct natures, the Godhead and the manhood, were inseparably joined together in one person" }
   - debate: debate.theotokos
     stance: none
+    claims: ["wcf.e.mary-bears"]
     summary: The Standards do not use the title. They confess Christ "conceived ... in the womb of the virgin Mary, of her substance" (WCF 8.2).
   - debate: debate.filioque
     stance: affirms
+    claims: ["wcf.e.spirit-from-father", "wcf.e.spirit-from-son"]
     summary: The Holy Ghost proceeds "from the Father and the Son".
     citations:
       scripture: { bible: [John 15:26, Gal 4:6] }
@@ -92,6 +97,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 2.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "the Holy Ghost eternally proceeding from the Father and the Son" }
   - debate: debate.ex-nihilo
     stance: affirms
+    claims: ["wcf.e.father-creates", "wcf.e.son-creates", "wcf.e.spirit-creates", "wcf.world#Made from"]
     summary: God made the world "of nothing".
     citations:
       scripture: { bible: [Heb 11:3] }
@@ -99,6 +105,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 4.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_04", quote: "to create, or make of nothing, the world, and all things therein whether visible or invisible" }
   - debate: debate.god-embodied
     stance: rejects
+    claims: ["wcf.godhead#Body?"]
     summary: God is "a most pure spirit ... without body, parts, or passions".
     citations:
       scripture: { bible: [John 4:24] }
@@ -106,6 +113,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 2.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "a most pure spirit, invisible, without body, parts, or passions" }
   - debate: debate.immortal-soul
     stance: affirms
+    claims: ["category:Soul", "axiom:ax.soul-reunites-body"]
     summary: Souls "neither die nor sleep" and return to God at death.
     citations:
       scripture: { bible: [Luke 23:43, Eccl 12:7] }
@@ -113,6 +121,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 32.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_32", quote: "their souls, which neither die nor sleep, having an immortal subsistence, immediately return to God who gave them" }
   - debate: debate.inherited-guilt
     stance: affirms
+    claims: ["wcf.e.adam-conveys-manhood", "wcf.adam#Imputed guilt"]
     summary: Adam's guilt is imputed to all his posterity, and a corrupted nature is conveyed to them.
     citations:
       scripture: { bible: [Rom 5:12, Rom 5:19, 1 Cor 15:22] }
@@ -127,6 +136,7 @@ stances:
         - { source: Westminster Confession of Faith, ref: WCF 8.4, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "was crucified, and died" }
   - debate: debate.bodily-resurrection
     stance: affirms
+    claims: ["wcf.son#Resurrection"]
     summary: He arose "with the same body in which he suffered".
     citations:
       scripture: { bible: [John 20:27] }

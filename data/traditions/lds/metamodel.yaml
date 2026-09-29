@@ -49,6 +49,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
+    claims: ["lds.e.godhead-father", "lds.e.godhead-jesus", "lds.e.godhead-holy-ghost", "lds.e.jesus-one-with-father"]
     summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose, not one substance.
     citations:
       scripture: { bible: [Matt 28:19], other: [JS-H 1:17] }
@@ -56,6 +57,7 @@ stances:
         - { source: 'Topics and Questions, "Godhead"', tier: church-published, url: "https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng", quote: "we know that the members of the Godhead are three separate beings" }
   - debate: debate.son-created
     stance: reframes
+    claims: ["lds.e.father-begets-jesus-spirit", "lds.jesus#Existence before birth"]
     summary: >-
       The Son is the Firstborn spirit child of the Father. Intelligence itself "was not created or made".
     citations:
@@ -64,6 +66,7 @@ stances:
         - { source: Doctrine and Covenants, ref: D&C 93:21, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p21#p21", quote: "I was in the beginning with the Father, and am the Firstborn" }
   - debate: debate.theotokos
     stance: reframes
+    claims: ["lds.e.mary-bears-jesus", "lds.mary#Title"]
     summary: 'Mary is "the mother of the Son of God, after the manner of the flesh".'
     citations:
       scripture: { bible: [Luke 1:35], other: [1 Ne 11:18] }
@@ -71,6 +74,7 @@ stances:
         - { source: Book of Mormon, ref: 1 Ne 11:18, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/11?lang=eng&id=p18#p18", quote: "the mother of the Son of God, after the manner of the flesh" }
   - debate: debate.ex-nihilo
     stance: rejects
+    claims: ["lds.e.jesus-organizes-earth", "lds.e.earth-from-element"]
     summary: The Gods organized the world from existing materials, and "the elements are eternal".
     citations:
       scripture: { bible: none-cited, other: [Abr 3:24, D&C 93:33] }
@@ -78,6 +82,7 @@ stances:
         - { source: Pearl of Great Price, ref: Abr 3:24, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p24#p24", quote: "we will take of these materials, and we will make an earth" }
   - debate: debate.god-embodied
     stance: affirms
+    claims: ["lds.e.father-has-body"]
     summary: The Father has a tangible body of flesh and bones, and so does the Son.
     citations:
       scripture: { bible: [Luke 24:39], other: [D&C 130:22] }
@@ -85,6 +90,7 @@ stances:
         - { source: Doctrine and Covenants, ref: D&C 130:22, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p22#p22", quote: "The Father has a body of flesh and bones as tangible as man's" }
   - debate: debate.inherited-guilt
     stance: rejects
+    claims: ["lds.adam#What descendants inherit"]
     summary: People are punished for their own sins, not for Adam's transgression. They inherit only a fallen condition.
     citations:
       scripture: { bible: none-cited, other: [A of F 1:2] }
@@ -92,6 +98,7 @@ stances:
         - { source: Articles of Faith, ref: A of F 1:2, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?lang=eng&id=p2#p2", quote: "We believe that men will be punished for their own sins, and not for Adam's transgression." }
   - debate: debate.bodily-resurrection
     stance: affirms
+    claims: ["lds.jesus#Resurrection", "lds.e.jesus-has-body"]
     summary: The risen Christ has a body of flesh and bones.
     citations:
       scripture: { bible: [Luke 24:39] }

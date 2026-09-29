@@ -183,6 +183,29 @@ export const splitCategoryRef = (ref: string) => {
   return { tradition, category: category as string | undefined };
 };
 
+export type ClaimRef =
+  | { kind: "node" | "edge" | "axiom" | "category"; id: string }
+  | { kind: "attribute"; id: string; name: string };
+
+/** Resolves a stance's claim reference ("id", "node#Attribute", "axiom:id", "category:id") in a tradition. */
+export function resolveClaimRef({ meta, model }: Tradition, ref: string): ClaimRef | undefined {
+  if (ref.startsWith("axiom:")) {
+    const id = ref.slice(6);
+    return meta.axioms.some((a) => a.id === id) ? { kind: "axiom", id } : undefined;
+  }
+  if (ref.startsWith("category:")) {
+    const id = ref.slice(9);
+    return meta.categories.some((c) => c.id === id) ? { kind: "category", id } : undefined;
+  }
+  const hash = ref.indexOf("#");
+  if (hash > 0) {
+    const [id, name] = [ref.slice(0, hash), ref.slice(hash + 1)];
+    return model.nodes.find((n) => n.id === id)?.attributes?.some((a) => a.name === name) ? { kind: "attribute", id, name } : undefined;
+  }
+  if (model.edges.some((e) => e.id === ref)) return { kind: "edge", id: ref };
+  if (model.nodes.some((n) => n.id === ref)) return { kind: "node", id: ref };
+}
+
 function validateTopics({ traditions, topics }: Dataset): string[] {
   const errors: string[] = [];
   const registry = new Map(topics.map((t) => [t.id, t]));
@@ -214,6 +237,7 @@ function validateTopics({ traditions, topics }: Dataset): string[] {
       if (debates.has(s.debate)) err(`stance: duplicate stance on "${s.debate}"`);
       debates.add(s.debate);
       if (s.stance !== "none" && !s.citations) err(`stance on ${s.debate}: "${s.stance}" needs citations`);
+      for (const c of s.claims) if (!resolveClaimRef({ meta, model }, c)) err(`stance on ${s.debate}: claim "${c}" not found`);
     }
   }
   return errors;

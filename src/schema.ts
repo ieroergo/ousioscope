@@ -125,6 +125,11 @@ export const Stance = z.object({
   debate: id,
   stance: z.enum(["affirms", "rejects", "condemns", "reframes", "none"]),
   summary: z.string().min(1),
+  /**
+   * The modeled claims that express this stance, highlighted when the debate is in focus:
+   * "<node or edge id>", "<node id>#<attribute name>", "axiom:<id>", or "category:<id>".
+   */
+  claims: z.array(z.string().min(1)).default([]),
   citations: Citations.optional(),
 });
 

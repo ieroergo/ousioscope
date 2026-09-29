@@ -43,6 +43,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
+    claims: ["jw.jehovah#Trinity?", "jw.jesus#Equal to Almighty God?"]
     summary: Jehovah alone is Almighty God. "There is no Scriptural basis for the Trinity doctrine."
     citations:
       scripture: { bible: [Deut 6:4, John 17:3] }
@@ -50,6 +51,7 @@ stances:
         - { source: Is God a Trinity? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/trinity/", quote: "the God of the Bible is never described as being part of a Trinity" }
   - debate: debate.son-created
     stance: affirms
+    claims: ["jw.e.jehovah-creates-jesus"]
     summary: Jesus is God's first creation, the only one created directly by God.
     citations:
       scripture: { bible: [Col 1:15, Rev 3:14] }
@@ -57,6 +59,7 @@ stances:
         - { source: Why Is Jesus Called the Son of God? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/", quote: "God created Jesus before he created anything else." }
   - debate: debate.immortal-soul
     stance: rejects
+    claims: ["jw.adam#At death", "category:Soul"]
     summary: The soul is the whole living person, and it dies.
     citations:
       scripture: { bible: [Ezek 18:4] }
@@ -64,6 +67,7 @@ stances:
         - { source: What Is the Soul? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/", quote: "The soul, then, is the entire creature, not something inside that survives the death of the body." }
   - debate: debate.inherited-guilt
     stance: reframes
+    claims: ["jw.adam#What descendants inherit"]
     summary: Descendants inherit a sinful condition, like a genetic defect, but "God does not blame us for what Adam and Eve did".
     citations:
       scripture: { bible: [Rom 5:12, Ps 103:14] }
@@ -78,6 +82,7 @@ stances:
         - { source: Did Jesus Die on a Cross? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/did-jesus-die-on-cross/", quote: "the Bible provides evidence that Jesus died, not on a cross, but on an upright stake." }
   - debate: debate.bodily-resurrection
     stance: rejects
+    claims: ["jw.jesus#Resurrection", "jw.e.jesus-becomes-spirit"]
     summary: Jesus was raised as a spirit, not with his flesh-and-blood body.
     citations:
       scripture: { bible: [1 Pet 3:18] }

@@ -6,7 +6,7 @@ import { ScriptureList, type ScriptureCtx } from "./ScripturePanel";
 import type { ClaimTarget } from "./validator/claim";
 import { ValidateClaim } from "./validator/ValidatePanel";
 import type { Axiom, Citations as CitationsT, Edge, OriginalEntry, Referent, RegistryTopic, ScriptureStore, Tradition } from "./schema";
-import { edgeTopicIds, KIND_LABEL, topicCoverage } from "./topics";
+import { edgeTopicIds, KIND_LABEL, possessive, topicCoverage } from "./topics";
 import type { Selection, Side } from "./selection";
 
 export interface Ctx {
@@ -22,7 +22,12 @@ export interface Ctx {
   /** Shared topic registry (doctrines, salvation, life, debates). */
   topics: RegistryTopic[];
   onSelect: (s: Selection) => void;
+  /** Pulses these graph elements while a claim is hovered in the panel (null clears). */
+  onHover: (ids: string[] | null) => void;
 }
+
+/** Hovering a listed claim pulses it in the graph. */
+const hoverProps = (ctx: Ctx, ids: string[]) => ({ onMouseEnter: () => ctx.onHover(ids), onMouseLeave: () => ctx.onHover(null) });
 
 function Citations({ c, ctx }: { c: CitationsT; ctx: Ctx }) {
   const { meta } = ctx.t;
@@ -230,7 +235,7 @@ function NodeDetail({ id, ctx, bridged }: { id: string; ctx: Ctx; bridged?: bool
           <h4>Relationships</h4>
           <ul className="rels">
             {edges.map((e) => (
-              <li key={e.id}>
+              <li key={e.id} {...hoverProps(ctx, [e.id, e.source, ...(e.target ? [e.target] : [])])}>
                 <EdgeLine e={e} ctx={ctx} />
               </li>
             ))}
@@ -574,7 +579,7 @@ function TopicDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       {topic.kind === "debate" && !cov.stance && <p className="muted">No stance recorded for {name} yet.</p>}
       {cov.items.length > 0 && (
         <>
-          <h4>In {name}'s own outline</h4>
+          <h4>In {possessive(name)} own outline</h4>
           <ul className="rels">
             {cov.items.map((it) => (
               <li key={it.id}>
@@ -596,35 +601,53 @@ function TopicDetail({ id, ctx }: { id: string; ctx: Ctx }) {
           </ul>
         </>
       )}
-      {topic.kind !== "debate" && !cov.items.length && <p className="muted">Not a topic in {name}'s outline.</p>}
-      {(cov.edges.size > 0 || cov.attributes.length > 0 || cov.axioms.size > 0) && (
+      {topic.kind !== "debate" && !cov.items.length && <p className="muted">Not a topic in {possessive(name)} outline.</p>}
+      {(cov.edges.size > 0 || cov.attributes.length > 0 || cov.axioms.size > 0 || (topic.kind === "debate" && cov.categories.size > 0)) && (
         <>
-          <h4>Modeled claims</h4>
+          <h4>{topic.kind === "debate" ? `Where the ${name} model expresses this` : "Modeled claims"}</h4>
           <ul className="rels">
             {model.edges
               .filter((e) => cov.edges.has(e.id))
               .map((e) => (
-                <li key={e.id}>
+                <li key={e.id} {...hoverProps(ctx, [e.id, e.source, ...(e.target ? [e.target] : [])])}>
                   <EdgeLine e={e} ctx={ctx} />
                 </li>
               ))}
             {ctx.t.meta.axioms
               .filter((a) => cov.axioms.has(a.id))
               .map((a) => (
-                <li key={a.id}>
+                <li key={a.id} {...hoverProps(ctx, [a.id, a.source, a.target])}>
                   <AxiomLine a={a} ctx={ctx} />
                 </li>
               ))}
-            {cov.attributes.map((a) => (
-              <li key={`${a.node}:${a.name}`}>
-                <Link onClick={() => ctx.onSelect({ side: ctx.side, kind: "node", id: a.node })}>{nodeLabel(a.node)}</Link>
-                <span className="muted">: {a.name}</span>
-              </li>
-            ))}
+            {cov.attributes.map((a) => {
+              const n = model.nodes.find((x) => x.id === a.node);
+              const value = n?.attributes?.find((x) => x.name === a.name)?.value;
+              return (
+                <li key={`${a.node}:${a.name}`} {...hoverProps(ctx, [a.node])}>
+                  <Link onClick={() => ctx.onSelect({ side: ctx.side, kind: "node", id: a.node })}>{nodeLabel(a.node)}</Link>
+                  <span className="muted">: {a.name}</span>
+                  {value && <span className="attr-value"> {value}</span>}
+                </li>
+              );
+            })}
+            {[...cov.categories]
+              .filter((c) => topic.kind === "debate" && !model.edges.some((e) => cov.edges.has(e.id) && e.targetKind === c))
+              .map((c) => (
+                <li key={c} {...hoverProps(ctx, [c])}>
+                  <Link className="kind-ref" onClick={() => ctx.onSelect({ side: ctx.side, kind: "category", id: c })}>
+                    «{ctx.t.meta.categories.find((x) => x.id === c)?.label ?? c}»
+                  </Link>
+                  <span className="muted"> (category)</span>
+                </li>
+              ))}
           </ul>
         </>
       )}
-      {cov.status === "outline" && <p className="gap-note">Named in {name}'s outline, but not modeled yet.</p>}
+      {cov.status === "outline" && <p className="gap-note">Named in {possessive(name)} outline, but not modeled yet.</p>}
+      {topic.kind === "debate" && cov.stance && cov.status !== "modeled" && (
+        <p className="gap-note">No modeled claim expresses this stance yet.</p>
+      )}
     </div>
   );
 }

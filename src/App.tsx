@@ -9,10 +9,11 @@ import { categoryColor, neighborhood, type Grouping, type View } from "./graph";
 import { categoryPath, versesCited } from "./ontology";
 import type { Tradition } from "./schema";
 import { marksFor, selectedReferent, type Selection, type Side } from "./selection";
-import { focusTopics, KIND_LABEL, statusGlyph, topicCoverage, type FocusKind, type TopicCoverage } from "./topics";
+import { focusTopics, KIND_LABEL, possessive, spotlightIds, statusGlyph, topicCoverage, type FocusKind } from "./topics";
 import { ValidatorProvider } from "./validator/state";
 
 type Mode = "single" | "compare";
+type FocusMode = "isolate" | "context";
 
 const PANEL_KEY = "ousioscope.panelWidth";
 const clampPanel = (w: number) => Math.round(Math.min(Math.max(w, 300), window.innerWidth * 0.7));
@@ -83,6 +84,7 @@ function Compare() {
     right: known(params.get("right"), "lds"),
   }));
   const [focus, setFocus] = useState<string | null>(() => params.get("topic") ?? "ref.jesus");
+  const [focusMode, setFocusMode] = useState<FocusMode>(() => (params.get("fm") === "context" ? "context" : "isolate"));
   const [view, setView] = useState<View>(() => (params.get("view") === "metamodel" ? "metamodel" : "model"));
   const [mode, setMode] = useState<Mode>(() => (params.get("mode") === "single" ? "single" : "compare"));
   const single = mode === "single";
@@ -99,9 +101,10 @@ function Compare() {
       ...(grouping !== "containers" ? { group: grouping } : {}),
       ...(crosswalkOn && !single ? { xw: "1" } : {}),
       ...(focus && focus !== "ref.jesus" ? { topic: focus } : {}),
+      ...(focusMode === "context" ? { fm: "context" } : {}),
     });
     history.replaceState(null, "", `?${q}`);
-  }, [ids, view, mode, single, grouping, crosswalkOn, focus]);
+  }, [ids, view, mode, single, grouping, crosswalkOn, focus, focusMode]);
   const [cys, setCys] = useState<Record<Side, Core | null>>({ left: null, right: null });
   const onInstance = useCallback((side: Side, cy: Core | null) => setCys((prev) => ({ ...prev, [side]: cy })), []);
   const setIds = (next: Record<Side, string>) => {
@@ -143,7 +146,6 @@ function Compare() {
   );
   const selectedLink = sel?.kind === "crosswalk" ? links.find((l) => l.id === sel.id) : undefined;
   const marks = (side: Side, t: Tradition) => {
-    if (sel?.kind === "topic" && coverage) return topicMarks(coverage[side]);
     if (!selectedLink) return marksFor(side, t, sel, referent);
     const cat = side === "left" ? selectedLink.left : selectedLink.right;
     return new Map(cat ? [[cat, "selected" as const]] : []);
@@ -153,19 +155,40 @@ function Compare() {
     () => (topicFocus ? { left: topicCoverage(trads.left, topicFocus.id), right: topicCoverage(trads.right, topicFocus.id) } : undefined),
     [topicFocus, trads.left, trads.right],
   );
-  const visible = useMemo(() => {
-    const all = (t: Tradition) => new Set(t.model.nodes.map((n) => n.id));
-    // A topic shows exactly the claims filed under it; if nothing is modeled, the whole graph stays visible (dimmed).
-    const forTopic = (t: Tradition, c: TopicCoverage) => (c.nodes.size ? c.nodes : all(t));
-    return coverage
-      ? { left: forTopic(trads.left, coverage.left), right: forTopic(trads.right, coverage.right) }
-      : { left: neighborhood(trads.left, focus, hops), right: neighborhood(trads.right, focus, hops) };
-  }, [trads.left, trads.right, focus, hops, coverage]);
-  const topicMarks = (c: TopicCoverage) => {
-    const m = new Map<string, "hit">();
-    [...c.nodes, ...c.edges, ...c.axioms].forEach((id) => m.set(id, "hit"));
-    return m;
-  };
+  /** What the focus covers on each side: a topic's coverage, or a subject's neighborhood (nodes + edges among them). */
+  const focusCoverage = useMemo(() => {
+    if (!focus) return undefined;
+    if (coverage) return coverage;
+    const around = (t: Tradition) => {
+      const nodes = neighborhood(t, focus, hops);
+      const edges = t.model.edges.filter((e) => nodes.has(e.source) && (!e.target || nodes.has(e.target)));
+      return {
+        nodes,
+        edges: new Set(edges.map((e) => e.id)),
+        categories: new Set(edges.flatMap((e) => (e.targetKind ? [e.targetKind] : []))),
+        axioms: new Set<string>(),
+      };
+    };
+    return { left: around(trads.left), right: around(trads.right) };
+  }, [focus, coverage, hops, trads.left, trads.right]);
+  const allNodes = (t: Tradition) => new Set(t.model.nodes.map((n) => n.id));
+  // Isolate shows only the focus (empty if nothing is modeled); In context shows everything and dims the rest.
+  const isolate = focusMode === "isolate" && view === "model";
+  const visible = useMemo(
+    () => ({
+      left: focusCoverage && isolate ? focusCoverage.left.nodes : allNodes(trads.left),
+      right: focusCoverage && isolate ? focusCoverage.right.nodes : allNodes(trads.right),
+    }),
+    [focusCoverage, isolate, trads.left, trads.right],
+  );
+  const spotlight = useMemo(
+    () =>
+      focusCoverage && !isolate
+        ? { left: spotlightIds(trads.left, focusCoverage.left, view), right: spotlightIds(trads.right, focusCoverage.right, view) }
+        : undefined,
+    [focusCoverage, isolate, trads.left, trads.right, view],
+  );
+  const [hover, setHover] = useState<{ side: Side; ids: string[] } | null>(null);
 
   const pane = (side: Side) => {
     const t = trads[side];
@@ -227,19 +250,25 @@ function Compare() {
           marks={marks(side, t)}
           onSelect={setSel}
           onInstance={onInstance}
-          edgeFilter={coverage && coverage[side].nodes.size ? coverage[side].edges : undefined}
+          edgeFilter={focusCoverage && isolate ? focusCoverage[side].edges : undefined}
+          spotlight={spotlight?.[side]}
+          pulse={hover?.side === side ? hover.ids : undefined}
         />
         {coverage && coverage[side].status !== "modeled" && topicFocus && (
           <div className="pane-note">
             <strong>{topicFocus.label}</strong>
             {coverage[side].status === "outline" ? (
               <span>
-                In {t.meta.tradition.shortName}'s outline ({coverage[side].items.map((i) => i.label).join("; ")}), not yet modeled.
+                In {possessive(t.meta.tradition.shortName)} outline ({coverage[side].items.map((i) => i.label).join("; ")}), not yet modeled.
               </span>
             ) : topicFocus.kind === "debate" ? (
-              <span>No stance recorded for {t.meta.tradition.shortName}.</span>
+              <span>
+                {coverage[side].stance
+                  ? `${possessive(t.meta.tradition.shortName)} stance is recorded, but no modeled claim expresses it yet.`
+                  : `No stance recorded for ${t.meta.tradition.shortName}.`}
+              </span>
             ) : (
-              <span>Not in {t.meta.tradition.shortName}'s outline or model.</span>
+              <span>Not in {possessive(t.meta.tradition.shortName)} outline or model.</span>
             )}
           </div>
         )}
@@ -261,6 +290,7 @@ function Compare() {
       crosswalks: links,
       topics,
       onSelect: setSel,
+      onHover: (ids) => setHover(ids ? { side, ids } : null),
     };
   };
 
@@ -306,6 +336,15 @@ function Compare() {
             {HOPS.map((h) => (
               <button key={h.value} className={hops === h.value ? "on" : ""} onClick={() => setHops(h.value)}>
                 {h.label}
+              </button>
+            ))}
+          </div>
+        )}
+        {focus && (
+          <div className="segmented" title="Isolate: show only the focus. In context: show everything and dim the rest.">
+            {(["isolate", "context"] as FocusMode[]).map((m) => (
+              <button key={m} className={focusMode === m ? "on" : ""} onClick={() => setFocusMode(m)}>
+                {m === "isolate" ? "Isolate" : "In context"}
               </button>
             ))}
           </div>
@@ -397,6 +436,11 @@ function Compare() {
               </button>
             </div>
             <div className="panel-body">
+              {focusTopic && !(sel && (sel.kind === "topic" || sel.kind === "referent") && sel.id === focus) && (
+                <button className="crumb-back" onClick={() => setSel(focusSelection(focusTopic.id))}>
+                  ← {focusTopic.label}
+                </button>
+              )}
               {selectedLink ? (
                 <CrosswalkDetail link={selectedLink} left={ctx("left")} right={ctx("right")} />
               ) : (

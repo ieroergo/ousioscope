@@ -1,3 +1,4 @@
+import { resolveClaimRef } from "./ontology";
 import type { Referent, RegistryTopic, Stance, Topic, Tradition } from "./schema";
 
 export type FocusKind = "subject" | RegistryTopic["kind"];
@@ -63,7 +64,24 @@ export function topicCoverage(t: Tradition, registryId: string): TopicCoverage {
   for (const c of meta.categories) if (meets(c.topics, own)) categories.add(c.id);
   const axioms = new Set(meta.axioms.filter((a) => meets(relTopics.get(a.rel), own)).map((a) => a.id));
   const stance = meta.stances.find((s) => s.debate === registryId);
-  const modeled = edges.size + attributes.length + axioms.size > 0 || (!!stance && stance.stance !== "none");
+  // A debate's graph coverage is exactly the claims its stance links to.
+  for (const ref of stance?.claims ?? []) {
+    const c = resolveClaimRef(t, ref);
+    if (!c) continue;
+    if (c.kind === "edge") {
+      const e = model.edges.find((x) => x.id === c.id)!;
+      edges.add(e.id);
+      nodes.add(e.source);
+      if (e.target) nodes.add(e.target);
+      if (e.targetKind) categories.add(e.targetKind);
+    } else if (c.kind === "node") nodes.add(c.id);
+    else if (c.kind === "attribute") {
+      attributes.push({ node: c.id, name: c.name });
+      nodes.add(c.id);
+    } else if (c.kind === "axiom") axioms.add(c.id);
+    else categories.add(c.id);
+  }
+  const modeled = edges.size + attributes.length + axioms.size + categories.size > 0;
   return {
     items,
     stance,
@@ -89,6 +107,26 @@ export const edgeTopicIds = (t: Tradition, edgeId: string) => {
   return [...new Set([...(rel?.topics ?? []), ...(e.topics ?? [])])];
 };
 
+/**
+ * Graph element ids that represent a coverage in a given rendering: individuals, edges, «kind» and category
+ * nodes, and (for the metamodel view) categories, relationship types, and class-level statements.
+ */
+export function spotlightIds(t: Tradition, c: Pick<TopicCoverage, "nodes" | "edges" | "categories" | "axioms">, view: "model" | "metamodel"): Set<string> {
+  const out = new Set<string>();
+  if (view === "model") {
+    c.nodes.forEach((id) => out.add(id));
+    c.edges.forEach((id) => out.add(id));
+    c.categories.forEach((id) => (out.add(`kind:${id}`), out.add(`cat:${id}`)));
+    return out;
+  }
+  const nodeCat = new Map(t.model.nodes.map((n) => [n.id, n.category]));
+  c.nodes.forEach((id) => nodeCat.has(id) && out.add(`cat:${nodeCat.get(id)}`));
+  c.categories.forEach((id) => out.add(`cat:${id}`));
+  c.axioms.forEach((id) => out.add(`ax:${id}`));
+  for (const e of t.model.edges.filter((x) => c.edges.has(x.id))) out.add(`relType:${e.rel}`);
+  return out;
+}
+
 /** Short per-side status glyph for the topic picker. */
 export function statusGlyph(c: TopicCoverage, kind: FocusKind): string {
   if (kind === "debate") {
@@ -97,3 +135,6 @@ export function statusGlyph(c: TopicCoverage, kind: FocusKind): string {
   }
   return c.status === "modeled" ? "●" : c.status === "outline" ? "◐" : "○";
 }
+
+/** "Catholic's", "Jehovah's Witnesses'". */
+export const possessive = (name: string) => (name.endsWith("s") ? `${name}'` : `${name}'s`);

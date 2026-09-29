@@ -38,6 +38,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
+    claims: ["sun.allah#Has a son?"]
     summary: 'Allah is One. The Qur''an forbids saying "Three".'
     citations:
       scripture: { bible: none-cited, other: [Quran 4:171, Quran 112:1-4] }
@@ -45,6 +46,7 @@ stances:
         - { source: "Qur'an", ref: An-Nisa 4:171, tier: quran }
   - debate: debate.son-created
     stance: affirms
+    claims: ["sun.e.allah-creates-isa", "sun.e.isa-like-adam"]
     summary: Isa is a created servant and messenger of Allah, created like Adam.
     citations:
       scripture: { bible: none-cited, other: [Quran 3:59, Quran 4:171] }
@@ -52,6 +54,7 @@ stances:
         - { source: "Ibn Kathir, Tafsir (abridged)", ref: on 4:171, tier: tafsir, url: "https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir", quote: "`Isa is only one of Allah's servants and one of His creatures." }
   - debate: debate.two-natures
     stance: rejects
+    claims: ["sun.e.allah-sends-isa"]
     summary: Isa is a human messenger, not divine.
     citations:
       scripture: { bible: none-cited, other: [Quran 5:75] }
@@ -59,6 +62,7 @@ stances:
         - { source: "Ibn Kathir, Tafsir (abridged)", ref: on 5:75, tier: tafsir, url: "https://quran.com/5:75/tafsirs/en-tafisr-ibn-kathir", quote: "`Isa is just like the previous Prophets, and he is one of the servants of Allah and one of His honorable Messengers." }
   - debate: debate.ex-nihilo
     stance: affirms
+    claims: ["sun.e.allah-creates-cosmos", "sun.heavens-earth#Made from"]
     summary: Allah created the heavens and the earth "out of nothing and without precedent".
     citations:
       scripture: { bible: none-cited, other: [Quran 2:117] }
@@ -66,6 +70,7 @@ stances:
         - { source: "Ibn Kathir, Tafsir (abridged), quoting Ibn Jarir al-Tabari", ref: on 2:117, tier: tafsir, url: "https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir", quote: "Allah stated that He created the heavens and earth out of nothing and without precedent." }
   - debate: debate.inherited-guilt
     stance: rejects
+    claims: ["sun.adam#Slip and repentance"]
     summary: Adam repented and was forgiven, and no soul bears another's burden.
     citations:
       scripture: { bible: none-cited, other: [Quran 6:164, Quran 20:122] }
@@ -73,6 +78,7 @@ stances:
         - { source: "Qur'an", ref: "Al-An'am 6:164", tier: quran }
   - debate: debate.crucifixion
     stance: rejects
+    claims: ["sun.isa#Crucified?", "sun.e.allah-raises-isa"]
     summary: Isa was neither killed nor crucified. Another was made to resemble him, and Allah raised him up.
     citations:
       scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him" }] }

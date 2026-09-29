@@ -100,6 +100,11 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
   edge belongs (e.g. LDS begets: only Father → Jesus is Godhead/Christ).
 - `stances:` holds the tradition's cited stance on each debate proposition (affirms | rejects | condemns |
   reframes | none). Anything other than `none` needs citations, and stances can be validated like claims.
+- Each stance lists `claims:`, the modeled claims that express it: `"<node or edge id>"`, `"<node id>#<Attribute>"`,
+  `"axiom:<id>"`, or `"category:<id>"`. The validator checks that each one resolves. A debate in focus shows exactly
+  these claims.
+- Focus modes: Isolate (default) shows only the focus's claims, or an empty pane with a note. In context shows the
+  whole model with the rest dimmed.
 - Don't invent outline items. Take them from the tradition's own published outline, and show unmodeled items as gaps.
 
 ## Claim validator (`src/validator/`)

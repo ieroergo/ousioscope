@@ -115,6 +115,12 @@ const STYLE: StylesheetJson = [
     selector: "node.m-bridged",
     style: { "border-width": 3.5, "border-color": "#e0435b", "border-style": "dashed", "underlay-color": "#e0435b", "underlay-opacity": 0.08, "underlay-padding": 6 },
   },
+  { selector: ".dim", style: { opacity: 0.12 } },
+  {
+    selector: "node.m-pulse",
+    style: { "border-width": 4, "border-color": "#5b47b8", "underlay-color": "#5b47b8", "underlay-opacity": 0.18, "underlay-padding": 8, opacity: 1 },
+  },
+  { selector: "edge.m-pulse", style: { width: 4, "line-color": "#5b47b8", "target-arrow-color": "#5b47b8", opacity: 1 } },
   { selector: "node.m-hit", style: { "border-width": 3.5, "border-color": "#d98a1f" } },
   { selector: "edge.m-hit", style: { width: 3, "line-color": "#d98a1f", "target-arrow-color": "#d98a1f" } },
 ];
@@ -131,9 +137,13 @@ interface Props {
   /** Receives the Cytoscape instance after each (re)build, and null on teardown (used by the crosswalk overlay). */
   onInstance?: (side: Side, cy: Core | null) => void;
   edgeFilter?: Set<string>;
+  /** In-context focus: everything outside this set of element ids is dimmed. */
+  spotlight?: Set<string>;
+  /** Element ids to pulse (e.g. while hovering a claim in the detail panel). */
+  pulse?: string[];
 }
 
-export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter }: Props) {
+export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter, spotlight, pulse }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const cy = useRef<Core | null>(null);
   const onSelectRef = useRef(onSelect);
@@ -183,6 +193,15 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
             } as unknown as cytoscape.LayoutOptions),
       )
       .run();
+    // Fit to the pane, but don't blow a small (e.g. isolated) graph up past a readable size.
+    const fitCapped = () => {
+      instance.fit(undefined, 16);
+      if (instance.zoom() > 1.3) {
+        instance.zoom(1.3);
+        instance.center();
+      }
+    };
+    fitCapped();
     instance.on("tap", (evt) => {
       const t = evt.target;
       if (t === instance) return onSelectRef.current(null);
@@ -201,7 +220,7 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         instance.resize();
-        instance.fit(undefined, 16);
+        fitCapped();
       });
     });
     observer.observe(container.current!);
@@ -226,6 +245,34 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
       if (view === "metamodel") instance.edges(`[id ^= "rel:${id}:"]`).addClass(`m-${mark}`);
     });
   }, [marks, elements, view, tradition]);
+
+  useEffect(() => {
+    const instance = cy.current;
+    if (!instance) return;
+    instance.elements().removeClass("dim");
+    if (!spotlight) return;
+    const lit = (id: string): boolean => {
+      if (spotlight.has(id)) return true;
+      const [prefix, rest = ""] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)];
+      if (prefix === "rel") return spotlight.has(`relType:${rest.split(":")[0]}`);
+      if (prefix === "inst") return spotlight.has(rest.slice(rest.indexOf(":") + 1));
+      return false;
+    };
+    instance.elements().forEach((el) => {
+      if (lit(el.id())) return;
+      if (el.isNode() && el.isParent() && el.descendants().toArray().some((d) => lit(d.id()))) return;
+      if (el.isEdge() && el.hasClass("isa") && !el.hasClass("inst") && lit(el.source().id()) && lit(el.target().id())) return;
+      el.addClass("dim");
+    });
+  }, [spotlight, elements]);
+
+  useEffect(() => {
+    const instance = cy.current;
+    if (!instance) return;
+    instance.elements().removeClass("m-pulse");
+    for (const id of pulse ?? [])
+      for (const gid of [id, `kind:${id}`, `cat:${id}`, `grp:${id}`, `ax:${id}`]) instance.getElementById(gid).addClass("m-pulse");
+  }, [pulse, elements]);
 
   return <div className="graph" ref={container} />;
 }

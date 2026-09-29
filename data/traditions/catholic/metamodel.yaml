@@ -48,6 +48,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: affirms
+    claims: ["cath.e.father-is-godhead", "cath.e.son-is-godhead", "cath.e.spirit-is-godhead"]
     summary: One God in three persons, the "consubstantial Trinity". This is defined dogma.
     citations:
       scripture: { bible: [Matt 28:19] }
@@ -55,6 +56,7 @@ stances:
         - { source: Second Council of Constantinople (553), ref: "DS 421, quoted in CCC 253", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: 'We do not confess three Gods, but one God in three persons, the "consubstantial Trinity".' }
   - debate: debate.son-created
     stance: condemns
+    claims: ["cath.e.father-begets-son"]
     summary: Nicaea (325) condemned Arius. The Son is "begotten, not made", consubstantial with the Father.
     citations:
       scripture: { bible: [John 1:14, John 1:18] }
@@ -62,6 +64,7 @@ stances:
         - { source: Council of Nicaea (325) / Nicene Creed, ref: "DS 150, quoted in CCC 242", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: "eternally begotten of the Father, light from light, true God from true God, begotten not made" }
   - debate: debate.two-natures
     stance: affirms
+    claims: ["cath.e.son-assumes-human-nature", "cath.son#Number of persons in Christ", "cath.son#Number of natures in Christ"]
     summary: Chalcedon (451) defined one person, the Son, begotten as to his divinity and born as to his humanity.
     citations:
       scripture: { bible: [John 1:14] }
@@ -69,6 +72,7 @@ stances:
         - { source: Council of Chalcedon (451), ref: "DS 301, quoted in CCC 467", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P1J.HTM", quote: "He was begotten from the Father before all ages as to his divinity" }
   - debate: debate.theotokos
     stance: affirms
+    claims: ["cath.e.mary-bears-son", "cath.mary#Title"]
     summary: Mary is truly Mother of God (Theotokos), because she bore the divine person of the Son.
     citations:
       scripture: { bible: [Luke 1:43] }
@@ -76,6 +80,7 @@ stances:
         - { source: Council of Chalcedon (451), ref: "DS 301, quoted in CCC 467", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P1J.HTM", quote: "was born as to his humanity of the virgin Mary, the Mother of God" }
   - debate: debate.filioque
     stance: affirms
+    claims: ["cath.e.spirit-from-father", "cath.e.spirit-from-son"]
     summary: The Spirit proceeds eternally from the Father and the Son as from one principle.
     citations:
       scripture: { bible: [John 15:26] }
@@ -83,6 +88,7 @@ stances:
         - { source: Council of Florence (1439), ref: "DS 1300-1301, quoted in CCC 246", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: "He proceeds eternally from both as from one principle and through one spiration." }
   - debate: debate.ex-nihilo
     stance: affirms
+    claims: ["cath.e.father-creates", "cath.e.son-creates", "cath.e.spirit-creates", "cath.creation#Made from"]
     summary: God created everything, matter included, out of nothing (Lateran IV).
     citations:
       scripture: { bible: [2 Macc 7:28] }
@@ -90,6 +96,7 @@ stances:
         - { source: Catechism of the Catholic Church, ref: "CCC 296-298", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P19.HTM", quote: "If God had drawn the world from pre-existent matter, what would be so extraordinary in that?" }
   - debate: debate.god-embodied
     stance: rejects
+    claims: ["cath.godhead#Body?"]
     summary: God is pure spirit, without body.
     citations:
       scripture: { bible: [John 4:24] }
@@ -97,6 +104,7 @@ stances:
         - { source: Catechism of the Catholic Church, ref: CCC 370, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1B.HTM", quote: "In no way is God in man's image. He is neither man nor woman. God is pure spirit" }
   - debate: debate.immortal-soul
     stance: affirms
+    claims: ["category:SpiritualSoul", "axiom:ax.soul-reunites-body"]
     summary: The spiritual soul is created immediately by God, is immortal, and does not perish at death.
     citations:
       scripture: { bible: [Matt 10:28] }
@@ -104,6 +112,7 @@ stances:
         - { source: Catechism of the Catholic Church, ref: CCC 366, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1B.HTM" }
   - debate: debate.inherited-guilt
     stance: reframes
+    claims: ["cath.e.adam-transmits-nature", "cath.adam#First sin"]
     summary: >-
       Descendants inherit a human nature deprived of original holiness ("contracted", not "committed"), not
       Adam's personal fault.
@@ -120,6 +129,7 @@ stances:
         - { source: "Apostles' Creed", ref: "in CCC, The Credo", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P13.HTM", quote: "Under Pontius Pilate He was crucified, died, and was buried." }
   - debate: debate.bodily-resurrection
     stance: affirms
+    claims: ["cath.son#Resurrection"]
     summary: The same, real body, now with the properties of a glorious body.
     citations:
       scripture: { bible: [Luke 24:39] }
