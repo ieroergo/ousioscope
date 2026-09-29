@@ -88,6 +88,27 @@ stances:
       scripture: { bible: [1 Pet 3:18] }
       authority:
         - { source: "After Jesus' Resurrection, Was His Body Flesh or Spirit? (jw.org)", tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/jesus-body/", quote: "Jesus' own words showed that he would not be resurrected with his flesh-and-blood body." }
+  - debate: debate.theotokos
+    stance: rejects
+    summary: The Bible does not teach that Mary is the Mother of God, nor does it approve worshipping or venerating her. Mary gave birth to the Son of God, not God himself, and neither the expression Theotokos nor the idea appears in Scripture.
+    claims:
+      - jw.e.mary-bears-jesus
+      - jw.jesus#Equal to Almighty God?
+      - jw.jehovah#Beginning
+    citations:
+      scripture:
+        bible:
+          - Mark 1:1
+          - Luke 1:32
+      authority:
+        - source: Is Mary the Mother of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/mother-mary-theotokos/
+          quote: No, the Bible does not teach that Mary is the mother of God, nor does it suggest that Christians should either worship or venerate Mary.
+        - source: Mary (Jesus’ Mother) (Reasoning From the Scriptures)
+          tier: watch-tower
+          url: https://www.jw.org/en/library/books/Reasoning-From-the-Scriptures/Mary-Jesus-Mother/
+          quote: However, neither that expression nor the idea is found in the text of any translation of the Bible.
 
 # Categories use the vocabulary of Watch Tower publications on jw.org.
 categories:
