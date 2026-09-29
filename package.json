@@ -10,7 +10,8 @@
     "fetch:scripture": "tsx scripts/fetch-scripture.ts",
     "fetch:original": "tsx scripts/fetch-original.ts",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "research": "tsx scripts/research/index.ts"
   },
   "dependencies": {
     "cytoscape": "^3.34.3",

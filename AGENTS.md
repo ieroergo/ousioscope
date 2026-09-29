@@ -107,6 +107,21 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
   whole model with the rest dimmed.
 - Don't invent outline items. Take them from the tradition's own published outline, and show unmodeled items as gaps.
 
+## Research workflow (`scripts/research/`, skill `.agents/skills/ousioscope-research`)
+- `npm run research -- --topic <referent or registry id> [--traditions all|a,b] [--dry-run] [--pr] [--from-run <id>]`
+- The result is committed on a LOCAL branch `research/<topic>-<stamp>` (one per topic), to be merged locally with
+  `git merge --no-ff <branch>`. Pushing and opening a PR happen only with `--pr`.
+- Roles are headless `agy -p --json-schema` turns in empty, new-project workspaces: blind researcher (web; no
+  project data) → code quote verification → reconciler (maps findings onto the model) → critic (interior
+  critique + internal dissent, web) → code quote verification → judge (structured ops) → text-level apply →
+  `fetch:scripture` → validate, with up to 2 judge repairs → commit on the local branch.
+- Only machine-verified quotes (fetched page contains the quote; allowlisted domain) can be written into the data.
+  Others are stripped. Scripture refs are normalized to the data's book abbreviations.
+- Artifacts are saved in `research/runs/<run-id>/` (git-ignored). `--from-run` re-applies a reviewed dry run
+  without calling agents.
+- A tradition takes roughly 15–20 minutes and about 1M tokens with gemini-3.8-flash-high. Always run in the
+  background and poll.
+
 ## Claim validator (`src/validator/`)
 - "Validate this claim" on every node, attribute, edge, axiom, and category runs an interior critique of that one
   claim within its own tradition: fidelity, citation check, scripture support (per the tradition's own
