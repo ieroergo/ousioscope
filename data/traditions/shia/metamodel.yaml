@@ -1,0 +1,186 @@
+tradition:
+  id: shia
+  name: Shīʿah Ithnā ʿAshariyyah (Twelver Shia Islam)
+  shortName: Twelver Shia
+  scripture: { bible: kjv, other: quran-qarai }
+  # The Old and New Testaments are not Islamic scripture. Bible verses appear only as labeled parallels.
+  bibleRole: parallel
+  otherScriptureLabel: Qur'an
+  tiers:
+    - { id: quran, label: "Qur'an" }
+    - { id: hadith-sahih, label: "Hadith of the Imams graded sahih (al-Kafi)" }
+    - { id: hadith, label: "Hadith of the Imams, other grading (al-Kafi)" }
+
+categories:
+  - id: Creator
+    label: Allah, the Creator
+    group: true
+    definition: 'The One God, who "is not a body nor has He any form" and whom "no one knows how He is except He Himself".'
+    citations:
+      scripture: { bible: [Deut 4:15-16], other: [Quran 112:1-4, Quran 42:11] }
+      authority:
+        - source: Al-Kafi, Kitab al-Tawhid
+          ref: vol. 1, book 3, ch. 11, hadith 2
+          tier: hadith
+          url: https://thaqalayn.net/hadith/1/3/11/2
+          quote: Glorious is He similar to Who there is nothing. He is not a body nor has He any form.
+
+  - id: Creation
+    label: Creation
+    group: true
+    definition: Everything other than Allah, invented "not from a thing".
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
+      authority:
+        - source: Al-Kafi, Kitab al-Tawhid (Imam al-Rida)
+          ref: vol. 1, book 3, ch. 11, hadith 3
+          tier: hadith
+          url: https://thaqalayn.net/hadith/1/3/11/3
+          quote: He is the inventor of all things, an invention that came from His power and wisdom but not from a thing
+
+  - id: Spirit
+    label: The Spirit (al-Ruh)
+    parent: Creation
+    definition: '"A creature of the creatures of Allah ... greater than Jibril and Mika''il", with the Prophet and then the Imams.'
+    citations:
+      scripture: { bible: none-cited, other: [Quran 42:52, Quran 17:85] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 56, hadith 1 (graded sahih by al-Majlisi)
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/56/1
+          quote: He is a creature of the creatures of Allah, the Most Holy and Most High, greater than Jibril and Mika'il.
+
+  - id: Angel
+    label: Angel (malak)
+    parent: Creation
+    definition: A created messenger of Allah, such as Jibril.
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 19:17] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:17
+          tier: quran
+
+  - id: Human
+    label: Human (servant of Allah)
+    parent: Creation
+    definition: A created human being and servant of Allah.
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran
+
+  - id: Prophet
+    label: Prophet / apostle
+    parent: Human
+    definition: A human sent by Allah, in whom (with the Imams) "Allah has placed ... five spirits", one of them the Holy Spirit.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75, Quran 2:253] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 55, hadith 2
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/55/2
+          quote: in the prophets and in the executors of their will there are five spirits. They are the Holy Spirit, the spirit of faith, the spirit of life, the spirit of power and the spirit of desire.
+
+  - id: HeavensEarth
+    label: The heavens and the earth
+    parent: Creation
+    definition: The created cosmos.
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 21:30] }
+      authority:
+        - source: Qur'an
+          ref: Al-Anbiya 21:30
+          tier: quran
+
+relationships:
+  - id: creates
+    label: creates
+    definition: Allah invents a thing "not from a thing", by His command "Be".
+    domain: [Creator]
+    range: [Creation]
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117, Quran 3:59] }
+      authority:
+        - source: Al-Kafi, Kitab al-Tawhid (Imam al-Rida)
+          ref: vol. 1, book 3, ch. 11, hadith 3
+          tier: hadith
+          url: https://thaqalayn.net/hadith/1/3/11/3
+
+  - id: sends
+    label: sends
+    definition: Allah sends an angel, a spirit, or a messenger.
+    domain: [Creator]
+    range: [Angel, Spirit, Prophet]
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 19:17, Quran 42:52] }
+      authority:
+        - source: Qur'an
+          ref: Ash-Shura 42:52
+          tier: quran
+
+  - id: accompanies
+    label: accompanies
+    definition: The Spirit "was with the Messenger of Allah to give him news and protect him, and he is with the Imams after him".
+    domain: [Spirit]
+    range: [Prophet]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 42:52, Quran 2:87] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 56, hadith 1
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/56/1
+
+  - id: bears
+    label: bears
+    definition: A woman conceives and gives birth.
+    domain: [Human]
+    range: [Human]
+    citations:
+      scripture: { bible: [Luke 1:31], other: [Quran 19:22] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:22
+          tier: quran
+
+  - id: raises
+    label: raises
+    definition: Allah raises Jesus up to Himself.
+    domain: [Creator]
+    range: [Prophet]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:158] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:158
+          tier: quran
+
+
+  - id: formedFrom
+    label: formed from
+    definition: '"He created you from one soul and created from it its mate."'
+    domain: [Human]
+    range: [Human]
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:1
+          tier: quran
+
+  - id: isLike
+    label: is like
+    definition: 'Likeness in origin: "the example of Jesus to Allah is like that of Adam".'
+    domain: [Prophet]
+    range: [Human]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran

@@ -1,0 +1,354 @@
+tradition:
+  id: lds
+  name: The Church of Jesus Christ of Latter-day Saints
+  shortName: Latter-day Saints
+  scripture: { bible: lds, other: lds }
+  otherScriptureLabel: Restoration scripture
+  tiers:
+    - { id: standard-works, label: "Standard Works (canonized scripture)" }
+    - { id: official-declaration, label: "Official declaration / proclamation" }
+    - { id: church-published, label: "Church-published teaching" }
+    - { id: general-authority, label: "General authority teaching" }
+
+# Category tree (is-a). `group: true` categories are drawn as containers in the graph.
+# The top of this tree has three roots and no single created/uncreated split. In these
+# sources, "uncreated" is an attribute of intelligence and element, not the main division.
+categories:
+  - id: Intelligence
+    label: Intelligence
+    group: true
+    definition: '"Intelligence, or the light of truth, was not created or made, neither indeed can be."'
+    citations:
+      scripture: { bible: [Prov 8:23], other: [D&C 93:29, Abr 3:18, Abr 3:22] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 93:29
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p29#p29
+
+  - id: Matter
+    label: Matter
+    group: true
+    definition: All that exists in space, including spirit. "There is no such thing as immaterial matter."
+    citations:
+      scripture: { bible: none-cited, other: [{ ref: D&C 131:7-8, highlight: "All spirit is matter" }] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 131:7
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p7#p7
+          quote: There is no such thing as immaterial matter. All spirit is matter, but it is more fine or pure
+
+  - id: SpiritMatter
+    label: Spirit (refined matter)
+    parent: Matter
+    group: true
+    definition: Matter that is "more fine or pure, and can only be discerned by purer eyes".
+    citations:
+      scripture: { bible: none-cited, other: [{ ref: D&C 131:7-8, highlight: "All spirit is matter" }] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 131:7-8
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/131?lang=eng&id=p7#p7
+
+  - id: SpiritBody
+    label: Spirit body
+    parent: SpiritMatter
+    definition: An individual spirit. Spirits "have no beginning"; mortals were "in the beginning with the Father".
+    citations:
+      scripture: { bible: [John 4:24], other: [D&C 93:23, D&C 93:33, Abr 3:18] }
+      authority:
+        - source: Pearl of Great Price
+          ref: Abr 3:18
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p18#p18
+          quote: these two spirits ... have no beginning; they existed before, they shall have no end
+
+  - id: Element
+    label: Element (physical matter)
+    parent: Matter
+    group: true
+    definition: Physical matter. "The elements are eternal."
+    citations:
+      scripture: { bible: none-cited, other: [D&C 93:33] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 93:33
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p33#p33
+          quote: The elements are eternal
+
+  - id: PhysicalBody
+    label: Tabernacle (physical body)
+    parent: Element
+    definition: A body of flesh (and, when resurrected, flesh and bones), described as a "tabernacle".
+    citations:
+      scripture: { bible: [Luke 24:39], other: [D&C 93:4, D&C 130:22, Alma 7:8] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 93:4
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?lang=eng&id=p4#p4
+          quote: made flesh my tabernacle, and dwelt among the sons of men
+
+  - id: World
+    label: Organized world
+    parent: Element
+    definition: An earth or heaven organized and formed from existing materials.
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Abr 4:1, Moses 1:33] }
+      authority:
+        - source: Pearl of Great Price
+          ref: Abr 4:1
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p1#p1
+          quote: they, that is the Gods, organized and formed the heavens and the earth
+
+  - id: Being
+    label: Being
+    group: true
+    definition: A personal being. Each member of the Godhead is "a separate being".
+    citations:
+      scripture: { bible: [{ together: [Matt 3:17, Luke 3:22], note: 'Both listed under Topical Guide "Godhead": at the baptism the Father speaks from heaven and the Holy Ghost descends "in a bodily shape like a dove" upon the Son.' }], other: [JS-H 1:17, D&C 130:22] }
+      authority:
+        - source: 'Topical Guide, "Godhead"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/godhead?lang=eng
+        - source: Topics and Questions, "Godhead" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: God and Jesus Christ are glorified, physical beings and ... each member of the Godhead is a separate being
+
+  - id: GodheadMember
+    label: Member of the Godhead
+    parent: Being
+    definition: One of the three beings who make up the Godhead and "preside over this world".
+    citations:
+      scripture: { bible: [Matt 28:19], other: [A of F 1:1] }
+      authority:
+        - source: 'Topical Guide, "Godhead"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/godhead?lang=eng
+        - source: Topics and Questions, "Godhead" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: These three beings make up the Godhead. They preside over this world and all other creations of our Father in Heaven.
+
+  - id: ChildOfGod
+    label: Child of God (human)
+    parent: Being
+    definition: A human being, a spirit begotten "unto God", living on earth in a physical body.
+    citations:
+      scripture: { bible: [Acts 17:29, Heb 12:9, Rom 8:16], other: [D&C 76:24, { ref: Abr 3:22-23, highlight: "the intelligences that were organized before the world was" }, D&C 88:15] }
+      authority:
+        - source: 'Topical Guide, "Man, a Spirit Child of Heavenly Father"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/man-a-spirit-child-of-heavenly-father?lang=eng
+        - source: The Living Christ (2000)
+          ref: quoting D&C 76:24
+          tier: official-declaration
+          url: https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng
+          quote: the inhabitants thereof are begotten sons and daughters unto God
+
+  - id: Godhead
+    label: Godhead
+    group: true
+    definition: The three separate beings who together "preside over this world and all other creations of our Father in Heaven".
+    citations:
+      scripture: { bible: [Matt 28:19], other: [A of F 1:1] }
+      authority:
+        - source: 'Topical Guide, "Godhead"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/godhead?lang=eng
+        - source: Topics and Questions, "Godhead" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: These three beings make up the Godhead.
+
+relationships:
+  - id: begets
+    label: begets
+    definition: >-
+      Fatherhood of a being. Qualified "as to" what is begotten: a spirit ("Firstborn") or, for Jesus
+      alone, a body "in the flesh" ("Only Begotten").
+    domain: [Being]
+    range: [Being]
+    citations:
+      scripture: { bible: [Heb 12:9, Num 16:22, Acts 17:29], other: [D&C 76:24] }
+      authority:
+        - source: 'Topical Guide, "Man, a Spirit Child of Heavenly Father"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/man-a-spirit-child-of-heavenly-father?lang=eng
+        - source: The Living Christ (2000)
+          tier: official-declaration
+          url: https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng
+          quote: He was the Firstborn of the Father, the Only Begotten Son in the flesh
+
+  - id: bears
+    label: bears
+    definition: Motherhood. A woman conceives and brings forth a son.
+    domain: [ChildOfGod]
+    range: [Being]
+    citations:
+      scripture: { bible: [Isa 7:14, Luke 1:27], other: [Alma 7:10] }
+      authority:
+        - source: Book of Mormon
+          ref: Alma 7:10
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p10#p10
+
+  - id: overshadows
+    label: overshadows
+    definition: The Holy Ghost comes upon Mary so that she conceives by his power.
+    domain: [GodheadMember]
+    range: [ChildOfGod]
+    citations:
+      scripture: { bible: [{ ref: Luke 1:34-35, highlight: "the power of the Highest shall overshadow thee" }, Matt 1:20], other: [Alma 7:10, 1 Ne 11:19] }
+      authority:
+        - source: Book of Mormon
+          ref: Alma 7:10
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p10#p10
+          quote: who shall be overshadowed and conceive by the power of the Holy Ghost
+
+  - id: hasPart
+    label: has part
+    definition: Composition. "The spirit and the body are the soul of man."
+    domain: [Being]
+    range: [SpiritBody, PhysicalBody]
+    citations:
+      scripture: { bible: [Gen 2:7, Ezek 37:14], other: [D&C 88:15, D&C 93:33] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 88:15
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15
+          quote: And the spirit and the body are the soul of man.
+
+  - id: reunitesWith
+    label: reunites with
+    definition: Resurrection. A spirit is reunited with its body in an immortal state.
+    domain: [SpiritBody]
+    range: [PhysicalBody]
+    citations:
+      scripture: { bible: [Luke 24:39], other: [Alma 11:45, D&C 88:16] }
+      authority:
+        - source: Topics and Questions, "Resurrection" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/resurrection?lang=eng
+          quote: Resurrection is the reuniting of the spirit with the body in an immortal state, no longer subject to disease or death.
+
+  - id: directs
+    label: directs
+    definition: One member of the Godhead acts under the direction of another.
+    domain: [GodheadMember]
+    range: [GodheadMember]
+    citations:
+      scripture: { bible: [John 1:3, Heb 1:2], other: [Moses 1:33] }
+      authority:
+        - source: The Living Christ (2000)
+          tier: official-declaration
+          url: https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng
+          quote: Under the direction of His Father, He was the creator of the earth.
+
+  - id: organizes
+    label: organizes
+    definition: Creation as organizing and forming a world from existing materials.
+    domain: [GodheadMember]
+    range: [World, ChildOfGod]
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Abr 4:1] }
+      authority:
+        - source: Pearl of Great Price
+          ref: Abr 4:1
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p1#p1
+          quote: organized and formed the heavens and the earth
+
+  - id: formedFrom
+    label: formed from
+    definition: Material origin. What a world is made of.
+    domain: [World, ChildOfGod]
+    range: [Element, ChildOfGod]
+    citations:
+      scripture: { bible: none-cited, other: [Abr 3:24] }
+      authority:
+        - source: Pearl of Great Price
+          ref: Abr 3:24
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p24#p24
+          quote: we will take of these materials, and we will make an earth whereon these may dwell
+
+  - id: comprises
+    label: comprises
+    definition: A collective made up of separate beings.
+    domain: [Godhead]
+    range: [GodheadMember]
+    citations:
+      scripture: { bible: [Matt 28:19], other: [A of F 1:1] }
+      authority:
+        - source: 'Topical Guide, "Godhead"'
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/tg/godhead?lang=eng
+        - source: Topics and Questions, "Godhead" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: These three beings make up the Godhead.
+
+  - id: isOneWith
+    label: is one with
+    definition: Unity of the Godhead, which the sources describe as unity "in purpose and doctrine" between distinct beings.
+    domain: [GodheadMember]
+    range: [GodheadMember]
+    citations:
+      scripture: { bible: [John 10:30, John 14:10, John 17:22], other: [D&C 93:3] }
+      authority:
+        - source: Topics and Questions, "Godhead" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: Although the members of the Godhead are distinct beings with distinct roles, they are one in purpose and doctrine.
+
+# Class-level statements: true of every member of the source category.
+axioms:
+  - id: ax.child-has-spirit
+    source: ChildOfGod
+    rel: hasPart
+    target: SpiritBody
+    quantifier: some
+    citations:
+      scripture: { bible: [Gen 2:7, Ezek 37:14], other: [D&C 88:15] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 88:15
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15
+          quote: And the spirit and the body are the soul of man.
+
+  - id: ax.child-has-body
+    source: ChildOfGod
+    rel: hasPart
+    target: PhysicalBody
+    quantifier: some
+    citations:
+      scripture: { bible: [Gen 2:7, Ezek 37:14], other: [D&C 88:15] }
+      authority:
+        - source: Doctrine and Covenants
+          ref: D&C 88:15
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15
+          quote: And the spirit and the body are the soul of man.
+
+  - id: ax.spirit-reunites-body
+    source: SpiritBody
+    rel: reunitesWith
+    target: PhysicalBody
+    quantifier: some
+    note: '"Through the Atonement of Jesus Christ, all people will be resurrected."'
+    citations:
+      scripture: { bible: [Luke 24:39], other: [Alma 11:45, D&C 88:16] }
+      authority:
+        - source: Topics and Questions, "Resurrection" (2023)
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/resurrection?lang=eng
+          quote: Resurrection is the reuniting of the spirit with the body in an immortal state, no longer subject to disease or death.

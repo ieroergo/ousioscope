@@ -1,0 +1,296 @@
+# Individuals only. Bible verses are parallels to the Qur'anic account, not Islamic proof texts.
+nodes:
+  - id: shi.allah
+    label: Allah
+    category: Creator
+    referent: ref.godhead
+    description: The One God, beyond body, form, and limit.
+    attributes:
+      - name: Body?
+        value: No; "He is not a body nor has He any form"
+        citations:
+          scripture: { bible: [Deut 4:15-16], other: [Quran 42:11, Quran 6:103] }
+          authority:
+            - source: Al-Kafi, Kitab al-Tawhid
+              ref: vol. 1, book 3, ch. 11, hadith 2
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/3/11/2
+            - source: Al-Kafi, Kitab al-Tawhid (Imam Musa al-Kazim)
+              ref: vol. 1, book 3, ch. 11, hadith 4
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/3/11/4
+              quote: What can be more blasphemous and scandalous than to describe the Creator of all things by means of body, form, type of creation, limitations, limbs and organs.
+      - name: Has a son?
+        value: No
+        citations:
+          scripture: { bible: none-cited, other: [Quran 112:3, Quran 19:35, Quran 4:171] }
+          authority:
+            - source: Qur'an
+              ref: Al-Ikhlas 112:3
+              tier: quran
+    citations:
+      scripture: { bible: [Deut 6:4], other: [Quran 112:1-4] }
+      authority:
+        - source: Qur'an
+          ref: Al-Ikhlas 112
+          tier: quran
+
+  - id: shi.isa
+    label: Jesus (Isa), son of Mary
+    category: Prophet
+    referent: ref.jesus
+    description: An apostle of Allah, "His Word that He cast toward Mary and a spirit from Him", created like Adam.
+    attributes:
+      - name: Crucified?
+        value: No; he was raised to Allah
+        citations:
+          scripture: { bible: none-cited, other: [Quran 4:157-158] }
+          authority:
+            - source: Qur'an
+              ref: An-Nisa 4:157-158
+              tier: quran
+    citations:
+      scripture: { bible: none-cited, other: [{ ref: Quran 4:171, highlight: "His Word that He cast toward Mary and a spirit from Him" }, Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:171
+          tier: quran
+
+  - id: shi.spirit
+    label: The Spirit (al-Ruh)
+    category: Spirit
+    referent: ref.holy-spirit
+    description: >-
+      A creature greater than Jibril and Mika'il, sent to the Prophet and present with the Imams. Separately,
+      al-Kafi names "the Holy Spirit" as one of five spirits placed in the prophets and Imams.
+    attributes:
+      - name: Holy Spirit (Ruh al-Qudus)
+        value: One of "five spirits" in the prophets and Imams; "the Holy Spirit does not sleep or become unaware"
+        citations:
+          scripture: { bible: none-cited, other: [Quran 2:87, Quran 2:253] }
+          authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 55, hadith 3
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/4/55/3
+              quote: When the prophet passes away the Holy Spirit transfers and comes over to the Imam. The Holy Spirit does not sleep or become unaware.
+      - name: Same as Jibril?
+        value: No; "greater than Jibril and Mika'il" and "from the realm of the angels"
+        citations:
+          scripture: { bible: none-cited, other: [Quran 17:85] }
+          authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 56, hadith 3 (graded sahih by al-Majlisi)
+              tier: hadith-sahih
+              url: https://thaqalayn.net/hadith/1/4/56/3
+              quote: He is a creature greater than Jibril and Mika'il. He was with the Messenger of Allah and he is present with the Imams. He is from the realm of the angels.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 42:52, Quran 17:85] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 56, hadith 1 (graded sahih by al-Majlisi)
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/56/1
+          quote: He is a creature of the creatures of Allah, the Most Holy and Most High, greater than Jibril and Mika'il.
+
+  - id: shi.mary
+    label: Mary (Maryam)
+    category: Human
+    referent: ref.mary
+    description: Chosen and purified above the women of all the worlds. A virgin who bore Jesus.
+    citations:
+      scripture:
+        bible:
+          - together: [Luke 1:26-27, Luke 1:34]
+            note: 'Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her.'
+        other: [Quran 3:42, Quran 19:20]
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:42
+          tier: quran
+
+  - id: shi.heavens-earth
+    label: The heavens and the earth
+    category: HeavensEarth
+    referent: ref.heavens-earth
+    attributes:
+      - name: Made from
+        value: Nothing; an invention "not from a thing"
+        citations:
+          scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
+          authority:
+            - source: Al-Kafi, Kitab al-Tawhid (Imam al-Rida)
+              ref: vol. 1, book 3, ch. 11, hadith 3
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/3/11/3
+              quote: an invention that came from His power and wisdom but not from a thing
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 21:30] }
+      authority:
+        - source: Qur'an
+          ref: Al-Anbiya 21:30
+          tier: quran
+
+
+  - id: shi.adam
+    label: Adam
+    category: Human
+    referent: ref.adam
+    description: The first human, whom Allah chose and placed on earth as a vicegerent.
+    attributes:
+      - name: Created from
+        value: Dust, then Allah said "Be"; the angels were commanded to prostrate to him
+        citations:
+          scripture: { bible: [{ ref: Gen 2:7, highlight: "formed man of the dust of the ground" }], other: [Quran 3:59, Quran 7:11, Quran 38:71-72] }
+          authority:
+            - source: Qur'an
+              ref: Al Imran 3:59
+              tier: quran
+      - name: Slip and repentance
+        value: Adam disobeyed, then his Lord chose him and accepted his repentance
+        citations:
+          scripture: { bible: [Gen 3:6], other: [Quran 2:37, Quran 20:121-122, Quran 3:33] }
+          authority:
+            - source: Qur'an
+              ref: Ta-Ha 20:122
+              tier: quran
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 2:30, Quran 3:33] }
+      authority:
+        - source: Qur'an
+          ref: Al-Baqarah 2:30
+          tier: quran
+
+  - id: shi.hawwa
+    label: Hawwa' (Eve)
+    category: Human
+    referent: ref.eve
+    description: Adam's mate, created from the same soul.
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:1
+          tier: quran
+
+edges:
+  - id: shi.e.allah-creates-isa
+    source: shi.allah
+    rel: creates
+    target: shi.isa
+    note: '"Like Adam", by the word "Be".'
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran
+
+  - id: shi.e.allah-creates-cosmos
+    source: shi.allah
+    rel: creates
+    target: shi.heavens-earth
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
+      authority:
+        - source: Al-Kafi, Kitab al-Tawhid (Imam al-Rida)
+          ref: vol. 1, book 3, ch. 11, hadith 3
+          tier: hadith
+          url: https://thaqalayn.net/hadith/1/3/11/3
+
+  - id: shi.e.allah-creates-spirit
+    source: shi.allah
+    rel: creates
+    target: shi.spirit
+    note: '"A creature of the creatures of Allah".'
+    citations:
+      scripture: { bible: none-cited, other: [Quran 17:85] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 56, hadith 1
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/56/1
+
+  - id: shi.e.allah-sends-isa
+    source: shi.allah
+    rel: sends
+    target: shi.isa
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75, Quran 61:6] }
+      authority:
+        - source: Qur'an
+          ref: Al-Ma'idah 5:75
+          tier: quran
+
+  - id: shi.e.spirit-accompanies-isa
+    source: shi.spirit
+    rel: accompanies
+    target: shi.isa
+    note: >-
+      The Qur'an says Jesus was confirmed "with the Holy Spirit" (2:87). Al-Kafi says the Holy Spirit is in all the
+      prophets (ch. 55). This edge applies that general teaching to Jesus.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 2:87] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 55, hadith 2
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/55/2
+
+  - id: shi.e.mary-bears-isa
+    source: shi.mary
+    rel: bears
+    target: shi.isa
+    citations:
+      scripture: { bible: [Luke 1:31], other: [Quran 19:22, Quran 3:45] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:22
+          tier: quran
+
+  - id: shi.e.allah-raises-isa
+    source: shi.allah
+    rel: raises
+    target: shi.isa
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:157-158] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:158
+          tier: quran
+
+
+  - id: shi.e.allah-creates-adam
+    source: shi.allah
+    rel: creates
+    target: shi.adam
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59, Quran 38:71-72] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59; Sad 38:71-72
+          tier: quran
+
+  - id: shi.e.hawwa-from-adam
+    source: shi.hawwa
+    rel: formedFrom
+    target: shi.adam
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:1
+          tier: quran
+
+
+  - id: shi.e.isa-like-adam
+    source: shi.isa
+    rel: isLike
+    target: shi.adam
+    note: Both were created without a father, by the word "Be".
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran

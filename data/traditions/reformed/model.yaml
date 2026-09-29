@@ -1,0 +1,362 @@
+# Individuals only. Every node is a registered referent.
+nodes:
+  - id: wcf.father
+    label: God the Father
+    category: DivinePerson
+    referent: ref.father
+    description: '"The Father is of none, neither begotten, nor proceeding."'
+    citations:
+      scripture: { bible: [Matt 3:16-17, Matt 28:19] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: the Father is of none, neither begotten, nor proceeding
+
+  - id: wcf.son
+    label: God the Son (Jesus Christ)
+    category: DivinePerson
+    referent: ref.jesus
+    description: '"The second person in the Trinity, being very and eternal God, of one substance and equal with the Father".'
+    attributes:
+      - name: Natures and person
+        value: '"Two whole, perfect, and distinct natures, the Godhead and the manhood ... joined together in one person, without conversion, composition, or confusion"'
+        citations:
+          scripture: { bible: [Luke 1:35, Rom 9:5, Col 2:9, 1 Tim 3:16, 1 Pet 3:18] }
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.2
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_08
+      - name: Resurrection
+        value: '"On the third day he arose from the dead, with the same body in which he suffered"'
+        citations:
+          scripture: { bible: [1 Cor 15:3-4, John 20:25, John 20:27] }
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.4
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_08
+    citations:
+      scripture: { bible: [John 1:1, John 1:14, 1 John 5:20] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+          quote: The Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father
+
+  - id: wcf.spirit
+    label: God the Holy Ghost
+    category: DivinePerson
+    referent: ref.holy-spirit
+    description: Third person of the Godhead, "God equal with the Father".
+    citations:
+      scripture: { bible: [Acts 5:3-4, 1 Cor 2:10-11, Gen 1:2] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 11
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: the Son and the Holy Ghost are God equal with the Father
+
+  - id: wcf.godhead
+    label: The Godhead
+    category: Godhead
+    referent: ref.godhead
+    description: The one living and true God, in whom three persons are "of one substance, power, and eternity".
+    attributes:
+      - name: Body?
+        value: No; "a most pure spirit, invisible, without body, parts, or passions"
+        citations:
+          scripture:
+            bible:
+              - John 4:24
+              - together: [John 4:24, Luke 24:39]
+                note: 'WCF 2.1 cites "John 4:24 with Luke 24:39": God is spirit, and "a spirit does not have flesh and bones".'
+              - Deut 4:15-16
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 2.1
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_02
+    citations:
+      scripture: { bible: [Deut 6:4, Matt 28:19, 2 Cor 13:14] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.1, 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: In the unity of the Godhead there be three persons, of one substance, power, and eternity
+
+  - id: wcf.mary
+    label: The virgin Mary
+    category: Man
+    referent: ref.mary
+    description: Christ was conceived "in the womb of the virgin Mary, of her substance".
+    citations:
+      scripture: { bible: [Luke 1:27, Luke 1:31, Gal 4:4] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+
+  - id: wcf.world
+    label: The world and all things therein
+    category: World
+    referent: ref.heavens-earth
+    attributes:
+      - name: Made from
+        value: Nothing. God made it "of nothing ... in the space of six days; and all very good"
+        citations:
+          scripture: { bible: [Heb 11:3, Acts 17:24, Col 1:16] }
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 4.1
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_04
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+
+
+  - id: wcf.adam
+    label: Adam
+    category: Man
+    referent: ref.adam
+    description: The first man, and "a public person, not for himself only, but for his posterity" (WLC 22).
+    attributes:
+      - name: Covenant of works
+        value: '"Life was promised to Adam, and in him to his posterity, upon condition of perfect and personal obedience"'
+        citations:
+          scripture: { bible: [Gal 3:12, Rom 5:12-20, Gen 2:17] }
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 7.2
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_07
+      - name: Imputed guilt
+        value: '"They being the root of all mankind, the guilt of this sin was imputed ... to all their posterity"'
+        citations:
+          scripture:
+            bible:
+              - together: [Gen 1:27-28, Gen 2:16-17, Acts 17:26, Rom 5:12, Rom 5:15-19, 1 Cor 15:21-22, 1 Cor 15:45, 1 Cor 15:49]
+                note: 'WCF 6.3 cites these as one proof: "Gen. 1:27-28 and Gen. 2:16-17 and Acts 17:26 with Rom. 5:12, 15-19 and 1 Cor. 15:21-22, 45, 49".'
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 6.3
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_06
+      - name: Effect of the Fall
+        value: '"Wholly defiled in all the faculties and parts of soul and body"'
+        citations:
+          scripture: { bible: [Gen 6:5, Jer 17:9, Rom 3:10-19] }
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 6.2
+              tier: confessional
+              url: https://www.opc.org/wcf.html#Chapter_06
+    citations:
+      scripture: { bible: [Gen 1:27, Gen 2:7] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 17, 22
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: The covenant being made with Adam, as a public person, not for himself only, but for his posterity
+
+  - id: wcf.eve
+    label: Eve
+    category: Man
+    referent: ref.eve
+    description: One of "our first parents", made "of the rib of the man".
+    citations:
+      scripture: { bible: [Gen 2:22, Gen 3:13, 2 Cor 11:3] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 6.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_06
+          quote: Our first parents, being seduced by the subtlety and temptation of Satan, sinned in eating the forbidden fruit.
+
+edges:
+  - id: wcf.e.father-is
+    source: wcf.father
+    rel: is
+    target: wcf.godhead
+    citations: &wlc9
+      scripture: { bible: [Matt 3:16-17, Matt 28:19, 2 Cor 13:14, John 10:30] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 9
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: these three are one true, eternal God, the same in substance
+
+  - id: wcf.e.son-is
+    source: wcf.son
+    rel: is
+    target: wcf.godhead
+    note: '"Of one substance and equal with the Father" (WCF 8.2).'
+    citations: *wlc9
+
+  - id: wcf.e.spirit-is
+    source: wcf.spirit
+    rel: is
+    target: wcf.godhead
+    citations: *wlc9
+
+  - id: wcf.e.father-begets
+    source: wcf.father
+    rel: begets
+    target: wcf.son
+    asTo: Godhead
+    note: Eternally ("from all eternity", WLC 10).
+    citations:
+      scripture: { bible: [John 1:14, John 1:18, Heb 1:5-6] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: the Son is eternally begotten of the Father
+
+  - id: wcf.e.spirit-from-father
+    source: wcf.spirit
+    rel: proceedsFrom
+    target: wcf.father
+    citations: &proc
+      scripture: { bible: [John 15:26, Gal 4:6] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: the Holy Ghost eternally proceeding from the Father and the Son
+
+  - id: wcf.e.spirit-from-son
+    source: wcf.spirit
+    rel: proceedsFrom
+    target: wcf.son
+    citations: *proc
+
+  - id: wcf.e.son-takes-manhood
+    source: wcf.son
+    rel: takesUpon
+    targetKind: Manhood
+    quantifier: some
+    note: '"When the fullness of time was come", with "all the essential properties, and common infirmities thereof, yet without sin".'
+    citations:
+      scripture: { bible: [John 1:1, John 1:14, Gal 4:4, Phil 2:6, 1 John 5:20, Heb 4:15] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+          quote: did, when the fullness of time was come, take upon him man's nature
+
+  - id: wcf.e.mary-bears
+    source: wcf.mary
+    rel: bears
+    target: wcf.son
+    asTo: Manhood
+    note: '"Of her substance, and born of her, yet without sin" (WLC 37).'
+    citations:
+      scripture: { bible: [Luke 1:27, Luke 1:31, Luke 1:42, Gal 4:4] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 37
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: conceived by the power of the Holy Ghost in the womb of the Virgin Mary, of her substance, and born of her
+
+  - id: wcf.e.spirit-overshadows
+    source: wcf.spirit
+    rel: overshadows
+    target: wcf.mary
+    citations:
+      scripture: { bible: [{ ref: Luke 1:35, highlight: "the power of the Most High will overshadow you" }] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+          quote: being conceived by the power of the Holy Ghost, in the womb of the virgin Mary
+
+  - id: wcf.e.father-creates
+    source: wcf.father
+    rel: creates
+    target: wcf.world
+    note: '"It pleased God the Father, Son, and Holy Ghost ... to create, or make of nothing, the world" (WCF 4.1).'
+    citations:
+      scripture: { bible: [Gen 1:1, Heb 11:3] }
+      authority: &wcf41
+        - source: Westminster Confession of Faith
+          ref: WCF 4.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+          quote: It pleased God the Father, Son, and Holy Ghost ... to create, or make of nothing, the world
+
+  - id: wcf.e.son-creates
+    source: wcf.son
+    rel: creates
+    target: wcf.world
+    citations:
+      scripture: { bible: [John 1:2-3, Heb 1:2] }
+      authority: *wcf41
+
+  - id: wcf.e.spirit-creates
+    source: wcf.spirit
+    rel: creates
+    target: wcf.world
+    citations:
+      scripture: { bible: [Gen 1:2, Job 26:13, Job 33:4] }
+      authority: *wcf41
+
+
+  - id: wcf.e.father-creates-adam
+    source: wcf.father
+    rel: creates
+    target: wcf.adam
+    note: '"Male and female, with reasonable and immortal souls ... after his own image" (WCF 4.2).'
+    citations:
+      scripture: { bible: [Gen 1:27, Gen 2:7] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 17
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: formed the body of the man of the dust of the ground, and the woman of the rib of the man; endued them with living, reasonable, and immortal souls
+
+  - id: wcf.e.eve-from-adam
+    source: wcf.eve
+    rel: formedFrom
+    target: wcf.adam
+    citations:
+      scripture: { bible: [Gen 2:22] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 17
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: and the woman of the rib of the man
+
+  - id: wcf.e.adam-conveys-manhood
+    source: wcf.adam
+    rel: conveys
+    targetKind: Manhood
+    quantifier: some
+    note: '"Death in sin and corrupted nature ... by ordinary generation" (WCF 6.3).'
+    citations:
+      scripture: { bible: [Gen 5:3, Job 14:4, Job 15:14, Ps 51:5] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 6.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_06

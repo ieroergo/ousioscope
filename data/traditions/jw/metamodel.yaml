@@ -1,0 +1,189 @@
+tradition:
+  id: jw
+  name: Jehovah's Witnesses
+  shortName: Jehovah's Witnesses
+  scripture: { bible: nwt, other: nwt }
+  otherScriptureLabel: Other
+  tiers:
+    - { id: watch-tower, label: "Watch Tower publication (jw.org, Watchtower, books)" }
+    - { id: reference, label: "Reference work quoted by Watch Tower" }
+
+# Categories use the vocabulary of Watch Tower publications on jw.org.
+categories:
+  - id: AlmightyGod
+    label: Almighty God
+    group: true
+    definition: '"The only true God", whose name is Jehovah. Not a Trinity: "God is only one."'
+    citations:
+      scripture: { bible: [Deut 6:4, Ps 83:18, John 17:3, Gal 3:20] }
+      authority:
+        - source: Is God a Trinity? (jw.org, Bible Questions Answered)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/trinity/
+          quote: the God of the Bible is never described as being part of a Trinity
+
+  - id: ActiveForce
+    label: Active force (impersonal)
+    group: true
+    definition: God's power in action, which he projects to accomplish his will. It is not a person.
+    citations:
+      scripture: { bible: [Mic 3:8, Luke 1:35, Ps 104:30, Ps 139:7] }
+      authority:
+        - source: What Is the Holy Spirit? (jw.org, Bible Questions Answered)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+          quote: The holy spirit is God's power in action, his active force.
+
+  - id: Creation
+    label: Creation
+    group: true
+    definition: Everything other than God. Jesus was God's first creation, and everything else was created through him.
+    citations:
+      scripture: { bible: [Rev 4:11, Col 1:15-16] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: God worked through Jesus to bring every other creation into existence.
+
+  - id: SpiritCreature
+    label: Spirit creature
+    parent: Creation
+    definition: An invisible, heavenly creature (Jesus in his prehuman and resurrected life, and the angels). Spirit creatures can take on human form temporarily.
+    citations:
+      scripture: { bible: [John 6:38, 1 Pet 3:18, Gen 18:1-8] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: Jesus was a spirit creature in heaven before he was born as a human on earth.
+
+  - id: Soul
+    label: Living soul (human)
+    parent: Creation
+    definition: '"The soul, then, is the entire creature, not something inside that survives the death of the body." A human does not have a soul; a human is a soul.'
+    citations:
+      scripture: { bible: [Gen 2:7, Ezek 18:4] }
+      authority:
+        - source: What Is the Soul? (jw.org, Bible Questions Answered)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/
+          quote: The soul, then, is the entire creature, not something inside that survives the death of the body.
+
+  - id: Universe
+    label: Physical universe
+    parent: Creation
+    definition: The material heavens and earth, created by God through his Son.
+    citations:
+      scripture: { bible: [Ps 33:6, Col 1:16] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: This creation included all other spirit creatures, as well as the physical universe.
+
+relationships:
+  - id: creates
+    label: creates
+    definition: Brings a creature into existence. Jesus is "the only one created directly by" God.
+    domain: [AlmightyGod]
+    range: [Creation]
+    citations:
+      scripture: { bible: [Col 1:15, Rev 3:14, Rev 4:11] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: because Jesus was God's first creation and the only one created directly by him, the Bible describes Jesus as the foremost Son of God
+
+  - id: builds
+    label: builds
+    definition: 'Jesus, as God''s "master worker", carries out God''s design ("like that of an architect working with a builder").'
+    domain: [SpiritCreature]
+    range: [Creation]
+    citations:
+      scripture: { bible: [Prov 8:30, Col 1:16] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: In some respects, this cooperation between God and Jesus was like that of an architect working with a builder.
+
+  - id: projects
+    label: projects
+    definition: God sends out his spirit "by projecting his energy to any place to accomplish his will".
+    domain: [AlmightyGod]
+    range: [ActiveForce]
+    citations:
+      scripture: { bible: [Ps 104:30, Ps 139:7] }
+      authority:
+        - source: What Is the Holy Spirit? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+          quote: God sends out his spirit by projecting his energy to any place to accomplish his will.
+
+  - id: overshadows
+    label: overshadows
+    definition: God's power in action comes upon Mary so that she conceives.
+    domain: [ActiveForce]
+    range: [Soul]
+    citations:
+      scripture: { bible: [{ ref: Luke 1:35, highlight: "power of the Most High will overshadow you" }, Matt 1:18] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: Mary's pregnancy came about by means of holy spirit, which is God's power in action.
+
+  - id: transfers
+    label: transfers
+    definition: God moves his Son's life from heaven to Mary's womb.
+    domain: [AlmightyGod]
+    range: [SpiritCreature]
+    citations:
+      scripture: { bible: [{ ref: Luke 1:35, highlight: "power of the Most High will overshadow you" }, Heb 10:5] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: God miraculously transferred his Son's life to the womb of Mary, causing her to conceive a child.
+
+  - id: becomes
+    label: becomes
+    definition: A change of state. The prehuman Son "was born as a human on earth", then was "made alive in the spirit".
+    domain: [SpiritCreature]
+    range: [Soul, SpiritCreature]
+    citations:
+      scripture: { bible: [John 6:38, 1 Pet 3:18] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: Jesus was a spirit creature in heaven before he was born as a human on earth.
+
+  - id: bears
+    label: bears
+    definition: Mary gives birth to Jesus as a perfect human.
+    domain: [Soul]
+    range: [SpiritCreature]
+    citations:
+      scripture: { bible: [Isa 7:14, Matt 1:23, Luke 1:31] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: Mary, the mother of Jesus, had the unique privilege of giving birth to him while she was still a virgin
+
+
+  - id: formedFrom
+    label: formed from
+    definition: The first woman was made from the first man.
+    domain: [Soul]
+    range: [Soul]
+    citations:
+      scripture: { bible: [Gen 2:21-22] }
+      authority:
+        - source: New World Translation (Watch Tower)
+          ref: Genesis 2:21-22
+          tier: watch-tower
+          url: https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/1/2

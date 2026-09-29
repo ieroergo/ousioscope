@@ -1,0 +1,105 @@
+# Cross-tradition referent registry.
+# A referent is "who/what is being talked about", identified by name only.
+# Aliases are scoped by tradition id or by language code (la = Latin, grc = Greek, he = Hebrew, ar = Arabic).
+# Tradition nodes link here explicitly via `referent:`; nothing is matched automatically.
+referents:
+  - id: ref.father
+    canonical: God the Father
+    aliases:
+      catholic: [God the Father, the Father, First Person of the Holy Trinity]
+      lds: [Heavenly Father, God the Eternal Father, Elohim, Father in Heaven]
+      reformed: [God the Father, the Father]
+      jw: [Jehovah, Jehovah God, the Father, Almighty God, the only true God]
+      la: [Deus Pater]
+      grc: [ho Patēr]
+      he: [Av]
+
+  - id: ref.jesus
+    canonical: Jesus Christ
+    aliases:
+      catholic: [Jesus Christ, the Son, the Word, Logos, Only-begotten Son, Second Person of the Holy Trinity]
+      lds: [Jesus Christ, the Son, Jehovah, the Only Begotten, the Firstborn]
+      reformed: [the Lord Jesus, the Son of God, the Mediator, second person in the Trinity]
+      jw: [Jesus Christ, the Son of God, the Word, Michael the archangel, the firstborn of all creation]
+      sunni: [Isa, Isa ibn Maryam, al-Masih (the Messiah)]
+      shia: [Isa, Jesus son of Mary, al-Masih (the Messiah)]
+      la: [Iesus Christus, Verbum]
+      grc: [Iēsous Christos, ho Logos]
+      he: [Yeshua]
+      ar: [ʿĪsā, ʿĪsā ibn Maryam, al-Masīḥ]
+
+  - id: ref.holy-spirit
+    canonical: Holy Spirit
+    aliases:
+      catholic: [Holy Spirit, Paraclete, Third Person of the Holy Trinity]
+      lds: [Holy Ghost, Holy Spirit, Spirit of God, Comforter]
+      reformed: [God the Holy Ghost]
+      jw: [holy spirit, God's active force]
+      sunni: [Ruh al-Qudus (the Pure Spirit), Jibril (Gabriel)]
+      shia: [al-Ruh (the Spirit), Ruh al-Qudus (the Holy Spirit)]
+      la: [Spiritus Sanctus]
+      grc: [to Pneuma to Hagion]
+      he: [Ruach HaKodesh]
+      ar: [Rūḥ al-Qudus, al-Rūḥ]
+
+  - id: ref.godhead
+    canonical: God (the Godhead)
+    aliases:
+      catholic: [the Godhead, the one God, the divine substance, essence or nature]
+      lds: [the Godhead]
+      reformed: [the Godhead, the one only living and true God]
+      sunni: [Allah, the One God]
+      shia: [Allah, the One God]
+      la: [Deitas, divina natura]
+      grc: [hē theotēs]
+      ar: [Allāh]
+
+  - id: ref.heavens-earth
+    canonical: The heavens and the earth
+    aliases:
+      catholic: [heaven and earth, all creation, "all that is, seen and unseen"]
+      lds: [the heavens and the earth, the earth]
+      reformed: [the world, and all things therein]
+      jw: [the heavens and the earth, the physical universe]
+      sunni: [as-samawat wa-l-ard]
+      shia: [as-samawat wa-l-ard]
+      he: [hashamayim ve'et ha'aretz]
+      ar: [as-samāwāt wa-l-arḍ]
+
+  - id: ref.adam
+    canonical: Adam
+    aliases:
+      catholic: [Adam, the first man, our first parent]
+      lds: [Adam, Michael the archangel, the Ancient of Days, the father of all]
+      reformed: [Adam, our first parent, a public person]
+      jw: [Adam, the first man]
+      sunni: [Adam, Abu al-Bashar (father of humankind)]
+      shia: [Adam]
+      he: [Adam]
+      ar: [Ādam]
+
+  - id: ref.eve
+    canonical: Eve
+    aliases:
+      catholic: [Eve, our first mother]
+      lds: [Eve, the mother of all living]
+      reformed: [Eve, our first parent]
+      jw: [Eve]
+      sunni: [Hawwa']
+      shia: [Hawwa']
+      he: [Chavah]
+      ar: [Ḥawwāʾ]
+
+  - id: ref.mary
+    canonical: Mary, mother of Jesus
+    aliases:
+      catholic: [Blessed Virgin Mary, Mother of God, Theotokos]
+      lds: [Mary, mother of the Son of God]
+      reformed: [the virgin Mary]
+      jw: [Mary, the mother of Jesus]
+      sunni: [Maryam, Maryam bint Imran]
+      shia: [Maryam, Mary]
+      la: [Maria, Mater Dei]
+      grc: [Maria, Theotokos]
+      he: [Miriam]
+      ar: [Maryam]

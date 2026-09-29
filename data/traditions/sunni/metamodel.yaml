@@ -1,0 +1,180 @@
+tradition:
+  id: sunni
+  name: Ahl al-Sunnah wa-l-Jamāʿah (Sunni Islam)
+  shortName: Sunni
+  scripture: { bible: kjv, other: quran-sahih }
+  # The Old and New Testaments are not Islamic scripture. Bible verses appear only as labeled parallels.
+  bibleRole: parallel
+  otherScriptureLabel: Qur'an
+  tiers:
+    - { id: quran, label: "Qur'an" }
+    - { id: sahih-hadith, label: "Sahih hadith (al-Bukhari, Muslim)" }
+    - { id: tafsir, label: "Classical tafsir (Ibn Kathir, al-Tabari)" }
+
+categories:
+  - id: Creator
+    label: Allah, the Creator
+    group: true
+    definition: '"He is Allah, [who is] One ... He neither begets nor is born, nor is there to Him any equivalent."'
+    citations:
+      scripture: { bible: [Deut 6:4, Mark 12:29], other: [Quran 112:1-4] }
+      authority:
+        - source: Qur'an
+          ref: Surah al-Ikhlas 112:1-4
+          tier: quran
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 112
+          tier: tafsir
+          url: https://quran.com/112:1/tafsirs/en-tafisr-ibn-kathir
+          quote: He begets not, nor was He begotten, and there is none comparable to Him.
+
+  - id: Creation
+    label: Creation
+    group: true
+    definition: Everything other than Allah, brought into being by His command "Be".
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117, Quran 6:101] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged), quoting Ibn Jarir al-Tabari
+          ref: on 2:117
+          tier: tafsir
+          url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+          quote: Allah stated that He created the heavens and earth out of nothing and without precedent.
+
+  - id: Angel
+    label: Angel (malak)
+    parent: Creation
+    definition: A created being sent by Allah as a messenger. Jibril is the angel of revelation.
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 19:17, Quran 16:102] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 19:17
+          tier: tafsir
+          url: https://quran.com/19:17/tafsirs/en-tafisr-ibn-kathir
+          quote: when the angel (Jibril) appeared to her in the form of a man
+
+  - id: Human
+    label: Human (servant of Allah)
+    parent: Creation
+    definition: A created human being and servant of Allah.
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran
+
+  - id: Messenger
+    label: Messenger (rasul)
+    parent: Human
+    definition: A human prophet sent by Allah with a message. "Isa is just like the previous Prophets".
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 5:75
+          tier: tafsir
+          url: https://quran.com/5:75/tafsirs/en-tafisr-ibn-kathir
+          quote: '`Isa is just like the previous Prophets, and he is one of the servants of Allah and one of His honorable Messengers.'
+
+  - id: HeavensEarth
+    label: The heavens and the earth
+    parent: Creation
+    definition: The created cosmos, "joined together" and then separated.
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 21:30] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 21:30
+          tier: tafsir
+          url: https://quran.com/21:30/tafsirs/en-tafisr-ibn-kathir
+          quote: in the beginning they were all one piece, attached to one another and piled up on top of one another, then He separated them
+
+relationships:
+  - id: creates
+    label: creates
+    definition: Allah brings something into being by His command "Be" (kun).
+    domain: [Creator]
+    range: [Creation]
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117, Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al-Baqarah 2:117
+          tier: quran
+
+  - id: sends
+    label: sends
+    definition: Allah sends an angel or a messenger.
+    domain: [Creator]
+    range: [Angel, Messenger]
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 19:17, Quran 5:75] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:17
+          tier: quran
+
+  - id: supports
+    label: supports
+    definition: '"We ... supported him with the Pure Spirit" (Ruh al-Qudus), which Ibn Kathir identifies as Jibril.'
+    domain: [Angel]
+    range: [Messenger]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 2:87] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 2:87
+          tier: tafsir
+          url: https://quran.com/2:87/tafsirs/en-tafisr-ibn-kathir
+          quote: Allah also aided him with Ruh Al-Qudus, and that refers to Jibril.
+
+  - id: bears
+    label: bears
+    definition: A woman conceives and gives birth.
+    domain: [Human]
+    range: [Human]
+    citations:
+      scripture: { bible: [Luke 1:31], other: [Quran 19:22] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:22
+          tier: quran
+
+  - id: raises
+    label: raises
+    definition: Allah raises Isa up to Himself.
+    domain: [Creator]
+    range: [Messenger]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:158] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:158
+          tier: quran
+
+
+  - id: formedFrom
+    label: formed from
+    definition: '"He created you from one soul and created from it its mate."'
+    domain: [Human]
+    range: [Human]
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:1
+          tier: quran
+
+  - id: isLike
+    label: is like
+    definition: 'Likeness in origin: "the example of Jesus to Allah is like that of Adam".'
+    domain: [Messenger]
+    range: [Human]
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran

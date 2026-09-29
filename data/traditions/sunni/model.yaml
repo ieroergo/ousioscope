@@ -1,0 +1,338 @@
+# Individuals only. Bible verses are parallels to the Qur'anic account, not Islamic proof texts.
+nodes:
+  - id: sun.allah
+    label: Allah
+    category: Creator
+    referent: ref.godhead
+    description: The One God. He "neither begets nor is born".
+    attributes:
+      - name: Has a son?
+        value: No. "It is not [befitting] for Allah to take a son"
+        citations:
+          scripture: { bible: none-cited, other: [{ ref: Quran 19:35, highlight: "It is not [befitting] for Allah to take a son" }, Quran 112:3, Quran 4:171] }
+          authority:
+            - source: Qur'an
+              ref: Maryam 19:35
+              tier: quran
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 2:117
+              tier: tafsir
+              url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+              quote: He is the Supreme Master Whom there is no equal or rival, everything and everyone was created by Him, so how can He have a son from among them
+    citations:
+      scripture: { bible: [Deut 6:4], other: [Quran 112:1-4] }
+      authority:
+        - source: Qur'an
+          ref: Surah al-Ikhlas 112
+          tier: quran
+
+  - id: sun.isa
+    label: Isa (Jesus), son of Maryam
+    category: Messenger
+    referent: ref.jesus
+    description: A messenger and servant of Allah, created by the word "Be" without a father, like Adam.
+    attributes:
+      - name: '"His Word" and "a spirit from Him"'
+        value: He was created by Allah's word "Be"; "a spirit from created by Him"
+        citations:
+          scripture: { bible: none-cited, other: [Quran 4:171, Quran 3:45] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 4:171
+              tier: tafsir
+              url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
+              quote: '`Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be'''
+      - name: Crucified?
+        value: No. "They did not kill him, nor did they crucify him; but [another] was made to resemble him to them"
+        citations:
+          scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him; but [another] was made to resemble him to them" }] }
+          authority:
+            - source: Qur'an
+              ref: An-Nisa 4:157
+              tier: quran
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 4:157
+              tier: tafsir
+              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
+              quote: the resemblance of `Isa was cast over that man while `Isa ascended to heaven
+      - name: Return
+        value: He "will shortly descend among you as a just ruler"
+        citations:
+          scripture: { bible: none-cited, other: [Quran 4:159] }
+          authority:
+            - source: Sahih al-Bukhari, cited by Ibn Kathir
+              ref: on 4:157-159
+              tier: sahih-hadith
+              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
+              quote: the son of Maryam (`Isa) will shortly descend among you as a just ruler, and will break the cross
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75, Quran 3:59] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 4:171
+          tier: tafsir
+          url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
+          quote: '`Isa is only one of Allah''s servants and one of His creatures.'
+
+  - id: sun.jibril
+    label: Jibril (Ruh al-Qudus, the Holy Spirit)
+    category: Angel
+    referent: ref.holy-spirit
+    description: The angel of revelation. The Qur'an's "Pure Spirit" (Ruh al-Qudus) and "Our Spirit" sent to Maryam.
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 2:87, Quran 16:102, Quran 19:17] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 16:102
+          tier: tafsir
+          url: https://quran.com/16:102/tafsirs/en-tafisr-ibn-kathir
+          quote: '(Say: "Ruh-ul-Qudus has brought it...") meaning, Jibril'
+
+  - id: sun.maryam
+    label: Maryam (Mary)
+    category: Human
+    referent: ref.mary
+    description: Chosen and purified by Allah, a virgin who bore Isa.
+    attributes:
+      - name: Chosen
+        value: Allah has "chosen you above the women of the worlds"
+        citations:
+          scripture: { bible: [{ ref: Luke 1:28, highlight: "blessed art thou among women" }], other: [{ ref: Quran 3:42, highlight: "chosen you above the women of the worlds" }] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:42
+              tier: tafsir
+              url: https://quran.com/3:42/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah also chose her because of her virtue over the women of the world.
+    citations:
+      scripture:
+        bible:
+          - together: [Luke 1:26-27, Luke 1:34]
+            note: 'Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her.'
+        other: [Quran 19:20, Quran 3:47]
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:16-22
+          tier: quran
+
+  - id: sun.heavens-earth
+    label: The heavens and the earth
+    category: HeavensEarth
+    referent: ref.heavens-earth
+    attributes:
+      - name: Made from
+        value: Nothing; "out of nothing and without precedent"
+        citations:
+          scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged), quoting Ibn Jarir al-Tabari
+              ref: on 2:117
+              tier: tafsir
+              url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah stated that He created the heavens and earth out of nothing and without precedent.
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 21:30] }
+      authority:
+        - source: Qur'an
+          ref: Al-Anbiya 21:30
+          tier: quran
+
+
+  - id: sun.adam
+    label: Adam
+    category: Human
+    referent: ref.adam
+    description: The first human and father of humankind, placed on earth as a khalifah (successor).
+    attributes:
+      - name: Created from
+        value: Dust (clay), then Allah said "Be"; angels were commanded to prostrate to him
+        citations:
+          scripture: { bible: [{ ref: Gen 2:7, highlight: "formed man of the dust of the ground" }], other: [Quran 3:59, Quran 7:11, Quran 38:71-72] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:59
+              tier: tafsir
+              url: https://quran.com/3:59/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah created Adam without a father or a mother
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 7:11
+              tier: tafsir
+              url: https://quran.com/7:11/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah informs the Children of Adam about the honor of their father
+      - name: Slip and repentance
+        value: Adam disobeyed, then repented; "his Lord chose him and turned to him in forgiveness". No inherited guilt is taught
+        citations:
+          scripture: { bible: [Gen 3:6], other: [Quran 2:37, { ref: Quran 20:122, highlight: "Then his Lord chose him and turned to him in forgiveness" }, Quran 7:23] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 2:37
+              tier: tafsir
+              url: https://quran.com/2:37/tafsirs/en-tafisr-ibn-kathir
+              quote: 'They said: "Our Lord! We have wronged ourselves. If You forgive us not, and bestow not upon us Your mercy, we shall certainly be of the losers."'
+      - name: Role
+        value: Khalifah on earth, "people reproducing generation after generation"
+        citations:
+          scripture: { bible: [Gen 1:28], other: [Quran 2:30] }
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 2:30
+              tier: tafsir
+              url: https://quran.com/2:30/tafsirs/en-tafisr-ibn-kathir
+              quote: Meaning people reproducing generation after generation, century after century
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 2:30, Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al-Baqarah 2:30-37
+          tier: quran
+
+  - id: sun.hawwa
+    label: Hawwa' (Eve)
+    category: Human
+    referent: ref.eve
+    description: Adam's wife, created from him. Both were deceived, both repented, and both were forgiven.
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:22-23] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 4:1
+          tier: tafsir
+          url: https://quran.com/4:1/tafsirs/en-tafisr-ibn-kathir
+          quote: Hawwa' (Eve), who was created from Adam's left rib, from his back while he was sleeping
+
+edges:
+  - id: sun.e.allah-creates-isa
+    source: sun.allah
+    rel: creates
+    target: sun.isa
+    note: '"Like Adam": created without a father by the word "Be".'
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 3:59
+          tier: tafsir
+          url: https://quran.com/3:59/tafsirs/en-tafisr-ibn-kathir
+          quote: He created him without a father ... for Allah created Adam without a father or a mother
+
+  - id: sun.e.allah-creates-cosmos
+    source: sun.allah
+    rel: creates
+    target: sun.heavens-earth
+    citations:
+      scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
+      authority:
+        - source: Qur'an
+          ref: Al-Baqarah 2:117
+          tier: quran
+
+  - id: sun.e.allah-sends-jibril
+    source: sun.allah
+    rel: sends
+    target: sun.jibril
+    note: To Maryam, appearing "in the form of a man in all respects".
+    citations:
+      scripture: { bible: [Luke 1:26], other: [Quran 19:17] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 19:17
+          tier: tafsir
+          url: https://quran.com/19:17/tafsirs/en-tafisr-ibn-kathir
+          quote: 'then We sent to her Our Ruh ... "It means Jibril."'
+
+  - id: sun.e.allah-sends-isa
+    source: sun.allah
+    rel: sends
+    target: sun.isa
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75, Quran 61:6] }
+      authority:
+        - source: Qur'an
+          ref: Al-Ma'idah 5:75
+          tier: quran
+
+  - id: sun.e.jibril-supports-isa
+    source: sun.jibril
+    rel: supports
+    target: sun.isa
+    citations:
+      scripture: { bible: none-cited, other: [Quran 2:87] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 2:87
+          tier: tafsir
+          url: https://quran.com/2:87/tafsirs/en-tafisr-ibn-kathir
+          quote: Allah also aided him with Ruh Al-Qudus, and that refers to Jibril.
+
+  - id: sun.e.maryam-bears-isa
+    source: sun.maryam
+    rel: bears
+    target: sun.isa
+    citations:
+      scripture: { bible: [Luke 1:31], other: [Quran 19:22, Quran 3:45] }
+      authority:
+        - source: Qur'an
+          ref: Maryam 19:22
+          tier: quran
+
+  - id: sun.e.allah-raises-isa
+    source: sun.allah
+    rel: raises
+    target: sun.isa
+    note: Raised to Allah without being killed. He will return before the end.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:157-158] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:158
+          tier: quran
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 4:157
+          tier: tafsir
+          url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
+          quote: '`Isa ascended to heaven from a hole in the house'
+
+
+  - id: sun.e.allah-creates-adam
+    source: sun.allah
+    rel: creates
+    target: sun.adam
+    citations:
+      scripture: { bible: [Gen 2:7], other: [Quran 3:59, Quran 38:71-72] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59; Sad 38:71-72
+          tier: quran
+
+  - id: sun.e.hawwa-from-adam
+    source: sun.hawwa
+    rel: formedFrom
+    target: sun.adam
+    citations:
+      scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
+      authority:
+        - source: Qur'an
+          ref: An-Nisa 4:1
+          tier: quran
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 4:1
+          tier: tafsir
+          url: https://quran.com/4:1/tafsirs/en-tafisr-ibn-kathir
+          quote: Hawwa' (Eve), who was created from Adam's left rib
+
+  - id: sun.e.isa-like-adam
+    source: sun.isa
+    rel: isLike
+    target: sun.adam
+    note: Both were created without a father, by the word "Be".
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59] }
+      authority:
+        - source: Qur'an
+          ref: Al Imran 3:59
+          tier: quran
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 3:59
+          tier: tafsir
+          url: https://quran.com/3:59/tafsirs/en-tafisr-ibn-kathir
+          quote: He Who created Adam without a father or a mother is able to create

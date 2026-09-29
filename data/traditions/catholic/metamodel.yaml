@@ -1,0 +1,421 @@
+tradition:
+  id: catholic
+  name: Catholic Church
+  shortName: Catholic
+  scripture: { bible: nabre, other: nabre }
+  otherScriptureLabel: Deuterocanon
+  tiers:
+    - { id: dogma, label: "Dogma (de fide)" }
+    - { id: definitive, label: "Definitive doctrine" }
+    - { id: ordinary-magisterium, label: "Ordinary magisterium (e.g. Catechism)" }
+    - { id: theological-opinion, label: "Common theological opinion" }
+
+# Category tree (is-a). `group: true` categories are drawn as containers in the graph.
+categories:
+  - id: Being
+    label: Being
+    definition: All that is.
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 279
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: '"Creator of heaven and earth", "of all that is, seen and unseen" (Nicene Creed).'
+
+  - id: UncreatedBeing
+    label: Uncreated
+    parent: Being
+    group: true
+    definition: God, who has no beginning and gives a beginning to all that exists outside himself.
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 290
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: the eternal God gave a beginning to all that exists outside of himself; he alone is Creator
+
+  - id: DivineNature
+    label: Divine Nature
+    parent: UncreatedBeing
+    definition: The one divine substance, essence or nature. Not divided or shared out among the persons.
+    citations:
+      scripture: { bible: [Deut 6:4, Mark 12:29] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 200-202, 228
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P16.HTM
+          quote: '"The Christian faith confesses that God is one in nature, substance and essence."'
+        - source: Fourth Lateran Council (1215)
+          ref: DS 804, quoted in CCC 253
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: Each of the persons is that supreme reality, viz., the divine substance, essence or nature.
+
+  - id: DivinePerson
+    label: Divine Person
+    parent: UncreatedBeing
+    definition: Father, Son, or Holy Spirit. Really distinct from one another only by their relations of origin.
+    citations:
+      scripture: { bible: [Matt 28:19] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 254-255
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: the real distinction of the persons from one another resides solely in the relationships which relate them to one another
+        - source: Fourth Lateran Council (1215)
+          ref: DS 804, quoted in CCC 254
+          tier: dogma
+          quote: It is the Father who generates, the Son who is begotten, and the Holy Spirit who proceeds.
+
+  - id: CreatedBeing
+    label: Created
+    parent: Being
+    group: true
+    definition: Everything that is not God. Made by God freely, out of nothing.
+    citations:
+      scripture: { bible: [Gen 1:1, Rom 4:17], other: [2 Macc 7:28] }
+      authority:
+        - source: Fourth Lateran Council (1215)
+          ref: DS 800, cited in CCC 296
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 296
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: God needs no pre-existent thing or any help in order to create ... God creates freely "out of nothing"
+
+  - id: CreatedWorld
+    label: Created World
+    parent: CreatedBeing
+    definition: '"The heavens and the earth": the totality of what exists outside God.'
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 290
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: the totality of what exists (expressed by the formula "the heavens and the earth") depends on the One who gives it being
+
+  - id: HumanNature
+    label: Human Nature
+    parent: CreatedBeing
+    definition: What a human is. One nature formed by the union of spiritual soul and material body.
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 365
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: spirit and matter, in man, are not two natures united, but rather their union forms a single nature
+
+  - id: HumanPerson
+    label: Human Person
+    parent: CreatedBeing
+    definition: A created "someone", in the image of God, at once corporeal and spiritual.
+    citations:
+      scripture: { bible: [Gen 1:27, Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 357, 362
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: the human individual possesses the dignity of a person, who is not just something, but someone
+
+  - id: SpiritualSoul
+    label: Spiritual Soul
+    parent: CreatedBeing
+    definition: The spiritual principle in man. Created immediately by God, immortal, and the "form" of the body.
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 363, 366
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: every spiritual soul is created immediately by God - it is not "produced" by the parents - and also that it is immortal
+
+  - id: HumanBody
+    label: Human Body
+    parent: CreatedBeing
+    definition: Body made of matter, which is a living human body because it is animated by a spiritual soul.
+    citations:
+      scripture: { bible: [{ ref: 1 Cor 6:19-20, highlight: "your body is a temple of the holy Spirit" }, { ref: 1 Cor 15:44-45, highlight: "it is raised a spiritual body" }] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 364
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: it is a human body precisely because it is animated by a spiritual soul
+
+# Relationship types (tradition-specific verbs).
+relationships:
+  - id: is
+    label: is
+    definition: Identity. Each divine person is the one divine nature, whole and entire. The person does not "have" or share a part of it.
+    domain: [DivinePerson]
+    range: [DivineNature]
+    citations:
+      scripture: { bible: none-cited }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 253
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: The divine persons do not share the one divinity among themselves but each of them is God whole and entire
+
+  - id: begets
+    label: begets
+    definition: Eternal generation. The Father begets the Son from all eternity, "begotten, not made".
+    domain: [DivinePerson]
+    range: [DivinePerson]
+    citations:
+      scripture: { bible: [Matt 11:27] }
+      authority:
+        - source: Niceno-Constantinopolitan Creed (381)
+          ref: DS 150, quoted in CCC 242
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: the only-begotten Son of God, eternally begotten of the Father ... begotten not made, consubstantial with the Father
+
+  - id: proceedsFrom
+    label: proceeds from
+    definition: The eternal origin of the Holy Spirit (spiration).
+    domain: [DivinePerson]
+    range: [DivinePerson]
+    citations:
+      scripture: { bible: [John 15:26] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 245-248
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+
+  - id: assumes
+    label: assumes
+    definition: >-
+      Incarnation. A divine person takes up a human nature as his own, without ceasing to be God.
+      The nature assumed is an individual one, not human nature in general.
+    domain: [DivinePerson]
+    range: [HumanNature]
+    citations:
+      scripture: { bible: [John 1:14, { ref: Phil 2:5-8, highlight: "he emptied himself, taking the form of a slave, coming in human likeness" }] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 461
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+          quote: The Church calls "Incarnation" the fact that the Son of God assumed a human nature in order to accomplish our salvation in it.
+
+  - id: hasPart
+    label: has part
+    definition: Composition. Human nature is "composed of rational soul and body".
+    domain: [HumanNature]
+    range: [SpiritualSoul, HumanBody]
+    citations:
+      scripture: { bible: [Heb 4:15] }
+      authority:
+        - source: Council of Chalcedon (451)
+          ref: DS 301, quoted in CCC 467
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+          quote: the same truly God and truly man, composed of rational soul and body
+
+  - id: informs
+    label: informs
+    definition: The soul is the "form" of the body. Because of it, matter becomes a living human body.
+    domain: [SpiritualSoul]
+    range: [HumanBody]
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Council of Vienne (1312)
+          ref: DS 902, cited in CCC 365
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 365
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: one has to consider the soul to be the "form" of the body
+
+  - id: reunitesWith
+    label: reunites with
+    definition: Resurrection. Soul and body, separated by death, are united again.
+    domain: [SpiritualSoul]
+    range: [HumanBody]
+    citations:
+      scripture: { bible: [1 Thess 4:14] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 366, 650
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1S.HTM
+          quote: as death is produced by the separation of the human components, so Resurrection is achieved by the union of the two
+
+  - id: bears
+    label: bears
+    definition: Motherhood. A woman conceives and gives birth to a person. Here the person is the eternal Son, born "as to his humanity".
+    domain: [HumanPerson]
+    range: [DivinePerson, HumanPerson]
+    citations:
+      scripture: { bible: [Luke 1:43, Gal 4:4] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 494-495
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+
+  - id: overshadows
+    label: overshadows
+    definition: The Holy Spirit comes upon Mary so that she conceives without human seed.
+    domain: [DivinePerson]
+    range: [HumanPerson]
+    citations:
+      scripture: { bible: [{ ref: Luke 1:34-35, highlight: "the power of the Most High will overshadow you" }] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 484
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+          quote: 'The divine response to her question ... was given by the power of the Spirit: "The Holy Spirit will come upon you."'
+
+  - id: creates
+    label: creates
+    definition: Gives being to something out of nothing. Always the common work of the three persons as one principle.
+    domain: [DivinePerson]
+    range: [CreatedWorld, HumanPerson]
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 258, 290-292
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: '"The Father, the Son and the Holy Spirit are not three principles of creation but one principle." (CCC 258)'
+
+
+  - id: formedFrom
+    label: formed from
+    definition: 'Material origin. "The woman God ''fashions'' from the man''s rib."'
+    domain: [HumanPerson]
+    range: [HumanPerson]
+    citations:
+      scripture: { bible: [Gen 2:18, Gen 2:23] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 371
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: The woman God "fashions" from the man's rib and brings to him
+
+  - id: transmits
+    label: transmits
+    definition: Passes on a human nature to descendants. After the Fall, that nature is "deprived of original holiness and justice".
+    domain: [HumanPerson]
+    range: [HumanNature]
+    citations:
+      scripture: { bible: [Rom 5:12, Rom 5:19] }
+      authority:
+        - source: Council of Trent (1546)
+          ref: DS 1511-1512, cited in CCC 404
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 404
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+          quote: It is a sin which will be transmitted by propagation to all mankind, that is, by the transmission of a human nature deprived of original holiness and justice.
+
+  - id: prefigures
+    label: prefigures
+    definition: Typology. Adam foreshadows Christ, the "New Adam", and Eve foreshadows Mary, the "new Eve".
+    domain: [HumanPerson]
+    range: [DivinePerson, HumanPerson]
+    citations:
+      scripture: { bible: [1 Cor 15:21-22, 1 Cor 15:45, Rom 5:19] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 411
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+          quote: The Christian tradition sees in this passage an announcement of the "New Adam"
+
+# Class-level statements: true of every member of the source category.
+axioms:
+  - id: ax.nature-has-soul
+    source: HumanNature
+    rel: hasPart
+    target: SpiritualSoul
+    quantifier: some
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 362-365
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: The human person, created in the image of God, is a being at once corporeal and spiritual.
+        - source: Council of Chalcedon (451)
+          ref: DS 301, quoted in CCC 467
+          tier: dogma
+          quote: composed of rational soul and body
+
+  - id: ax.nature-has-body
+    source: HumanNature
+    rel: hasPart
+    target: HumanBody
+    quantifier: some
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 362-365
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+        - source: Council of Chalcedon (451)
+          ref: DS 301, quoted in CCC 467
+          tier: dogma
+          quote: composed of rational soul and body
+
+  - id: ax.soul-informs-body
+    source: SpiritualSoul
+    rel: informs
+    target: HumanBody
+    quantifier: some
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: Council of Vienne (1312)
+          ref: DS 902, cited in CCC 365
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 365
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: it is because of its spiritual soul that the body made of matter becomes a living, human body
+
+  - id: ax.soul-reunites-body
+    source: SpiritualSoul
+    rel: reunitesWith
+    target: HumanBody
+    quantifier: some
+    note: At the final Resurrection. The soul is immortal and does not perish when it separates from the body at death.
+    citations:
+      scripture: { bible: [John 5:29, Luke 24:39] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 997-999
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P2H.HTM
+          quote: God, in his almighty power, will definitively grant incorruptible life to our bodies by reuniting them with our souls
+        - source: Catechism of the Catholic Church
+          ref: CCC 366
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: it does not perish when it separates from the body at death, and it will be reunited with the body at the final Resurrection

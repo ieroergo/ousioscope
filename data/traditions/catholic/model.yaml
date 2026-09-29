@@ -1,0 +1,560 @@
+# Individuals only. Every node is a registered referent.
+# Edges point at an individual (`target`) or at a kind (`targetKind` + `quantifier`).
+nodes:
+  - id: cath.father
+    label: God the Father
+    category: DivinePerson
+    referent: ref.father
+    description: First person of the Trinity; eternally Father by relation to the Son.
+    attributes:
+      - name: Origin
+        value: None; "the source and origin of the whole divinity"
+        citations:
+          scripture: { bible: none-cited }
+          authority:
+            - source: Council of Toledo VI (638)
+              ref: DS 490, quoted in CCC 245
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+    citations:
+      scripture: { bible: [Matt 11:27, Matt 28:19] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 240
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: he is eternally Father by his relationship to his only Son who, reciprocally, is Son only in relation to his Father
+
+  - id: cath.son
+    label: God the Son (Jesus Christ)
+    category: DivinePerson
+    referent: ref.jesus
+    description: >-
+      Second person of the Trinity. Jesus is this one divine person. There is no separate human person in Christ.
+    attributes:
+      - name: Number of persons in Christ
+        value: One, the divine person of the Son; "one hypostasis ... one of the Trinity"
+        citations:
+          scripture: { bible: none-cited }
+          authority:
+            - source: Second Council of Constantinople (553)
+              ref: DS 424, quoted in CCC 468
+              tier: dogma
+              url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+              quote: there is but one hypostasis [or person], which is our Lord Jesus Christ, one of the Trinity
+      - name: Number of natures in Christ
+        value: Two, divine and human, "without confusion, change, division or separation"
+        citations:
+          scripture: { bible: none-cited }
+          authority:
+            - source: Council of Chalcedon (451)
+              ref: DS 302, quoted in CCC 467
+              tier: dogma
+              url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+      - name: His human soul
+        value: A rational human soul with human intellect and will. The divine Word did not replace it
+        citations:
+          scripture: { bible: [Luke 2:52] }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 471-472
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+              quote: the Church confessed that the eternal Son also assumed a rational, human soul
+            - source: Pope Damasus I
+              ref: DS 149, cited in CCC 471
+              tier: ordinary-magisterium
+      - name: His human body
+        value: A true, finite human body
+        citations:
+          scripture: { bible: [Heb 10:5] }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 476
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+              quote: Since the Word became flesh in assuming a true humanity, Christ's body was finite.
+            - source: Lateran Council (649)
+              ref: DS 504, cited in CCC 476
+              tier: ordinary-magisterium
+      - name: Resurrection
+        value: >-
+          Soul and body, separated in death, were reunited while the divine person stayed united to both.
+          The body is the same one, now glorified and "not limited by space and time"
+        citations:
+          scripture: { bible: [Luke 24:39, John 20:27, { ref: John 10:17-18, highlight: "I lay down my life in order to take it up again" }, { ref: 1 Cor 15:35-50, highlight: "It is sown a natural body; it is raised a spiritual body" }] }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 645-646, 650
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1S.HTM
+              quote: this authentic, real body possesses the new properties of a glorious body
+    citations:
+      scripture: { bible: [John 1:1, John 1:14, Col 1:15, Heb 1:3] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 241, 495
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+          quote: none other than the Father's eternal Son, the second person of the Holy Trinity
+
+  - id: cath.spirit
+    label: God the Holy Spirit
+    category: DivinePerson
+    referent: ref.holy-spirit
+    description: Third person of the Trinity, "another divine person with Jesus and the Father".
+    citations:
+      scripture: { bible: [John 14:17, John 14:26, John 16:13] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 243
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: The Holy Spirit is thus revealed as another divine person with Jesus and the Father.
+
+  - id: cath.godhead
+    label: The Godhead (the one divine nature)
+    category: DivineNature
+    referent: ref.godhead
+    description: One God. The single divine substance or essence that each of the three persons is.
+    attributes:
+      - name: Created?
+        value: No. Eternal; the Creator gives a beginning to all else
+        citations:
+          scripture: { bible: [Gen 1:1] }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 290
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+      - name: Body?
+        value: No; "God is pure spirit"
+        citations:
+          scripture: { bible: none-cited }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 370
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+              quote: In no way is God in man's image. He is neither man nor woman. God is pure spirit
+    citations:
+      scripture: { bible: [Deut 6:4, Mark 12:29] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 200-202, 228
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P16.HTM
+          quote: '"The Christian faith confesses that God is one in nature, substance and essence."'
+        - source: Second Council of Constantinople (553)
+          ref: DS 421, quoted in CCC 253
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: We do not confess three Gods, but one God in three persons, the "consubstantial Trinity".
+        - source: Athanasian Creed
+          ref: DS 75, quoted in CCC 266
+          tier: dogma
+          quote: the Godhead of the Father, Son and Holy Spirit is one, their glory equal, their majesty coeternal
+
+  - id: cath.mary
+    label: Mary
+    category: HumanPerson
+    referent: ref.mary
+    description: A created human person, chosen to be the mother of the Son.
+    attributes:
+      - name: Immaculate Conception
+        value: Preserved from all stain of original sin from the first moment of her conception
+        citations:
+          scripture: { bible: [Luke 1:28] }
+          authority:
+            - source: Pius IX, Ineffabilis Deus (1854)
+              ref: DS 2803, quoted in CCC 491
+              tier: dogma
+              url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+      - name: Title
+        value: Theotokos, "Mother of God"
+        citations:
+          scripture: { bible: [Luke 1:43] }
+          authority:
+            - source: Council of Ephesus (431)
+              ref: DS 251, cited in CCC 495
+              tier: dogma
+              url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+    citations:
+      scripture: { bible: [{ ref: Luke 1:26-27, highlight: "to a virgin betrothed to a man named Joseph" }, Gal 4:4, Heb 10:5] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 488
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+          quote: to prepare a body for him, he wanted the free co-operation of a creature
+
+  - id: cath.creation
+    label: Heaven and earth (all creation)
+    category: CreatedWorld
+    referent: ref.heavens-earth
+    attributes:
+      - name: Made from
+        value: Nothing (ex nihilo). No pre-existent matter
+        citations:
+          scripture: { bible: [Rom 4:17], other: [2 Macc 7:28] }
+          authority:
+            - source: Fourth Lateran Council (1215)
+              ref: DS 800, cited in CCC 296
+              tier: dogma
+            - source: Catechism of the Catholic Church
+              ref: CCC 296-298
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+              quote: If God had drawn the world from pre-existent matter, what would be so extraordinary in that?
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 290
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+
+
+  - id: cath.adam
+    label: Adam
+    category: HumanPerson
+    referent: ref.adam
+    description: The first man, created in the image of God with body and spiritual soul.
+    attributes:
+      - name: Original state
+        value: '"An original ''state of holiness and justice''", a share in divine life'
+        citations:
+          scripture: { bible: [Gen 2:25] }
+          authority:
+            - source: Council of Trent (1546)
+              ref: DS 1511, cited in CCC 375
+              tier: dogma
+            - source: Catechism of the Catholic Church
+              ref: CCC 375
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+              quote: our first parents, Adam and Eve, were constituted in an original "state of holiness and justice"
+      - name: First sin
+        value: A personal sin that "affected the human nature that they would then transmit in a fallen state"
+        citations:
+          scripture: { bible: [Rom 5:12, Rom 5:19] }
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 397, 404
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+              quote: By yielding to the tempter, Adam and Eve committed a personal sin, but this sin affected the human nature that they would then transmit in a fallen state.
+    citations:
+      scripture: { bible: [Gen 1:27, Gen 2:7] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 355, 362
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+
+  - id: cath.eve
+    label: Eve
+    category: HumanPerson
+    referent: ref.eve
+    description: The first woman, equal in dignity to the man and "willed ... for the other".
+    citations:
+      scripture: { bible: [Gen 2:18, Gen 2:23] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 369, 371
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: Man and woman are both with one and the same dignity "in the image of God".
+
+edges:
+  - id: cath.e.father-is-godhead
+    source: cath.father
+    rel: is
+    target: cath.godhead
+    citations:
+      scripture: { bible: none-cited }
+      authority:
+        - source: Council of Toledo XI (675)
+          ref: DS 530, quoted in CCC 253
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: The Father is that which the Son is, the Son that which the Father is, the Father and the Son that which the Holy Spirit is, i.e. by nature one God.
+        - source: Fourth Lateran Council (1215)
+          ref: DS 804, quoted in CCC 253
+          tier: dogma
+
+  - id: cath.e.son-is-godhead
+    source: cath.son
+    rel: is
+    target: cath.godhead
+    note: '"Consubstantial" (homoousios) with the Father'
+    citations:
+      scripture:
+        bible:
+          - together: [John 1:1, Heb 1:3]
+            note: >-
+              CCC 241 reads these together as the apostolic confession: the Word "was God", and the Son is
+              "the very stamp of his nature". Nicaea's "consubstantial" follows this apostolic tradition (CCC 242).
+      authority:
+        - source: First Council of Nicaea (325)
+          ref: DS 130, 126, cited in CCC 242, 465
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: the Son is "consubstantial" with the Father, that is, one only God with him
+
+  - id: cath.e.spirit-is-godhead
+    source: cath.spirit
+    rel: is
+    target: cath.godhead
+    citations:
+      scripture: { bible: [John 14:26, John 15:26] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 263
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: reveals that, with them, the Spirit is one and the same God
+        - source: Fourth Lateran Council (1215)
+          ref: DS 804, quoted in CCC 253
+          tier: dogma
+
+  - id: cath.e.father-begets-son
+    source: cath.father
+    rel: begets
+    target: cath.son
+    asTo: DivineNature
+    note: Eternally, "before all ages". Not in time, and "not made".
+    citations:
+      scripture: { bible: [Matt 11:27] }
+      authority:
+        - source: Council of Chalcedon (451)
+          ref: DS 301, quoted in CCC 467
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+          quote: He was begotten from the Father before all ages as to his divinity
+        - source: Niceno-Constantinopolitan Creed (381)
+          ref: DS 150, quoted in CCC 242
+          tier: dogma
+          quote: eternally begotten of the Father, light from light, true God from true God, begotten not made
+
+  - id: cath.e.spirit-from-father
+    source: cath.spirit
+    rel: proceedsFrom
+    target: cath.father
+    citations:
+      scripture: { bible: [John 15:26] }
+      authority:
+        - source: First Council of Constantinople (381)
+          ref: DS 150, quoted in CCC 245
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: We believe in the Holy Spirit, the Lord and giver of life, who proceeds from the Father.
+
+  - id: cath.e.spirit-from-son
+    source: cath.spirit
+    rel: proceedsFrom
+    target: cath.son
+    note: >-
+      The Latin "filioque". The Eastern tradition says "from the Father through the Son" (CCC 248).
+      Both proceed "as from one principle".
+    citations:
+      scripture:
+        bible:
+          - together: [John 14:26, John 15:26, John 16:14]
+            note: >-
+              The Spirit is sent both by the Father in the Son's name and by the Son from the Father.
+              The Church reads this mission in time as revealing the Spirit's eternal origin (CCC 244).
+      authority:
+        - source: Council of Florence (1439)
+          ref: DS 1300-1301, quoted in CCC 246
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+          quote: He proceeds eternally from both as from one principle and through one spiration.
+
+  - id: cath.e.son-assumes-human-nature
+    source: cath.son
+    rel: assumes
+    targetKind: HumanNature
+    quantifier: some
+    note: >-
+      An individual human nature ("in atomo"), not human nature "abstracted from all individuals"
+      (Aquinas). Assumed from the moment of conception: "What he was, he remained and what he was not,
+      he assumed" (CCC 469).
+    citations:
+      scripture: { bible: [John 1:14, { ref: Phil 2:5-8, highlight: "he emptied himself, taking the form of a slave, coming in human likeness" }] }
+      authority:
+        - source: Council of Ephesus (431)
+          ref: DS 250, quoted in CCC 466
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+          quote: the Word, uniting to himself in his person the flesh animated by a rational soul, became man
+        - source: Catechism of the Catholic Church
+          ref: CCC 461, 470
+          tier: ordinary-magisterium
+          quote: human nature was assumed, not absorbed
+        - source: Thomas Aquinas, Summa Theologiae
+          ref: III, q. 4, a. 4
+          tier: theological-opinion
+          url: https://www.newadvent.org/summa/4004.htm
+          quote: the Son of God did not assume human nature, as it is separated from individuals
+
+  - id: cath.e.mary-bears-son
+    source: cath.mary
+    rel: bears
+    target: cath.son
+    asTo: HumanNature
+    note: >-
+      Mary bears the person (the eternal Son) as to his humanity, "a humanity drawn from her own" (CCC 485).
+      That is why the Church calls her Mother of God.
+    citations:
+      scripture: { bible: [Luke 1:43, Gal 4:4] }
+      authority:
+        - source: Council of Chalcedon (451)
+          ref: DS 301, quoted in CCC 467
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+          quote: in these last days ... was born as to his humanity of the virgin Mary, the Mother of God
+        - source: Council of Ephesus (431)
+          ref: DS 251, quoted in CCC 466
+          tier: dogma
+          quote: the Word is said to be born according to the flesh
+        - source: Catechism of the Catholic Church
+          ref: CCC 485, 495
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+
+  - id: cath.e.spirit-overshadows-mary
+    source: cath.spirit
+    rel: overshadows
+    target: cath.mary
+    note: Virginal conception, "by the Holy Spirit without human seed" (CCC 496).
+    citations:
+      scripture:
+        bible:
+          - { ref: Luke 1:34-35, highlight: "the power of the Most High will overshadow you" }
+          - Matt 1:20
+          - together: [Isa 7:14, Matt 1:23]
+            note: >-
+              CCC 497 sees here "the fulfilment of the divine promise given through the prophet Isaiah". Matthew
+              quotes Isaiah from the Greek Septuagint, which reads "virgin" (parthenos).
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 484-485, 496-497
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
+          quote: The Holy Spirit ... is sent to sanctify the womb of the Virgin Mary and divinely fecundate it
+
+  - id: cath.e.father-creates
+    source: cath.father
+    rel: creates
+    target: cath.creation
+    note: Creation is the common work of the Trinity, "not three principles of creation but one principle" (CCC 258).
+    citations:
+      scripture: { bible: [Gen 1:1] }
+      authority:
+        - source: Fourth Lateran Council (1215)
+          ref: DS 800, cited in CCC 296
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 279, 290
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+
+  - id: cath.e.son-creates
+    source: cath.son
+    rel: creates
+    target: cath.creation
+    citations:
+      scripture: { bible: [{ ref: John 1:1-3, highlight: "All things came to be through him" }, { ref: Col 1:16-17, highlight: "all things were created through him and for him" }] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 291
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: The New Testament reveals that God created everything by the eternal Word, his beloved Son.
+
+  - id: cath.e.spirit-creates
+    source: cath.spirit
+    rel: creates
+    target: cath.creation
+    citations:
+      scripture: { bible: [Ps 33:6, Ps 104:30, Gen 1:2] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 291-292
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+          quote: The Church's faith likewise confesses the creative action of the Holy Spirit, the "giver of life"
+
+
+  - id: cath.e.father-creates-adam
+    source: cath.father
+    rel: creates
+    target: cath.adam
+    note: The body is formed "of dust from the ground". Every spiritual soul is "created immediately by God" (CCC 366).
+    citations:
+      scripture: { bible: [{ ref: Gen 2:7, highlight: "formed the man out of the dust of the ground" }] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 362, 366
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+
+  - id: cath.e.eve-from-adam
+    source: cath.eve
+    rel: formedFrom
+    target: cath.adam
+    citations:
+      scripture: { bible: [Gen 2:18, Gen 2:23] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 371
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+          quote: The woman God "fashions" from the man's rib and brings to him elicits on the man's part a cry of wonder
+
+  - id: cath.e.adam-transmits-nature
+    source: cath.adam
+    rel: transmits
+    targetKind: HumanNature
+    quantifier: some
+    note: Original sin is "contracted" and not "committed", "a state and not an act" (CCC 404).
+    citations:
+      scripture: { bible: [Rom 5:12, Rom 5:19] }
+      authority:
+        - source: Council of Trent (1546)
+          ref: DS 1511-1512, cited in CCC 404
+          tier: dogma
+        - source: Catechism of the Catholic Church
+          ref: CCC 404-405
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+          quote: original sin does not have the character of a personal fault in any of Adam's descendants
+
+  - id: cath.e.adam-prefigures-son
+    source: cath.adam
+    rel: prefigures
+    target: cath.son
+    note: Christ is the "New Adam" who "became obedient unto death".
+    citations:
+      scripture: { bible: [1 Cor 15:21-22, 1 Cor 15:45, Phil 2:8, Rom 5:19] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 359, 411
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+          quote: an announcement of the "New Adam" who, because he "became obedient unto death, even death on a cross", makes amends superabundantly for the disobedience of Adam
+
+  - id: cath.e.eve-prefigures-mary
+    source: cath.eve
+    rel: prefigures
+    target: cath.mary
+    note: Mary is the "new Eve".
+    citations:
+      scripture: { bible: [Gen 3:15] }
+      authority:
+        - source: Catechism of the Catholic Church
+          ref: CCC 411
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/archive/ENG0015/__P1C.HTM
+          quote: many Fathers and Doctors of the Church have seen the woman announced in the "Proto-evangelium" as Mary, the mother of Christ, the "new Eve"

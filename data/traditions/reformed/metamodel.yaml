@@ -1,0 +1,321 @@
+tradition:
+  id: reformed
+  name: Presbyterian & Reformed Churches (Westminster Standards)
+  shortName: Presbyterian & Reformed
+  scripture: { bible: esv, other: esv }
+  otherScriptureLabel: Other
+  tiers:
+    - { id: confessional, label: "Confessional standard (Westminster Confession & Catechisms)" }
+    - { id: church-published, label: "Denominational report / publication" }
+    - { id: theologian, label: "Reformed theologian (e.g. Calvin, Turretin)" }
+
+# Scripture: the Standards' own proof texts (1647), quoted in the ESV. Confession text: OPC edition.
+categories:
+  - id: God
+    label: God (uncreated)
+    group: true
+    definition: '"One only, living, and true God ... a most pure spirit, invisible, without body, parts, or passions".'
+    citations:
+      scripture: { bible: [Deut 6:4, 1 Cor 8:4, John 4:24] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: There is but one only, living, and true God, who is infinite in being and perfection, a most pure spirit, invisible, without body, parts, or passions
+
+  - id: Godhead
+    label: Godhead
+    parent: God
+    definition: The one divine substance in which the three persons are united ("the unity of the Godhead").
+    citations:
+      scripture: { bible: [Matt 3:16-17, Matt 28:19, 2 Cor 13:14] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+          quote: In the unity of the Godhead there be three persons, of one substance, power, and eternity
+
+  - id: DivinePerson
+    label: Divine Person
+    parent: God
+    definition: Father, Son, or Holy Ghost, "distinguished by their personal properties" (begetting, being begotten, proceeding).
+    citations:
+      scripture: { bible: [Heb 1:5-6, John 1:14, John 15:26, Gal 4:6] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 9-10
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: It is proper to the Father to beget the Son, and to the Son to be begotten of the Father, and to the Holy Ghost to proceed from the Father and the Son from all eternity.
+
+  - id: Creature
+    label: Creature (made of nothing)
+    group: true
+    definition: Everything God made "of nothing ... whether visible or invisible".
+    citations:
+      scripture: { bible: [Acts 17:24, Col 1:16, Heb 11:3] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+          quote: to create, or make of nothing, the world, and all things therein whether visible or invisible
+
+  - id: World
+    label: The world
+    parent: Creature
+    definition: '"The world, and all things therein".'
+    citations:
+      scripture: { bible: [Acts 17:24] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+
+  - id: Manhood
+    label: Man's nature (manhood)
+    parent: Creature
+    definition: 'Human nature "with all the essential properties, and common infirmities thereof": a true body and a reasonable soul.'
+    citations:
+      scripture: { bible: [Heb 2:14, Heb 4:15] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+          quote: take upon him man's nature, with all the essential properties, and common infirmities thereof, yet without sin
+
+  - id: Man
+    label: Man (human person)
+    parent: Creature
+    definition: A human being, created "male and female, with reasonable and immortal souls ... after his own image".
+    citations:
+      scripture: { bible: [Gen 1:27] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+          quote: he created man, male and female, with reasonable and immortal souls
+
+  - id: Soul
+    label: Reasonable, immortal soul
+    parent: Creature
+    definition: The soul, which does not die or sleep but has "an immortal subsistence".
+    citations:
+      scripture:
+        bible:
+          - together: [Gen 2:7, Eccl 12:7, Matt 10:28, Luke 23:43]
+            note: 'WCF 4.2 cites these as one proof: "Gen. 2:7 with Eccles. 12:7 and Matt. 10:28 and Luke 23:43".'
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.2, 32.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_32
+          quote: their souls, which neither die nor sleep, having an immortal subsistence, immediately return to God who gave them
+
+  - id: Body
+    label: Body
+    parent: Creature
+    definition: The human body, which returns to dust at death and will be raised "with the selfsame bodies".
+    citations:
+      scripture: { bible: [Job 19:26-27, 1 Cor 15:42-44] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 32.1-2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_32
+
+relationships:
+  - id: is
+    label: is
+    definition: 'Each person is the one God: "these three are one true, eternal God, the same in substance".'
+    domain: [DivinePerson]
+    range: [Godhead]
+    citations:
+      scripture: { bible: [Matt 3:16-17, Matt 28:19, 2 Cor 13:14, John 10:30] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 9
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: these three are one true, eternal God, the same in substance, equal in power and glory; although distinguished by their personal properties
+
+  - id: begets
+    label: begets
+    definition: '"The Son is eternally begotten of the Father."'
+    domain: [DivinePerson]
+    range: [DivinePerson]
+    citations:
+      scripture: { bible: [John 1:14, John 1:18] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+
+  - id: proceedsFrom
+    label: proceeds from
+    definition: '"The Holy Ghost eternally proceeding from the Father and the Son."'
+    domain: [DivinePerson]
+    range: [DivinePerson]
+    citations:
+      scripture: { bible: [John 15:26, Gal 4:6] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 2.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_02
+
+  - id: takesUpon
+    label: takes upon
+    definition: 'Incarnation: the Son "did, when the fullness of time was come, take upon him man''s nature".'
+    domain: [DivinePerson]
+    range: [Manhood]
+    citations:
+      scripture: { bible: [John 1:1, John 1:14, Gal 4:4, Phil 2:6, 1 John 5:20] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+
+  - id: bears
+    label: bears
+    definition: 'Christ was "conceived ... in the womb of the Virgin Mary, of her substance, and born of her".'
+    domain: [Man]
+    range: [DivinePerson]
+    citations:
+      scripture: { bible: [Luke 1:27, Luke 1:31, Luke 1:35, Gal 4:4] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 37
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: being conceived by the power of the Holy Ghost in the womb of the Virgin Mary, of her substance, and born of her, yet without sin
+
+  - id: overshadows
+    label: overshadows
+    definition: Christ was "conceived by the power of the Holy Ghost".
+    domain: [DivinePerson]
+    range: [Man]
+    citations:
+      scripture: { bible: [{ ref: Luke 1:35, highlight: "the power of the Most High will overshadow you" }] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 8.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_08
+
+  - id: creates
+    label: creates
+    definition: Makes "of nothing". The Father, Son, and Holy Ghost together are the Creator.
+    domain: [DivinePerson]
+    range: [World, Man]
+    citations:
+      scripture: { bible: [Acts 17:24, Col 1:16, Heb 11:3] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 4.1
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_04
+
+  - id: hasPart
+    label: has part
+    definition: 'Composition: Christ took "a true body, and a reasonable soul".'
+    domain: [Manhood, Man]
+    range: [Soul, Body]
+    citations:
+      scripture: { bible: [John 1:14, Matt 26:38] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 37
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: by taking to himself a true body, and a reasonable soul
+
+  - id: reunitesWith
+    label: reunites with
+    definition: 'Resurrection: the dead are raised "with the selfsame bodies ... which shall be united again to their souls forever".'
+    domain: [Soul]
+    range: [Body]
+    citations:
+      scripture: { bible: [Job 19:26-27, 1 Cor 15:42-44] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 32.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_32
+
+
+  - id: formedFrom
+    label: formed from
+    definition: 'God "formed the body of the man of the dust of the ground, and the woman of the rib of the man".'
+    domain: [Man]
+    range: [Man]
+    citations:
+      scripture: { bible: [Gen 2:22] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 17
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+
+  - id: conveys
+    label: conveys
+    definition: '"The same death in sin and corrupted nature conveyed to all their posterity descending from them by ordinary generation."'
+    domain: [Man]
+    range: [Manhood]
+    citations:
+      scripture: { bible: [Gen 5:3, Job 14:4, Ps 51:5] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 6.3
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_06
+
+axioms:
+  - id: ax.manhood-has-soul
+    source: Manhood
+    rel: hasPart
+    target: Soul
+    quantifier: some
+    citations:
+      scripture: { bible: [Matt 26:38] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 37
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: a true body, and a reasonable soul
+
+  - id: ax.manhood-has-body
+    source: Manhood
+    rel: hasPart
+    target: Body
+    quantifier: some
+    citations:
+      scripture: { bible: [John 1:14] }
+      authority:
+        - source: Westminster Larger Catechism
+          ref: WLC 37
+          tier: confessional
+          url: https://thewestminsterstandard.org/westminster-larger-catechism/
+          quote: a true body, and a reasonable soul
+
+  - id: ax.soul-reunites-body
+    source: Soul
+    rel: reunitesWith
+    target: Body
+    quantifier: some
+    citations:
+      scripture: { bible: [Job 19:26-27, { ref: 1 Cor 15:42-44, highlight: "It is sown a natural body; it is raised a spiritual body" }] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 32.2
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_32
+          quote: all the dead shall be raised up, with the selfsame bodies, and none other (although with different qualities), which shall be united again to their souls forever

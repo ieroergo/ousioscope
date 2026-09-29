@@ -1,0 +1,320 @@
+# Individuals only. Every node is a registered referent.
+nodes:
+  - id: jw.jehovah
+    label: Jehovah God (the Father)
+    category: AlmightyGod
+    referent: ref.father
+    description: '"The only true God". The Father, the Creator and Source of all life.'
+    attributes:
+      - name: Trinity?
+        value: No; "God is only one"
+        citations:
+          scripture: { bible: [Deut 6:4, Ps 83:18, John 17:3, Gal 3:20] }
+          authority:
+            - source: Is God a Trinity? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/trinity/
+    citations:
+      scripture: { bible: [John 17:3, Ps 83:18, Ps 36:9] }
+      authority:
+        - source: Is God a Trinity? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/trinity/
+          quote: '"You, whose name is Jehovah, you alone are the Most High over all the earth."'
+
+  - id: jw.jesus
+    label: Jesus Christ (the archangel Michael)
+    category: SpiritCreature
+    referent: ref.jesus
+    description: God's firstborn Son and first creation. He lived in heaven before becoming human, and after his resurrection he is again a spirit creature.
+    attributes:
+      - name: Heavenly name
+        value: '"Michael ... is evidently a name given to Jesus before and after his life on earth"'
+        citations:
+          scripture: { bible: [Jude 1:9, 1 Thess 4:16, Rev 12:7, Dan 12:1] }
+          authority:
+            - source: Who Is the Archangel Michael? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/archangel-michael/
+      - name: Equal to Almighty God?
+        value: No; "The Father is greater than I am"
+        citations:
+          scripture: { bible: [John 14:28, Phil 2:9] }
+          authority:
+            - source: Is Jesus Almighty God? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/is-jesus-almighty/
+              quote: Jesus never claimed to be on the same level as Almighty God.
+      - name: '"Son of God" means'
+        value: God is the Creator or Source of Jesus' life; "the Bible does not teach that God literally fathered a child"
+        citations:
+          scripture: { bible: [John 1:49, Ps 36:9, Rev 4:11] }
+          authority:
+            - source: Why Is Jesus Called the Son of God? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+      - name: Resurrection
+        value: '"Put to death in the flesh but made alive in the spirit". Not raised with his flesh-and-blood body; afterward he took on human forms temporarily'
+        citations:
+          scripture: { bible: [{ ref: 1 Pet 3:18, highlight: "made alive in the spirit" }, 1 Cor 15:45, Heb 9:11-12, John 20:19] }
+          authority:
+            - source: After Jesus' Resurrection, Was His Body Flesh or Spirit? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/jesus-body/
+              quote: Jesus' own words showed that he would not be resurrected with his flesh-and-blood body.
+    citations:
+      scripture: { bible: [John 1:1, John 17:5, John 6:38] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: When speaking of Jesus' prehuman life, the Bible calls Jesus "the Word."
+
+  - id: jw.holy-spirit
+    label: Holy spirit (God's active force)
+    category: ActiveForce
+    referent: ref.holy-spirit
+    attributes:
+      - name: Person?
+        value: No; "the Bible shows that the holy spirit is not a person"
+        citations:
+          scripture:
+            bible:
+              - Ex 15:8
+              - together: [Isa 42:8, Luke 1:31, Acts 7:55]
+                note: >-
+                  The article reasons from these together: the Bible names Jehovah and Jesus but never names the
+                  holy spirit, and in Stephen's vision he "saw only two persons, not three".
+          authority:
+            - source: What Is the Holy Spirit? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+              quote: The Bible gives the names of Jehovah God and of his Son, Jesus Christ; yet, nowhere does it name the holy spirit.
+    citations:
+      scripture: { bible: [Mic 3:8, Luke 1:35] }
+      authority:
+        - source: What Is the Holy Spirit? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+          quote: The holy spirit is God's power in action, his active force.
+
+  - id: jw.mary
+    label: Mary
+    category: Soul
+    referent: ref.mary
+    description: A virgin when she conceived and bore Jesus. Not the "Immaculate Conception".
+    citations:
+      scripture: { bible: [{ ref: Luke 1:26-27, highlight: "a virgin promised in marriage" }, Luke 1:34] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+
+  - id: jw.universe
+    label: The heavens and the earth (physical universe)
+    category: Universe
+    referent: ref.heavens-earth
+    citations:
+      scripture: { bible: [Ps 33:6, Col 1:16] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+
+
+  - id: jw.adam
+    label: Adam
+    category: Soul
+    referent: ref.adam
+    description: The first human. He "was not given a soul—he became a living soul, or person".
+    attributes:
+      - name: Original sin
+        value: Eating from "the tree of the knowledge of good and bad", which rejected God's moral authority
+        citations:
+          scripture: { bible: [Gen 2:16-17, Gen 3:6, Rom 5:19] }
+          authority:
+            - source: What Was the Original Sin? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/original-sin/
+              quote: By eating from the tree, Adam and Eve took matters into their own hands, choosing to decide for themselves what is right and wrong.
+      - name: What descendants inherit
+        value: Their "sinful condition", like "genetic defects". "God does not blame us for what Adam and Eve did"
+        citations:
+          scripture: { bible: [Rom 5:12, Ps 51:5, Ps 103:14] }
+          authority:
+            - source: What Was the Original Sin? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/original-sin/
+              quote: Adam and Eve passed on their sinful condition to all their descendants. This is similar to the way human parents pass on genetic defects.
+      - name: At death
+        value: He died; the soul is mortal and does not survive the body
+        citations:
+          scripture: { bible: [Gen 3:19, Ezek 18:4] }
+          authority:
+            - source: What Is the Soul? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/
+              quote: The soul, then, is the entire creature, not something inside that survives the death of the body.
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: What Is the Soul? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/
+          quote: Adam was not given a soul—he became a living soul, or person.
+
+  - id: jw.eve
+    label: Eve
+    category: Soul
+    referent: ref.eve
+    description: The first woman. God did not curse women because Eve ate first.
+    citations:
+      scripture: { bible: [Gen 3:6, Gen 3:14] }
+      authority:
+        - source: What Was the Original Sin? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/original-sin/
+
+edges:
+  - id: jw.e.jehovah-creates-jesus
+    source: jw.jehovah
+    rel: creates
+    target: jw.jesus
+    note: First, before anything else. "The firstborn of all creation", "the beginning of the creation by God".
+    citations:
+      scripture: { bible: [Col 1:15, Rev 3:14, Mic 5:2] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: God created Jesus before he created anything else.
+
+  - id: jw.e.jehovah-creates-universe
+    source: jw.jehovah
+    rel: creates
+    target: jw.universe
+    note: Through his Son, "by means of him".
+    citations:
+      scripture: { bible: [Col 1:16, Rev 4:11] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: God worked through Jesus to bring every other creation into existence.
+
+  - id: jw.e.jesus-builds-universe
+    source: jw.jesus
+    rel: builds
+    target: jw.universe
+    citations:
+      scripture: { bible: [Prov 8:30, Col 1:16] }
+      authority:
+        - source: Why Is Jesus Called the Son of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+          quote: He helped his Father create all other things. Jesus worked alongside God "as a master worker."
+
+  - id: jw.e.jehovah-projects-spirit
+    source: jw.jehovah
+    rel: projects
+    target: jw.holy-spirit
+    citations:
+      scripture: { bible: [Ps 104:30, Ps 139:7] }
+      authority:
+        - source: What Is the Holy Spirit? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+
+  - id: jw.e.spirit-overshadows-mary
+    source: jw.holy-spirit
+    rel: overshadows
+    target: jw.mary
+    citations:
+      scripture: { bible: [{ ref: Luke 1:35, highlight: "power of the Most High will overshadow you" }, Matt 1:18] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: Mary's pregnancy came about by means of holy spirit, which is God's power in action.
+
+  - id: jw.e.jehovah-transfers-jesus
+    source: jw.jehovah
+    rel: transfers
+    target: jw.jesus
+    note: '"God miraculously transferred his Son''s life to the womb of Mary."'
+    citations:
+      scripture: { bible: [Luke 1:35, Heb 10:5] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+
+  - id: jw.e.jesus-becomes-human
+    source: jw.jesus
+    rel: becomes
+    targetKind: Soul
+    quantifier: some
+    note: '"Born a perfect human, an equal to what Adam had been before he sinned."'
+    citations:
+      scripture: { bible: [John 6:38, Heb 10:5, 1 Pet 2:22] }
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: Jesus was thus born a perfect human, an equal to what Adam had been before he sinned.
+
+  - id: jw.e.jesus-becomes-spirit
+    source: jw.jesus
+    rel: becomes
+    targetKind: SpiritCreature
+    quantifier: some
+    note: At his resurrection. "Made alive in the spirit."
+    citations:
+      scripture: { bible: [{ ref: 1 Pet 3:18, highlight: "made alive in the spirit" }, 1 Cor 15:45] }
+      authority:
+        - source: After Jesus' Resurrection, Was His Body Flesh or Spirit? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/jesus-body/
+          quote: The Bible says that Jesus "was put to death in the flesh but made alive [resurrected] in the spirit."
+
+  - id: jw.e.mary-bears-jesus
+    source: jw.mary
+    rel: bears
+    target: jw.jesus
+    asTo: Soul
+    citations:
+      scripture:
+        bible:
+          - together: [Isa 7:14, Matt 1:23]
+            note: The article reads Isaiah's prophecy together with Matthew's application of it to Mary.
+          - Luke 1:31
+      authority:
+        - source: The Virgin Mary (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+          quote: Under divine inspiration, the Gospel writer Matthew applied Isaiah's prophecy to Mary's conception of Jesus.
+
+
+  - id: jw.e.jehovah-creates-adam
+    source: jw.jehovah
+    rel: creates
+    target: jw.adam
+    citations:
+      scripture: { bible: [Gen 2:7] }
+      authority:
+        - source: What Is the Soul? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/
+          quote: When Jehovah God created the first man, Adam, the Bible says that "man became a living soul."
+
+  - id: jw.e.eve-from-adam
+    source: jw.eve
+    rel: formedFrom
+    target: jw.adam
+    citations:
+      scripture: { bible: [Gen 2:21-22] }
+      authority:
+        - source: New World Translation (Watch Tower)
+          ref: Genesis 2:21-22
+          tier: watch-tower
+          url: https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/1/2
