@@ -15,6 +15,21 @@ nodes:
             - source: Is God a Trinity? (jw.org)
               tier: watch-tower
               url: https://www.jw.org/en/bible-teachings/questions/trinity/
+      - name: Beginning
+        value: God had no beginning and cannot have a mother; Mary could not have held him in her womb since even the heavens cannot contain him
+        topics:
+          - god
+        citations:
+          scripture:
+            bible:
+              - Ps 90:1-2
+              - Isa 40:28
+              - 1 Kgs 8:27
+          authority:
+            - source: Is Mary the Mother of God? (jw.org)
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/questions/mother-mary-theotokos/
+              quote: Since he had no beginning, he cannot have a mother. Furthermore, Mary could not have held God in her womb; the Bible makes clear that even the heavens cannot contain him.
     citations:
       scripture: { bible: [John 17:3, Ps 83:18, Ps 36:9] }
       authority:
@@ -67,6 +82,19 @@ nodes:
               tier: watch-tower
               url: https://www.jw.org/en/bible-teachings/questions/jesus-body/
               quote: Jesus' own words showed that he would not be resurrected with his flesh-and-blood body.
+      - name: Lord in Luke 1:43
+        value: Acknowledges Jesus as the foretold Messiah rather than Almighty God
+        topics:
+          - jesus
+        citations:
+          scripture:
+            bible:
+              - Luke 1:43
+          authority:
+            - source: Look! Jehovah's Slave Girl! (The Watchtower)
+              tier: watch-tower
+              url: https://www.jw.org/en/library/magazines/wp20080701/Look-Jehovahs-Slave-Girl/
+              quote: Elizabeth heard Mary’s greeting and immediately felt the infant in her womb leap for joy. She was filled with holy spirit and spoke of Mary as “the mother of my Lord.” God revealed to Elizabeth that Mary’s son would become her Lord, the Messiah.
     citations:
       scripture: { bible: [John 1:1, John 17:5, John 6:38] }
       authority:
@@ -115,6 +143,23 @@ nodes:
         - source: The Virgin Mary (jw.org)
           tier: watch-tower
           url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
+    attributes:
+      - name: Inherited imperfection
+        value: Inherited sin and imperfection from Adam; presented a Mosaic sin offering at the temple after childbirth for purification from uncleanness
+        topics:
+          - evil
+          - soul
+        citations:
+          scripture:
+            bible:
+              - Rom 5:12
+              - Lev 12:1-8
+              - Luke 2:22-24
+          authority:
+            - source: Mary (Jesus’ Mother) (Reasoning From the Scriptures)
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/Reasoning-From-the-Scriptures/Mary-Jesus-Mother/
+              quote: The Bible reports that in accord with the requirement of the Mosaic Law, 40 days after Jesus’ birth Mary offered at the temple in Jerusalem a sin offering for purification from uncleanness. She, too, had inherited sin and imperfection from Adam.
 
   - id: jw.universe
     label: The heavens and the earth (physical universe)
@@ -291,17 +336,26 @@ edges:
     rel: bears
     target: jw.jesus
     asTo: Soul
+    note: Mary gave birth to the Son of God rather than God himself, and never claimed to be the mother of God.
     citations:
       scripture:
         bible:
-          - together: [Isa 7:14, Matt 1:23]
+          - together:
+              - Isa 7:14
+              - Matt 1:23
             note: The article reads Isaiah's prophecy together with Matthew's application of it to Mary.
           - Luke 1:31
+          - Mark 1:1
+          - Luke 1:32
       authority:
         - source: The Virgin Mary (jw.org)
           tier: watch-tower
           url: https://www.jw.org/en/bible-teachings/questions/virgin-mary-immaculate-conception/
           quote: Under divine inspiration, the Gospel writer Matthew applied Isaiah's prophecy to Mary's conception of Jesus.
+        - source: Is Mary the Mother of God? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/mother-mary-theotokos/
+          quote: Mary never claimed that she was the mother of God. The Bible explains that she gave birth to “the Son of God,” not God himself.
 
 
   - id: jw.e.jehovah-creates-adam
