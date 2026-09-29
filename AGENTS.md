@@ -87,3 +87,40 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
   opc.org / thewestminsterstandard.org (Westminster Standards with proof texts), jw.org / wol.jw.org,
   quran.com (Ibn Kathir tafsir), tanzil.net (Qur'an), thaqalayn.net (al-Kafi with gradings).
 - Long-running fetches: always run in the background and poll; never block on them.
+
+## Topics (the top-bar "Topic" focus)
+- `data/topics.yaml`: shared registry of neutral topics, kinds `doctrine | salvation | life | debate`. Debates are
+  neutral propositions (e.g. "The Son is a created being"). Referents are automatically "Subjects".
+- Each metamodel has `topics:`, the tradition's OWN outline: CCC sections, Articles of Faith, WCF chapters, jw.org
+  basic beliefs, the six articles of faith (Qur'an 4:136), and the five usul al-din. Items are in the tradition's
+  words, cite its own `source`, and map to registry topics. `inOutline: false` marks topics the model covers but
+  the headline outline does not list.
+- Data is organized by topic. Every relationship type declares `topics` (required), and edges inherit them.
+  Edges, attributes, and categories may add more `topics`. Tag a single edge instead of its verb when only that
+  edge belongs (e.g. LDS begets: only Father → Jesus is Godhead/Christ).
+- `stances:` holds the tradition's cited stance on each debate proposition (affirms | rejects | condemns |
+  reframes | none). Anything other than `none` needs citations, and stances can be validated like claims.
+- Don't invent outline items. Take them from the tradition's own published outline, and show unmodeled items as gaps.
+
+## Claim validator (`src/validator/`)
+- "Validate this claim" on every node, attribute, edge, axiom, and category runs an interior critique of that one
+  claim within its own tradition: fidelity, citation check, scripture support (per the tradition's own
+  `hermeneutic`). No cross-tradition evaluation yet.
+- Bring your own Gemini key (localStorage only, sent only to Google). One Interactions API call with `url_context` +
+  `google_search` + a JSON response schema (Gemini 3 models). Results are session-only; nothing is saved.
+- Sources are limited to `tradition.allowedDomains` (plus the claim's own cited URLs); anything else is removed
+  after the call and reported. Quotes are marked "retrieved" only if the model reported fetching that page.
+- The verdict must carry direct quotes with source links.
+- Without a key: "Research in Google AI Mode" opens `google.com/search?udm=50&q=<compact prompt>`.
+- Every tradition metamodel needs `hermeneutic` (cited like any claim) and `allowedDomains`.
+
+## Crosswalks (`data/crosswalks.yaml`)
+- Tradition models never reference each other; crosswalks are a separate, optional layer ("⟷ Crosswalk" toggle).
+- Derived crosswalks are computed, never authored: if a referent is in category X in one tradition and Y in the
+  other, X–Y is linked with the shared referents as evidence.
+- Curated crosswalks: `a`/`b` as `tradition:Category`, `match` (close | broader | narrower | related | none; a
+  relative to b; for none, `b` is a tradition id), `note` (what they share), `differsOn` (where they part ways;
+  write it for every non-close match), and `basis`:
+  - `tradition` / `scholarly`: needs `sources`.
+  - `editorial`: no extra sources; it rests on each side's own cited definition, which the app shows alongside.
+- Only state a `differsOn` claim that each side's own cited category definition or model supports.

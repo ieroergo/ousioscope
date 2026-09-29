@@ -21,6 +21,7 @@ nodes:
     description: '"The second person in the Trinity, being very and eternal God, of one substance and equal with the Father".'
     attributes:
       - name: Natures and person
+        topics: [wcf8]
         value: '"Two whole, perfect, and distinct natures, the Godhead and the manhood ... joined together in one person, without conversion, composition, or confusion"'
         citations:
           scripture: { bible: [Luke 1:35, Rom 9:5, Col 2:9, 1 Tim 3:16, 1 Pet 3:18] }
@@ -30,6 +31,7 @@ nodes:
               tier: confessional
               url: https://www.opc.org/wcf.html#Chapter_08
       - name: Resurrection
+        topics: [wcf8]
         value: '"On the third day he arose from the dead, with the same body in which he suffered"'
         citations:
           scripture: { bible: [1 Cor 15:3-4, John 20:25, John 20:27] }
@@ -68,6 +70,7 @@ nodes:
     description: The one living and true God, in whom three persons are "of one substance, power, and eternity".
     attributes:
       - name: Body?
+        topics: [wcf2]
         value: No; "a most pure spirit, invisible, without body, parts, or passions"
         citations:
           scripture:
@@ -109,6 +112,7 @@ nodes:
     referent: ref.heavens-earth
     attributes:
       - name: Made from
+        topics: [wcf4]
         value: Nothing. God made it "of nothing ... in the space of six days; and all very good"
         citations:
           scripture: { bible: [Heb 11:3, Acts 17:24, Col 1:16] }
@@ -133,6 +137,7 @@ nodes:
     description: The first man, and "a public person, not for himself only, but for his posterity" (WLC 22).
     attributes:
       - name: Covenant of works
+        topics: [wcf7]
         value: '"Life was promised to Adam, and in him to his posterity, upon condition of perfect and personal obedience"'
         citations:
           scripture: { bible: [Gal 3:12, Rom 5:12-20, Gen 2:17] }
@@ -142,6 +147,7 @@ nodes:
               tier: confessional
               url: https://www.opc.org/wcf.html#Chapter_07
       - name: Imputed guilt
+        topics: [wcf6]
         value: '"They being the root of all mankind, the guilt of this sin was imputed ... to all their posterity"'
         citations:
           scripture:
@@ -154,6 +160,7 @@ nodes:
               tier: confessional
               url: https://www.opc.org/wcf.html#Chapter_06
       - name: Effect of the Fall
+        topics: [wcf6]
         value: '"Wholly defiled in all the faculties and parts of soul and body"'
         citations:
           scripture: { bible: [Gen 6:5, Jer 17:9, Rom 3:10-19] }

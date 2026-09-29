@@ -52,42 +52,92 @@ export function edgeLabel(t: Tradition, e: Edge) {
 const QUANT = { some: "some", all: "every", kind: "" } as const;
 
 export const kindNodeId = (categoryId: string) => `kind:${categoryId}`;
+export const categoryNodeId = (categoryId: string) => `cat:${categoryId}`;
 
-export function modelElements(t: Tradition, visible: Set<string>, minTier: number): ElementDefinition[] {
+/**
+ * How category membership is drawn in the claims view:
+ * containers: group categories as boxes around their members.
+ * nodes: every category on a member's path is its own node, with "is a" edges (nothing is implicit).
+ * color: node color only.
+ */
+export type Grouping = "containers" | "nodes" | "color";
+
+export function modelElements(
+  t: Tradition,
+  visible: Set<string>,
+  minTier: number,
+  grouping: Grouping = "containers",
+  /** When set (topic focus), only these edges are drawn. */
+  edgeFilter?: Set<string>,
+): ElementDefinition[] {
   const { meta, model } = t;
   const cats = categoryIndex(meta);
   const colors = groupColors(meta);
+  const colorOf = (cid: string) => colors.get(groupOf(meta, cid) ?? "") ?? "#94a3b8";
   const usedGroups = new Set<string>();
+  const usedCats = new Set<string>();
   const place = (categoryId: string) => {
-    for (const c of categoryPath(meta, categoryId)) if (c.group) usedGroups.add(c.id);
+    for (const c of categoryPath(meta, categoryId)) {
+      if (c.group) usedGroups.add(c.id);
+      usedCats.add(c.id);
+    }
     const group = groupOf(meta, categoryId);
-    return { parent: group ? `grp:${group}` : undefined, color: colors.get(group ?? "") ?? "#94a3b8" };
+    return { parent: grouping === "containers" && group ? `grp:${group}` : undefined, color: colorOf(categoryId) };
   };
-  const nodes: ElementDefinition[] = model.nodes
-    .filter((n) => visible.has(n.id))
-    .map((n) => ({
-      data: { id: n.id, label: n.label, ...place(n.category) },
-      classes: ["individual", bestTier(meta, n.citations) > minTier ? "faded" : ""].join(" "),
-    }));
-  const visibleEdges = model.edges.filter((e) => visible.has(e.source) && (!e.target || visible.has(e.target)));
-  const kinds: ElementDefinition[] = [...new Set(visibleEdges.flatMap((e) => (e.targetKind ? [e.targetKind] : [])))].map(
-    (cid) => ({
-      data: { id: kindNodeId(cid), label: `«${cats.get(cid)?.label ?? cid}»`, ...place(cid) },
-      classes: "kind",
-    }),
+  const shown = model.nodes.filter((n) => visible.has(n.id));
+  const nodes: ElementDefinition[] = shown.map((n) => ({
+    data: { id: n.id, label: n.label, ...place(n.category) },
+    classes: ["individual", bestTier(meta, n.citations) > minTier ? "faded" : ""].join(" "),
+  }));
+  const visibleEdges = model.edges.filter(
+    (e) => visible.has(e.source) && (!e.target || visible.has(e.target)) && (!edgeFilter || edgeFilter.has(e.id)),
   );
-  const groups: ElementDefinition[] = [...usedGroups].map((gid) => {
-    const parent = groupOf(meta, cats.get(gid)?.parent ?? "");
-    return {
-      data: { id: `grp:${gid}`, label: cats.get(gid)!.label, parent: parent ? `grp:${parent}` : undefined, color: colors.get(gid) },
-      classes: "group",
-    };
-  });
+  const kindIds = [...new Set(visibleEdges.flatMap((e) => (e.targetKind ? [e.targetKind] : [])))];
+  kindIds.forEach(place);
+  // With category nodes, a «kind» target is simply that category's node.
+  const kindTarget = (cid: string) => (grouping === "nodes" ? categoryNodeId(cid) : kindNodeId(cid));
+  const kinds: ElementDefinition[] =
+    grouping === "nodes"
+      ? []
+      : kindIds.map((cid) => ({
+          data: { id: kindNodeId(cid), label: `«${cats.get(cid)?.label ?? cid}»`, ...place(cid) },
+          classes: "kind",
+        }));
+  const groups: ElementDefinition[] =
+    grouping !== "containers"
+      ? []
+      : [...usedGroups].map((gid) => {
+          const parent = groupOf(meta, cats.get(gid)?.parent ?? "");
+          return {
+            data: { id: `grp:${gid}`, label: cats.get(gid)!.label, parent: parent ? `grp:${parent}` : undefined, color: colors.get(gid) },
+            classes: "group",
+          };
+        });
+  const categoryNodes: ElementDefinition[] = [];
+  if (grouping === "nodes") {
+    for (const cid of usedCats) {
+      const c = cats.get(cid)!;
+      categoryNodes.push({ data: { id: categoryNodeId(cid), label: c.label, color: colorOf(cid) }, classes: "category-node" });
+      if (c.parent) categoryNodes.push({ data: { id: `isa:${cid}`, source: categoryNodeId(cid), target: categoryNodeId(c.parent), label: "is a" }, classes: "isa" });
+    }
+    for (const n of shown)
+      categoryNodes.push({ data: { id: `inst:${n.category}:${n.id}`, source: n.id, target: categoryNodeId(n.category), label: "is a" }, classes: "isa inst" });
+  }
   const edges: ElementDefinition[] = visibleEdges.map((e) => ({
-    data: { id: e.id, source: e.source, target: e.target ?? kindNodeId(e.targetKind!), label: edgeLabel(t, e) },
+    data: { id: e.id, source: e.source, target: e.target ?? kindTarget(e.targetKind!), label: edgeLabel(t, e) },
     classes: [e.targetKind ? "to-kind" : "", bestTier(meta, e.citations) > minTier ? "faded" : ""].join(" "),
   }));
-  return [...groups, ...nodes, ...kinds, ...edges];
+  return [...groups, ...nodes, ...kinds, ...categoryNodes, ...edges];
+}
+
+/**
+ * The graph element that stands for a category in the current rendering, or its nearest drawn ancestor.
+ * Used to anchor crosswalk lines.
+ */
+export function categoryAnchorIds(meta: Metamodel, categoryId: string, view: View, grouping: Grouping): string[] {
+  const path = categoryPath(meta, categoryId).reverse(); // self first, then ancestors
+  if (view === "metamodel" || grouping === "nodes") return path.map((c) => categoryNodeId(c.id));
+  return path.flatMap((c) => [kindNodeId(c.id), ...(grouping === "containers" && c.group ? [`grp:${c.id}`] : [])]);
 }
 
 export function metamodelElements({ meta }: Tradition): ElementDefinition[] {

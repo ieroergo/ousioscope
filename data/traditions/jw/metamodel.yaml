@@ -7,6 +7,82 @@ tradition:
   tiers:
     - { id: watch-tower, label: "Watch Tower publication (jw.org, Watchtower, books)" }
     - { id: reference, label: "Reference work quoted by Watch Tower" }
+  hermeneutic:
+    summary: >-
+      The Bible explains itself, and Christ's appointed "faithful and discreet slave" (the Governing Body)
+      provides "food at the proper time". It is "neither inspired nor infallible", so understandings can be
+      clarified.
+    citations:
+      scripture: { bible: [Matt 24:45] }
+      authority:
+        - source: 'The Watchtower, "Who Is Leading God''s People Today?"'
+          ref: w17 February pp. 23-28, par. 10-12
+          tier: watch-tower
+          url: https://wol.jw.org/en/wol/d/r1/lp-e/2017283
+          quote: The Governing Body is neither inspired nor infallible. Therefore, it can err in doctrinal matters or in organizational direction.
+  allowedDomains: [jw.org, wol.jw.org]
+
+# The tradition's own outline of teaching, in its own words. Data is organized by these topics:
+# every relationship type declares its topics, and edges inherit them.
+topics:
+  - { id: god, label: "God", registry: [topic.god, topic.godhead], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: bible, label: "Bible", registry: [topic.scripture], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: jesus, label: "Jesus", registry: [topic.christ, topic.incarnation], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: kingdom, label: "The Kingdom of God", registry: [topic.last-things], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: salvation, label: "Salvation", registry: [topic.salvation, topic.atonement], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: heaven, label: "Heaven", registry: [topic.afterlife, topic.angels], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: earth, label: "Earth", registry: [topic.last-things, topic.afterlife], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: evil, label: "Evil and suffering", registry: [topic.fall], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: death, label: "Death", registry: [topic.afterlife, topic.resurrection, topic.humanity], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: family, label: "Family", registry: [topic.family], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: worship, label: "Our worship", registry: [topic.worship], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: organization, label: "Our organization", registry: [topic.church], source: { source: "What Do Jehovah's Witnesses Believe? (jw.org)", ref: "basic beliefs", tier: watch-tower, url: "https://www.jw.org/en/jehovahs-witnesses/faq/jehovah-witness-beliefs/" } }
+  - { id: holy-spirit, label: "The holy spirit: God's active force", registry: [topic.holy-spirit], inOutline: false, source: { source: "What Is the Holy Spirit? (jw.org)", ref: "Bible Questions Answered", tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/" } }
+  - { id: soul, label: "The soul", registry: [topic.humanity], inOutline: false, source: { source: "What Is the Soul? (jw.org)", ref: "Bible Questions Answered", tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/" } }
+  - { id: creation, label: "Creation through God's firstborn Son", registry: [topic.creation], inOutline: false, source: { source: "Why Is Jesus Called the Son of God? (jw.org)", ref: "Bible Questions Answered", tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/" } }
+stances:
+  - debate: debate.trinity
+    stance: rejects
+    summary: Jehovah alone is Almighty God. "There is no Scriptural basis for the Trinity doctrine."
+    citations:
+      scripture: { bible: [Deut 6:4, John 17:3] }
+      authority:
+        - { source: Is God a Trinity? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/trinity/", quote: "the God of the Bible is never described as being part of a Trinity" }
+  - debate: debate.son-created
+    stance: affirms
+    summary: Jesus is God's first creation, the only one created directly by God.
+    citations:
+      scripture: { bible: [Col 1:15, Rev 3:14] }
+      authority:
+        - { source: Why Is Jesus Called the Son of God? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/", quote: "God created Jesus before he created anything else." }
+  - debate: debate.immortal-soul
+    stance: rejects
+    summary: The soul is the whole living person, and it dies.
+    citations:
+      scripture: { bible: [Ezek 18:4] }
+      authority:
+        - { source: What Is the Soul? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/", quote: "The soul, then, is the entire creature, not something inside that survives the death of the body." }
+  - debate: debate.inherited-guilt
+    stance: reframes
+    summary: Descendants inherit a sinful condition, like a genetic defect, but "God does not blame us for what Adam and Eve did".
+    citations:
+      scripture: { bible: [Rom 5:12, Ps 103:14] }
+      authority:
+        - { source: What Was the Original Sin? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/original-sin/", quote: "Adam and Eve passed on their sinful condition to all their descendants." }
+  - debate: debate.crucifixion
+    stance: reframes
+    summary: Jesus died by execution, but on an upright stake, not a cross.
+    citations:
+      scripture: { bible: [John 19:17] }
+      authority:
+        - { source: Did Jesus Die on a Cross? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/did-jesus-die-on-cross/", quote: "the Bible provides evidence that Jesus died, not on a cross, but on an upright stake." }
+  - debate: debate.bodily-resurrection
+    stance: rejects
+    summary: Jesus was raised as a spirit, not with his flesh-and-blood body.
+    citations:
+      scripture: { bible: [1 Pet 3:18] }
+      authority:
+        - { source: "After Jesus' Resurrection, Was His Body Flesh or Spirit? (jw.org)", tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/jesus-body/", quote: "Jesus' own words showed that he would not be resurrected with his flesh-and-blood body." }
 
 # Categories use the vocabulary of Watch Tower publications on jw.org.
 categories:
@@ -88,6 +164,7 @@ relationships:
     definition: Brings a creature into existence. Jesus is "the only one created directly by" God.
     domain: [AlmightyGod]
     range: [Creation]
+    topics: [creation]
     citations:
       scripture: { bible: [Col 1:15, Rev 3:14, Rev 4:11] }
       authority:
@@ -101,6 +178,7 @@ relationships:
     definition: 'Jesus, as God''s "master worker", carries out God''s design ("like that of an architect working with a builder").'
     domain: [SpiritCreature]
     range: [Creation]
+    topics: [creation, jesus]
     citations:
       scripture: { bible: [Prov 8:30, Col 1:16] }
       authority:
@@ -114,6 +192,7 @@ relationships:
     definition: God sends out his spirit "by projecting his energy to any place to accomplish his will".
     domain: [AlmightyGod]
     range: [ActiveForce]
+    topics: [holy-spirit]
     citations:
       scripture: { bible: [Ps 104:30, Ps 139:7] }
       authority:
@@ -127,6 +206,7 @@ relationships:
     definition: God's power in action comes upon Mary so that she conceives.
     domain: [ActiveForce]
     range: [Soul]
+    topics: [holy-spirit, jesus]
     citations:
       scripture: { bible: [{ ref: Luke 1:35, highlight: "power of the Most High will overshadow you" }, Matt 1:18] }
       authority:
@@ -140,6 +220,7 @@ relationships:
     definition: God moves his Son's life from heaven to Mary's womb.
     domain: [AlmightyGod]
     range: [SpiritCreature]
+    topics: [jesus]
     citations:
       scripture: { bible: [{ ref: Luke 1:35, highlight: "power of the Most High will overshadow you" }, Heb 10:5] }
       authority:
@@ -153,6 +234,7 @@ relationships:
     definition: A change of state. The prehuman Son "was born as a human on earth", then was "made alive in the spirit".
     domain: [SpiritCreature]
     range: [Soul, SpiritCreature]
+    topics: [jesus]
     citations:
       scripture: { bible: [John 6:38, 1 Pet 3:18] }
       authority:
@@ -166,6 +248,7 @@ relationships:
     definition: Mary gives birth to Jesus as a perfect human.
     domain: [Soul]
     range: [SpiritCreature]
+    topics: [jesus]
     citations:
       scripture: { bible: [Isa 7:14, Matt 1:23, Luke 1:31] }
       authority:
@@ -180,6 +263,7 @@ relationships:
     definition: The first woman was made from the first man.
     domain: [Soul]
     range: [Soul]
+    topics: [creation, soul]
     citations:
       scripture: { bible: [Gen 2:21-22] }
       authority:

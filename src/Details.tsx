@@ -1,8 +1,12 @@
 import type { ReactNode } from "react";
 import { categoryColor } from "./graph";
 import { categoryPath, describeAxiom, describeEdge, isA, versesCited } from "./ontology";
+import { MATCH_LABEL, type CrosswalkLink } from "./crosswalk";
 import { ScriptureList, type ScriptureCtx } from "./ScripturePanel";
-import type { Axiom, Citations as CitationsT, Edge, OriginalEntry, Referent, ScriptureStore, Tradition } from "./schema";
+import type { ClaimTarget } from "./validator/claim";
+import { ValidateClaim } from "./validator/ValidatePanel";
+import type { Axiom, Citations as CitationsT, Edge, OriginalEntry, Referent, RegistryTopic, ScriptureStore, Tradition } from "./schema";
+import { edgeTopicIds, KIND_LABEL, topicCoverage } from "./topics";
 import type { Selection, Side } from "./selection";
 
 export interface Ctx {
@@ -13,6 +17,10 @@ export interface Ctx {
   stores: Record<string, ScriptureStore>;
   original: Map<string, OriginalEntry>;
   otherVerses: Set<string>;
+  /** Crosswalk links for the current pair, oriented left → right (empty in single mode). */
+  crosswalks: CrosswalkLink[];
+  /** Shared topic registry (doctrines, salvation, life, debates). */
+  topics: RegistryTopic[];
   onSelect: (s: Selection) => void;
 }
 
@@ -107,6 +115,30 @@ function CategoryPath({ categoryId, ctx }: { categoryId: string; ctx: Ctx }) {
   );
 }
 
+const Validate = ({ ctx, target, compact }: { ctx: Ctx; target: ClaimTarget; compact?: boolean }) => (
+  <ValidateClaim t={ctx.t} target={target} stores={ctx.stores} original={ctx.original} topics={ctx.topics} compact={compact} />
+);
+
+/** Chips for the tradition's own outline topics an element is filed under; clicking focuses that topic. */
+function TopicChips({ ids, ctx }: { ids?: string[]; ctx: Ctx }) {
+  const items = ctx.t.meta.topics.filter((x) => ids?.includes(x.id));
+  if (!items.length) return null;
+  return (
+    <div className="topic-chips">
+      {items.map((it) => (
+        <button
+          key={it.id}
+          className="topic-chip"
+          title={`${it.source.source}, ${it.source.ref ?? ""}`}
+          onClick={() => ctx.onSelect({ kind: "topic", id: it.registry[0] })}
+        >
+          {it.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 const Link = ({ onClick, children, className = "" }: { onClick: () => void; children: ReactNode; className?: string }) => (
   <button className={`link ${className}`} onClick={onClick}>
     {children}
@@ -171,6 +203,7 @@ function NodeDetail({ id, ctx, bridged }: { id: string; ctx: Ctx; bridged?: bool
       {bridged && <div className="bridge-note">Same referent as your selection</div>}
       <h3>{n.label}</h3>
       <CategoryPath categoryId={n.category} ctx={ctx} />
+      <TopicChips ids={[...new Set([...edges.flatMap((e) => edgeTopicIds(ctx.t, e.id)), ...(n.attributes ?? []).flatMap((a) => a.topics ?? [])])]} ctx={ctx} />
       {ref && (
         <div className="referent">
           <button className="chip ref-chip" onClick={() => ctx.onSelect({ kind: "referent", id: ref.id })}>
@@ -181,12 +214,15 @@ function NodeDetail({ id, ctx, bridged }: { id: string; ctx: Ctx; bridged?: bool
       )}
       {n.description && <p>{n.description}</p>}
       <Citations c={n.citations} ctx={ctx} />
+      <Validate ctx={ctx} target={{ kind: "node", id: n.id }} />
       {n.attributes?.map((a) => (
         <div key={a.name} className="attribute">
           <div>
             <strong>{a.name}:</strong> {a.value}
           </div>
+          <TopicChips ids={a.topics} ctx={ctx} />
           <Citations c={a.citations} ctx={ctx} />
+          <Validate ctx={ctx} target={{ kind: "attribute", id: n.id, name: a.name }} compact />
         </div>
       ))}
       {edges.length > 0 && (
@@ -215,6 +251,7 @@ function EdgeDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       <h3>
         <EdgeLine e={e} ctx={ctx} />
       </h3>
+      <TopicChips ids={edgeTopicIds(ctx.t, e.id)} ctx={ctx} />
       {e.targetKind && (
         <p className="muted small-note">
           {e.quantifier === "kind"
@@ -226,6 +263,7 @@ function EdgeDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       )}
       {e.note && <p className="note">{e.note}</p>}
       <Citations c={e.citations} ctx={ctx} />
+      <Validate ctx={ctx} target={{ kind: "edge", id: e.id }} />
       {rel && (
         <div className="attribute">
           <strong>Relationship type </strong>
@@ -250,6 +288,7 @@ function AxiomDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       </h3>
       {a.note && <p className="note">{a.note}</p>}
       <Citations c={a.citations} ctx={ctx} />
+      <Validate ctx={ctx} target={{ kind: "axiom", id: a.id }} />
     </div>
   );
 }
@@ -276,6 +315,8 @@ function CategoryDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       <CategoryPath categoryId={id} ctx={ctx} />
       <p>{c.definition}</p>
       <Citations c={c.citations} ctx={ctx} />
+      <Validate ctx={ctx} target={{ kind: "category", id: c.id }} />
+      <CrosswalkList categoryId={id} ctx={ctx} />
       {children.length > 0 && (
         <p>
           <strong>Subcategories: </strong>
@@ -399,6 +440,195 @@ function VerseDetail({ verse, ctx }: { verse: string; ctx: Ctx }) {
   );
 }
 
+const catLabel = (t: Tradition, id?: string) => t.meta.categories.find((c) => c.id === id)?.label ?? id ?? "";
+
+/** Counterparts of a category in the other tradition (curated and derived). */
+function CrosswalkList({ categoryId, ctx }: { categoryId: string; ctx: Ctx }) {
+  const mine = (l: CrosswalkLink) => (ctx.side === "left" ? l.left : l.right);
+  const theirs = (l: CrosswalkLink) => (ctx.side === "left" ? l.right : l.left);
+  const links = ctx.crosswalks.filter((l) => mine(l) === categoryId);
+  if (!links.length) return null;
+  const refName = (id: string) => ctx.referents.find((r) => r.id === id)?.canonical ?? id;
+  return (
+    <>
+      <h4>Crosswalk to {ctx.other.meta.tradition.shortName}</h4>
+      <ul className="rels">
+        {links.map((l) => (
+          <li key={l.id}>
+            <span className={`xw-badge xw-${l.curated ? l.match : "derived"}`}>{l.curated ? MATCH_LABEL[l.match] : "shared referents"}</span>{" "}
+            <Link onClick={() => ctx.onSelect({ kind: "crosswalk", id: l.id })}>
+              {theirs(l) ? catLabel(ctx.other, theirs(l)) : `nothing in ${ctx.other.meta.tradition.shortName}`}
+            </Link>
+            {l.referents.length > 0 && <span className="muted"> · {l.referents.map(refName).join(", ")}</span>}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+const BASIS_LABEL = {
+  tradition: "One tradition addresses the other",
+  scholarly: "Comparative scholarship",
+  editorial: "Editorial reading of both sides' own definitions",
+} as const;
+
+/** Both categories of a crosswalk, each in its own tradition's words, with what they share and where they part. */
+export function CrosswalkDetail({ link, left, right }: { link: CrosswalkLink; left: Ctx; right: Ctx }) {
+  const cw = link.curated;
+  const refName = (id: string) => left.referents.find((r) => r.id === id)?.canonical ?? id;
+  return (
+    <div className="detail crosswalk-detail">
+      <div className="bridge-note muted">Crosswalk</div>
+      <h3>
+        {link.left ? catLabel(left.t, link.left) : <em className="muted">no {left.t.meta.tradition.shortName} counterpart</em>}{" "}
+        <span className="xw-arrow">⟷</span>{" "}
+        {link.right ? catLabel(right.t, link.right) : <em className="muted">no {right.t.meta.tradition.shortName} counterpart</em>}
+      </h3>
+      <div className="xw-meta">
+        <span className={`xw-badge xw-${cw ? link.match : "derived"}`}>{cw ? MATCH_LABEL[link.match] : "derived from shared referents"}</span>
+        {cw && <span className="muted small">{BASIS_LABEL[cw.basis]}</span>}
+      </div>
+      {cw && <p>{cw.note}</p>}
+      {cw?.differsOn && (
+        <div className="xw-differs">
+          <strong>Where they part ways</strong>
+          <p>{cw.differsOn}</p>
+        </div>
+      )}
+      {link.referents.length > 0 && (
+        <p>
+          <strong>Shared referents: </strong>
+          {link.referents.map((r, i) => (
+            <span key={r}>
+              {i > 0 && ", "}
+              <Link onClick={() => left.onSelect({ kind: "referent", id: r })}>{refName(r)}</Link>
+            </span>
+          ))}
+          <span className="muted">. {left.t.meta.tradition.shortName} places them in the first category, {right.t.meta.tradition.shortName} in the second.</span>
+        </p>
+      )}
+      {cw && cw.sources.length > 0 && (
+        <>
+          <h4>Sources for this crosswalk</h4>
+          {cw.sources.map((a, i) => (
+            <div key={i} className="authority">
+              <span className="source">
+                {a.url ? (
+                  <a href={a.url} target="_blank" rel="noreferrer">
+                    {a.source}
+                  </a>
+                ) : (
+                  a.source
+                )}
+                {a.ref && <span className="muted">, {a.ref}</span>}
+              </span>
+              {a.quote && <blockquote>{a.quote}</blockquote>}
+            </div>
+          ))}
+        </>
+      )}
+      <div className="xw-sides">
+        {link.left && (
+          <div className="xw-side">
+            <div className="xw-side-head">{left.t.meta.tradition.shortName}</div>
+            <CategoryDetail id={link.left} ctx={left} />
+          </div>
+        )}
+        {link.right && (
+          <div className="xw-side">
+            <div className="xw-side-head">{right.t.meta.tradition.shortName}</div>
+            <CategoryDetail id={link.right} ctx={right} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const STANCE_LABEL = { affirms: "Affirms", rejects: "Rejects", condemns: "Condemns as heresy", reframes: "Reframes", none: "No stated position" } as const;
+
+/** One registry topic as this tradition treats it: its own outline items, its stance, and the modeled claims. */
+function TopicDetail({ id, ctx }: { id: string; ctx: Ctx }) {
+  const topic = ctx.topics.find((x) => x.id === id);
+  if (!topic) return null;
+  const name = ctx.t.meta.tradition.shortName;
+  const cov = topicCoverage(ctx.t, id);
+  const { model } = ctx.t;
+  const nodeLabel = (nid: string) => model.nodes.find((n) => n.id === nid)?.label ?? nid;
+  return (
+    <div className="detail">
+      <div className="bridge-note muted">{KIND_LABEL[topic.kind]}</div>
+      <h3>{topic.label}</h3>
+      {topic.known && <p className="muted small-note">Known as: {topic.known}</p>}
+      {cov.stance && (
+        <div className={`stance stance-${cov.stance.stance}`}>
+          <div>
+            <span className="stance-badge">{STANCE_LABEL[cov.stance.stance]}</span> <strong>{name}</strong>
+          </div>
+          <p>{cov.stance.summary}</p>
+          {cov.stance.citations && <Citations c={cov.stance.citations} ctx={ctx} />}
+          {cov.stance.citations && <Validate ctx={ctx} target={{ kind: "stance", id }} />}
+        </div>
+      )}
+      {topic.kind === "debate" && !cov.stance && <p className="muted">No stance recorded for {name} yet.</p>}
+      {cov.items.length > 0 && (
+        <>
+          <h4>In {name}'s own outline</h4>
+          <ul className="rels">
+            {cov.items.map((it) => (
+              <li key={it.id}>
+                <strong>{it.label}</strong>{" "}
+                <span className="muted">
+                  ·{" "}
+                  {it.source.url ? (
+                    <a href={it.source.url} target="_blank" rel="noreferrer">
+                      {it.source.source}
+                      {it.source.ref ? `, ${it.source.ref}` : ""}
+                    </a>
+                  ) : (
+                    `${it.source.source}${it.source.ref ? `, ${it.source.ref}` : ""}`
+                  )}
+                  {!it.inOutline && " · covered by the model, not a headline outline point"}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {topic.kind !== "debate" && !cov.items.length && <p className="muted">Not a topic in {name}'s outline.</p>}
+      {(cov.edges.size > 0 || cov.attributes.length > 0 || cov.axioms.size > 0) && (
+        <>
+          <h4>Modeled claims</h4>
+          <ul className="rels">
+            {model.edges
+              .filter((e) => cov.edges.has(e.id))
+              .map((e) => (
+                <li key={e.id}>
+                  <EdgeLine e={e} ctx={ctx} />
+                </li>
+              ))}
+            {ctx.t.meta.axioms
+              .filter((a) => cov.axioms.has(a.id))
+              .map((a) => (
+                <li key={a.id}>
+                  <AxiomLine a={a} ctx={ctx} />
+                </li>
+              ))}
+            {cov.attributes.map((a) => (
+              <li key={`${a.node}:${a.name}`}>
+                <Link onClick={() => ctx.onSelect({ side: ctx.side, kind: "node", id: a.node })}>{nodeLabel(a.node)}</Link>
+                <span className="muted">: {a.name}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {cov.status === "outline" && <p className="gap-note">Named in {name}'s outline, but not modeled yet.</p>}
+    </div>
+  );
+}
+
 export function Sources({ ctx, attribution }: { ctx: Ctx; attribution: string[] }) {
   const { scripture } = ctx.t.meta.tradition;
   const stores = [...new Set([scripture.bible, scripture.other])].map((id) => ctx.stores[id]).filter(Boolean);
@@ -421,6 +651,7 @@ export function Details({ sel, ctx, referent }: { sel: Selection | null; ctx: Ct
   const name = ctx.t.meta.tradition.shortName;
   if (!sel) return <p className="muted placeholder">Click a node, relationship, or category in the {name} graph.</p>;
   if (sel.kind === "verse") return <VerseDetail verse={sel.id} ctx={ctx} />;
+  if (sel.kind === "topic") return <TopicDetail id={sel.id} ctx={ctx} />;
   if (sel.side === ctx.side) {
     if (sel.kind === "node") return <NodeDetail id={sel.id} ctx={ctx} />;
     if (sel.kind === "edge") return <EdgeDetail id={sel.id} ctx={ctx} />;

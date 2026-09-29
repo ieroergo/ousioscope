@@ -7,6 +7,7 @@ nodes:
     description: '"The only true God". The Father, the Creator and Source of all life.'
     attributes:
       - name: Trinity?
+        topics: [god]
         value: No; "God is only one"
         citations:
           scripture: { bible: [Deut 6:4, Ps 83:18, John 17:3, Gal 3:20] }
@@ -29,6 +30,7 @@ nodes:
     description: God's firstborn Son and first creation. He lived in heaven before becoming human, and after his resurrection he is again a spirit creature.
     attributes:
       - name: Heavenly name
+        topics: [jesus]
         value: '"Michael ... is evidently a name given to Jesus before and after his life on earth"'
         citations:
           scripture: { bible: [Jude 1:9, 1 Thess 4:16, Rev 12:7, Dan 12:1] }
@@ -37,6 +39,7 @@ nodes:
               tier: watch-tower
               url: https://www.jw.org/en/bible-teachings/questions/archangel-michael/
       - name: Equal to Almighty God?
+        topics: [jesus, god]
         value: No; "The Father is greater than I am"
         citations:
           scripture: { bible: [John 14:28, Phil 2:9] }
@@ -46,6 +49,7 @@ nodes:
               url: https://www.jw.org/en/bible-teachings/questions/is-jesus-almighty/
               quote: Jesus never claimed to be on the same level as Almighty God.
       - name: '"Son of God" means'
+        topics: [jesus]
         value: God is the Creator or Source of Jesus' life; "the Bible does not teach that God literally fathered a child"
         citations:
           scripture: { bible: [John 1:49, Ps 36:9, Rev 4:11] }
@@ -54,6 +58,7 @@ nodes:
               tier: watch-tower
               url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
       - name: Resurrection
+        topics: [jesus, death]
         value: '"Put to death in the flesh but made alive in the spirit". Not raised with his flesh-and-blood body; afterward he took on human forms temporarily'
         citations:
           scripture: { bible: [{ ref: 1 Pet 3:18, highlight: "made alive in the spirit" }, 1 Cor 15:45, Heb 9:11-12, John 20:19] }
@@ -76,6 +81,7 @@ nodes:
     referent: ref.holy-spirit
     attributes:
       - name: Person?
+        topics: [holy-spirit]
         value: No; "the Bible shows that the holy spirit is not a person"
         citations:
           scripture:
@@ -129,6 +135,7 @@ nodes:
     description: The first human. He "was not given a soul—he became a living soul, or person".
     attributes:
       - name: Original sin
+        topics: [evil]
         value: Eating from "the tree of the knowledge of good and bad", which rejected God's moral authority
         citations:
           scripture: { bible: [Gen 2:16-17, Gen 3:6, Rom 5:19] }
@@ -138,6 +145,7 @@ nodes:
               url: https://www.jw.org/en/bible-teachings/questions/original-sin/
               quote: By eating from the tree, Adam and Eve took matters into their own hands, choosing to decide for themselves what is right and wrong.
       - name: What descendants inherit
+        topics: [evil]
         value: Their "sinful condition", like "genetic defects". "God does not blame us for what Adam and Eve did"
         citations:
           scripture: { bible: [Rom 5:12, Ps 51:5, Ps 103:14] }
@@ -147,6 +155,7 @@ nodes:
               url: https://www.jw.org/en/bible-teachings/questions/original-sin/
               quote: Adam and Eve passed on their sinful condition to all their descendants. This is similar to the way human parents pass on genetic defects.
       - name: At death
+        topics: [death, soul]
         value: He died; the soul is mortal and does not survive the body
         citations:
           scripture: { bible: [Gen 3:19, Ezek 18:4] }

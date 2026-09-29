@@ -7,6 +7,7 @@ nodes:
     description: The One God, beyond body, form, and limit.
     attributes:
       - name: Body?
+        topics: [tawhid]
         value: No; "He is not a body nor has He any form"
         citations:
           scripture: { bible: [Deut 4:15-16], other: [Quran 42:11, Quran 6:103] }
@@ -21,6 +22,7 @@ nodes:
               url: https://thaqalayn.net/hadith/1/3/11/4
               quote: What can be more blasphemous and scandalous than to describe the Creator of all things by means of body, form, type of creation, limitations, limbs and organs.
       - name: Has a son?
+        topics: [tawhid]
         value: No
         citations:
           scripture: { bible: none-cited, other: [Quran 112:3, Quran 19:35, Quran 4:171] }
@@ -42,6 +44,7 @@ nodes:
     description: An apostle of Allah, "His Word that He cast toward Mary and a spirit from Him", created like Adam.
     attributes:
       - name: Crucified?
+        topics: [nubuwwah]
         value: No; he was raised to Allah
         citations:
           scripture: { bible: none-cited, other: [Quran 4:157-158] }
@@ -65,6 +68,7 @@ nodes:
       al-Kafi names "the Holy Spirit" as one of five spirits placed in the prophets and Imams.
     attributes:
       - name: Holy Spirit (Ruh al-Qudus)
+        topics: [spirit, imamah]
         value: One of "five spirits" in the prophets and Imams; "the Holy Spirit does not sleep or become unaware"
         citations:
           scripture: { bible: none-cited, other: [Quran 2:87, Quran 2:253] }
@@ -75,6 +79,7 @@ nodes:
               url: https://thaqalayn.net/hadith/1/4/55/3
               quote: When the prophet passes away the Holy Spirit transfers and comes over to the Imam. The Holy Spirit does not sleep or become unaware.
       - name: Same as Jibril?
+        topics: [spirit]
         value: No; "greater than Jibril and Mika'il" and "from the realm of the angels"
         citations:
           scripture: { bible: none-cited, other: [Quran 17:85] }
@@ -115,6 +120,7 @@ nodes:
     referent: ref.heavens-earth
     attributes:
       - name: Made from
+        topics: [creation]
         value: Nothing; an invention "not from a thing"
         citations:
           scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
@@ -139,6 +145,7 @@ nodes:
     description: The first human, whom Allah chose and placed on earth as a vicegerent.
     attributes:
       - name: Created from
+        topics: [humanity]
         value: Dust, then Allah said "Be"; the angels were commanded to prostrate to him
         citations:
           scripture: { bible: [{ ref: Gen 2:7, highlight: "formed man of the dust of the ground" }], other: [Quran 3:59, Quran 7:11, Quran 38:71-72] }
@@ -147,6 +154,7 @@ nodes:
               ref: Al Imran 3:59
               tier: quran
       - name: Slip and repentance
+        topics: [humanity, adl]
         value: Adam disobeyed, then his Lord chose him and accepted his repentance
         citations:
           scripture: { bible: [Gen 3:6], other: [Quran 2:37, Quran 20:121-122, Quran 3:33] }

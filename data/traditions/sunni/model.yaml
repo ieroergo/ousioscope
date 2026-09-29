@@ -7,6 +7,7 @@ nodes:
     description: The One God. He "neither begets nor is born".
     attributes:
       - name: Has a son?
+        topics: [allah]
         value: No. "It is not [befitting] for Allah to take a son"
         citations:
           scripture: { bible: none-cited, other: [{ ref: Quran 19:35, highlight: "It is not [befitting] for Allah to take a son" }, Quran 112:3, Quran 4:171] }
@@ -33,6 +34,7 @@ nodes:
     description: A messenger and servant of Allah, created by the word "Be" without a father, like Adam.
     attributes:
       - name: '"His Word" and "a spirit from Him"'
+        topics: [messengers]
         value: He was created by Allah's word "Be"; "a spirit from created by Him"
         citations:
           scripture: { bible: none-cited, other: [Quran 4:171, Quran 3:45] }
@@ -43,6 +45,7 @@ nodes:
               url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
               quote: '`Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be'''
       - name: Crucified?
+        topics: [messengers]
         value: No. "They did not kill him, nor did they crucify him; but [another] was made to resemble him to them"
         citations:
           scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him; but [another] was made to resemble him to them" }] }
@@ -56,6 +59,7 @@ nodes:
               url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
               quote: the resemblance of `Isa was cast over that man while `Isa ascended to heaven
       - name: Return
+        topics: [last-day]
         value: He "will shortly descend among you as a just ruler"
         citations:
           scripture: { bible: none-cited, other: [Quran 4:159] }
@@ -121,6 +125,7 @@ nodes:
     referent: ref.heavens-earth
     attributes:
       - name: Made from
+        topics: [creation]
         value: Nothing; "out of nothing and without precedent"
         citations:
           scripture: { bible: [Gen 1:1], other: [Quran 2:117] }
@@ -145,6 +150,7 @@ nodes:
     description: The first human and father of humankind, placed on earth as a khalifah (successor).
     attributes:
       - name: Created from
+        topics: [adam]
         value: Dust (clay), then Allah said "Be"; angels were commanded to prostrate to him
         citations:
           scripture: { bible: [{ ref: Gen 2:7, highlight: "formed man of the dust of the ground" }], other: [Quran 3:59, Quran 7:11, Quran 38:71-72] }
@@ -160,6 +166,7 @@ nodes:
               url: https://quran.com/7:11/tafsirs/en-tafisr-ibn-kathir
               quote: Allah informs the Children of Adam about the honor of their father
       - name: Slip and repentance
+        topics: [adam]
         value: Adam disobeyed, then repented; "his Lord chose him and turned to him in forgiveness". No inherited guilt is taught
         citations:
           scripture: { bible: [Gen 3:6], other: [Quran 2:37, { ref: Quran 20:122, highlight: "Then his Lord chose him and turned to him in forgiveness" }, Quran 7:23] }
@@ -170,6 +177,7 @@ nodes:
               url: https://quran.com/2:37/tafsirs/en-tafisr-ibn-kathir
               quote: 'They said: "Our Lord! We have wronged ourselves. If You forgive us not, and bestow not upon us Your mercy, we shall certainly be of the losers."'
       - name: Role
+        topics: [adam]
         value: Khalifah on earth, "people reproducing generation after generation"
         citations:
           scripture: { bible: [Gen 1:28], other: [Quran 2:30] }

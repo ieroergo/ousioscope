@@ -5,7 +5,7 @@ export type Side = "left" | "right";
 export type Mark = "selected" | "bridged" | "hit";
 export type Selection =
   | { side: Side; kind: "node" | "edge" | "category" | "rel" | "axiom"; id: string }
-  | { kind: "referent" | "verse"; id: string; side?: undefined };
+  | { kind: "referent" | "verse" | "crosswalk" | "topic"; id: string; side?: undefined };
 
 /** The referent a selection points at, if any (used to bridge to the other tradition). */
 export function selectedReferent(sel: Selection | null, traditions: Record<Side, Tradition>): string | undefined {

@@ -10,6 +10,74 @@ tradition:
     - { id: quran, label: "Qur'an" }
     - { id: sahih-hadith, label: "Sahih hadith (al-Bukhari, Muslim)" }
     - { id: tafsir, label: "Classical tafsir (Ibn Kathir, al-Tabari)" }
+  hermeneutic:
+    summary: >-
+      The Qur'an explains itself: unclear verses (mutashabihat) are understood by referring them to the clear
+      foundational verses (muhkamat), together with the Sunnah and the explanations of the Companions.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:7] }
+      authority:
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 3:7
+          tier: tafsir
+          url: https://quran.com/3:7/tafsirs/en-tafisr-ibn-kathir
+          quote: So those who refer to the Muhkam Ayat to understand the Mutashabih Ayat, will have acquired the correct guidance
+  allowedDomains: [quran.com, sunnah.com, tanzil.net]
+
+# The tradition's own outline of teaching, in its own words. Data is organized by these topics:
+# every relationship type declares its topics, and edges inherit them.
+topics:
+  - { id: allah, label: "Belief in Allah", registry: [topic.god], source: { source: "Qur'an (six articles of faith)", ref: "Quran 4:136", tier: quran, url: "https://quran.com/4:136" } }
+  - { id: angels, label: "Belief in His angels", registry: [topic.angels], source: { source: "Qur'an (six articles of faith)", ref: "Quran 4:136", tier: quran, url: "https://quran.com/4:136" } }
+  - { id: books, label: "Belief in His books", registry: [topic.scripture], source: { source: "Qur'an (six articles of faith)", ref: "Quran 4:136", tier: quran, url: "https://quran.com/4:136" } }
+  - { id: messengers, label: "Belief in His messengers", registry: [topic.prophethood, topic.christ], source: { source: "Qur'an (six articles of faith)", ref: "Quran 4:136", tier: quran, url: "https://quran.com/4:136" } }
+  - { id: last-day, label: "Belief in the Last Day", registry: [topic.afterlife, topic.resurrection, topic.last-things], source: { source: "Qur'an (six articles of faith)", ref: "Quran 4:136", tier: quran, url: "https://quran.com/4:136" } }
+  - { id: qadar, label: "Belief in the divine decree (qadar)", registry: [topic.predestination], source: { source: "Qur'an (six articles of faith)", ref: "Quran 54:49", tier: quran, url: "https://quran.com/54:49" } }
+  - { id: creation, label: "Creation by the command “Be”", registry: [topic.creation], inOutline: false, source: { source: "Qur'an", ref: "Quran 2:117", tier: quran, url: "https://quran.com/2:117" } }
+  - { id: adam, label: "Adam and the human being", registry: [topic.humanity, topic.fall], inOutline: false, source: { source: "Qur'an", ref: "Quran 2:30-37", tier: quran, url: "https://quran.com/2:30" } }
+stances:
+  - debate: debate.trinity
+    stance: rejects
+    summary: 'Allah is One. The Qur''an forbids saying "Three".'
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:171, Quran 112:1-4] }
+      authority:
+        - { source: "Qur'an", ref: An-Nisa 4:171, tier: quran }
+  - debate: debate.son-created
+    stance: affirms
+    summary: Isa is a created servant and messenger of Allah, created like Adam.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59, Quran 4:171] }
+      authority:
+        - { source: "Ibn Kathir, Tafsir (abridged)", ref: on 4:171, tier: tafsir, url: "https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir", quote: "`Isa is only one of Allah's servants and one of His creatures." }
+  - debate: debate.two-natures
+    stance: rejects
+    summary: Isa is a human messenger, not divine.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 5:75] }
+      authority:
+        - { source: "Ibn Kathir, Tafsir (abridged)", ref: on 5:75, tier: tafsir, url: "https://quran.com/5:75/tafsirs/en-tafisr-ibn-kathir", quote: "`Isa is just like the previous Prophets, and he is one of the servants of Allah and one of His honorable Messengers." }
+  - debate: debate.ex-nihilo
+    stance: affirms
+    summary: Allah created the heavens and the earth "out of nothing and without precedent".
+    citations:
+      scripture: { bible: none-cited, other: [Quran 2:117] }
+      authority:
+        - { source: "Ibn Kathir, Tafsir (abridged), quoting Ibn Jarir al-Tabari", ref: on 2:117, tier: tafsir, url: "https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir", quote: "Allah stated that He created the heavens and earth out of nothing and without precedent." }
+  - debate: debate.inherited-guilt
+    stance: rejects
+    summary: Adam repented and was forgiven, and no soul bears another's burden.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 6:164, Quran 20:122] }
+      authority:
+        - { source: "Qur'an", ref: "Al-An'am 6:164", tier: quran }
+  - debate: debate.crucifixion
+    stance: rejects
+    summary: Isa was neither killed nor crucified. Another was made to resemble him, and Allah raised him up.
+    citations:
+      scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him" }] }
+      authority:
+        - { source: "Qur'an", ref: An-Nisa 4:157, tier: quran }
 
 categories:
   - id: Creator
@@ -97,6 +165,7 @@ relationships:
     definition: Allah brings something into being by His command "Be" (kun).
     domain: [Creator]
     range: [Creation]
+    topics: [creation, allah]
     citations:
       scripture: { bible: [Gen 1:1], other: [Quran 2:117, Quran 3:59] }
       authority:
@@ -109,6 +178,7 @@ relationships:
     definition: Allah sends an angel or a messenger.
     domain: [Creator]
     range: [Angel, Messenger]
+    topics: [messengers, angels]
     citations:
       scripture: { bible: [Luke 1:26], other: [Quran 19:17, Quran 5:75] }
       authority:
@@ -121,6 +191,7 @@ relationships:
     definition: '"We ... supported him with the Pure Spirit" (Ruh al-Qudus), which Ibn Kathir identifies as Jibril.'
     domain: [Angel]
     range: [Messenger]
+    topics: [angels, messengers]
     citations:
       scripture: { bible: none-cited, other: [Quran 2:87] }
       authority:
@@ -135,6 +206,7 @@ relationships:
     definition: A woman conceives and gives birth.
     domain: [Human]
     range: [Human]
+    topics: [messengers]
     citations:
       scripture: { bible: [Luke 1:31], other: [Quran 19:22] }
       authority:
@@ -147,6 +219,7 @@ relationships:
     definition: Allah raises Isa up to Himself.
     domain: [Creator]
     range: [Messenger]
+    topics: [messengers, last-day]
     citations:
       scripture: { bible: none-cited, other: [Quran 4:158] }
       authority:
@@ -160,6 +233,7 @@ relationships:
     definition: '"He created you from one soul and created from it its mate."'
     domain: [Human]
     range: [Human]
+    topics: [adam]
     citations:
       scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
       authority:
@@ -172,6 +246,7 @@ relationships:
     definition: 'Likeness in origin: "the example of Jesus to Allah is like that of Adam".'
     domain: [Messenger]
     range: [Human]
+    topics: [messengers, adam]
     citations:
       scripture: { bible: none-cited, other: [Quran 3:59] }
       authority:

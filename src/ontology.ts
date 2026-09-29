@@ -2,11 +2,13 @@ import { parse } from "yaml";
 import { z } from "zod";
 import { expandRef, findPhrase, flattenPassages } from "./scripture";
 import {
+  Crosswalks,
   Metamodel,
   Model,
   OriginalFile,
   Referents,
   ScriptureStore,
+  TopicRegistry,
   type PassageItem,
   type Axiom,
   type Category,
@@ -113,6 +115,8 @@ export const bestTier = (meta: Metamodel, c: Citations) =>
 export function allCitations(t: Tradition): { owner: string; citations: Citations }[] {
   const out: { owner: string; citations: Citations }[] = [];
   const { meta, model } = t;
+  out.push({ owner: "tradition hermeneutic", citations: meta.tradition.hermeneutic.citations });
+  for (const s of meta.stances) if (s.citations) out.push({ owner: `stance on ${s.debate}`, citations: s.citations });
   for (const c of meta.categories) out.push({ owner: `category ${c.id}`, citations: c.citations });
   for (const r of meta.relationships) out.push({ owner: `relationship ${r.id}`, citations: r.citations });
   for (const a of meta.axioms) out.push({ owner: `axiom ${a.id}`, citations: a.citations });
@@ -165,10 +169,77 @@ export function loadDataset(files: Record<string, string>): { dataset?: Dataset;
     if (store) stores[store.id] = store;
   }
   const original = read("data/scripture/original.yaml", OriginalFile);
-  if (errors.length || !referents || !original) return { errors };
-  const dataset = { referents, traditions, stores, original };
-  errors.push(...validateDataset(dataset));
+  const crosswalks = files["data/crosswalks.yaml"] ? read("data/crosswalks.yaml", Crosswalks)?.crosswalks : [];
+  const topics = read("data/topics.yaml", TopicRegistry)?.topics;
+  if (errors.length || !referents || !original || !crosswalks || !topics) return { errors };
+  const dataset = { referents, traditions, stores, original, crosswalks, topics };
+  errors.push(...validateDataset(dataset), ...validateCrosswalks(dataset), ...validateTopics(dataset));
   return { dataset, errors };
+}
+
+/** Splits "lds:Element" into tradition and category ids. */
+export const splitCategoryRef = (ref: string) => {
+  const [tradition, category] = ref.split(":");
+  return { tradition, category: category as string | undefined };
+};
+
+function validateTopics({ traditions, topics }: Dataset): string[] {
+  const errors: string[] = [];
+  const registry = new Map(topics.map((t) => [t.id, t]));
+  const seenReg = new Set<string>();
+  for (const t of topics) {
+    if (seenReg.has(t.id)) errors.push(`topics.yaml: duplicate topic "${t.id}"`);
+    seenReg.add(t.id);
+  }
+  for (const { meta, model } of traditions) {
+    const tid = meta.tradition.id;
+    const err = (m: string) => errors.push(`[${tid}] ${m}`);
+    const own = new Set<string>();
+    for (const t of meta.topics) {
+      if (own.has(t.id)) err(`duplicate topic "${t.id}"`);
+      own.add(t.id);
+      for (const r of t.registry) if (!registry.has(r)) err(`topic ${t.id}: unknown registry topic "${r}"`);
+      if (!meta.tradition.tiers.some((x) => x.id === t.source.tier)) err(`topic ${t.id}: unknown tier "${t.source.tier}"`);
+    }
+    const check = (what: string, ids?: string[]) => ids?.forEach((x) => !own.has(x) && err(`${what}: unknown topic "${x}"`));
+    meta.relationships.forEach((r) => check(`relationship ${r.id}`, r.topics));
+    meta.categories.forEach((c) => check(`category ${c.id}`, c.topics));
+    model.edges.forEach((e) => check(`edge ${e.id}`, e.topics));
+    model.nodes.forEach((n) => n.attributes?.forEach((a) => check(`node ${n.id} attribute "${a.name}"`, a.topics)));
+    const debates = new Set<string>();
+    for (const s of meta.stances) {
+      const d = registry.get(s.debate);
+      if (!d) err(`stance: unknown debate "${s.debate}"`);
+      else if (d.kind !== "debate") err(`stance: "${s.debate}" is not a debate topic`);
+      if (debates.has(s.debate)) err(`stance: duplicate stance on "${s.debate}"`);
+      debates.add(s.debate);
+      if (s.stance !== "none" && !s.citations) err(`stance on ${s.debate}: "${s.stance}" needs citations`);
+    }
+  }
+  return errors;
+}
+
+function validateCrosswalks({ traditions, crosswalks }: Dataset): string[] {
+  const errors: string[] = [];
+  const byId = new Map(traditions.map((t) => [t.meta.tradition.id, t]));
+  const seen = new Set<string>();
+  for (const cw of crosswalks) {
+    const err = (m: string) => errors.push(`crosswalks.yaml ${cw.id}: ${m}`);
+    if (seen.has(cw.id)) err("duplicate id");
+    seen.add(cw.id);
+    const [a, b] = [splitCategoryRef(cw.a), splitCategoryRef(cw.b)];
+    for (const [side, r] of [["a", a], ["b", b]] as const) {
+      const t = byId.get(r.tradition);
+      if (!t) err(`${side}: unknown tradition "${r.tradition}"`);
+      else if (r.category && !t.meta.categories.some((c) => c.id === r.category))
+        err(`${side}: unknown ${r.tradition} category "${r.category}"`);
+      else if (!r.category && !(side === "b" && cw.match === "none")) err(`${side}: a category is required`);
+    }
+    if (a.tradition === b.tradition) err("a and b must be different traditions");
+    if (cw.match === "none" && b.category) err('match "none" takes a tradition only as b (e.g. "catholic")');
+    if (cw.basis !== "editorial" && !cw.sources.length) err(`basis "${cw.basis}" requires sources`);
+  }
+  return errors;
 }
 
 /** Text of a passage (all verses joined) from a store; undefined if any verse is missing. */

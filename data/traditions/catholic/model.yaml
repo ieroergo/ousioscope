@@ -8,6 +8,7 @@ nodes:
     description: First person of the Trinity; eternally Father by relation to the Son.
     attributes:
       - name: Origin
+        topics: [trinity]
         value: None; "the source and origin of the whole divinity"
         citations:
           scripture: { bible: none-cited }
@@ -33,6 +34,7 @@ nodes:
       Second person of the Trinity. Jesus is this one divine person. There is no separate human person in Christ.
     attributes:
       - name: Number of persons in Christ
+        topics: [christ]
         value: One, the divine person of the Son; "one hypostasis ... one of the Trinity"
         citations:
           scripture: { bible: none-cited }
@@ -43,6 +45,7 @@ nodes:
               url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
               quote: there is but one hypostasis [or person], which is our Lord Jesus Christ, one of the Trinity
       - name: Number of natures in Christ
+        topics: [christ]
         value: Two, divine and human, "without confusion, change, division or separation"
         citations:
           scripture: { bible: none-cited }
@@ -52,6 +55,7 @@ nodes:
               tier: dogma
               url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
       - name: His human soul
+        topics: [christ, man]
         value: A rational human soul with human intellect and will. The divine Word did not replace it
         citations:
           scripture: { bible: [Luke 2:52] }
@@ -65,6 +69,7 @@ nodes:
               ref: DS 149, cited in CCC 471
               tier: ordinary-magisterium
       - name: His human body
+        topics: [christ, man]
         value: A true, finite human body
         citations:
           scripture: { bible: [Heb 10:5] }
@@ -78,6 +83,7 @@ nodes:
               ref: DS 504, cited in CCC 476
               tier: ordinary-magisterium
       - name: Resurrection
+        topics: [rose-again]
         value: >-
           Soul and body, separated in death, were reunited while the divine person stayed united to both.
           The body is the same one, now glorified and "not limited by space and time"
@@ -119,6 +125,7 @@ nodes:
     description: One God. The single divine substance or essence that each of the three persons is.
     attributes:
       - name: Created?
+        topics: [man]
         value: No. Eternal; the Creator gives a beginning to all else
         citations:
           scripture: { bible: [Gen 1:1] }
@@ -128,6 +135,7 @@ nodes:
               tier: ordinary-magisterium
               url: https://www.vatican.va/archive/ENG0015/__P19.HTM
       - name: Body?
+        topics: [god]
         value: No; "God is pure spirit"
         citations:
           scripture: { bible: none-cited }
@@ -162,6 +170,7 @@ nodes:
     description: A created human person, chosen to be the mother of the Son.
     attributes:
       - name: Immaculate Conception
+        topics: [virgin-birth]
         value: Preserved from all stain of original sin from the first moment of her conception
         citations:
           scripture: { bible: [Luke 1:28] }
@@ -171,6 +180,7 @@ nodes:
               tier: dogma
               url: https://www.vatican.va/archive/ENG0015/__P1K.HTM
       - name: Title
+        topics: [virgin-birth]
         value: Theotokos, "Mother of God"
         citations:
           scripture: { bible: [Luke 1:43] }
@@ -194,6 +204,7 @@ nodes:
     referent: ref.heavens-earth
     attributes:
       - name: Made from
+        topics: [creator]
         value: Nothing (ex nihilo). No pre-existent matter
         citations:
           scripture: { bible: [Rom 4:17], other: [2 Macc 7:28] }
@@ -222,6 +233,7 @@ nodes:
     description: The first man, created in the image of God with body and spiritual soul.
     attributes:
       - name: Original state
+        topics: [man, fall]
         value: '"An original ''state of holiness and justice''", a share in divine life'
         citations:
           scripture: { bible: [Gen 2:25] }
@@ -235,6 +247,7 @@ nodes:
               url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
               quote: our first parents, Adam and Eve, were constituted in an original "state of holiness and justice"
       - name: First sin
+        topics: [fall]
         value: A personal sin that "affected the human nature that they would then transmit in a fallen state"
         citations:
           scripture: { bible: [Rom 5:12, Rom 5:19] }

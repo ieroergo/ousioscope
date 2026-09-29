@@ -1,0 +1,83 @@
+# Shared topic registry: neutral names that let traditions' own outlines line up by name (like referents).
+# Each tradition's metamodel lists its OWN outline (in its own words, cited to its own source) and maps each item
+# here via `registry`. Subjects (God the Father, Jesus, Mary, ...) come from data/referents.yaml automatically.
+#
+# kind: doctrine | salvation | life | debate
+# Debates are phrased as neutral propositions; each tradition records its own cited stance on them.
+topics:
+  # --- Doctrine ---
+  - { id: topic.scripture, kind: doctrine, label: "Scripture, revelation & authority" }
+  - { id: topic.god, kind: doctrine, label: "God" }
+  - { id: topic.godhead, kind: doctrine, label: "Trinity / Godhead" }
+  - { id: topic.christ, kind: doctrine, label: "Christ: person and nature" }
+  - { id: topic.incarnation, kind: doctrine, label: "Incarnation & virgin birth" }
+  - { id: topic.holy-spirit, kind: doctrine, label: "Holy Spirit" }
+  - { id: topic.creation, kind: doctrine, label: "Creation" }
+  - { id: topic.providence, kind: doctrine, label: "Providence" }
+  - { id: topic.angels, kind: doctrine, label: "Angels & spirit beings" }
+  - { id: topic.humanity, kind: doctrine, label: "Human nature: soul & body" }
+  - { id: topic.fall, kind: doctrine, label: "The Fall, sin & evil" }
+  - { id: topic.prophethood, kind: doctrine, label: "Prophets & prophethood" }
+  - { id: topic.imamate, kind: doctrine, label: "Imamate" }
+  - { id: topic.predestination, kind: doctrine, label: "Divine decree, justice & free will" }
+  - { id: topic.church, kind: doctrine, label: "Church, community & authority" }
+
+  # --- Salvation ---
+  - { id: topic.atonement, kind: salvation, label: "Atonement & redemption" }
+  - { id: topic.salvation, kind: salvation, label: "Salvation, grace & justification" }
+  - { id: topic.sacraments, kind: salvation, label: "Sacraments & ordinances" }
+  - { id: topic.resurrection, kind: salvation, label: "Resurrection" }
+  - { id: topic.afterlife, kind: salvation, label: "Death, judgment & afterlife" }
+  - { id: topic.last-things, kind: salvation, label: "Kingdom & last things" }
+
+  # --- Life & worship ---
+  - { id: topic.worship, kind: life, label: "Worship" }
+  - { id: topic.ethics, kind: life, label: "Law, conscience & conduct" }
+  - { id: topic.family, kind: life, label: "Marriage & family" }
+  - { id: topic.society, kind: life, label: "Civil government & society" }
+
+  # --- Debates (propositions) ---
+  - id: debate.trinity
+    kind: debate
+    label: "God is one substance in three persons"
+    known: Trinity (Nicene-Constantinopolitan)
+  - id: debate.son-created
+    kind: debate
+    label: "The Son is a created being"
+    known: Arian controversy (Nicaea, 325)
+  - id: debate.two-natures
+    kind: debate
+    label: "Christ is one person in two natures, divine and human"
+    known: Chalcedonian definition (451)
+  - id: debate.theotokos
+    kind: debate
+    label: "Mary is the Mother of God"
+    known: Theotokos (Ephesus, 431)
+  - id: debate.filioque
+    kind: debate
+    label: "The Spirit proceeds from the Father and the Son"
+    known: Filioque
+  - id: debate.ex-nihilo
+    kind: debate
+    label: "God created the world out of nothing"
+    known: Creatio ex nihilo
+  - id: debate.god-embodied
+    kind: debate
+    label: "God has a body"
+    known: Divine corporeality / anthropomorphism
+  - id: debate.immortal-soul
+    kind: debate
+    label: "The human soul survives death"
+    known: Immortality of the soul
+  - id: debate.inherited-guilt
+    kind: debate
+    label: "Adam's guilt is passed on to his descendants"
+    known: Original sin / imputed guilt
+  - id: debate.crucifixion
+    kind: debate
+    label: "Jesus died by crucifixion"
+    known: Crucifixion (cf. Qur'an 4:157)
+  - id: debate.bodily-resurrection
+    kind: debate
+    label: "Jesus rose in the same, tangible body"
+    known: Bodily resurrection of Christ

@@ -10,6 +10,75 @@ tradition:
     - { id: quran, label: "Qur'an" }
     - { id: hadith-sahih, label: "Hadith of the Imams graded sahih (al-Kafi)" }
     - { id: hadith, label: "Hadith of the Imams, other grading (al-Kafi)" }
+    - { id: scholarly-creed, label: "Scholarly creed (marja', e.g. Principles of Faith)" }
+  hermeneutic:
+    summary: >-
+      The Qur'an's true interpretation is known by the Prophet and the Imams of his family, "those firmly
+      grounded in knowledge" (3:7). Their hadith are the key to interpretation.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:7] }
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 22, hadith 1 (graded sahih by al-Majlisi)
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/22/1
+          quote: We are the people well-grounded in knowledge and we are the ones who know how to interpret it.
+  allowedDomains: [thaqalayn.net, al-islam.org, tanzil.net, quran.com]
+
+# The tradition's own outline of teaching, in its own words. Data is organized by these topics:
+# every relationship type declares its topics, and edges inherit them.
+topics:
+  - { id: tawhid, label: "Tawhid: divine unity", registry: [topic.god], source: { source: "Wahid Khorasani, Principles of Faith (Usul al-Din)", ref: "five roots of religion", tier: scholarly-creed, url: "https://al-islam.org/principles-faith-usul-al-din-husayn-wahid-khorasani/introduction" } }
+  - { id: adl, label: "'Adl: divine justice", registry: [topic.predestination], source: { source: "Wahid Khorasani, Principles of Faith (Usul al-Din)", ref: "five roots of religion", tier: scholarly-creed, url: "https://al-islam.org/principles-faith-usul-al-din-husayn-wahid-khorasani/introduction" } }
+  - { id: nubuwwah, label: "Nubuwwah: prophethood", registry: [topic.prophethood, topic.christ], source: { source: "Wahid Khorasani, Principles of Faith (Usul al-Din)", ref: "five roots of religion", tier: scholarly-creed, url: "https://al-islam.org/principles-faith-usul-al-din-husayn-wahid-khorasani/introduction" } }
+  - { id: imamah, label: "Imamah: the divine leadership of the Imams", registry: [topic.imamate, topic.church], source: { source: "Wahid Khorasani, Principles of Faith (Usul al-Din)", ref: "five roots of religion", tier: scholarly-creed, url: "https://al-islam.org/principles-faith-usul-al-din-husayn-wahid-khorasani/introduction" } }
+  - { id: maad, label: "Ma'ad: the return (resurrection and judgment)", registry: [topic.afterlife, topic.resurrection], source: { source: "Wahid Khorasani, Principles of Faith (Usul al-Din)", ref: "five roots of religion", tier: scholarly-creed, url: "https://al-islam.org/principles-faith-usul-al-din-husayn-wahid-khorasani/introduction" } }
+  - { id: creation, label: "Creation “not from a thing”", registry: [topic.creation], inOutline: false, source: { source: "Al-Kafi, Kitab al-Tawhid", ref: "vol. 1, book 3, ch. 11, hadith 3", tier: hadith, url: "https://thaqalayn.net/hadith/1/3/11/3" } }
+  - { id: spirit, label: "The Spirit (al-Ruh)", registry: [topic.holy-spirit, topic.angels], inOutline: false, source: { source: "Al-Kafi, Kitab al-Hujja", ref: "vol. 1, book 4, ch. 56", tier: hadith-sahih, url: "https://thaqalayn.net/hadith/1/4/56/1" } }
+  - { id: humanity, label: "Adam and the human being", registry: [topic.humanity, topic.fall], inOutline: false, source: { source: "Qur'an", ref: "Quran 2:30", tier: quran, url: "https://quran.com/2:30" } }
+stances:
+  - debate: debate.trinity
+    stance: rejects
+    summary: 'Allah is but the One God. The Qur''an forbids saying "[God is] a trinity".'
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:171, Quran 112:1-4] }
+      authority:
+        - { source: "Qur'an", ref: An-Nisa 4:171, tier: quran }
+  - debate: debate.son-created
+    stance: affirms
+    summary: Jesus is a created apostle of Allah, created like Adam.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 3:59, Quran 4:171] }
+      authority:
+        - { source: "Qur'an", ref: Al Imran 3:59, tier: quran }
+  - debate: debate.ex-nihilo
+    stance: affirms
+    summary: Allah invented all things "not from a thing".
+    citations:
+      scripture: { bible: none-cited, other: [Quran 2:117] }
+      authority:
+        - { source: "Al-Kafi, Kitab al-Tawhid (Imam al-Rida)", ref: "vol. 1, book 3, ch. 11, hadith 3", tier: hadith, url: "https://thaqalayn.net/hadith/1/3/11/3", quote: "He is the inventor of all things, an invention that came from His power and wisdom but not from a thing" }
+  - debate: debate.god-embodied
+    stance: rejects
+    summary: Allah is not a body and has no form.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 42:11] }
+      authority:
+        - { source: "Al-Kafi, Kitab al-Tawhid", ref: "vol. 1, book 3, ch. 11, hadith 2", tier: hadith, url: "https://thaqalayn.net/hadith/1/3/11/2", quote: "Glorious is He similar to Who there is nothing. He is not a body nor has He any form." }
+  - debate: debate.inherited-guilt
+    stance: rejects
+    summary: No bearer bears another's burden, and Adam was forgiven.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 6:164, Quran 20:122] }
+      authority:
+        - { source: "Qur'an", ref: "Al-An'am 6:164", tier: quran }
+  - debate: debate.crucifixion
+    stance: rejects
+    summary: Jesus was neither killed nor crucified. Allah raised him to Himself.
+    citations:
+      scripture: { bible: none-cited, other: [Quran 4:157-158] }
+      authority:
+        - { source: "Qur'an", ref: An-Nisa 4:157-158, tier: quran }
 
 categories:
   - id: Creator
@@ -103,6 +172,7 @@ relationships:
     definition: Allah invents a thing "not from a thing", by His command "Be".
     domain: [Creator]
     range: [Creation]
+    topics: [tawhid, creation]
     citations:
       scripture: { bible: [Gen 1:1], other: [Quran 2:117, Quran 3:59] }
       authority:
@@ -116,6 +186,7 @@ relationships:
     definition: Allah sends an angel, a spirit, or a messenger.
     domain: [Creator]
     range: [Angel, Spirit, Prophet]
+    topics: [nubuwwah]
     citations:
       scripture: { bible: [Luke 1:26], other: [Quran 19:17, Quran 42:52] }
       authority:
@@ -128,6 +199,7 @@ relationships:
     definition: The Spirit "was with the Messenger of Allah to give him news and protect him, and he is with the Imams after him".
     domain: [Spirit]
     range: [Prophet]
+    topics: [spirit, nubuwwah, imamah]
     citations:
       scripture: { bible: none-cited, other: [Quran 42:52, Quran 2:87] }
       authority:
@@ -141,6 +213,7 @@ relationships:
     definition: A woman conceives and gives birth.
     domain: [Human]
     range: [Human]
+    topics: [nubuwwah]
     citations:
       scripture: { bible: [Luke 1:31], other: [Quran 19:22] }
       authority:
@@ -153,6 +226,7 @@ relationships:
     definition: Allah raises Jesus up to Himself.
     domain: [Creator]
     range: [Prophet]
+    topics: [nubuwwah, maad]
     citations:
       scripture: { bible: none-cited, other: [Quran 4:158] }
       authority:
@@ -166,6 +240,7 @@ relationships:
     definition: '"He created you from one soul and created from it its mate."'
     domain: [Human]
     range: [Human]
+    topics: [humanity]
     citations:
       scripture: { bible: [Gen 2:21-22], other: [Quran 4:1, Quran 7:189] }
       authority:
@@ -178,6 +253,7 @@ relationships:
     definition: 'Likeness in origin: "the example of Jesus to Allah is like that of Adam".'
     domain: [Prophet]
     range: [Human]
+    topics: [nubuwwah, humanity]
     citations:
       scripture: { bible: none-cited, other: [Quran 3:59] }
       authority:

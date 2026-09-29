@@ -74,9 +74,13 @@ export const Citations = z.object({
   authority: z.array(Authority).min(1),
 });
 
+/** Tradition-topic ids (from the tradition's own outline) that an element belongs to. */
+const TopicIds = z.array(id).optional();
+
 export const Attribute = z.object({
   name: z.string().min(1),
   value: z.string().min(1),
+  topics: TopicIds,
   citations: Citations,
 });
 
@@ -88,6 +92,7 @@ export const Category = z.object({
   parent: id.optional(),
   group: z.boolean().optional(),
   definition: z.string(),
+  topics: TopicIds,
   citations: Citations,
 });
 
@@ -97,7 +102,30 @@ export const RelationshipType = z.object({
   definition: z.string(),
   domain: z.array(id).min(1),
   range: z.array(id).min(1),
+  /** Outline topics this kind of statement belongs to. Every edge inherits these, so the data is organized by topic. */
+  topics: z.array(id).min(1),
   citations: Citations,
+});
+
+/**
+ * One point of the tradition's own outline of teaching (e.g. a Catechism section, a Westminster chapter, an Article
+ * of Faith, one of the usul al-din), in its own words and with its own source. `registry` maps it to shared topics.
+ */
+export const Topic = z.object({
+  id,
+  label: z.string().min(1),
+  registry: z.array(id).min(1),
+  /** false for topics the model covers but the tradition's headline outline does not list. */
+  inOutline: z.boolean().default(true),
+  source: Authority,
+});
+
+/** This tradition's own stance on a shared debate proposition, cited to its own sources. */
+export const Stance = z.object({
+  debate: id,
+  stance: z.enum(["affirms", "rejects", "condemns", "reframes", "none"]),
+  summary: z.string().min(1),
+  citations: Citations.optional(),
 });
 
 /**
@@ -132,7 +160,14 @@ export const Metamodel = z.object({
     bibleRole: z.enum(["canonical", "parallel"]).default("canonical"),
     otherScriptureLabel: z.string(),
     tiers: z.array(Tier).min(1),
+    /** The tradition's own stated rule for interpreting scripture. Used when checking a claim's scripture support. */
+    hermeneutic: z.object({ summary: z.string().min(1), citations: z.lazy(() => Citations) }),
+    /** Domains the claim validator may use as sources for this tradition (its own official and primary-text sites). */
+    allowedDomains: z.array(z.string().regex(/^[a-z0-9.-]+\.[a-z]{2,}$/)).min(1),
   }),
+  /** The tradition's own outline of teaching. Data is organized around these topics. */
+  topics: z.array(Topic).min(1),
+  stances: z.array(Stance).default([]),
   categories: z.array(Category).min(1),
   relationships: z.array(RelationshipType).min(1),
   axioms: z.array(Axiom).default([]),
@@ -164,6 +199,8 @@ export const Edge = z
     quantifier: Quantifier.optional(),
     asTo: id.optional(),
     note: z.string().optional(),
+    /** Extra outline topics beyond those inherited from the relationship type. */
+    topics: TopicIds,
     citations: Citations,
   })
   .refine((e) => !!e.target !== !!e.targetKind, { message: "edge needs exactly one of target or targetKind" })
@@ -182,6 +219,20 @@ export const Referent = z.object({
 
 export const Referents = z.object({ referents: z.array(Referent) });
 
+/**
+ * Shared topic registry: neutral names that let two traditions' outlines line up (matched by name, like referents).
+ * Subjects are not listed here; every referent is automatically a subject topic.
+ */
+export const RegistryTopic = z.object({
+  id,
+  kind: z.enum(["doctrine", "salvation", "life", "debate"]),
+  label: z.string().min(1),
+  /** For debates: what the disputed question is usually called (e.g. "Arian controversy"). */
+  known: z.string().optional(),
+  description: z.string().optional(),
+});
+export const TopicRegistry = z.object({ topics: z.array(RegistryTopic) });
+
 export type Authority = z.infer<typeof Authority>;
 export type Citations = z.infer<typeof Citations>;
 export type Attribute = z.infer<typeof Attribute>;
@@ -194,6 +245,9 @@ export type Node = z.infer<typeof Node>;
 export type Edge = z.infer<typeof Edge>;
 export type Model = z.infer<typeof Model>;
 export type Referent = z.infer<typeof Referent>;
+export type Topic = z.infer<typeof Topic>;
+export type Stance = z.infer<typeof Stance>;
+export type RegistryTopic = z.infer<typeof RegistryTopic>;
 
 export interface Tradition {
   meta: Metamodel;
@@ -206,9 +260,37 @@ export type ScriptureStore = z.infer<typeof ScriptureStore>;
 export type OriginalEntry = z.infer<typeof OriginalEntry>;
 export type OriginalFile = z.infer<typeof OriginalFile>;
 
+/** "tradition:Category", or just "tradition" when `match` is "none". */
+const CategoryRef = z.string().regex(/^[a-z][\w-]*(:[A-Za-z][\w.-]*)?$/, 'category refs look like "lds:Element"');
+
+/**
+ * A curated crosswalk between two traditions' categories. Crosswalks live outside the tradition models so each
+ * model stays in its own vocabulary. `match` describes `a` relative to `b`.
+ */
+export const Crosswalk = z.object({
+  id,
+  a: CategoryRef,
+  b: CategoryRef,
+  match: z.enum(["close", "broader", "narrower", "related", "none"]),
+  /** What the two categories share, or for "none" why there is no counterpart. */
+  note: z.string().min(1),
+  /** The point where the traditions part ways. This is usually the interesting part. */
+  differsOn: z.string().optional(),
+  /**
+   * tradition: an authority of one tradition addresses the other's concept. scholarly: comparative scholarship.
+   * editorial: our mapping, justified only by each side's own cited definition (always shown alongside).
+   */
+  basis: z.enum(["tradition", "scholarly", "editorial"]),
+  sources: z.array(Authority).default([]),
+});
+export const Crosswalks = z.object({ crosswalks: z.array(Crosswalk) });
+export type Crosswalk = z.infer<typeof Crosswalk>;
+
 export interface Dataset {
   referents: Referent[];
   traditions: Tradition[];
   stores: Record<string, ScriptureStore>;
   original: OriginalFile;
+  crosswalks: Crosswalk[];
+  topics: RegistryTopic[];
 }

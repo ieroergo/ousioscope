@@ -8,6 +8,130 @@ tradition:
     - { id: confessional, label: "Confessional standard (Westminster Confession & Catechisms)" }
     - { id: church-published, label: "Denominational report / publication" }
     - { id: theologian, label: "Reformed theologian (e.g. Calvin, Turretin)" }
+  hermeneutic:
+    summary: >-
+      Scripture interprets Scripture. Unclear passages are read by clearer ones, and the Holy Spirit speaking in
+      Scripture is the final judge of all controversies.
+    citations:
+      scripture: { bible: [Acts 15:15, 2 Pet 1:20-21] }
+      authority:
+        - source: Westminster Confession of Faith
+          ref: WCF 1.9-10
+          tier: confessional
+          url: https://www.opc.org/wcf.html#Chapter_01
+          quote: The infallible rule of interpretation of Scripture is the Scripture itself
+  allowedDomains: [opc.org, thewestminsterstandard.org, pcaac.org, esv.org]
+
+# The tradition's own outline of teaching, in its own words. Data is organized by these topics:
+# every relationship type declares its topics, and edges inherit them.
+topics:
+  - { id: wcf1, label: "Of the Holy Scripture", registry: [topic.scripture], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 1", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_01" } }
+  - { id: wcf2, label: "Of God, and of the Holy Trinity", registry: [topic.god, topic.godhead], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 2", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02" } }
+  - { id: wcf3, label: "Of God's Eternal Decree", registry: [topic.predestination], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 3", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_03" } }
+  - { id: wcf4, label: "Of Creation", registry: [topic.creation, topic.humanity], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 4", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_04" } }
+  - { id: wcf5, label: "Of Providence", registry: [topic.providence], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 5", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_05" } }
+  - { id: wcf6, label: "Of the Fall of Man, of Sin, and of the Punishment Thereof", registry: [topic.fall], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 6", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_06" } }
+  - { id: wcf7, label: "Of God's Covenant with Man", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 7", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_07" } }
+  - { id: wcf8, label: "Of Christ the Mediator", registry: [topic.christ, topic.incarnation, topic.atonement], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 8", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08" } }
+  - { id: wcf9, label: "Of Free Will", registry: [topic.predestination], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 9", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_09" } }
+  - { id: wcf10, label: "Of Effectual Calling", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 10", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_10" } }
+  - { id: wcf11, label: "Of Justification", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 11", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_11" } }
+  - { id: wcf12, label: "Of Adoption", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 12", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_12" } }
+  - { id: wcf13, label: "Of Sanctification", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 13", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_13" } }
+  - { id: wcf14, label: "Of Saving Faith", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 14", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_14" } }
+  - { id: wcf15, label: "Of Repentance unto Life", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 15", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_15" } }
+  - { id: wcf16, label: "Of Good Works", registry: [topic.salvation, topic.ethics], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 16", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_16" } }
+  - { id: wcf17, label: "Of the Perseverance of the Saints", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 17", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_17" } }
+  - { id: wcf18, label: "Of the Assurance of Grace and Salvation", registry: [topic.salvation], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 18", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_18" } }
+  - { id: wcf19, label: "Of the Law of God", registry: [topic.ethics], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 19", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_19" } }
+  - { id: wcf20, label: "Of Christian Liberty, and Liberty of Conscience", registry: [topic.ethics], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 20", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_20" } }
+  - { id: wcf21, label: "Of Religious Worship, and the Sabbath Day", registry: [topic.worship], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 21", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_21" } }
+  - { id: wcf22, label: "Of Lawful Oaths and Vows", registry: [topic.ethics], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 22", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_22" } }
+  - { id: wcf23, label: "Of the Civil Magistrate", registry: [topic.society], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 23", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_23" } }
+  - { id: wcf24, label: "Of Marriage and Divorce", registry: [topic.family], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 24", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_24" } }
+  - { id: wcf25, label: "Of the Church", registry: [topic.church], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 25", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_25" } }
+  - { id: wcf26, label: "Of the Communion of Saints", registry: [topic.church], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 26", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_26" } }
+  - { id: wcf27, label: "Of the Sacraments", registry: [topic.sacraments], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 27", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_27" } }
+  - { id: wcf28, label: "Of Baptism", registry: [topic.sacraments], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 28", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_28" } }
+  - { id: wcf29, label: "Of the Lord's Supper", registry: [topic.sacraments], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 29", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_29" } }
+  - { id: wcf30, label: "Of Church Censures", registry: [topic.church], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 30", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_30" } }
+  - { id: wcf31, label: "Of Synods and Councils", registry: [topic.church], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 31", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_31" } }
+  - { id: wcf32, label: "Of the State of Men after Death, and of the Resurrection of the Dead", registry: [topic.afterlife, topic.resurrection, topic.humanity], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 32", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_32" } }
+  - { id: wcf33, label: "Of the Last Judgment", registry: [topic.afterlife, topic.last-things], source: { source: "Westminster Confession of Faith", ref: "WCF ch. 33", tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_33" } }
+stances:
+  - debate: debate.trinity
+    stance: affirms
+    summary: Three persons "of one substance, power, and eternity".
+    citations:
+      scripture: { bible: [Matt 28:19, 2 Cor 13:14] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 2.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "In the unity of the Godhead there be three persons, of one substance, power, and eternity" }
+  - debate: debate.son-created
+    stance: rejects
+    summary: The Son is "very and eternal God", eternally begotten, not created.
+    citations:
+      scripture: { bible: [John 1:1, John 1:14] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 8.2, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "The Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father" }
+  - debate: debate.two-natures
+    stance: affirms
+    summary: Two whole, perfect, and distinct natures in one person, following Chalcedon.
+    citations:
+      scripture: { bible: [Col 2:9, Rom 9:5] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 8.2, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "two whole, perfect, and distinct natures, the Godhead and the manhood, were inseparably joined together in one person" }
+  - debate: debate.theotokos
+    stance: none
+    summary: The Standards do not use the title. They confess Christ "conceived ... in the womb of the virgin Mary, of her substance" (WCF 8.2).
+  - debate: debate.filioque
+    stance: affirms
+    summary: The Holy Ghost proceeds "from the Father and the Son".
+    citations:
+      scripture: { bible: [John 15:26, Gal 4:6] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 2.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "the Holy Ghost eternally proceeding from the Father and the Son" }
+  - debate: debate.ex-nihilo
+    stance: affirms
+    summary: God made the world "of nothing".
+    citations:
+      scripture: { bible: [Heb 11:3] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 4.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_04", quote: "to create, or make of nothing, the world, and all things therein whether visible or invisible" }
+  - debate: debate.god-embodied
+    stance: rejects
+    summary: God is "a most pure spirit ... without body, parts, or passions".
+    citations:
+      scripture: { bible: [John 4:24] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 2.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_02", quote: "a most pure spirit, invisible, without body, parts, or passions" }
+  - debate: debate.immortal-soul
+    stance: affirms
+    summary: Souls "neither die nor sleep" and return to God at death.
+    citations:
+      scripture: { bible: [Luke 23:43, Eccl 12:7] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 32.1, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_32", quote: "their souls, which neither die nor sleep, having an immortal subsistence, immediately return to God who gave them" }
+  - debate: debate.inherited-guilt
+    stance: affirms
+    summary: Adam's guilt is imputed to all his posterity, and a corrupted nature is conveyed to them.
+    citations:
+      scripture: { bible: [Rom 5:12, Rom 5:19, 1 Cor 15:22] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 6.3, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_06", quote: "They being the root of all mankind, the guilt of this sin was imputed" }
+  - debate: debate.crucifixion
+    stance: affirms
+    summary: Christ "was crucified, and died".
+    citations:
+      scripture: { bible: [Phil 2:8] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 8.4, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "was crucified, and died" }
+  - debate: debate.bodily-resurrection
+    stance: affirms
+    summary: He arose "with the same body in which he suffered".
+    citations:
+      scripture: { bible: [John 20:27] }
+      authority:
+        - { source: Westminster Confession of Faith, ref: WCF 8.4, tier: confessional, url: "https://www.opc.org/wcf.html#Chapter_08", quote: "On the third day he arose from the dead, with the same body in which he suffered" }
 
 # Scripture: the Standards' own proof texts (1647), quoted in the ESV. Confession text: OPC edition.
 categories:
@@ -135,6 +259,7 @@ relationships:
     definition: 'Each person is the one God: "these three are one true, eternal God, the same in substance".'
     domain: [DivinePerson]
     range: [Godhead]
+    topics: [wcf2]
     citations:
       scripture: { bible: [Matt 3:16-17, Matt 28:19, 2 Cor 13:14, John 10:30] }
       authority:
@@ -149,6 +274,7 @@ relationships:
     definition: '"The Son is eternally begotten of the Father."'
     domain: [DivinePerson]
     range: [DivinePerson]
+    topics: [wcf2]
     citations:
       scripture: { bible: [John 1:14, John 1:18] }
       authority:
@@ -162,6 +288,7 @@ relationships:
     definition: '"The Holy Ghost eternally proceeding from the Father and the Son."'
     domain: [DivinePerson]
     range: [DivinePerson]
+    topics: [wcf2]
     citations:
       scripture: { bible: [John 15:26, Gal 4:6] }
       authority:
@@ -175,6 +302,7 @@ relationships:
     definition: 'Incarnation: the Son "did, when the fullness of time was come, take upon him man''s nature".'
     domain: [DivinePerson]
     range: [Manhood]
+    topics: [wcf8]
     citations:
       scripture: { bible: [John 1:1, John 1:14, Gal 4:4, Phil 2:6, 1 John 5:20] }
       authority:
@@ -188,6 +316,7 @@ relationships:
     definition: 'Christ was "conceived ... in the womb of the Virgin Mary, of her substance, and born of her".'
     domain: [Man]
     range: [DivinePerson]
+    topics: [wcf8]
     citations:
       scripture: { bible: [Luke 1:27, Luke 1:31, Luke 1:35, Gal 4:4] }
       authority:
@@ -202,6 +331,7 @@ relationships:
     definition: Christ was "conceived by the power of the Holy Ghost".
     domain: [DivinePerson]
     range: [Man]
+    topics: [wcf8]
     citations:
       scripture: { bible: [{ ref: Luke 1:35, highlight: "the power of the Most High will overshadow you" }] }
       authority:
@@ -215,6 +345,7 @@ relationships:
     definition: Makes "of nothing". The Father, Son, and Holy Ghost together are the Creator.
     domain: [DivinePerson]
     range: [World, Man]
+    topics: [wcf4]
     citations:
       scripture: { bible: [Acts 17:24, Col 1:16, Heb 11:3] }
       authority:
@@ -228,6 +359,7 @@ relationships:
     definition: 'Composition: Christ took "a true body, and a reasonable soul".'
     domain: [Manhood, Man]
     range: [Soul, Body]
+    topics: [wcf4]
     citations:
       scripture: { bible: [John 1:14, Matt 26:38] }
       authority:
@@ -242,6 +374,7 @@ relationships:
     definition: 'Resurrection: the dead are raised "with the selfsame bodies ... which shall be united again to their souls forever".'
     domain: [Soul]
     range: [Body]
+    topics: [wcf32]
     citations:
       scripture: { bible: [Job 19:26-27, 1 Cor 15:42-44] }
       authority:
@@ -256,6 +389,7 @@ relationships:
     definition: 'God "formed the body of the man of the dust of the ground, and the woman of the rib of the man".'
     domain: [Man]
     range: [Man]
+    topics: [wcf4]
     citations:
       scripture: { bible: [Gen 2:22] }
       authority:
@@ -269,6 +403,7 @@ relationships:
     definition: '"The same death in sin and corrupted nature conveyed to all their posterity descending from them by ordinary generation."'
     domain: [Man]
     range: [Manhood]
+    topics: [wcf6]
     citations:
       scripture: { bible: [Gen 5:3, Job 14:4, Ps 51:5] }
       authority:

@@ -9,6 +9,122 @@ tradition:
     - { id: definitive, label: "Definitive doctrine" }
     - { id: ordinary-magisterium, label: "Ordinary magisterium (e.g. Catechism)" }
     - { id: theological-opinion, label: "Common theological opinion" }
+  hermeneutic:
+    summary: >-
+      Scripture and Tradition form one deposit of the word of God. Authentic interpretation belongs to the
+      Church's living teaching office (the Magisterium), which serves the word and teaches only what has been
+      handed on.
+    citations:
+      scripture: { bible: [Acts 2:42] }
+      authority:
+        - source: Second Vatican Council, Dei Verbum
+          ref: DV 10
+          tier: dogma
+          url: https://www.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19651118_dei-verbum_en.html
+          quote: the task of authentically interpreting the word of God, whether written or handed on, has been entrusted exclusively to the living teaching office of the Church
+  allowedDomains: [vatican.va, usccb.org, newadvent.org]
+
+# The tradition's own outline of teaching, in its own words. Data is organized by these topics:
+# every relationship type declares its topics, and edges inherit them.
+topics:
+  - { id: revelation, label: "Revelation, Scripture and Tradition", registry: [topic.scripture], source: { source: "Catechism of the Catholic Church", ref: "CCC 50–141", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: god, label: "I believe in one God", registry: [topic.god], source: { source: "Catechism of the Catholic Church", ref: "CCC 198–231", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: trinity, label: "The Holy Trinity", registry: [topic.godhead], source: { source: "Catechism of the Catholic Church", ref: "CCC 232–267", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: creator, label: "The Creator", registry: [topic.creation, topic.providence], source: { source: "Catechism of the Catholic Church", ref: "CCC 279–324", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: angels, label: "The angels", registry: [topic.angels], source: { source: "Catechism of the Catholic Church", ref: "CCC 328–336", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: man, label: "Man: body and soul", registry: [topic.humanity], source: { source: "Catechism of the Catholic Church", ref: "CCC 355–384", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: fall, label: "The Fall", registry: [topic.fall], source: { source: "Catechism of the Catholic Church", ref: "CCC 385–421", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: christ, label: "Jesus Christ, true God and true man", registry: [topic.christ, topic.incarnation], source: { source: "Catechism of the Catholic Church", ref: "CCC 422–483", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: virgin-birth, label: "Conceived by the Holy Spirit, born of the Virgin Mary", registry: [topic.incarnation], source: { source: "Catechism of the Catholic Church", ref: "CCC 484–511", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: paschal, label: "Christ's Paschal mystery: suffered, crucified, died", registry: [topic.atonement], source: { source: "Catechism of the Catholic Church", ref: "CCC 571–637", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: rose-again, label: "On the third day he rose again", registry: [topic.resurrection], source: { source: "Catechism of the Catholic Church", ref: "CCC 638–658", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: spirit, label: "I believe in the Holy Spirit", registry: [topic.holy-spirit], source: { source: "Catechism of the Catholic Church", ref: "CCC 683–747", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: church, label: "The Church", registry: [topic.church], source: { source: "Catechism of the Catholic Church", ref: "CCC 748–975", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: resurrection-body, label: "The resurrection of the body", registry: [topic.resurrection], source: { source: "Catechism of the Catholic Church", ref: "CCC 988–1019", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: life-everlasting, label: "Life everlasting", registry: [topic.afterlife, topic.last-things], source: { source: "Catechism of the Catholic Church", ref: "CCC 1020–1060", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: sacraments, label: "The seven sacraments", registry: [topic.sacraments], source: { source: "Catechism of the Catholic Church", ref: "CCC 1113–1666", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: grace, label: "Grace and justification", registry: [topic.salvation], source: { source: "Catechism of the Catholic Church", ref: "CCC 1987–2029", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+  - { id: commandments, label: "The Ten Commandments", registry: [topic.ethics, topic.worship, topic.family], source: { source: "Catechism of the Catholic Church", ref: "CCC 2052–2557", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/_INDEX.HTM" } }
+stances:
+  - debate: debate.trinity
+    stance: affirms
+    summary: One God in three persons, the "consubstantial Trinity". This is defined dogma.
+    citations:
+      scripture: { bible: [Matt 28:19] }
+      authority:
+        - { source: Second Council of Constantinople (553), ref: "DS 421, quoted in CCC 253", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: 'We do not confess three Gods, but one God in three persons, the "consubstantial Trinity".' }
+  - debate: debate.son-created
+    stance: condemns
+    summary: Nicaea (325) condemned Arius. The Son is "begotten, not made", consubstantial with the Father.
+    citations:
+      scripture: { bible: [John 1:14, John 1:18] }
+      authority:
+        - { source: Council of Nicaea (325) / Nicene Creed, ref: "DS 150, quoted in CCC 242", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: "eternally begotten of the Father, light from light, true God from true God, begotten not made" }
+  - debate: debate.two-natures
+    stance: affirms
+    summary: Chalcedon (451) defined one person, the Son, begotten as to his divinity and born as to his humanity.
+    citations:
+      scripture: { bible: [John 1:14] }
+      authority:
+        - { source: Council of Chalcedon (451), ref: "DS 301, quoted in CCC 467", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P1J.HTM", quote: "He was begotten from the Father before all ages as to his divinity" }
+  - debate: debate.theotokos
+    stance: affirms
+    summary: Mary is truly Mother of God (Theotokos), because she bore the divine person of the Son.
+    citations:
+      scripture: { bible: [Luke 1:43] }
+      authority:
+        - { source: Council of Chalcedon (451), ref: "DS 301, quoted in CCC 467", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P1J.HTM", quote: "was born as to his humanity of the virgin Mary, the Mother of God" }
+  - debate: debate.filioque
+    stance: affirms
+    summary: The Spirit proceeds eternally from the Father and the Son as from one principle.
+    citations:
+      scripture: { bible: [John 15:26] }
+      authority:
+        - { source: Council of Florence (1439), ref: "DS 1300-1301, quoted in CCC 246", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P17.HTM", quote: "He proceeds eternally from both as from one principle and through one spiration." }
+  - debate: debate.ex-nihilo
+    stance: affirms
+    summary: God created everything, matter included, out of nothing (Lateran IV).
+    citations:
+      scripture: { bible: [2 Macc 7:28] }
+      authority:
+        - { source: Catechism of the Catholic Church, ref: "CCC 296-298", tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P19.HTM", quote: "If God had drawn the world from pre-existent matter, what would be so extraordinary in that?" }
+  - debate: debate.god-embodied
+    stance: rejects
+    summary: God is pure spirit, without body.
+    citations:
+      scripture: { bible: [John 4:24] }
+      authority:
+        - { source: Catechism of the Catholic Church, ref: CCC 370, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1B.HTM", quote: "In no way is God in man's image. He is neither man nor woman. God is pure spirit" }
+  - debate: debate.immortal-soul
+    stance: affirms
+    summary: The spiritual soul is created immediately by God, is immortal, and does not perish at death.
+    citations:
+      scripture: { bible: [Matt 10:28] }
+      authority:
+        - { source: Catechism of the Catholic Church, ref: CCC 366, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1B.HTM" }
+  - debate: debate.inherited-guilt
+    stance: reframes
+    summary: >-
+      Descendants inherit a human nature deprived of original holiness ("contracted", not "committed"), not
+      Adam's personal fault.
+    citations:
+      scripture: { bible: [Rom 5:12, Rom 5:19] }
+      authority:
+        - { source: Catechism of the Catholic Church, ref: CCC 404-405, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1C.HTM", quote: "original sin does not have the character of a personal fault in any of Adam's descendants" }
+  - debate: debate.crucifixion
+    stance: affirms
+    summary: 'Confessed in the Creed: "crucified, died, and was buried".'
+    citations:
+      scripture: { bible: [Phil 2:8] }
+      authority:
+        - { source: "Apostles' Creed", ref: "in CCC, The Credo", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P13.HTM", quote: "Under Pontius Pilate He was crucified, died, and was buried." }
+  - debate: debate.bodily-resurrection
+    stance: affirms
+    summary: The same, real body, now with the properties of a glorious body.
+    citations:
+      scripture: { bible: [Luke 24:39] }
+      authority:
+        - { source: Catechism of the Catholic Church, ref: CCC 645-646, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1S.HTM", quote: "this authentic, real body possesses the new properties of a glorious body" }
 
 # Category tree (is-a). `group: true` categories are drawn as containers in the graph.
 categories:
@@ -162,6 +278,7 @@ relationships:
     definition: Identity. Each divine person is the one divine nature, whole and entire. The person does not "have" or share a part of it.
     domain: [DivinePerson]
     range: [DivineNature]
+    topics: [trinity]
     citations:
       scripture: { bible: none-cited }
       authority:
@@ -176,6 +293,7 @@ relationships:
     definition: Eternal generation. The Father begets the Son from all eternity, "begotten, not made".
     domain: [DivinePerson]
     range: [DivinePerson]
+    topics: [trinity]
     citations:
       scripture: { bible: [Matt 11:27] }
       authority:
@@ -190,6 +308,7 @@ relationships:
     definition: The eternal origin of the Holy Spirit (spiration).
     domain: [DivinePerson]
     range: [DivinePerson]
+    topics: [trinity, spirit]
     citations:
       scripture: { bible: [John 15:26] }
       authority:
@@ -205,6 +324,7 @@ relationships:
       The nature assumed is an individual one, not human nature in general.
     domain: [DivinePerson]
     range: [HumanNature]
+    topics: [christ]
     citations:
       scripture: { bible: [John 1:14, { ref: Phil 2:5-8, highlight: "he emptied himself, taking the form of a slave, coming in human likeness" }] }
       authority:
@@ -219,6 +339,7 @@ relationships:
     definition: Composition. Human nature is "composed of rational soul and body".
     domain: [HumanNature]
     range: [SpiritualSoul, HumanBody]
+    topics: [man]
     citations:
       scripture: { bible: [Heb 4:15] }
       authority:
@@ -233,6 +354,7 @@ relationships:
     definition: The soul is the "form" of the body. Because of it, matter becomes a living human body.
     domain: [SpiritualSoul]
     range: [HumanBody]
+    topics: [man]
     citations:
       scripture: { bible: [Gen 2:7] }
       authority:
@@ -250,6 +372,7 @@ relationships:
     definition: Resurrection. Soul and body, separated by death, are united again.
     domain: [SpiritualSoul]
     range: [HumanBody]
+    topics: [resurrection-body]
     citations:
       scripture: { bible: [1 Thess 4:14] }
       authority:
@@ -264,6 +387,7 @@ relationships:
     definition: Motherhood. A woman conceives and gives birth to a person. Here the person is the eternal Son, born "as to his humanity".
     domain: [HumanPerson]
     range: [DivinePerson, HumanPerson]
+    topics: [virgin-birth]
     citations:
       scripture: { bible: [Luke 1:43, Gal 4:4] }
       authority:
@@ -277,6 +401,7 @@ relationships:
     definition: The Holy Spirit comes upon Mary so that she conceives without human seed.
     domain: [DivinePerson]
     range: [HumanPerson]
+    topics: [virgin-birth, spirit]
     citations:
       scripture: { bible: [{ ref: Luke 1:34-35, highlight: "the power of the Most High will overshadow you" }] }
       authority:
@@ -291,6 +416,7 @@ relationships:
     definition: Gives being to something out of nothing. Always the common work of the three persons as one principle.
     domain: [DivinePerson]
     range: [CreatedWorld, HumanPerson]
+    topics: [creator]
     citations:
       scripture: { bible: [Gen 1:1] }
       authority:
@@ -306,6 +432,7 @@ relationships:
     definition: 'Material origin. "The woman God ''fashions'' from the man''s rib."'
     domain: [HumanPerson]
     range: [HumanPerson]
+    topics: [man]
     citations:
       scripture: { bible: [Gen 2:18, Gen 2:23] }
       authority:
@@ -320,6 +447,7 @@ relationships:
     definition: Passes on a human nature to descendants. After the Fall, that nature is "deprived of original holiness and justice".
     domain: [HumanPerson]
     range: [HumanNature]
+    topics: [fall]
     citations:
       scripture: { bible: [Rom 5:12, Rom 5:19] }
       authority:
@@ -337,6 +465,7 @@ relationships:
     definition: Typology. Adam foreshadows Christ, the "New Adam", and Eve foreshadows Mary, the "new Eve".
     domain: [HumanPerson]
     range: [DivinePerson, HumanPerson]
+    topics: [christ, fall]
     citations:
       scripture: { bible: [1 Cor 15:21-22, 1 Cor 15:45, Rom 5:19] }
       authority:

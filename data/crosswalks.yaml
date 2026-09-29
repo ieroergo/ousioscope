@@ -1,0 +1,195 @@
+# Curated crosswalks between traditions' categories. Each tradition model stays in its own vocabulary; this
+# layer only says where two categories can be read side by side, and where they part ways.
+#
+# match (a relative to b): close | broader | narrower | related | none (b is then a tradition id only)
+# basis: tradition (an authority of one side addresses the other's concept; needs sources)
+#        scholarly (comparative scholarship; needs sources)
+#        editorial (our reading; justified by each side's own cited definition, which the app shows alongside)
+#
+# Crosswalks derived from shared referents (e.g. Jesus is a Divine Person here and a Godhead member there)
+# are computed by the app and are not listed here.
+crosswalks:
+  # --- Matter and creation ---
+  - id: cw.lds-element.catholic-world
+    a: lds:Element
+    b: catholic:CreatedWorld
+    match: related
+    note: Both name the physical stuff of the world.
+    differsOn: >-
+      LDS: element is eternal and uncreated; worlds are organized from it. Catholic: God made everything,
+      matter included, out of nothing.
+    basis: editorial
+
+  - id: cw.lds-element.reformed-world
+    a: lds:Element
+    b: reformed:World
+    match: related
+    note: Both name the physical stuff of the world.
+    differsOn: 'LDS: element is eternal and organized. Reformed: God made the world "of nothing".'
+    basis: editorial
+
+  - id: cw.lds-intelligence.catholic
+    a: lds:Intelligence
+    b: catholic
+    match: none
+    note: >-
+      Catholic teaching has no uncreated core of the human person. Every spiritual soul is created
+      immediately by God.
+    basis: editorial
+
+  # --- God ---
+  - id: cw.lds-godhead.catholic-divine-nature
+    a: lds:Godhead
+    b: catholic:DivineNature
+    match: related
+    note: Both are what "the Godhead" names.
+    differsOn: >-
+      LDS: three separate beings, one in purpose. Catholic: the one divine substance that each Person is.
+    basis: editorial
+
+  - id: cw.reformed-godhead.catholic-divine-nature
+    a: reformed:Godhead
+    b: catholic:DivineNature
+    match: close
+    note: The one divine substance ("of one substance") in which the three persons are one God.
+    basis: editorial
+
+  - id: cw.reformed-person.catholic-person
+    a: reformed:DivinePerson
+    b: catholic:DivinePerson
+    match: close
+    note: Father, Son, and Holy Spirit, distinguished by begetting, being begotten, and proceeding.
+    basis: editorial
+
+  - id: cw.lds-member.catholic-person
+    a: lds:GodheadMember
+    b: catholic:DivinePerson
+    match: related
+    note: Father, Son, and Holy Ghost in both.
+    differsOn: >-
+      LDS: separate beings, and the Father and Son have bodies of flesh and bones. Catholic: each Person is
+      the one God, who has no body.
+    basis: editorial
+
+  - id: cw.jw-almighty.catholic-divine-nature
+    a: jw:AlmightyGod
+    b: catholic:DivineNature
+    match: related
+    note: The one true God in both.
+    differsOn: 'JW: the Father alone, "not a Trinity". Catholic: one divine nature, three Persons.'
+    basis: editorial
+
+  - id: cw.sunni-creator.catholic-divine-nature
+    a: sunni:Creator
+    b: catholic:DivineNature
+    match: related
+    note: The one God, Creator of all.
+    differsOn: 'Sunni: Allah "neither begets nor is born" and has no son. Catholic: one nature in three Persons.'
+    basis: editorial
+
+  - id: cw.sunni-creator.shia-creator
+    a: sunni:Creator
+    b: shia:Creator
+    match: close
+    note: Allah, the One God.
+    basis: editorial
+
+  # --- Human beings ---
+  - id: cw.reformed-manhood.catholic-human-nature
+    a: reformed:Manhood
+    b: catholic:HumanNature
+    match: close
+    note: Human nature, body and reasonable soul, which the Son took on.
+    differsOn: >-
+      After the Fall: Reformed say "wholly defiled in all the faculties and parts of soul and body". Catholic
+      say "wounded", but "not totally corrupted".
+    basis: editorial
+
+  - id: cw.reformed-soul.catholic-soul
+    a: reformed:Soul
+    b: catholic:SpiritualSoul
+    match: close
+    note: The immortal, rational soul.
+    basis: editorial
+
+  - id: cw.jw-soul.catholic-soul
+    a: jw:Soul
+    b: catholic:SpiritualSoul
+    match: related
+    note: The same word, "soul", used for different things.
+    differsOn: >-
+      JW: the soul is the whole living person, and it dies. Catholic: the soul is the spiritual form of the
+      body and is immortal.
+    basis: editorial
+
+  - id: cw.jw-soul.catholic-person
+    a: jw:Soul
+    b: catholic:HumanPerson
+    match: close
+    note: A human being.
+    differsOn: 'JW: no part of the person survives death. Catholic: the soul survives death.'
+    basis: editorial
+
+  - id: cw.lds-child.catholic-person
+    a: lds:ChildOfGod
+    b: catholic:HumanPerson
+    match: related
+    note: A human being.
+    differsOn: >-
+      LDS: a literal spirit child of Heavenly Father who lived before birth. Catholic: a creature made in God's
+      image, whose soul is created at conception.
+    basis: editorial
+
+  - id: cw.lds-body.catholic-body
+    a: lds:PhysicalBody
+    b: catholic:HumanBody
+    match: close
+    note: The human body of flesh.
+    differsOn: 'LDS: the Father too has "a body of flesh and bones". Catholic: God has no body.'
+    basis: editorial
+
+  - id: cw.sunni-human.shia-human
+    a: sunni:Human
+    b: shia:Human
+    match: close
+    note: A created human servant of Allah.
+    basis: editorial
+
+  - id: cw.sunni-messenger.shia-prophet
+    a: sunni:Messenger
+    b: shia:Prophet
+    match: close
+    note: A human sent by Allah with a message.
+    basis: editorial
+
+  # --- Spirit beings ---
+  - id: cw.sunni-angel.shia-angel
+    a: sunni:Angel
+    b: shia:Angel
+    match: close
+    note: Created messengers of Allah.
+    basis: editorial
+
+  - id: cw.shia-spirit.sunni-angel
+    a: shia:Spirit
+    b: sunni:Angel
+    match: related
+    note: Where each tradition places the Qur'an's "Spirit".
+    differsOn: >-
+      Shia (al-Kafi): the Spirit is "a creature ... greater than Jibril and Mika'il". Sunni (Ibn Kathir): Ruh
+      al-Qudus is Jibril, an angel.
+    basis: tradition
+    sources:
+      - source: Al-Kafi, Kitab al-Hujja
+        ref: vol. 1, book 4, ch. 56, hadith 1
+        tier: hadith-sahih
+        url: https://thaqalayn.net/hadith/1/4/56/1
+        quote: He is a creature of the creatures of Allah, the Most Holy and Most High, greater than Jibril and Mika'il.
+
+  - id: cw.jw-spirit-creature.sunni-angel
+    a: jw:SpiritCreature
+    b: sunni:Angel
+    match: related
+    note: Created, invisible spirit beings.
+    differsOn: 'JW count Jesus (the archangel Michael) among them. For Sunni Islam, Isa is a human messenger.'
+    basis: editorial

@@ -1,7 +1,7 @@
 import cytoscape, { type Core, type StylesheetJson } from "cytoscape";
 import fcose from "cytoscape-fcose";
 import { useEffect, useMemo, useRef } from "react";
-import { metamodelElements, modelElements, type View } from "./graph";
+import { metamodelElements, modelElements, type Grouping, type View } from "./graph";
 import type { Tradition } from "./schema";
 import type { Mark, Selection, Side } from "./selection";
 
@@ -60,6 +60,23 @@ const STYLE: StylesheetJson = [
     },
   },
   { selector: "node.category", style: { width: 140, height: 40 } },
+  {
+    selector: "node.category-node",
+    style: {
+      shape: "tag",
+      width: 138,
+      height: 34,
+      "background-color": "#ffffff",
+      "background-opacity": 1,
+      "border-width": 2,
+      "border-color": "data(color)",
+      "font-size": 10.5,
+      "font-weight": 600,
+      color: "#475569",
+      "text-transform": "uppercase",
+    },
+  },
+  { selector: "edge.inst", style: { "line-color": "#d5dbe6", "target-arrow-color": "#d5dbe6", width: 1, "font-size": 8.5, color: "#94a3b8" } },
   { selector: "node.group-category", style: { "border-width": 3, "border-color": "data(color)", "background-opacity": 0.35 } },
   {
     selector: "edge",
@@ -106,21 +123,27 @@ interface Props {
   side: Side;
   tradition: Tradition;
   view: View;
+  grouping: Grouping;
   visible: Set<string>;
   minTier: number;
   marks: Map<string, Mark>;
   onSelect: (s: Selection | null) => void;
+  /** Receives the Cytoscape instance after each (re)build, and null on teardown (used by the crosswalk overlay). */
+  onInstance?: (side: Side, cy: Core | null) => void;
+  edgeFilter?: Set<string>;
 }
 
-export function GraphPane({ side, tradition, view, visible, minTier, marks, onSelect }: Props) {
+export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const cy = useRef<Core | null>(null);
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
+  const onInstanceRef = useRef(onInstance);
+  onInstanceRef.current = onInstance;
 
   const elements = useMemo(
-    () => (view === "model" ? modelElements(tradition, visible, minTier) : metamodelElements(tradition)),
-    [tradition, view, visible, minTier],
+    () => (view === "model" ? modelElements(tradition, visible, minTier, grouping, edgeFilter) : metamodelElements(tradition)),
+    [tradition, view, visible, minTier, grouping, edgeFilter],
   );
 
   useEffect(() => {
@@ -166,6 +189,7 @@ export function GraphPane({ side, tradition, view, visible, minTier, marks, onSe
       const id: string = t.id();
       const [prefix, rest] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)];
       if (["grp", "cat", "isa", "kind"].includes(prefix)) return onSelectRef.current({ side, kind: "category", id: rest });
+      if (prefix === "inst") return onSelectRef.current({ side, kind: "category", id: rest.split(":")[0] });
       if (prefix === "rel") return onSelectRef.current({ side, kind: "rel", id: rest.split(":")[0] });
       if (prefix === "ax") return onSelectRef.current({ side, kind: "axiom", id: rest });
       onSelectRef.current({ side, kind: t.isEdge() ? "edge" : "node", id });
@@ -181,9 +205,11 @@ export function GraphPane({ side, tradition, view, visible, minTier, marks, onSe
       });
     });
     observer.observe(container.current!);
+    onInstanceRef.current?.(side, instance);
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
+      onInstanceRef.current?.(side, null);
       instance.destroy();
     };
   }, [elements, side, view]);
@@ -194,7 +220,7 @@ export function GraphPane({ side, tradition, view, visible, minTier, marks, onSe
     instance.elements().removeClass("m-selected m-bridged m-hit");
     const nodeCategory = new Map(tradition.model.nodes.map((n) => [n.id, n.category]));
     const toGraphId = (id: string) =>
-      view === "metamodel" ? [`cat:${nodeCategory.get(id) ?? id}`, `ax:${id}`] : [id, `grp:${id}`, `kind:${id}`];
+      view === "metamodel" ? [`cat:${nodeCategory.get(id) ?? id}`, `ax:${id}`] : [id, `grp:${id}`, `kind:${id}`, `cat:${id}`];
     marks.forEach((mark, id) => {
       for (const gid of toGraphId(id)) instance.getElementById(gid).addClass(`m-${mark}`);
       if (view === "metamodel") instance.edges(`[id ^= "rel:${id}:"]`).addClass(`m-${mark}`);
