@@ -52,6 +52,163 @@ nodes:
             - source: Qur'an
               ref: An-Nisa 4:157-158
               tier: quran
+      - name: Physical mortality
+        value: Mortal messenger preceded by other messengers; ate food
+        topics:
+          - nubuwwah
+          - humanity
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:75
+              tier: quran
+              url: https://quran.com/5/75
+              quote: The Messiah, son of Mary, was no more than a messenger. ˹Many˺ messengers had ˹come and˺ gone before him. His mother was a woman of truth. They both ate food.
+      - name: Cradle declaration
+        value: Spoke in infancy affirming servitude ('abd) to Allah, having been given the Book and appointed a prophet (Hujjah)
+        topics:
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 19:30
+          authority:
+            - source: Qur'an
+              ref: Maryam 19:30
+              tier: quran
+              url: https://quran.com/19/30
+              quote: Jesus declared, “I am truly a servant of Allah. He has destined me to be given the Scripture and to be a prophet.
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 91, hadith 1
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/4/91/1
+              quote: He said, “At that time he was a prophet, a Divine authority over the people but not a Mursal (Messenger). Have you not heard the words of Allah that say, “He said, “I am the servant of God. He has given me the Book and has appointed me to be a Prophet (19:30). He has blessed me no matter where I dwell, commanded me to worship Him and pay the religious tax for as long as I live.” (19:31)
+      - name: "Rank: Ulul 'Azm"
+        value: One of the five leaders and masters of the prophets and messengers who have the central role
+        topics:
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 46:35
+          authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 2, hadith 3
+              tier: hadith-sahih
+              url: https://thaqalayn.net/hadith/1/4/2/3
+              quote: The leaders and masters of the prophets and the messengers are five who are called ’ulul ‘Azm (people with determination) among the messengers who have the central role. They are Noah, Abraham, Moses, Jesus and Muhammad
+      - name: Manifestation of Hujjah in childhood
+        value: Rose with Divine Authority (al-Hujjah) at three years of age, demonstrating that divine leadership does not require physical adulthood
+        topics:
+          - nubuwwah
+          - imamah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 19:30
+          authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 91, hadith 2
+              tier: hadith-sahih
+              url: https://thaqalayn.net/hadith/1/4/91/2
+              quote: Jesus rose with Divine authority when he three years old only.
+      - name: Stages of prophetic authority
+        value: Prophet and Hujjah at birth defending Mary; at age seven spoke as an inspired prophet and messenger holding divine authority over John and all people
+        topics:
+          - nubuwwah
+          - imamah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 19:30-31
+              - Quran 19:12
+          authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 91, hadith 1
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/4/91/1
+              quote: At that time Jesus was a sign from Allah and a blessing to Mary (Maryam) when he spoke on her behalf. He was a prophet and a Divine authority over all those who heard his words at that time... When Jesus became seven years he then spoke as a prophet and a messenger until Allah, the Most Holy sent him inspiration. Thus, Jesus was the Divine authority over John and over all the people.
+      - name: Miracles by divine permission
+        value: Fashions birds from clay and revives the dead solely by Allah's permission and speech, remaining a servant and son of Allah's maidservant
+        topics:
+          - nubuwwah
+          - tawhid
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:49
+              - Quran 5:110
+          authority:
+            - source: Al-Amālī, Assembly 78
+              ref: hadith 1
+              tier: hadith
+              url: https://thaqalayn.net/hadith/29/1/78/1
+              quote: O `Isa! You are the Messiah by My command, and you create from clay that which is in the form of a bird by My permission, and you revive the dead by My words... so long that you testify that you are My servant, the son of my maidservant.
+      - name: Servitude ('ubudiyyah)
+        value: Never scorns or disdains servitude to Allah, refuting Christian claims of his divinity and worship
+        topics:
+          - tawhid
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:172
+          authority:
+            - source: Risalat al-I'tiqadat (Shaykh as-Saduq)
+              ref: ch. 34
+              tier: scholarly-creed
+              url: https://www.al-islam.org/shiite-creed-shaykh-saduq/concerning-prophets-apostles-imams-and-angels
+              quote: The Messiah will never scorn to be a slave to Allah, nor will the favored angels... Allah the Mighty and Glorious said this only because there are among the people some who believe in the divinity of Jesus and worship him, and these are a class amongst the Christians
+      - name: Eschatological descent and prayer behind the Mahdi
+        value: Descends from heaven upon the reappearance of the Mahdi and prays behind him as the Prophet's vicegerent, serving as a minister rather than a commander
+        topics:
+          - nubuwwah
+          - imamah
+          - maad
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 9:33
+              - Quran 3:55
+          authority:
+            - source: Risalat al-I'tiqadat (Shaykh as-Saduq)
+              ref: ch. 35
+              tier: scholarly-creed
+              url: https://www.al-islam.org/shiite-creed-shaykh-saduq/number-prophets-and-vicegerents
+              quote: about whom the Prophet gave information that when he appears, Jesus... son of Mary, will descend upon the earth and pray behind him, and he who prays behind him is like one who prays behind the Prophet of Allah, because he is his vicegerent
+            - source: Jesus through Shiite Narrations
+              ref: "Chapter: His Second Coming, Paragraph 8"
+              tier: scholarly-creed
+              url: https://www.al-islam.org/jesus-through-shiite-narrations-mahdi-muntazir-qaim/his-second-coming
+              quote: It is reported that Jesus will say to al-Mahdi, “I was raised as a minister not as a commander.”
+      - name: Disavowal of deification
+        value: Sought absolution from Allah regarding those who deified him, serving as the archetype for the Imams' disavowal of extremist delegators (ghulat and mufawwida)
+        topics:
+          - tawhid
+          - nubuwwah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:171
+              - Quran 5:116
+          authority:
+            - source: Risalat al-I'tiqadat (Shaykh as-Saduq)
+              ref: ch. 37
+              tier: scholarly-creed
+              url: https://www.al-islam.org/shiite-creed-shaykh-saduq/denial-excess-and-delegation
+              quote: O God, he who asserts that we (the Imams) have the power of creation and providing (for mankind) - we (Imams) seek absolution from Thee in respect of him, an absolution similar to that of Jesus, son of Mary, in respect of the Christians.
     citations:
       scripture: { bible: none-cited, other: [{ ref: Quran 4:171, highlight: "His Word that He cast toward Mary and a spirit from Him" }, Quran 3:59] }
       authority:
@@ -113,6 +270,22 @@ nodes:
         - source: Qur'an
           ref: Al Imran 3:42
           tier: quran
+    attributes:
+      - name: Physical nature
+        value: Truthful woman (siddiqah) and physical human who ate food
+        topics:
+          - humanity
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:75
+              tier: quran
+              url: https://quran.com/5/75
+              quote: The Messiah, son of Mary, was no more than a messenger. ˹Many˺ messengers had ˹come and˺ gone before him. His mother was a woman of truth. They both ate food.
 
   - id: shi.heavens-earth
     label: The heavens and the earth

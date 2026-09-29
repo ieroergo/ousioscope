@@ -34,49 +34,152 @@ nodes:
     description: A messenger and servant of Allah, created by the word "Be" without a father, like Adam.
     attributes:
       - name: '"His Word" and "a spirit from Him"'
-        topics: [messengers]
-        value: He was created by Allah's word "Be"; "a spirit from created by Him"
+        value: The Messiah (al-Masih), created by Allah's word "Be" sent with Jibril to Maryam, and a created spirit through the breath of Jibril by Allah's leave.
+        topics:
+          - messengers
         citations:
-          scripture: { bible: none-cited, other: [Quran 4:171, Quran 3:45] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:171
+              - Quran 3:45
           authority:
+            - source: Qur'an
+              ref: An-Nisa 4:171
+              tier: quran
+              url: https://quran.com/4/171
+              quote: The Messiah, Jesus, son of Mary, was no more than a messenger of Allah and the fulfilment of His Word through Mary and a spirit ˹created by a command˺ from Him.
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 4:171
               tier: tafsir
-              url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
-              quote: '`Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be'''
+              url: https://quran.com/4/171/tafsirs
+              quote: "`Isa is only one of Allah's servants and one of His creatures. Allah said to him, `Be', and he was, and He sent him as a Messenger. `Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be' that He sent with Jibril to Maryam. Jibril blew the life of `Isa into Maryam by Allah's leave, and `Isa came to existence as a result."
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:45
+              tier: tafsir
+              url: https://quran.com/3/45/tafsirs
+              quote: "`Isa was called \"Al-Masih\" (the Messiah) because when he touched (Mash) those afflicted with an illness, they would be healed by Allah's leave."
       - name: Crucified?
-        topics: [messengers]
         value: No. "They did not kill him, nor did they crucify him; but [another] was made to resemble him to them"
+        topics:
+          - messengers
         citations:
-          scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him; but [another] was made to resemble him to them" }] }
+          scripture:
+            bible: none-cited
+            other:
+              - ref: Quran 4:157
+                highlight: they did not kill him, nor did they crucify him; but [another] was made to resemble him to them
           authority:
             - source: Qur'an
               ref: An-Nisa 4:157
               tier: quran
+              url: https://quran.com/4/157
+              quote: and for boasting, “We killed the Messiah, Jesus, son of Mary, the messenger of Allah.” But they neither killed nor crucified him—it was only made to appear so.
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 4:157
               tier: tafsir
-              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
-              quote: the resemblance of `Isa was cast over that man while `Isa ascended to heaven
+              url: https://quran.com/4/157/tafsirs
+              quote: When `Isa ascended, those who were in the house came out. When those surrounding the house saw the man who looked like `Isa, they thought that he was `Isa. So they took him at night, crucified him and placed a crown of thorns on his head.
       - name: Return
-        topics: [last-day]
-        value: He "will shortly descend among you as a just ruler"
+        value: He will shortly descend as a just ruler, break the cross, kill the swine, and abolish the jizya
+        topics:
+          - last-day
         citations:
-          scripture: { bible: none-cited, other: [Quran 4:159] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:159
           authority:
-            - source: Sahih al-Bukhari, cited by Ibn Kathir
-              ref: on 4:157-159
+            - source: Sahih al-Bukhari 2222
+              ref: Sahih al-Bukhari 2222
               tier: sahih-hadith
-              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
-              quote: the son of Maryam (`Isa) will shortly descend among you as a just ruler, and will break the cross
+              url: https://sunnah.com/bukhari:2222
+              quote: By Him in Whose Hands my soul is, son of Mary (Jesus) will shortly descend ... amongst you people (Muslims) as a just ruler and will break the Cross and kill the pig and abolish the ... Jizya
+      - name: Miracles
+        value: Granted miracles performed strictly by Allah's permission, including speaking in the cradle, forming living birds from clay, healing the blind and leper, and raising the dead, supported by the Holy Spirit (Jibril).
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:110
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:110
+              tier: quran
+              url: https://quran.com/5/110
+              quote: how I supported you with the holy spirit ... so you spoke to people in ˹your˺ infancy and adulthood. How I taught you writing, wisdom, the Torah, and the Gospel. How you moulded a bird from clay—by My Will—and breathed into it and it became a ˹real˺ bird—by My Will. How you healed the blind and the lepers—by My Will. How you brought the dead to life—by My Will.
+      - name: Scripture
+        value: Given the Gospel (al-Injil) by Allah as divine revelation containing guidance and light, confirming the Torah (at-Tawrat).
+        topics:
+          - books
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:46
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:46
+              tier: quran
+              url: https://quran.com/5/46
+              quote: Then in the footsteps of the prophets, We sent Jesus, son of Mary, confirming the Torah revealed before him. And We gave him the Gospel containing guidance and light and confirming what was revealed in the Torah—a guide and a lesson to the God-fearing.
+      - name: Disavowal of worship
+        value: On the Day of Resurrection, Jesus disavows and repudiates any claim that he or his mother Maryam be taken as deities besides Allah.
+        topics:
+          - last-day
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:116
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:116
+              tier: quran
+              url: https://quran.com/5/116
+              quote: And ˹on Judgment Day˺ Allah will say, “O Jesus, son of Mary! Did you ever ask the people to worship you and your mother as gods besides Allah?” He will answer, “Glory be to You! How could I ever say what I had no right to say? If I had said such a thing, you would have certainly known it.
+      - name: Relation to Muhammad
+        value: The Prophet Muhammad is the closest of all people to Jesus, with no prophet between them; prophets are paternal brothers with one religion, and Jesus foretold Muhammad's coming under the name Ahmad.
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 61:6
+          authority:
+            - source: Sahih al-Bukhari 3442
+              ref: Sahih al-Bukhari 3442
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3442
+              quote: I am the nearest of all the people to the son of Mary, and all the ... prophets are paternal brothers, and there has been no prophet between me and him
+            - source: Qur'an
+              ref: As-Saf 61:6
+              tier: quran
+              url: https://quran.com/61/6
+              quote: And ˹remember˺ when Jesus, son of Mary, said, “O children of Israel! I am truly Allah’s messenger to you, confirming the Torah which came before me, and giving good news of a messenger after me whose name will be Aḥmad.”
     citations:
-      scripture: { bible: none-cited, other: [Quran 5:75, Quran 3:59] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 5:75
+          - Quran 3:59
+          - Quran 19:30
       authority:
+        - source: Qur'an
+          ref: Maryam 19:30
+          tier: quran
+          url: https://quran.com/19/30
+          quote: Jesus declared, “I am truly a servant of Allah. He has destined me to be given the Scripture and to be a prophet.
         - source: Ibn Kathir, Tafsir (abridged)
           ref: on 4:171
           tier: tafsir
-          url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
-          quote: '`Isa is only one of Allah''s servants and one of His creatures.'
+          url: https://quran.com/4/171/tafsirs
+          quote: "`Isa is only one of Allah's servants and one of His creatures. Allah said to him, `Be', and he was, and He sent him as a Messenger. `Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be' that He sent with Jibril to Maryam. Jibril blew the life of `Isa into Maryam by Allah's leave, and `Isa came to existence as a result."
 
   - id: sun.jibril
     label: Jibril (Ruh al-Qudus, the Holy Spirit)
@@ -276,12 +379,24 @@ edges:
     source: sun.maryam
     rel: bears
     target: sun.isa
+    note: Conceived miraculously without male parentage through the breathing of the Spirit (Jibril) into Maryam by Allah's leave.
     citations:
-      scripture: { bible: [Luke 1:31], other: [Quran 19:22, Quran 3:45] }
+      scripture:
+        bible:
+          - Luke 1:31
+        other:
+          - Quran 19:22
+          - Quran 3:45
+          - Quran 21:91
       authority:
         - source: Qur'an
           ref: Maryam 19:22
           tier: quran
+        - source: Qur'an
+          ref: Al-Anbya 21:91
+          tier: quran
+          url: https://quran.com/21/91
+          quote: And ˹remember˺ the one who guarded her chastity, so We breathed into her through Our angel, ˹Gabriel,˺ ... making her and her son a sign for all peoples.
 
   - id: sun.e.allah-raises-isa
     source: sun.allah
