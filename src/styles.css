@@ -26,7 +26,7 @@ select:hover { border-color: #cfd6e2; }
 
 .top { display: flex; align-items: center; gap: 16px; padding: 9px 18px; background: var(--panel); flex-wrap: wrap; box-shadow: 0 1px 0 var(--line), 0 2px 10px rgba(20, 30, 55, 0.04); position: relative; z-index: 2; }
 .brand { display: flex; align-items: baseline; gap: 10px; margin-right: 6px; }
-.brand-mark { width: 18px; height: 18px; border-radius: 50%; align-self: center; background: radial-gradient(circle at 50% 50%, var(--ink) 0 22%, transparent 23%), conic-gradient(from 200deg, #c9a227, #d9735f, #9b7fd4, #5b8def, #3fa99a, #c9a227); box-shadow: inset 0 0 0 2px #fff; }
+.brand-mark { width: 18px; height: 18px; align-self: center; background: url("/favicon.svg") center / contain no-repeat; }
 .top h1 { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: 21px; font-weight: 600; letter-spacing: 0.01em; margin: 0; color: var(--ink); }
 .brand-tag { font-size: 12px; color: var(--muted); font-style: italic; }
 .referent-pick { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }

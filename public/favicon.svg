@@ -1,14 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c9a227"/>
-      <stop offset="0.33" stop-color="#d9735f"/>
-      <stop offset="0.66" stop-color="#9b7fd4"/>
-      <stop offset="1" stop-color="#3fa99a"/>
+    <linearGradient id="gold-red" gradientUnits="userSpaceOnUse" x1="64" y1="32" x2="41.889" y2="62.434">
+      <stop stop-color="#c9a227"/><stop offset="1" stop-color="#d9735f"/>
+    </linearGradient>
+    <linearGradient id="red-purple" gradientUnits="userSpaceOnUse" x1="41.889" y1="62.434" x2="6.111" y2="50.809">
+      <stop stop-color="#d9735f"/><stop offset="1" stop-color="#9b7fd4"/>
+    </linearGradient>
+    <linearGradient id="purple-blue" gradientUnits="userSpaceOnUse" x1="6.111" y1="50.809" x2="6.111" y2="13.191">
+      <stop stop-color="#9b7fd4"/><stop offset="1" stop-color="#5b8def"/>
+    </linearGradient>
+    <linearGradient id="blue-teal" gradientUnits="userSpaceOnUse" x1="6.111" y1="13.191" x2="41.889" y2="1.566">
+      <stop stop-color="#5b8def"/><stop offset="1" stop-color="#3fa99a"/>
+    </linearGradient>
+    <linearGradient id="teal-gold" gradientUnits="userSpaceOnUse" x1="41.889" y1="1.566" x2="64" y2="32">
+      <stop stop-color="#3fa99a"/><stop offset="1" stop-color="#c9a227"/>
     </linearGradient>
   </defs>
-  <circle cx="32" cy="32" r="29" fill="url(#a)"/>
-  <circle cx="32" cy="32" r="21" fill="#ffffff"/>
-  <circle cx="32" cy="32" r="12" fill="#2b3a55"/>
-  <circle cx="27.5" cy="27.5" r="3.5" fill="#ffffff" opacity="0.85"/>
+  <g transform="rotate(110 32 32)">
+    <circle cx="32" cy="32" r="32" fill="#c9a227"/>
+    <path d="M32 32L64 32A32 32 0 0 1 41.889 62.434Z" fill="url(#gold-red)"/>
+    <path d="M32 32L41.889 62.434A32 32 0 0 1 6.111 50.809Z" fill="url(#red-purple)"/>
+    <path d="M32 32L6.111 50.809A32 32 0 0 1 6.111 13.191Z" fill="url(#purple-blue)"/>
+    <path d="M32 32L6.111 13.191A32 32 0 0 1 41.889 1.566Z" fill="url(#blue-teal)"/>
+    <path d="M32 32L41.889 1.566A32 32 0 0 1 64 32Z" fill="url(#teal-gold)"/>
+  </g>
+  <circle cx="32" cy="32" r="28.444" fill="none" stroke="#ffffff" stroke-width="7.111"/>
+  <circle cx="32" cy="32" r="10" fill="#2b3a55"/>
 </svg>
