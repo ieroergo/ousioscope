@@ -12,6 +12,7 @@ import { join } from "node:path";
 import { parse, stringify } from "yaml";
 import { chapterOf, expandRef, flattenPassages } from "../src/scripture";
 import { BOOKS, RESTORATION } from "./books";
+import { hasPublisherChrome, nwtBody } from "./scripture-html";
 
 const root = join(import.meta.dirname, "..");
 const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -148,9 +149,7 @@ async function nwtChapter(chapter: string): Promise<ChapterResult> {
   const url = `https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/${no}/${ch}`;
   const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 onto-ontology-tool" }, signal: AbortSignal.timeout(20000) });
   if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
-  let html = await res.text();
-  const end = html.indexOf('<div class="groupFootnote"');
-  if (end > 0) html = html.slice(0, end);
+  let html = nwtBody(await res.text());
   html = html.replace(/<h\d[^>]*>[^]*?<\/h\d>/g, "");
   return { url, verses: splitVerses(html, `<span id="v${no}-${ch}-`, (chunk) =>
     chunk
@@ -378,7 +377,10 @@ for (const [storeId, verseSet] of wanted) {
   const verses: Record<string, string> = existing.verses ?? {};
   const chapters: Record<string, string> = existing.chapters ?? {};
   const originals: Record<string, string> = existing.originals ?? {};
-  const missing = [...verseSet].filter((v) => !verses[v]);
+  const missing = [...new Set([
+    ...[...verseSet].filter((v) => !verses[v]),
+    ...Object.keys(verses).filter((v) => storeId === "nwt" && hasPublisherChrome(verses[v])),
+  ])];
   const todo = [...new Set(missing.map(chapterOf))];
   console.log(`${storeId}: ${verseSet.size} cited verses, ${missing.length} missing, fetching ${todo.length} chapters`);
   const failed: string[] = [];

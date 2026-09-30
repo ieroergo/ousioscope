@@ -19,8 +19,8 @@ import { BOOKS } from "../books";
 import { runAgy } from "./agy";
 import { CRITIC_SCHEMA, RESEARCH_SCHEMA, type CriticOutput, type ResearchOutput, type Source } from "./schemas";
 import { Verifier, type QuoteCheck } from "./verify";
+import { MODEL } from "./model";
 
-const MODEL = "gemini-3.8-flash-high";
 const root = join(import.meta.dirname, "../..");
 const argv = process.argv.slice(2);
 const opt = (name: string) => {
@@ -34,6 +34,9 @@ const STORE = opt("store");
 const BIBLE_LABEL = opt("bible-label") ?? "Bible";
 const DRY = argv.includes("--dry-run");
 const RESUME = opt("resume");
+const PRESERVE = argv.includes("--preserve-on-error");
+const FEEDBACK = opt("feedback");
+if (argv.includes("--model") || argv.includes("--judge-model")) throw new Error(`Every role uses ${MODEL}; model overrides are not supported.`);
 if (!ID || !NAME || !STORE) {
   console.log(readFileSync(import.meta.filename, "utf8").match(/\/\*\*([\s\S]*?)\*\//)![1].replace(/^ \* ?/gm, ""));
   process.exit(1);
@@ -335,7 +338,8 @@ async function main() {
   ];
   const criticChecks = saved<QuoteCheck[]>("5-verify-critic") ?? (await verifyAll(criticSrcs));
   save("5-verify-critic.yaml", criticChecks);
-  const jp = judgePrompt(research, checks, critic, criticChecks);
+  const jp = judgePrompt(research, checks, critic, criticChecks) +
+    (FEEDBACK ? `\n\nFINAL REVIEW / APPLY FEEDBACK (resolve these before writing data):\n${readFileSync(FEEDBACK, "utf8")}` : "");
   let judge = await agy<NewJudge>("6-judge", jp, JUDGE_SCHEMA, false);
   log(`judge: ${judge.decisions.filter((d) => d.decision !== "reject").length} accepted, ${judge.decisions.filter((d) => d.decision === "reject").length} rejected`);
 
@@ -368,10 +372,17 @@ async function main() {
     return;
   }
   const original = git("rev-parse", "--abbrev-ref", "HEAD");
-  const branch = `research/new-${ID}-${runId.slice(0, 14)}`;
+  const branch = opt("branch") ?? `research/new-${ID}-${runId.slice(0, 14)}`;
   git("checkout", "-b", branch);
   try {
     let result = await applyJudge(judge);
+    if (PRESERVE) {
+      result.errors.push(...result.stripped.map((s) => `quote could not be reverified: ${s}`));
+      if (result.errors.length) {
+        save("apply-errors.json", JSON.stringify(result.errors, null, 2));
+        throw new Error(`apply needs repair: ${result.errors.slice(0, 8).join(" | ")}`);
+      }
+    }
     for (let attempt = 1; result.errors.length && attempt <= 3; attempt++) {
       log(`Validation failed (${result.errors.length}): ${result.errors.slice(0, 5).join(" | ")}`);
       git("checkout", "--", "data");
@@ -387,13 +398,19 @@ async function main() {
     log(`Committed on local branch ${branch}. Report: ${relative(root, join(runDir, "report.md"))}`);
     log(`Review: git checkout ${branch} && npm run dev · Merge: git merge --no-ff ${branch}`);
   } catch (e) {
+    if (PRESERVE) {
+      log(`Apply stopped: ${(e as Error).message}. Branch ${branch} and all edits are preserved.`);
+      save("report.md", reportLines(["", `Apply failed: ${(e as Error).message}`]));
+      process.exitCode = 1;
+      return;
+    }
     log(`Aborting: ${(e as Error).message}. Reverting the branch.`);
     git("checkout", "--", "data");
     spawnSync("git", ["clean", "-fdq", "--", `data/traditions/${ID}`], { cwd: root });
     process.exitCode = 1;
   } finally {
-    git("checkout", "-q", original);
-    if (process.exitCode) spawnSync("git", ["branch", "-D", branch], { cwd: root });
+    if (!(PRESERVE && process.exitCode)) git("checkout", "-q", original);
+    if (process.exitCode && !PRESERVE) spawnSync("git", ["branch", "-D", branch], { cwd: root });
   }
 }
 

@@ -33,6 +33,7 @@ import {
   type Source,
 } from "./schemas";
 import { Verifier, type QuoteCheck } from "./verify";
+import { MODEL as RESEARCH_MODEL } from "./model";
 
 const root = join(import.meta.dirname, "../..");
 const argv = process.argv.slice(2);
@@ -45,8 +46,8 @@ if (flag("help") || !opt("topic")) {
   console.log(readFileSync(import.meta.filename, "utf8").match(/\/\*\*([\s\S]*?)\*\//)![1].replace(/^ \* ?/gm, ""));
   process.exit(opt("topic") ? 0 : 1);
 }
-/** The one model used for every role. Change it here (not per run) when a newer Gemini Flash is adopted. */
-const MODEL = "gemini-3.8-flash-high";
+/** The one model used for every role, shared through model.ts rather than selected per run. */
+const MODEL = RESEARCH_MODEL;
 const JUDGE_MODEL = MODEL;
 if (argv.includes("--model") || argv.includes("--judge-model")) {
   console.error(`--model/--judge-model are not supported: every role uses ${MODEL} for consistency.`);
@@ -58,6 +59,9 @@ const PR = flag("pr");
 const CONCURRENCY = Number(opt("concurrency", "3"));
 const FROM_RUN = opt("from-run");
 const RESUME = opt("resume");
+const PRESERVE = flag("preserve-on-error");
+const FEEDBACK = opt("feedback");
+const RESEARCH_SCOPE = opt("scope");
 
 const git = (...args: string[]) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 
@@ -168,7 +172,8 @@ async function runTradition(t: Tradition): Promise<TraditionRun> {
     return r.output;
   };
 
-  const research = await agy<ResearchOutput>("1-research", researcherPrompt(focus, t, data.referents), RESEARCH_SCHEMA, true);
+  const research = await agy<ResearchOutput>("1-research", researcherPrompt(focus, t, data.referents) +
+    (RESEARCH_SCOPE ? `\n\nADDITIONAL RESEARCH QUESTIONS:\n${RESEARCH_SCOPE}` : ""), RESEARCH_SCHEMA, true);
   const checks = saved<QuoteCheck[]>("2-verify") ?? (await verifyAll(research.findings.flatMap((f) => f.sources), domains));
   save(`${tid}.2-verify.yaml`, checks);
   log(`[${tid}] research: ${research.findings.length} findings, ${checks.filter((c) => c.status === "verified").length}/${checks.length} quotes verified`);
@@ -178,7 +183,8 @@ async function runTradition(t: Tradition): Promise<TraditionRun> {
   const criticChecks = saved<QuoteCheck[]>("5-verify-critic") ?? (await verifyAll(criticSources(critic), domains));
   save(`${tid}.5-verify-critic.yaml`, criticChecks);
 
-  const jp = judgePrompt(focus, t, research, checks, rec, critic, criticChecks, data.referents);
+  const jp = judgePrompt(focus, t, research, checks, rec, critic, criticChecks, data.referents) +
+    (FEEDBACK ? `\n\nFINAL REVIEW / APPLY FEEDBACK (resolve these before proposing changes):\n${readFileSync(FEEDBACK, "utf8")}` : "");
   const judge = await agy<JudgeOutput>("6-judge", jp, JUDGE_SCHEMA, false, JUDGE_MODEL);
   log(`[${tid}] judge: ${judge.decisions.filter((d) => d.decision !== "reject").length} accepted, ${judge.decisions.filter((d) => d.decision === "reject").length} rejected, ${judge.ops.length} ops`);
   return { t, research, checks, rec, critic, criticChecks, judgePrompt: jp, judge, tokens };
@@ -265,7 +271,7 @@ async function main() {
   }
 
   const original = git("rev-parse", "--abbrev-ref", "HEAD");
-  const branch = `research/${topicId.replace(/[^\w.-]+/g, "-")}-${runId.slice(0, 14)}`;
+  const branch = opt("branch") ?? `research/${topicId.replace(/[^\w.-]+/g, "-")}-${runId.slice(0, 14)}`;
   git("checkout", "-b", branch);
   try {
     let errors: string[] = [];
@@ -283,9 +289,15 @@ async function main() {
         ...validate(),
         // Ops the applier could not parse are errors the judge must fix too.
         ...withOps.flatMap((r) =>
-          (r.apply?.skipped ?? []).filter((s) => s.reason.startsWith("unparseable")).map((s) => `[${r.t.meta.tradition.id}] ${s.op}: ${s.reason.split("\n")[0]}`),
+          (r.apply?.skipped ?? []).filter((s) => PRESERVE || s.reason.startsWith("unparseable")).map((s) => `[${r.t.meta.tradition.id}] ${s.op}: ${s.reason.split("\n")[0]}`),
         ),
+        ...(PRESERVE ? withOps.flatMap((r) => (r.apply?.strippedQuotes ?? []).map((s) => `[${r.t.meta.tradition.id}] quote could not be reverified: ${s.url}`)) : []),
+        ...(PRESERVE && fetched.status !== 0 ? [`fetch:scripture failed: ${fetchIssues.slice(0, 5).join(" | ")}`] : []),
       ];
+      if (PRESERVE && errors.length) {
+        save("apply-errors.json", JSON.stringify(errors, null, 2));
+        throw new Error(`apply needs repair: ${errors.slice(0, 8).join(" | ")}`);
+      }
       if (!errors.length) break;
       const missing = errors.map((e) => /: no .+ text for (.+?) \(run npm run fetch:scripture\)/.exec(e)?.[1]).filter((m): m is string => !!m);
       if (missing.length === errors.length && missing.some((m) => !missingVerses.has(m))) {
@@ -318,7 +330,7 @@ async function main() {
     if (!git("status", "--porcelain", "--", "data")) {
       log("Ops produced no file changes.");
       git("checkout", original);
-      git("branch", "-D", branch);
+      if (!PRESERVE) git("branch", "-D", branch);
       save("report.md", report(runs, failures));
       return;
     }
@@ -347,6 +359,12 @@ async function main() {
       }
     }
   } catch (e) {
+    if (PRESERVE) {
+      log(`Apply stopped: ${(e as Error).message}. Branch ${branch} and all edits are preserved.`);
+      save("report.md", report(runs, [...failures, (e as Error).message], branch));
+      process.exitCode = 1;
+      return;
+    }
     log(`Aborting: ${(e as Error).message}. Reverting the branch.`);
     git("checkout", "--", "data");
     git("checkout", original);

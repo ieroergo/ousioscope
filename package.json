@@ -14,7 +14,9 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "research": "tsx scripts/research/index.ts",
-    "research:new": "tsx scripts/research/new-tradition.ts"
+    "research:new": "tsx scripts/research/new-tradition.ts",
+    "research:sweep": "tsx scripts/research/progressive.ts",
+    "test:research": "tsx --test scripts/research/*.test.ts scripts/scripture-html.test.ts"
   },
   "dependencies": {
     "cytoscape": "^3.34.3",

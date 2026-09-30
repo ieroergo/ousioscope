@@ -23,7 +23,9 @@ function traditionBlock(t: Tradition) {
     `ITS OWN RULE OF INTERPRETATION: ${tr.hermeneutic.summary}`,
     tr.bibleRole === "parallel"
       ? `SCRIPTURE: its scripture is the ${tr.otherScriptureLabel}. The Bible is NOT its scripture (cite Bible verses only as labeled parallels).`
-      : `SCRIPTURE: the Bible (Old and New Testaments), plus ${tr.otherScriptureLabel}.`,
+      : tr.bibleLabel === "Tanakh"
+        ? `SCRIPTURE: the Tanakh (Hebrew Bible). The New Testament is NOT this tradition's scripture.`
+        : `SCRIPTURE: the Bible (Old and New Testaments)${tr.otherScriptureLabel ? `, plus ${tr.otherScriptureLabel}` : ""}.`,
     `ALLOWED SOURCES (only these domains): ${tr.allowedDomains.join(", ")}`,
   ].join("\n");
 }
@@ -147,7 +149,13 @@ export const JUDGE_RULES = `RULES FOR CHANGES
   "topics" (the tradition's own outline topic ids).
 - Debates: set_stance with position, summary, citations, and "claims" linking the modeled claims that express it
   ("<node or edge id>", "<node id>#<Attribute name>", "axiom:<id>", "category:<id>").
-- Prefer editing (replace_node / replace_edge) over adding a near-duplicate. Keep changes minimal and atomic.
+- Prefer editing over adding a near-duplicate. Use replace_attribute with target = node id to refine an existing
+  attribute (its name must match); preserve all sibling attributes. Use replace_category to correct an existing
+  category's label, term or definition, preserving its id and other fields. Use replace_node / replace_edge only when
+  needed; retain existing supported claims and citations unless the sources explicitly require their correction.
+- Investigate relationship and reference gaps, including inherited class-level facts, but never fill a structural
+  gap merely to make a graph look connected. A missing subject can be intentional; report its status rather than
+  inventing a being or importing another tradition's distinctions. Keep changes minimal and atomic.
 - Record unresolved objections and internal dissent in dissent_notes; if dissent is itself a teaching, it may belong in an
   attribute or edge note.
 - Scripture refs use the data's book abbreviations, e.g. "Matt 1:18", "1 Ne 11:18", "Quran 19:20". Bible books:
@@ -161,6 +169,8 @@ export function formatGuide(t: Tradition) {
   const ex = {
     add_node: { ...node, attributes: node.attributes?.slice(0, 1) },
     add_attribute: node.attributes?.[0],
+    replace_attribute: node.attributes?.[0],
+    replace_category: t.meta.categories.find((c) => c.parent),
     add_edge: edge,
     add_category: t.meta.categories.find((c) => c.parent),
     add_relationship: t.meta.relationships[0],

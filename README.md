@@ -63,6 +63,8 @@ Other commands:
 | `npm run fetch:original` | Rebuilds the Greek and Hebrew notes from `data/scripture/original-curation.yaml` |
 | `npm run research -- --topic <id>` | Runs the agentic research workflow (see below) |
 | `npm run research:new -- --id <id> ...` | Bootstraps a new tradition with the same agent protocol |
+| `npm run research:sweep -- --plan` | Previews the resumable subject-research backlog |
+| `npm run test:research` | Runs offline research and merge-safety regression tests |
 
 `fetch:scripture` and the research quote checker drive a local Google Chrome for some sites. Set `CHROME_PATH` if
 Chrome isn't in the default macOS location.
@@ -134,6 +136,17 @@ npm run research -- --topic ref.mary --traditions lds,sunni             # commit
 Every prompt, finding, quote check, and a readable report are saved in `research/runs/<run-id>/`. See
 [the research skill](.agents/skills/ousioscope-research/SKILL.md) for all options, including resuming a run
 interrupted by a quota limit.
+
+### Progressive local merges
+
+With explicit permission to merge ongoing research, `npm run research:sweep` runs the current subject backlog and
+Judaism correction in isolated worktrees, waiting for Gemini quota resets as needed. Each candidate must pass live
+quote checks, validation, a final review of whether citations support the claims, and the build before a local
+fast-forward merge into a clean `main`. It never pushes.
+
+The resumable queue and timers are in `research/runs/progressive/state.json`; progress is in `progress.log` alongside.
+New sourceable gaps return to research. Failed branches, repeated unresolved questions, and blocked jobs are retained
+for review rather than silently discarded. Stop older research timers before starting this runner.
 
 ## Project structure
 

@@ -26,7 +26,7 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
 - `--from-run <run-id>` re-applies a saved (e.g. dry) run without calling the agents again.
 - `--resume <run-id>` continues an interrupted run (e.g. after an Antigravity quota error): stages already saved
   in that run folder are reused and only missing stages run.
-- **One model only:** every role uses `gemini-3.8-flash-high` (the `MODEL` constant in `scripts/research/index.ts`)
+- **One model only:** every role uses `gemini-3.8-flash-high` (the `MODEL` constant in `scripts/research/model.ts`)
   for consistent provenance. There is no per-run model switch. If the quota runs out, the run stops; resume it
   after the reset on the same model.
 - Parallel runs: run them as `--dry-run` (they don't touch git), then apply each one in turn with `--from-run`.
@@ -47,6 +47,23 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
 judge → re-check → validate with repairs → local branch). The judge writes the whole `metamodel.yaml` and `model.yaml`
 (using an existing tradition as the format template) and the tradition's names for each subject. Dry-run first; then
 `--resume <run-id>` (no `--dry-run`) applies it. The scripture store must exist in `scripts/fetch-scripture.ts`.
+
+## Progressive local merges
+
+Only when the user authorizes it, run `npm run research:sweep` in the background. `-- --plan` previews its backlog.
+It resumes saved blind findings, re-reconciles against current main, and researches one tradition/subject at a time
+in isolated worktrees. Before each local fast-forward merge, live quote checks, data validation, a Gemini-only final
+citation-fit/completeness review, and the build must pass. It never pushes or switches main's working branch.
+
+The queue/timers are in `research/runs/progressive/state.json`, with `progress.log` alongside. Genuine new gap questions
+are queued for further blind research; repeated unresolved questions and blocked jobs stay recorded. Stop older timers
+first; the progressive runner has a single-runner lock. Main must be clean and checked out for a merge; concurrent
+commits trigger re-reconciliation instead of overwriting work.
+
+Automation uses `--preserve-on-error` for single-attempt applies that retain failed branches/edits, `--branch <name>`
+for unique candidate branches, and `--feedback <file>` for judge corrections on fresh worktrees. `replace_attribute`
+(target node id, same attribute name) and `replace_category` (same category id) avoid overwriting neighboring claims.
+Topic `--scope <questions>` adds research questions without exposing the model to the blind researcher.
 
 ## Roles (each is a separate headless `agy` turn in an empty, new-project workspace)
 

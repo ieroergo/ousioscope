@@ -14,7 +14,9 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
 - `npm run check:terms`: fetches each category's term source page and confirms the quoted name is there (online)
 - `npm run dev`: validate, then start Vite
 - `npm run typecheck`: `tsc --noEmit`
-- `npx tsx --test scripts/research/verify.test.ts`: quote-matching and rendered HTTP-error regression tests (offline)
+- `npm run test:research`: offline verifier, applier, scripture-boundary, and progressive-merge regression tests
+- `npm run research:sweep -- --plan`: preview the progressive research backlog without starting agents or writing data
+- `npm run research:sweep`: resume the backlog, review each result, and merge approved results into local `main`
 - `npm run build`: validate + typecheck + production build
 - `npm run fetch:scripture`: fetch the exact text of every newly cited verse into `data/scripture/<store>.yaml`
   (NABRE from bible.usccb.org via puppeteer-core + local Chrome; KJV/Restoration from churchofjesuschrist.org).
@@ -182,10 +184,28 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
 - Scripture stores live in `scripts/fetch-scripture.ts` (`STORES`); `jps1917` is the JPS 1917 Tanakh (public domain)
   with the Masoretic Hebrew, via the Sefaria API. `tradition.bibleLabel` renames the Bible label (e.g. "Tanakh").
 - Model policy: every role uses the single pinned model `gemini-3.8-flash-high` (`MODEL` in
-  `scripts/research/index.ts`). Never switch models mid-run or across runs. If the quota runs out, stop and
+  `scripts/research/model.ts`). Never switch models mid-run or across runs. If the quota runs out, stop and
   `--resume` after the reset.
 - A tradition takes roughly 15–20 minutes and about 1M tokens with gemini-3.8-flash-high. Always run in the
   background and poll.
+
+### Progressive local merging
+- Start `npm run research:sweep` only when the user authorizes progressive local merges. It never pushes.
+- `scripts/research/progressive.ts` keeps a resumable queue and quota reset timers in
+  `research/runs/progressive/state.json`; progress is in `research/runs/progressive/progress.log`.
+- Research/apply happen serially in isolated Git worktrees with shared research artifacts. Main's files and branch
+  stay untouched until an approved fast-forward merge. Main must be checked out, clean, and at the reviewed base.
+  If main advances, re-reconcile against it; never overwrite concurrent work or force a merge.
+- The final Gemini-only reviewer checks the actual diff for citation fit, current teaching, naming provenance,
+  retained claims, and genuine gaps. Validation and the production build must pass before merging.
+- `--preserve-on-error` makes topic/new-tradition apply single-attempt and non-destructive: failed edits and branches
+  remain for review. Skipped ops or quotes that cannot be reverified block that apply. Judge corrections use a fresh
+  worktree, with `--feedback <file>`; `--branch <name>` gives each apply a unique branch.
+- Prefer `replace_attribute` (target node id, same attribute name) and `replace_category` (same category id) to
+  broad replacements, preserving sibling claims. `--scope <questions>` adds questions to a topic's blind research.
+- Sourceable gap questions return to the queue. Already-attempted unresolved questions and jobs still failing after
+  three retries/corrections remain explicit in the state, rather than being silently dropped or fabricated.
+- Stop the old subject/correction timers before using the progressive runner; its lock prevents duplicate runners.
 
 ## Claim validator (`src/validator/`)
 - "Validate this claim" on every node, attribute, edge, axiom, and category runs an interior critique of that one

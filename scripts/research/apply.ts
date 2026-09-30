@@ -4,7 +4,7 @@ import { parse, stringify } from "yaml";
 import { expandRef, parseRef } from "../../src/scripture";
 import { BOOKS, RESTORATION } from "../books";
 import type { JudgeOutput } from "./schemas";
-import { normalize, type Verifier } from "./verify";
+import type { Verifier } from "./verify";
 
 /**
  * Applies judge ops to the YAML files as small text edits (append or replace one list item), so existing
@@ -59,6 +59,16 @@ function insertAttribute(s: string, node: Span, attr: unknown): string {
   const next = /^ {0,4}\S/m.exec(s.slice(after, node.end));
   const at = next ? after + next.index : node.end;
   return s.slice(0, at) + render(attr, 6) + s.slice(at);
+}
+
+function replaceAttribute(s: string, node: Span, attr: Record<string, unknown>): string | undefined {
+  const match = /^ {4}attributes:\s*\n/m.exec(s.slice(node.start, node.end));
+  if (!match) return;
+  const start = node.start + match.index + match[0].length;
+  const next = /^ {0,4}\S/m.exec(s.slice(start, node.end));
+  const end = next ? start + next.index : node.end;
+  const sp = items(s, { start, end }, 6).find((x) => itemValue(s, x, 6)?.name === attr.name);
+  return sp ? s.slice(0, sp.start) + render(attr, 6) + s.slice(sp.end) : undefined;
 }
 
 const itemValue = (s: string, sp: Span, indent: number) => {
@@ -170,7 +180,7 @@ export async function applyOps(
   root: string,
   tid: string,
   ops: JudgeOutput["ops"],
-  verified: { url: string; quote: string }[],
+  _verified: { url: string; quote: string }[],
   verifier: Verifier,
   domains: string[],
   /** Verse keys the tradition's translation doesn't contain; they are removed from cited references. */
@@ -191,9 +201,7 @@ export async function applyOps(
   const report: ApplyReport = { applied: [], skipped: [], strippedQuotes: [] };
 
   // Every authority quote written into the data must be one the pipeline verified (or verifiable now).
-  const quoteOk = async (url: string, quote: string) =>
-    verified.some((v) => v.url === url && normalize(v.quote).includes(normalize(quote))) ||
-    (await verifier.check({ url, quote }, domains)).status === "verified";
+  const quoteOk = async (url: string, quote: string) => (await verifier.check({ url, quote }, domains)).status === "verified";
   const scrubQuotes = async (v: unknown): Promise<void> => {
     if (Array.isArray(v)) for (const x of v) await scrubQuotes(x);
     else if (v && typeof v === "object") {
@@ -237,6 +245,11 @@ export async function applyOps(
       case "replace_edge":
         put("model", replaceItem(text.model, "edges", (v) => v.id === id, obj), `edge ${id} not found`);
         break;
+      case "replace_attribute": {
+        const sp = op.target ? findItem(text.model, "nodes", op.target) : undefined;
+        put("model", sp ? replaceAttribute(text.model, sp, obj) : undefined, `attribute "${obj.name}" on node ${op.target} not found`);
+        break;
+      }
       case "add_attribute": {
         const sp = op.target ? findItem(text.model, "nodes", op.target) : undefined;
         if (!sp) {
@@ -247,6 +260,9 @@ export async function applyOps(
         put("model", exists ? undefined : insertAttribute(text.model, sp, obj), `attribute "${obj.name}" exists on ${op.target}`);
         break;
       }
+      case "replace_category":
+        put("meta", replaceItem(text.meta, "categories", (v) => v.id === id, obj), `category ${id} not found`);
+        break;
       case "add_category":
         put("meta", findItem(text.meta, "categories", id!) ? undefined : appendItem(text.meta, "categories", obj), `category ${id} exists`);
         break;

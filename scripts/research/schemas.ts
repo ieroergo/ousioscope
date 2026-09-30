@@ -168,6 +168,8 @@ export const OPS = [
   "add_node",
   "replace_node",
   "add_attribute",
+  "replace_attribute",
+  "replace_category",
   "add_edge",
   "replace_edge",
   "add_category",
@@ -202,7 +204,7 @@ export const JUDGE_SCHEMA = {
         type: "object",
         properties: {
           op: { type: "string", enum: [...OPS] },
-          target: { type: "string", description: "add_attribute: the node id. set_stance: the debate id. Otherwise omit." },
+          target: { type: "string", description: "add_attribute/replace_attribute: the node id (replacement matches the existing attribute name). set_stance: the debate id. Otherwise omit." },
           yaml: { type: "string", description: "One element in the project's YAML format (see FORMAT GUIDE), as a mapping (no leading '- ')." },
           finding_ids: { type: "array", items: str },
         },
