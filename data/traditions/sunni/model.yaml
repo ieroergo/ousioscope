@@ -194,6 +194,68 @@ nodes:
           tier: tafsir
           url: https://quran.com/16:102/tafsirs/en-tafisr-ibn-kathir
           quote: '(Say: "Ruh-ul-Qudus has brought it...") meaning, Jibril'
+    attributes:
+      - name: al-Ruh al-Amin
+        value: The Trustworthy Spirit who brought down the revelation of the Qur'an upon the heart of the Prophet
+        topics:
+          - angels
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - ref: Quran 26:193
+                highlight: The Trustworthy Spirit has brought it down
+          authority:
+            - source: Qur'an
+              ref: Ash-Shu'ara 26:193
+              tier: quran
+              url: https://tanzil.net/trans/en.sahih
+              quote: The Trustworthy Spirit has brought it down
+      - name: Form and power
+        value: Created with six hundred wings and immense physical power, seen in his actual form by the Prophet
+        topics:
+          - angels
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 53:5
+          authority:
+            - source: Sahih al-Bukhari
+              ref: "3232"
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3232
+              quote: Ibn Mas`ud informed us that the Prophet (ﷺ) had seen Gabriel having 600 wings.
+      - name: Noble rank and trustworthiness
+        value: A noble angelic messenger who is trustworthy, honored, and obeyed in the heavens
+        topics:
+          - angels
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 81:19-21
+          authority:
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 81:19-21
+              tier: tafsir
+              url: https://quran.com/at-takwir/19/tafsirs/en-tafisr-ibn-kathir
+              quote: (trustworthy.) This is a description of Jibril as being trustworthy. This is something very great, that the Almighty Lord has commended His servant and angelic Messenger, Jibril, just as He has commended His servant and human Messenger, Muhammad ﷺ
+      - name: Support for defenders of truth
+        value: Aids and strengthens believers who defend the Prophet and the truth, demonstrated in the supplication for Hassan ibn Thabit
+        topics:
+          - angels
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 2:87
+          authority:
+            - source: Sahih al-Bukhari
+              ref: "453"
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:453
+              quote: O Hassan! Reply on behalf of Allah's Messenger (ﷺ). O Allah! Help him with the Holy Spirit.
 
   - id: sun.maryam
     label: Maryam (Mary)
@@ -519,15 +581,29 @@ edges:
     source: sun.allah
     rel: sends
     target: sun.jibril
-    note: To Maryam, appearing "in the form of a man in all respects".
+    note: Sent to Maryam in the form of a man in all respects; blew into her garment by Allah's command, through which Allah breathed the spirit for Isa's conception.
     citations:
-      scripture: { bible: [Luke 1:26], other: [Quran 19:17] }
+      scripture:
+        bible:
+          - Luke 1:26
+        other:
+          - Quran 19:17
+          - Quran 66:12
       authority:
         - source: Ibn Kathir, Tafsir (abridged)
           ref: on 19:17
           tier: tafsir
           url: https://quran.com/19:17/tafsirs/en-tafisr-ibn-kathir
-          quote: 'then We sent to her Our Ruh ... "It means Jibril."'
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 66:12
+          tier: tafsir
+          url: https://quran.com/at-tahrim/12/tafsirs/en-tafisr-ibn-kathir
+          quote: (And We breathed into it (private part) through Our Ruh,) meaning, through the angel Jibril. Allah sent the angel Jibril to Maryam, and he came to her in the shape of a man in every respect. Allah commanded him to blow into a gap of her garment and that breath went into her womb through her private part; this is how `Isa was conceived.
+        - source: Qur'an
+          ref: At-Tahrim 66:12
+          tier: quran
+          url: https://tanzil.net/trans/en.sahih
+          quote: And [the example of] Mary, the daughter of 'Imran, who guarded her chastity, so We blew into [her garment] through Our angel, and she believed in the words of her Lord and His scriptures and was of the devoutly obedient.
 
   - id: sun.e.allah-sends-isa
     source: sun.allah
@@ -627,9 +703,13 @@ edges:
     source: sun.isa
     rel: isLike
     target: sun.adam
-    note: Both were created without a father, by the word "Be".
+    note: Both created without a human father by the word "Be"; part of the four types of human creation completing Allah's creative power.
     citations:
-      scripture: { bible: none-cited, other: [Quran 3:59] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 3:59
+          - Quran 19:17
       authority:
         - source: Qur'an
           ref: Al Imran 3:59
@@ -638,4 +718,8 @@ edges:
           ref: on 3:59
           tier: tafsir
           url: https://quran.com/3:59/tafsirs/en-tafisr-ibn-kathir
-          quote: He Who created Adam without a father or a mother is able to create
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 19:17
+          tier: tafsir
+          url: https://quran.com/maryam/17/tafsirs/en-tafisr-ibn-kathir
+          quote: He created their father, Adam, without a male (father) or female (mother). Then, He created Hawwa' (Adam's spouse) from a male (father) without a female (mother). Then, He created the rest of their progeny from male and female, except `Isa. He caused `Isa to be born from a female without a male. Thus, Allah completed the four types of creation (of the human being)

@@ -209,6 +209,27 @@ nodes:
               tier: scholarly-creed
               url: https://www.al-islam.org/shiite-creed-shaykh-saduq/denial-excess-and-delegation
               quote: O God, he who asserts that we (the Imams) have the power of creation and providing (for mankind) - we (Imams) seek absolution from Thee in respect of him, an absolution similar to that of Jesus, son of Mary, in respect of the Christians.
+      - name: Spirit from Him
+        value: An originated, created spirit from Allah created in Adam and Jesus, rather than divine essence
+        topics:
+          - nubuwwah
+          - tawhid
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:171
+          authority:
+            - source: Al-Kafi, Kitab al-Tawhid
+              ref: vol. 1, book 3, ch. 21, hadith 1 (graded sahih by al-Majlisi)
+              tier: hadith-sahih
+              url: https://thaqalayn.net/hadith/1/3/21/1
+              quote: This is a created spirit and the spirit in Jesus is created.
+            - source: Al-Kafi, Kitab al-Tawhid
+              ref: vol. 1, book 3, ch. 21, hadith 2 (graded hasan by al-Majlisi)
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/3/21/2
+              quote: It is the spirit (Ruh) from Allah created in Adam and Jesus.
     citations:
       scripture: { bible: none-cited, other: [{ ref: Quran 4:171, highlight: "His Word that He cast toward Mary and a spirit from Him" }, Quran 3:59] }
       authority:
@@ -220,40 +241,104 @@ nodes:
     label: The Spirit (al-Ruh)
     category: Spirit
     referent: ref.holy-spirit
-    description: >-
-      A creature greater than Jibril and Mika'il, sent to the Prophet and present with the Imams. Separately,
-      al-Kafi names "the Holy Spirit" as one of five spirits placed in the prophets and Imams.
+    description: A created being greater than Jibril and Mika'il, sent to the Prophet and present with the Imams. Separately, the Holy Spirit is one of five spirits placed in the prophets and Imams.
     attributes:
       - name: Holy Spirit (Ruh al-Qudus)
-        topics: [spirit, imamah]
-        value: One of "five spirits" in the prophets and Imams; "the Holy Spirit does not sleep or become unaware"
+        value: One of five spirits in the messengers and Imams, through which they recognize all things; it does not sleep or become unaware
+        topics:
+          - spirit
+          - imamah
         citations:
-          scripture: { bible: none-cited, other: [Quran 2:87, Quran 2:253] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 2:87
+              - Quran 2:253
+              - Quran 56:7-10
           authority:
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 55, hadith 1 (graded sahih by al-Majlisi)
+              tier: hadith-sahih
+              url: https://thaqalayn.net/hadith/1/4/55/1
+              quote: The foremost group is the messengers and the people of special status with Allah among His creatures. Allah has placed in them five spirits and has supported them with the Holy Spirit. Through this spirit they recognize things.
             - source: Al-Kafi, Kitab al-Hujja
               ref: vol. 1, book 4, ch. 55, hadith 3
               tier: hadith
               url: https://thaqalayn.net/hadith/1/4/55/3
-              quote: When the prophet passes away the Holy Spirit transfers and comes over to the Imam. The Holy Spirit does not sleep or become unaware.
       - name: Same as Jibril?
-        topics: [spirit]
-        value: No; "greater than Jibril and Mika'il" and "from the realm of the angels"
+        value: No; a creature greater than Jibril and Mika'il, distinct from the angels, though in contexts of prophetic revelation classical theologians identify the Holy Spirit with Jibril
+        topics:
+          - spirit
         citations:
-          scripture: { bible: none-cited, other: [Quran 17:85] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 17:85
+              - Quran 16:2
           authority:
             - source: Al-Kafi, Kitab al-Hujja
               ref: vol. 1, book 4, ch. 56, hadith 3 (graded sahih by al-Majlisi)
               tier: hadith-sahih
               url: https://thaqalayn.net/hadith/1/4/56/3
-              quote: He is a creature greater than Jibril and Mika'il. He was with the Messenger of Allah and he is present with the Imams. He is from the realm of the angels.
+              quote: He is a creature greater than Jibril and Mika’il. He was with the Messenger of Allah and he is present with the Imams. He is from the realm of the angels.
+            - source: Al-Kafi, Kitab al-Hujja
+              ref: vol. 1, book 4, ch. 56, hadith 6
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/4/56/6
+              quote: Jibril is of the angels. The Spirit is not Jibril... He sends the angels with the Spirit. The Spirit is (a creature) other than the angels
+            - source: Shaykh al-Mufid, The Emendation of A Shi'ite Creed (Tashih al-I'tiqad)
+              ref: ch. 20, Concerning Souls and Spirits
+              tier: scholarly-creed
+              url: https://www.al-islam.org/emendation-shiite-creed-shaykh-al-mufid/20-concerning-souls-and-spirits-al-arwah-wa-n-nufus
+              quote: '"The Holy Spirit has revealed it" ... that is, Jibril, peace be upon him.'
+      - name: Possessive attribution
+        value: The phrase "My Spirit" is an honorific attribution by divine election (istifa'), not divine essence; all spirits are created and originated
+        topics:
+          - spirit
+          - tawhid
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 15:29
+          authority:
+            - source: Al-Kafi, Kitab al-Tawhid
+              ref: vol. 1, book 3, ch. 21, hadith 3
+              tier: hadith
+              url: https://thaqalayn.net/hadith/1/3/21/3
+              quote: He has given His own possessive case because He selected it from among the other spirits just as He has said about a House from among the houses ‘My house’ and to a messenger from among the messengers ‘My friend’ and so on. All such things are created, invented, newly produced and are cherished by the Lord.
+      - name: Relation to angels
+        value: Stands at a superior existential plane above the angels, supporting and aiding Jibril and the angelic hosts in executing cosmic commands
+        topics:
+          - spirit
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 78:38
+              - Quran 97:4
+          authority:
+            - source: Allamah Tabataba'i, Shining Sun
+              ref: ch. 6, Scientific Discourses
+              tier: scholarly-creed
+              url: https://al-islam.org/shining-sun-memory-allamah-tabatabai-sayyid-muhammad-husayn-husayni-tehrani/6-scientific-discourses
+              quote: is a transcendent being who stands at a superior existential plane compared to the angels. The angels are supported by the... and get help from the... in the tasks that they carry out... Gabriel is an angel, and the... is a reality that is different from the angels.
     citations:
-      scripture: { bible: none-cited, other: [Quran 42:52, Quran 17:85] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 42:52
+          - Quran 17:85
       authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 56, hadith 3 (graded sahih by al-Majlisi)
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/56/3
+          quote: He is a creature greater than Jibril and Mika’il. He was with the Messenger of Allah and he is present with the Imams. He is from the realm of the angels.
         - source: Al-Kafi, Kitab al-Hujja
           ref: vol. 1, book 4, ch. 56, hadith 1 (graded sahih by al-Majlisi)
           tier: hadith-sahih
           url: https://thaqalayn.net/hadith/1/4/56/1
-          quote: He is a creature of the creatures of Allah, the Most Holy and Most High, greater than Jibril and Mika'il.
 
   - id: shi.mary
     label: Mary (Maryam)

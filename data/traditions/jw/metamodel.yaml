@@ -43,12 +43,27 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    claims: ["jw.jehovah#Trinity?", "jw.jesus#Equal to Almighty God?"]
     summary: Jehovah alone is Almighty God. "There is no Scriptural basis for the Trinity doctrine."
+    claims:
+      - jw.jehovah#Trinity?
+      - jw.jesus#Equal to Almighty God?
+      - jw.holy-spirit#Part of Trinity?
     citations:
-      scripture: { bible: [Deut 6:4, John 17:3] }
+      scripture:
+        bible:
+          - Deut 6:4
+          - Matt 24:36
+          - John 17:3
+          - Acts 7:55
       authority:
-        - { source: Is God a Trinity? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/trinity/", quote: "the God of the Bible is never described as being part of a Trinity" }
+        - source: Is God a Trinity? (jw.org)
+          tier: watch-tower
+          url: https://www.jw.org/en/bible-teachings/questions/trinity/
+          quote: the God of the Bible is never described as being part of a Trinity
+        - source: The Truth About the Father, the Son, and the Holy Spirit (Bible Teach)
+          tier: watch-tower
+          url: https://www.jw.org/en/library/books/bible-teach/father-son-holy-spirit-trinity/
+          quote: Concerning that day and hour nobody knows, neither the angels of the heavens nor the Son, but only the Father... what about the holy spirit? If it is part of the same God as the Father, why does Jesus not say that it knows what the Father knows?
   - debate: debate.son-created
     stance: affirms
     claims: ["jw.e.jehovah-creates-jesus"]
@@ -321,3 +336,24 @@ relationships:
           ref: Genesis 2:21-22
           tier: watch-tower
           url: https://wol.jw.org/en/wol/b/r1/lp-e/nwtsty/1/2
+  - id: anoints
+    label: anoints
+    definition: God anoints a person with holy spirit and power, appointing them for divine office, as when he anointed Jesus at baptism to be Messiah, King, and High Priest.
+    domain:
+      - AlmightyGod
+    range:
+      - SpiritCreature
+    topics:
+      - jesus
+      - holy-spirit
+    citations:
+      scripture:
+        bible:
+          - Acts 10:38
+          - Matt 3:16-17
+          - Isa 42:1
+      authority:
+        - source: Is the Holy Spirit a Person? (The Bible's Viewpoint)
+          tier: watch-tower
+          url: https://www.jw.org/en/library/magazines/g200607/Is-the-Holy-Spirit-a-Person/
+          quote: the apostle Peter spoke of Jesus as having been anointed by God “with holy spirit and power.”

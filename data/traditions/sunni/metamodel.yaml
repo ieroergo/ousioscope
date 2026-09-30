@@ -38,12 +38,27 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    claims: ["sun.allah#Has a son?"]
-    summary: 'Allah is One. The Qur''an forbids saying "Three".'
+    summary: Allah is One. The Qur'an forbids saying "Three" and rejects the divinization of Jesus or the Spirit; both are created servants.
+    claims:
+      - sun.allah#Has a son?
+      - sun.isa#"His Word" and "a spirit from Him"
     citations:
-      scripture: { bible: none-cited, other: [Quran 4:171, Quran 112:1-4] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 4:171
+          - Quran 112:1-4
       authority:
-        - { source: "Qur'an", ref: An-Nisa 4:171, tier: quran }
+        - source: Qur'an
+          ref: An-Nisa 4:171
+          tier: quran
+          url: https://tanzil.net/trans/en.sahih
+          quote: The Messiah, Jesus, the son of Mary, was but a messenger of Allah and His word which He directed to Mary and a soul [created at a command] from Him. So believe in Allah and His messengers. And do not say, "Three"; desist - it is better for you. Indeed, Allah is but one God. Exalted is He above having a son.
+        - source: Ibn Kathir, Tafsir (abridged)
+          ref: on 4:171
+          tier: tafsir
+          url: https://quran.com/an-nisa/171/tafsirs/en-tafisr-ibn-kathir
+          quote: "\"`from Him' does not mean that it is a part of Him, as the Christians claim... Saying that something is from Allah, such as the spirit of Allah, the she-camel of Allah or the House of Allah, is meant to honor such items.\""
   - debate: debate.son-created
     stance: affirms
     claims: ["sun.e.allah-creates-isa", "sun.e.isa-like-adam"]

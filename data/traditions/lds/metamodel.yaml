@@ -49,12 +49,30 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    claims: ["lds.e.godhead-father", "lds.e.godhead-jesus", "lds.e.godhead-holy-ghost", "lds.e.jesus-one-with-father"]
-    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose, not one substance.
+    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose and doctrine, not three persons in one substance.
+    claims:
+      - lds.e.godhead-father
+      - lds.e.godhead-jesus
+      - lds.e.godhead-holy-ghost
+      - lds.e.jesus-one-with-father
+      - lds.holy-ghost#Body?
     citations:
-      scripture: { bible: [Matt 28:19], other: [JS-H 1:17] }
+      scripture:
+        bible:
+          - Matt 28:19
+          - John 17:20-23
+        other:
+          - A of F 1:1
+          - JS-H 1:17
       authority:
-        - { source: 'Topics and Questions, "Godhead"', tier: church-published, url: "https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng", quote: "we know that the members of the Godhead are three separate beings" }
+        - source: Topics and Questions, "Godhead"
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: where Latter-day Saints differ from other Christian religions is in their belief that God and Jesus Christ are glorified, physical beings and that each member of the Godhead is a separate being... From the Prophet’s account of the First Vision and from his other teachings, we know that the members of the Godhead are three separate beings. The Father and the Son have tangible bodies of flesh and bones, and the Holy Ghost is a personage of spirit.
+        - source: Elder Jeffrey R. Holland, "The Only True God and Jesus Christ Whom He Hath Sent" (General Conference, October 2007)
+          tier: general-authority
+          url: https://www.churchofjesuschrist.org/study/general-conference/2007/10/the-only-true-god-and-jesus-christ-whom-he-hath-sent?lang=eng
+          quote: I think it is accurate to say we believe They are one in every significant and eternal aspect imaginable except believing Them to be three persons combined in one substance, a Trinitarian notion never set forth in the scriptures because it is not true... We declare it is self-evident from the scriptures that the Father, the Son, and the Holy Ghost are separate persons, three divine beings
   - debate: debate.son-created
     stance: reframes
     claims: ["lds.e.father-begets-jesus-spirit", "lds.jesus#Existence before birth"]
@@ -97,12 +115,27 @@ stances:
         - { source: Pearl of Great Price, ref: Abr 3:24, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/3?lang=eng&id=p24#p24", quote: "we will take of these materials, and we will make an earth" }
   - debate: debate.god-embodied
     stance: affirms
-    claims: ["lds.e.father-has-body"]
-    summary: The Father has a tangible body of flesh and bones, and so does the Son.
+    summary: The Father and the Son have tangible bodies of flesh and bones, while the Holy Ghost is a separate personage of spirit.
+    claims:
+      - lds.e.father-has-body
+      - lds.e.jesus-has-body
+      - lds.holy-ghost#Body?
     citations:
-      scripture: { bible: [Luke 24:39], other: [D&C 130:22] }
+      scripture:
+        bible:
+          - Luke 24:39
+        other:
+          - D&C 130:22
       authority:
-        - { source: Doctrine and Covenants, ref: D&C 130:22, tier: standard-works, url: "https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p22#p22", quote: "The Father has a body of flesh and bones as tangible as man's" }
+        - source: Doctrine and Covenants
+          ref: D&C 130:22
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng
+          quote: The Father has a body of flesh and bones as tangible as man’s; the Son also; but the Holy Ghost has not a body of flesh and bones, but is a personage of Spirit. Were it not so, the Holy Ghost could not dwell in us.
+        - source: Gospel Topics, "Godhead"
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: From the Prophet’s account of the First Vision and from his other teachings, we know that the members of the Godhead are three separate beings. The Father and the Son have tangible bodies of flesh and bones, and the Holy Ghost is a personage of spirit.
   - debate: debate.inherited-guilt
     stance: rejects
     claims: ["lds.adam#What descendants inherit"]
