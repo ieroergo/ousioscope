@@ -14,7 +14,7 @@ import { chapterOf, expandRef, flattenPassages } from "../src/scripture";
 import { BOOKS, RESTORATION } from "./books";
 
 const root = join(import.meta.dirname, "..");
-const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 // ---------- collect cited verses per store ----------
 function collectScripture(node: unknown, out: { bible: string[]; other: string[] }) {
