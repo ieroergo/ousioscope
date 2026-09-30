@@ -1,9 +1,10 @@
 # Ousioscope
 
-Ousioscope (from Greek ousia, "being, substance"): side-by-side comparison of religious traditions' semantic networks. Traditions: Catholic, LDS, Reformed
-(Westminster), Jehovah's Witnesses, Sunni Islam, Shia Islam. Pick any two in the header; the URL
-(`?left=&right=`) is shareable.
-First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
+Ousioscope (from Greek ousia, "being, substance"): compares religious traditions' semantic networks (what each says
+things ARE), each in its own words and cited to its own sources. Traditions: Catholic, LDS, Reformed (Westminster),
+Jehovah's Witnesses, Sunni Islam, Shia Islam. View one tradition (Single) or two side by side (Compare).
+Current scope: 8 subjects (God the Father, Jesus Christ, Holy Spirit, God as a whole, the created world, Adam, Eve,
+Mary), each tradition's own outline of teaching, and 11 debate propositions with cited stances.
 
 ## Stack
 - Vite + React + TypeScript + Cytoscape.js (+ cytoscape-fcose layout), zod schema, YAML data
@@ -20,13 +21,42 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
   (SBLGNT/MorphGNT, WLC/OSHB, Scrivener TR, Nova Vulgata, Dodson/Strong's glosses).
 - Install deps with `npm install --before=<date 7+ days ago>` to avoid brand-new releases.
 
+## Git
+- Remote `origin` is `git@github.com:ieroergo/ousioscope.git` (push over SSH; `gh` is signed in to github.com as
+  ieroergo for `--pr`).
+- Commit as `Chris Kudelka <ckudelka@gmail.com>` via `GIT_AUTHOR_*`/`GIT_COMMITTER_*` env vars. Don't change git
+  config.
+- Research results land on local `research/*` branches and are merged locally. Push only when asked.
+
 ## Layout
-- `data/referents.yaml`: cross-tradition referent registry (canonical name + aliases by tradition/language)
-- `data/traditions/<id>/metamodel.yaml`: tradition info, authority tiers, category tree, relationship types
-- `data/traditions/<id>/model.yaml`: nodes (typed by category, optional referent) and edges
-- `src/schema.ts` (zod), `src/ontology.ts` (loading, validation, verse/tier helpers), `scripts/validate.ts` (CLI)
-- `src/App.tsx`, `src/GraphPane.tsx`, `src/Details.tsx`, `src/graph.ts`, `src/selection.ts`: UI
+- `data/referents.yaml`: cross-tradition referent registry (canonical name + aliases by tradition/language); every
+  referent is a "Subject" in the Topic picker.
+- `data/topics.yaml`: shared topic registry (doctrine, salvation, life & worship, debate propositions).
+- `data/crosswalks.yaml`: curated category crosswalks between traditions (optional overlay).
+- `data/traditions/<id>/metamodel.yaml`: tradition info (tiers, scripture stores, `hermeneutic`, `allowedDomains`),
+  its own outline `topics`, debate `stances`, category tree, relationship types, axioms.
+- `data/traditions/<id>/model.yaml`: individuals (nodes, each with a referent) and edges.
+- `data/scripture/<store>.yaml`: fetched verse text per translation; `original.yaml` / `original-curation.yaml`:
+  Greek/Hebrew notes.
+- `src/schema.ts` (zod), `src/ontology.ts` (loading, validation, claim refs), `src/topics.ts` (topic coverage,
+  spotlight ids), `src/crosswalk.ts`, `src/scripture.ts`; `scripts/validate.ts` (CLI).
+- UI: `src/App.tsx` (shell, toolbar, panes, focus logic), `src/GraphPane.tsx` (Cytoscape, layout, spotlight/pulse),
+  `src/graph.ts` (elements, neighborhoods), `src/Details.tsx` + `src/ScripturePanel.tsx` (detail panel),
+  `src/CrosswalkOverlay.tsx`, `src/validator/` (claim validator).
+- `scripts/research/` + `.agents/skills/ousioscope-research/`: agentic research workflow.
 - New traditions are picked up automatically from `data/traditions/*/`.
+
+## App UI
+- Top bar: Topic picker (Subjects, Doctrine, Salvation, Life & worship, Points of debate), then one grouped icon
+  toolbar, each icon with a hover definition: Focus (Isolate / In context), Layout (Single / Compare), View
+  (Model / Metamodel), Categories as (Boxes / Nodes / Color; Model only), Crosswalk (Compare only).
+- Each canvas header: tradition picker (⇄ swaps sides), Degrees slider when a subject is focused (1–5 degrees,
+  then Max, capped at how far that graph reaches), Auto-layout button, and a settings gear (minimum authority tier).
+- Detail panel (right, collapsible, resizable): one tab per tradition; claims show category path, topics, referent,
+  scripture (reference column; original-language notes collapsed), and authority with tier. Hovering a listed
+  claim pulses it in the graph. A breadcrumb returns to the focused topic.
+- Shareable URL params: `left`, `right`, `mode=single`, `view=metamodel`, `group=nodes|color`, `xw=1`,
+  `topic=<id>`, `fm=context`.
 
 ## Modeling decisions
 - Each tradition has its own metamodel: its own category tree AND its own relationship types.
@@ -50,8 +80,9 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
     LDS "in the flesh"). Use it instead of inventing part-nodes.
   - Facts true of every member of a kind go in metamodel `axioms` (class-level), e.g. HumanNature hasPart some SpiritualSoul.
   - Facts about one individual's particular (e.g. Christ's risen body) go in that individual's attributes.
-- Cross-tradition bridges are by REFERENT only (curated registry: id, canonical name, aliases scoped by
-  tradition and by language). No concept-match field; the viewer compares metamodels themselves.
+- Cross-tradition bridges are by REFERENT (curated registry: id, canonical name, aliases scoped by tradition and
+  by language) and by shared topics/debates. Tradition models never reference each other. Category correspondences
+  live only in the separate, optional crosswalk layer (see Crosswalks).
 - Exclude teachings a tradition has rejected; include only current teaching.
 
 ## Citations
@@ -80,12 +111,20 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
 - Greek/Hebrew: curate in `data/scripture/original-curation.yaml` only where a claim depends on the wording
   (`why` must cite where each tradition makes the argument), then `npm run fetch:original`. Never hand-write
   glosses, morphology, or original text.
-- Authority tiers:
+- Authority tiers (highest first; ids in each metamodel):
   - Catholic: dogma > definitive doctrine > ordinary magisterium > common theological opinion
   - LDS: standard works > official declaration/proclamation > church-published > general authority teaching
-- Allowed sources: vatican.va, churchofjesuschrist.org, New Advent, Denzinger, Encyclopedia of Mormonism,
-  opc.org / thewestminsterstandard.org (Westminster Standards with proof texts), jw.org / wol.jw.org,
-  quran.com (Ibn Kathir tafsir), tanzil.net (Qur'an), thaqalayn.net (al-Kafi with gradings).
+  - Reformed: confessional (Westminster Standards) > denominational publication > Reformed theologian
+  - Jehovah's Witnesses: Watch Tower publication > reference work quoted by Watch Tower
+  - Sunni: Qur'an > sahih hadith > classical tafsir
+  - Shia: Qur'an > hadith graded sahih (al-Kafi) > other hadith > scholarly creed
+- Allowed sources are per tradition (`tradition.allowedDomains`), used by the validator and the research agents:
+  - Catholic: vatican.va, usccb.org, newadvent.org
+  - LDS: churchofjesuschrist.org
+  - Reformed: opc.org, thewestminsterstandard.org, pcaac.org, esv.org
+  - JW: jw.org, wol.jw.org
+  - Sunni: quran.com, sunnah.com, tanzil.net
+  - Shia: thaqalayn.net, al-islam.org, tanzil.net, quran.com
 - Long-running fetches: always run in the background and poll; never block on them.
 
 ## Topics (the top-bar "Topic" focus)
@@ -108,7 +147,8 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
 - Don't invent outline items. Take them from the tradition's own published outline, and show unmodeled items as gaps.
 
 ## Research workflow (`scripts/research/`, skill `.agents/skills/ousioscope-research`)
-- `npm run research -- --topic <referent or registry id> [--traditions all|a,b] [--dry-run] [--pr] [--from-run <id>]`
+- `npm run research -- --topic <referent or registry id> [--traditions all|a,b] [--dry-run] [--pr] [--concurrency N]
+  [--from-run <id>] [--resume <id>]`
 - The result is committed on a LOCAL branch `research/<topic>-<stamp>` (one per topic), to be merged locally with
   `git merge --no-ff <branch>`. Pushing and opening a PR happen only with `--pr`.
 - Roles are headless `agy -p --json-schema` turns in empty, new-project workspaces: blind researcher (web; no
@@ -119,7 +159,10 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
   Others are stripped. Scripture refs are normalized to the data's book abbreviations.
 - Artifacts are saved in `research/runs/<run-id>/` (git-ignored). `--from-run` re-applies a reviewed dry run
   without calling agents. `--resume <run-id>` continues an interrupted run, reusing saved stages.
-- Run parallel topics as dry runs (git-safe), then apply them one at a time with `--from-run`.
+- Run parallel topics as dry runs (git-safe), then apply them one at a time with `--from-run`. Branches built
+  from the same `main` can conflict with each other; to combine several, check out a combined branch and apply the
+  saved runs on top of it in sequence (`--from-run`), fast-forwarding each result.
+- Set `GIT_AUTHOR_*` / `GIT_COMMITTER_*` (ckudelka@gmail.com for this repo) when running it.
 - Model policy: every role uses the single pinned model `gemini-3.8-flash-high` (`MODEL` in
   `scripts/research/index.ts`). Never switch models mid-run or across runs. If the quota runs out, stop and
   `--resume` after the reset.

@@ -31,6 +31,9 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
   after the reset on the same model.
 - Parallel runs: run them as `--dry-run` (they don't touch git), then apply each one in turn with `--from-run`.
   A tradition takes about 1M tokens.
+- Combining several results: branches built from the same `main` can conflict. Check out one combined branch and
+  apply the saved runs on top of it in sequence with `--from-run` (each result branches from and fast-forwards onto
+  the combined branch).
 - `--pr` (opt-in) also pushes the branch and opens a GitHub PR with `gh`, or prints a compare URL if `gh` isn't
   signed in to github.com.
 - Set `GIT_AUTHOR_NAME`/`GIT_AUTHOR_EMAIL` and `GIT_COMMITTER_NAME`/`GIT_COMMITTER_EMAIL` to control the commit identity.
