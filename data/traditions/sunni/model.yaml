@@ -34,49 +34,152 @@ nodes:
     description: A messenger and servant of Allah, created by the word "Be" without a father, like Adam.
     attributes:
       - name: '"His Word" and "a spirit from Him"'
-        topics: [messengers]
-        value: He was created by Allah's word "Be"; "a spirit from created by Him"
+        value: The Messiah (al-Masih), created by Allah's word "Be" sent with Jibril to Maryam, and a created spirit through the breath of Jibril by Allah's leave.
+        topics:
+          - messengers
         citations:
-          scripture: { bible: none-cited, other: [Quran 4:171, Quran 3:45] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:171
+              - Quran 3:45
           authority:
+            - source: Qur'an
+              ref: An-Nisa 4:171
+              tier: quran
+              url: https://quran.com/4/171
+              quote: The Messiah, Jesus, son of Mary, was no more than a messenger of Allah and the fulfilment of His Word through Mary and a spirit ˹created by a command˺ from Him.
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 4:171
               tier: tafsir
-              url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
-              quote: '`Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be'''
+              url: https://quran.com/4/171/tafsirs
+              quote: "`Isa is only one of Allah's servants and one of His creatures. Allah said to him, `Be', and he was, and He sent him as a Messenger. `Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be' that He sent with Jibril to Maryam. Jibril blew the life of `Isa into Maryam by Allah's leave, and `Isa came to existence as a result."
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:45
+              tier: tafsir
+              url: https://quran.com/3/45/tafsirs
+              quote: "`Isa was called \"Al-Masih\" (the Messiah) because when he touched (Mash) those afflicted with an illness, they would be healed by Allah's leave."
       - name: Crucified?
-        topics: [messengers]
         value: No. "They did not kill him, nor did they crucify him; but [another] was made to resemble him to them"
+        topics:
+          - messengers
         citations:
-          scripture: { bible: none-cited, other: [{ ref: Quran 4:157, highlight: "they did not kill him, nor did they crucify him; but [another] was made to resemble him to them" }] }
+          scripture:
+            bible: none-cited
+            other:
+              - ref: Quran 4:157
+                highlight: they did not kill him, nor did they crucify him; but [another] was made to resemble him to them
           authority:
             - source: Qur'an
               ref: An-Nisa 4:157
               tier: quran
+              url: https://quran.com/4/157
+              quote: and for boasting, “We killed the Messiah, Jesus, son of Mary, the messenger of Allah.” But they neither killed nor crucified him—it was only made to appear so.
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 4:157
               tier: tafsir
-              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
-              quote: the resemblance of `Isa was cast over that man while `Isa ascended to heaven
+              url: https://quran.com/4/157/tafsirs
+              quote: When `Isa ascended, those who were in the house came out. When those surrounding the house saw the man who looked like `Isa, they thought that he was `Isa. So they took him at night, crucified him and placed a crown of thorns on his head.
       - name: Return
-        topics: [last-day]
-        value: He "will shortly descend among you as a just ruler"
+        value: He will shortly descend as a just ruler, break the cross, kill the swine, and abolish the jizya
+        topics:
+          - last-day
         citations:
-          scripture: { bible: none-cited, other: [Quran 4:159] }
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 4:159
           authority:
-            - source: Sahih al-Bukhari, cited by Ibn Kathir
-              ref: on 4:157-159
+            - source: Sahih al-Bukhari 2222
+              ref: Sahih al-Bukhari 2222
               tier: sahih-hadith
-              url: https://quran.com/4:157/tafsirs/en-tafisr-ibn-kathir
-              quote: the son of Maryam (`Isa) will shortly descend among you as a just ruler, and will break the cross
+              url: https://sunnah.com/bukhari:2222
+              quote: By Him in Whose Hands my soul is, son of Mary (Jesus) will shortly descend ... amongst you people (Muslims) as a just ruler and will break the Cross and kill the pig and abolish the ... Jizya
+      - name: Miracles
+        value: Granted miracles performed strictly by Allah's permission, including speaking in the cradle, forming living birds from clay, healing the blind and leper, and raising the dead, supported by the Holy Spirit (Jibril).
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:110
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:110
+              tier: quran
+              url: https://quran.com/5/110
+              quote: how I supported you with the holy spirit ... so you spoke to people in ˹your˺ infancy and adulthood. How I taught you writing, wisdom, the Torah, and the Gospel. How you moulded a bird from clay—by My Will—and breathed into it and it became a ˹real˺ bird—by My Will. How you healed the blind and the lepers—by My Will. How you brought the dead to life—by My Will.
+      - name: Scripture
+        value: Given the Gospel (al-Injil) by Allah as divine revelation containing guidance and light, confirming the Torah (at-Tawrat).
+        topics:
+          - books
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:46
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:46
+              tier: quran
+              url: https://quran.com/5/46
+              quote: Then in the footsteps of the prophets, We sent Jesus, son of Mary, confirming the Torah revealed before him. And We gave him the Gospel containing guidance and light and confirming what was revealed in the Torah—a guide and a lesson to the God-fearing.
+      - name: Disavowal of worship
+        value: On the Day of Resurrection, Jesus disavows and repudiates any claim that he or his mother Maryam be taken as deities besides Allah.
+        topics:
+          - last-day
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:116
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:116
+              tier: quran
+              url: https://quran.com/5/116
+              quote: And ˹on Judgment Day˺ Allah will say, “O Jesus, son of Mary! Did you ever ask the people to worship you and your mother as gods besides Allah?” He will answer, “Glory be to You! How could I ever say what I had no right to say? If I had said such a thing, you would have certainly known it.
+      - name: Relation to Muhammad
+        value: The Prophet Muhammad is the closest of all people to Jesus, with no prophet between them; prophets are paternal brothers with one religion, and Jesus foretold Muhammad's coming under the name Ahmad.
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 61:6
+          authority:
+            - source: Sahih al-Bukhari 3442
+              ref: Sahih al-Bukhari 3442
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3442
+              quote: I am the nearest of all the people to the son of Mary, and all the ... prophets are paternal brothers, and there has been no prophet between me and him
+            - source: Qur'an
+              ref: As-Saf 61:6
+              tier: quran
+              url: https://quran.com/61/6
+              quote: And ˹remember˺ when Jesus, son of Mary, said, “O children of Israel! I am truly Allah’s messenger to you, confirming the Torah which came before me, and giving good news of a messenger after me whose name will be Aḥmad.”
     citations:
-      scripture: { bible: none-cited, other: [Quran 5:75, Quran 3:59] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 5:75
+          - Quran 3:59
+          - Quran 19:30
       authority:
+        - source: Qur'an
+          ref: Maryam 19:30
+          tier: quran
+          url: https://quran.com/19/30
+          quote: Jesus declared, “I am truly a servant of Allah. He has destined me to be given the Scripture and to be a prophet.
         - source: Ibn Kathir, Tafsir (abridged)
           ref: on 4:171
           tier: tafsir
-          url: https://quran.com/4:171/tafsirs/en-tafisr-ibn-kathir
-          quote: '`Isa is only one of Allah''s servants and one of His creatures.'
+          url: https://quran.com/4/171/tafsirs
+          quote: "`Isa is only one of Allah's servants and one of His creatures. Allah said to him, `Be', and he was, and He sent him as a Messenger. `Isa was a word from Allah that He bestowed on Maryam, meaning He created him with the word `Be' that He sent with Jibril to Maryam. Jibril blew the life of `Isa into Maryam by Allah's leave, and `Isa came to existence as a result."
 
   - id: sun.jibril
     label: Jibril (Ruh al-Qudus, the Holy Spirit)
@@ -99,21 +202,199 @@ nodes:
     description: Chosen and purified by Allah, a virgin who bore Isa.
     attributes:
       - name: Chosen
-        value: Allah has "chosen you above the women of the worlds"
+        value: Chosen and purified above the women of the worlds of her time, paired in preeminence with Khadijah
         citations:
-          scripture: { bible: [{ ref: Luke 1:28, highlight: "blessed art thou among women" }], other: [{ ref: Quran 3:42, highlight: "chosen you above the women of the worlds" }] }
+          scripture:
+            bible:
+              - ref: Luke 1:28
+                highlight: blessed art thou among women
+            other:
+              - ref: Quran 3:42
+                highlight: chosen you above the women of the worlds
           authority:
             - source: Ibn Kathir, Tafsir (abridged)
               ref: on 3:42
               tier: tafsir
-              url: https://quran.com/3:42/tafsirs/en-tafisr-ibn-kathir
-              quote: Allah also chose her because of her virtue over the women of the world.
+              url: https://quran.com/ali-imran/42/tafsirs/en-tafisr-ibn-kathir
+              quote: The Virtue of Maryam Over the Women of Her Time ... The best woman (in her time) was Maryam, daughter of `Imran, and the best woman (of the Prophet's time) is Khadijah (his wife), daughter of Khuwaylid.
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3432
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3432
+              quote: Mary, the daughter of `Imran, was the best among the women
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3815
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3815
+              quote: The best of the world's women is Mary (at her lifetime), and the best of the world's ... women is Khadija (at her lifetime).
+      - name: Dedication in the womb
+        value: Dedicated in the womb to Allah's service by the wife of 'Imran, named Maryam, and placed under divine protection along with her offspring from Satan.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:35
+              - Quran 3:36
+          authority:
+            - source: Qur'an
+              ref: Ali 'Imran 3:35
+              tier: quran
+              url: https://quran.com/ali-imran/35
+              quote: ˹Remember˺ when the wife of ’Imrân said, “My Lord! I dedicate what is in my womb entirely to Your service, ... so accept it from me.
+            - source: Qur'an
+              ref: Ali 'Imran 3:36
+              tier: quran
+              url: https://quran.com/ali-imran/36
+              quote: I have named her Mary, and I seek Your protection for her and her offspring from Satan, the accursed.
+      - name: Protected from Satan at birth
+        value: Uniquely protected along with her son from the prick and touch of Satan at birth, unlike other children of Adam.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:36
+          authority:
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3431
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3431
+              quote: There is none born among the off-spring of Adam, ... but Satan touches it. A child therefore, cries loudly at the time of birth because of the touch of Satan, ... except Mary and her child.
+            - source: Sahih Muslim
+              ref: Muslim 2366a
+              tier: sahih-hadith
+              url: https://sunnah.com/muslim:2366a
+              quote: No child is born but he is pricked by the satan and he begins to weep because of the pricking of the satan except the son of Mary and his mother.
+      - name: Chastity and devout obedience
+        value: Guarded her chastity, testified to the truth of the words and scriptures of her Lord, and was among the devoutly obedient (al-qanitin).
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 66:12
+          authority:
+            - source: Qur'an
+              ref: At-Tahrim 66:12
+              tier: quran
+              url: https://quran.com/at-tahrim/12
+              quote: Mary, the daughter of ’Imrân, who guarded her chastity, so We breathed into her ... through Our angel ... She testified to the words of her Lord and His Scriptures, and was one of the ˹sincerely˺ devout.
+      - name: Woman of truth and mortal sustenance
+        value: A truthful woman (siddiqah) and mortal servant who physically consumed food, refuting divine status through creaturely need.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:75
+              tier: quran
+              url: https://quran.com/al-maidah/75
+              quote: The Messiah, son of Mary, was no more than a messenger. ˹Many˺ messengers had ˹come and˺ gone before him. His mother was a woman of truth. They both ate food.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 5:75
+              tier: tafsir
+              url: https://quran.com/al-maidah/75/tafsirs/en-tafisr-ibn-kathir
+              quote: They both used to eat food) needing nourishment and to relieve the call of nature. Therefore, they are just servants like other servants, not gods
+      - name: Divinity rejected
+        value: Worship of Maryam and taking her as a deity beside Allah is explicitly repudiated; she is a created human servant, not divine.
+        topics:
+          - allah
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:116
+              - Quran 5:75
+          authority:
+            - source: Qur'an
+              ref: Al-Ma'idah 5:116
+              tier: quran
+              url: https://quran.com/al-maidah/116
+              quote: Did you ever ask the people to worship you and your mother as gods besides Allah?
+      - name: Guardianship and sanctuary provision
+        value: Raised under divine acceptance in the care of Zakariya, miraculously provided with summer fruits in winter and winter fruits in summer directly from Allah.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:37
+          authority:
+            - source: Qur'an
+              ref: Ali 'Imran 3:37
+              tier: quran
+              url: https://quran.com/ali-imran/37
+              quote: So her Lord accepted her graciously and blessed her with a pleasant upbringing—entrusting her to the care of Zachariah. Whenever Zachariah visited her in the sanctuary, he found her supplied with provisions.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 3:37
+              tier: tafsir
+              url: https://quran.com/ali-imran/37/tafsirs/en-tafisr-ibn-kathir
+              quote: He would find with her the fruits of the summer during winter, and the fruits of the winter during summer.
+      - name: Perfection among women
+        value: Attained the level of human perfection (kamal), interpreted by majority scholars as supreme saintly virtue (walayah and siddiqiyyah) and shared with Asiya, Khadijah, and Fatimah.
+        topics:
+          - adam
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 3:42
+          authority:
+            - source: Sahih al-Bukhari
+              ref: Bukhari 3433
+              tier: sahih-hadith
+              url: https://sunnah.com/bukhari:3433
+              quote: Many men reached the level of perfection, but no woman reached such a level except Mary, the daughter of `Imran and Asia, the wife of Pharaoh.
+            - source: Jami` at-Tirmidhi
+              ref: Tirmidhi 3878
+              tier: sahih-hadith
+              url: https://sunnah.com/tirmidhi:3878
+              quote: "that the Prophet (ﷺ) said: \"Sufficient for you among the women of mankind are Mariam bint 'Imran, Khadijah bint Khuwailid, Fatimah bint Muhammad and Asiyah the wife of Fir'awn.\""
+      - name: Rank of Siddiqah
+        value: Held the rank of Siddiqah (truthful saint) signifying complete belief and trust in Allah; under the majority Sunni position, this confirms she was a saint rather than a prophet.
+        topics:
+          - messengers
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Quran 5:75
+              - Quran 12:109
+          authority:
+            - source: Qur'an
+              ref: Yusuf 12:109
+              tier: quran
+              url: https://quran.com/yusuf/109
+              quote: We only sent before you ˹O Prophet˺ men inspired by Us from among the people of each society.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 5:75
+              tier: tafsir
+              url: https://quran.com/al-maidah/75/tafsirs/en-tafisr-ibn-kathir
+              quote: His mother was a Siddiqah) for she believed in Allah with complete trust in Him. This is the highest rank she was given, which proves that she was not a Prophet.
+            - source: Ibn Kathir, Tafsir (abridged)
+              ref: on 12:109
+              tier: tafsir
+              url: https://quran.com/yusuf/109/tafsirs/en-tafisr-ibn-kathir
+              quote: Allah states that He only sent Prophets and Messengers from among men and not from among women, as this Ayah clearly states. ... Shaykh Abu Al-Hasan, `Ali bin Isma`il Al-Ash`ari mentioned that it is the view of Ahlus-Sunnah wal-Jama`ah, that there were no female Prophets, but there were truthful believers from among women. ... Therefore, the best description Allah gave her is Siddiqah.
     citations:
       scripture:
         bible:
-          - together: [Luke 1:26-27, Luke 1:34]
-            note: 'Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her.'
-        other: [Quran 19:20, Quran 3:47]
+          - together:
+              - Luke 1:26-27
+              - Luke 1:34
+            note: "Parallel to Maryam 19:16-20: the angel sent to a virgin, who asks how she can have a son when no man has touched her."
+        other:
+          - Quran 19:20
+          - Quran 3:47
       authority:
         - source: Qur'an
           ref: Maryam 19:16-22
@@ -276,12 +557,26 @@ edges:
     source: sun.maryam
     rel: bears
     target: sun.isa
+    note: Conceived as a virgin without the touch of any man through the breathing of the Spirit sent by Allah (Jibril), making mother and son a sign for all peoples.
     citations:
-      scripture: { bible: [Luke 1:31], other: [Quran 19:22, Quran 3:45] }
+      scripture:
+        bible:
+          - Luke 1:31
+          - Luke 1:34
+        other:
+          - Quran 19:19-21
+          - Quran 19:22
+          - Quran 21:91
+          - Quran 3:45
       authority:
         - source: Qur'an
-          ref: Maryam 19:22
+          ref: Maryam 19:19-21
           tier: quran
+        - source: Qur'an
+          ref: Al-Anbiya 21:91
+          tier: quran
+          url: https://quran.com/al-anbya/91
+          quote: And ˹remember˺ the one who guarded her chastity, so We breathed into her through Our angel, ˹Gabriel,˺ ... making her and her son a sign for all peoples.
 
   - id: sun.e.allah-raises-isa
     source: sun.allah

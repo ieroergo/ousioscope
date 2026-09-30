@@ -39,12 +39,25 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    claims: ["shi.allah#Has a son?"]
-    summary: 'Allah is but the One God. The Qur''an forbids saying "[God is] a trinity".'
+    summary: Allah is but the One God. The Qur'an forbids saying "[God is] a trinity".
+    claims:
+      - shi.allah#Has a son?
+      - shi.isa#Servitude ('ubudiyyah)
     citations:
-      scripture: { bible: none-cited, other: [Quran 4:171, Quran 112:1-4] }
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 4:171
+          - Quran 112:1-4
       authority:
-        - { source: "Qur'an", ref: An-Nisa 4:171, tier: quran }
+        - source: Qur'an
+          ref: An-Nisa 4:171
+          tier: quran
+        - source: Risalat al-I'tiqadat (Shaykh as-Saduq)
+          ref: ch. 34
+          tier: scholarly-creed
+          url: https://www.al-islam.org/shiite-creed-shaykh-saduq/concerning-prophets-apostles-imams-and-angels
+          quote: The Messiah will never scorn to be a slave to Allah, nor will the favored angels... Allah the Mighty and Glorious said this only because there are among the people some who believe in the divinity of Jesus and worship him, and these are a class amongst the Christians
   - debate: debate.son-created
     stance: affirms
     claims: ["shi.e.allah-creates-isa", "shi.e.isa-like-adam"]
@@ -171,6 +184,21 @@ categories:
         - source: Qur'an
           ref: Al-Anbiya 21:30
           tier: quran
+  - id: UlulAzm
+    label: Arch-Prophet of Determination (Ulul 'Azm)
+    parent: Prophet
+    definition: One of the five premier arch-messengers who hold the central role in prophethood and brought universal divine law (Noah, Abraham, Moses, Jesus, Muhammad).
+    citations:
+      scripture:
+        bible: none-cited
+        other:
+          - Quran 46:35
+      authority:
+        - source: Al-Kafi, Kitab al-Hujja
+          ref: vol. 1, book 4, ch. 2, hadith 3
+          tier: hadith-sahih
+          url: https://thaqalayn.net/hadith/1/4/2/3
+          quote: The leaders and masters of the prophets and the messengers are five who are called ’ulul ‘Azm (people with determination) among the messengers who have the central role. They are Noah, Abraham, Moses, Jesus and Muhammad
 
 relationships:
   - id: creates
