@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse, stringify } from "yaml";
+import { expandRef, parseRef } from "../../src/scripture";
 import { BOOKS, RESTORATION } from "../books";
 import type { JudgeOutput } from "./schemas";
 import { normalize, type Verifier } from "./verify";
@@ -66,7 +67,13 @@ const itemValue = (s: string, sp: Span, indent: number) => {
     .split("\n")
     .map((l) => l.slice(indent))
     .join("\n");
-  return (parse(text) as unknown[])?.[0] as Record<string, unknown> | undefined;
+  try {
+    return (parse(text) as unknown[])?.[0] as Record<string, unknown> | undefined;
+  } catch {
+    // An item parsed on its own can reference a YAML anchor defined elsewhere in the file (e.g. *godhead-cite).
+    // Reads only need ids and names, so treat such aliases as null.
+    return (parse(text.replace(/(:\s*|-\s+)\*[\w-]+/g, "$1null")) as unknown[])?.[0] as Record<string, unknown> | undefined;
+  }
 };
 
 const render = (obj: unknown, indent: number) =>
@@ -112,18 +119,45 @@ export const normalizeRef = (ref: string) => {
   const book = m && BOOK_ALIASES.get(m[1].toLowerCase().replace(/\.$/, ""));
   return m && book ? `${book} ${m[2].replace(/\s+/g, "")}` : ref;
 };
-function normalizeScripture(v: unknown): void {
-  if (Array.isArray(v)) return v.forEach(normalizeScripture);
+/**
+ * Removes verses a translation doesn't contain (e.g. ESV omits Matt 12:47) from a reference, splitting a range
+ * around them: "Matt 12:46-50" without 12:47 becomes ["Matt 12:46", "Matt 12:48-50"].
+ */
+function withoutVerses(ref: string, drop: Set<string>): string[] {
+  const p = parseRef(ref);
+  if (!p) return drop.has(ref) ? [] : [ref];
+  const keep = expandRef(ref).map((k) => +k.split(":")[1]).filter((v) => !drop.has(`${p.book} ${p.chapter}:${v}`));
+  const out: string[] = [];
+  for (let i = 0; i < keep.length; ) {
+    let j = i;
+    while (j + 1 < keep.length && keep[j + 1] === keep[j] + 1) j++;
+    out.push(`${p.book} ${p.chapter}:${keep[i]}${j > i ? `-${keep[j]}` : ""}`);
+    i = j + 1;
+  }
+  return out;
+}
+
+function normalizeScripture(v: unknown, drop = new Set<string>()): void {
+  if (Array.isArray(v)) return v.forEach((x) => normalizeScripture(x, drop));
   if (!v || typeof v !== "object") return;
   const o = v as Record<string, unknown>;
+  // The schema requires `bible`; a citation with only other scripture says so explicitly.
+  const sc = o.scripture as Record<string, unknown> | undefined;
+  if (sc && typeof sc === "object" && !Array.isArray(sc) && (sc.bible == null || (Array.isArray(sc.bible) && !sc.bible.length)))
+    o.scripture = { bible: "none-cited", ...(sc.other ? { other: sc.other } : {}) };
   for (const key of ["bible", "other", "together"])
     if (Array.isArray(o[key]))
-      o[key] = (o[key] as unknown[]).map((x) => {
-        if (typeof x === "string") return normalizeRef(x);
-        if (x && typeof x === "object" && typeof (x as { ref?: unknown }).ref === "string") (x as { ref: string }).ref = normalizeRef((x as { ref: string }).ref);
-        return x;
+      o[key] = (o[key] as unknown[]).flatMap((x) => {
+        if (typeof x === "string") return withoutVerses(normalizeRef(x), drop);
+        if (x && typeof x === "object" && typeof (x as { ref?: unknown }).ref === "string") {
+          const parts = withoutVerses(normalizeRef((x as { ref: string }).ref), drop);
+          if (parts.length === 1) return [{ ...x, ref: parts[0] }];
+          return parts; // a highlight can't survive a split range
+        }
+        return [x];
       });
-  Object.values(o).forEach(normalizeScripture);
+  if (Array.isArray(o.bible) && !o.bible.length) o.bible = "none-cited";
+  Object.values(o).forEach((x) => normalizeScripture(x, drop));
 }
 
 export interface ApplyReport {
@@ -139,6 +173,8 @@ export async function applyOps(
   verified: { url: string; quote: string }[],
   verifier: Verifier,
   domains: string[],
+  /** Verse keys the tradition's translation doesn't contain; they are removed from cited references. */
+  dropVerses = new Set<string>(),
 ): Promise<ApplyReport> {
   const files = {
     meta: join(root, `data/traditions/${tid}/metamodel.yaml`),
@@ -181,7 +217,7 @@ export async function applyOps(
       continue;
     }
     await scrubQuotes(obj);
-    normalizeScripture(obj);
+    normalizeScripture(obj, dropVerses);
     const id = obj.id as string | undefined;
     const put = (file: keyof typeof files, next: string | undefined, why: string) => {
       if (next === undefined) return report.skipped.push({ op: label, reason: why });

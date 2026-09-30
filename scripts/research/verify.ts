@@ -68,7 +68,8 @@ export class Verifier {
   }
 
   private async renderedText(url: string) {
-    this.browser ??= puppeteer.launch({ executablePath: CHROME, headless: true, userDataDir: "/tmp/ousio-research-profile" });
+    // One profile per process, so parallel research runs don't lock each other's Chrome profile.
+    this.browser ??= puppeteer.launch({ executablePath: CHROME, headless: true, userDataDir: `/tmp/ousio-research-profile-${process.pid}` });
     const page = await (await this.browser).newPage();
     try {
       await page.setUserAgent(UA);

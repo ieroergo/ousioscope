@@ -13,8 +13,7 @@ live source page.
 
 ```bash
 npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunni,shia] [--dry-run] [--pr]
-                    [--model gemini-3.8-flash-high] [--judge-model gemini-3.1-pro-high] [--concurrency 3]
-                    [--from-run <run-id>]
+                    [--concurrency 3] [--from-run <run-id>] [--resume <run-id>]
 ```
 
 - `<id>` is a subject (a referent id from `data/referents.yaml`, e.g. `ref.mary`) or a registry topic from
@@ -25,6 +24,13 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
   switches back to your branch. It prints how to review (`git diff main...<branch>`), merge
   (`git merge --no-ff <branch>`), or discard (`git branch -D <branch>`).
 - `--from-run <run-id>` re-applies a saved (e.g. dry) run without calling the agents again.
+- `--resume <run-id>` continues an interrupted run (e.g. after an Antigravity quota error): stages already saved
+  in that run folder are reused and only missing stages run.
+- **One model only:** every role uses `gemini-3.8-flash-high` (the `MODEL` constant in `scripts/research/index.ts`)
+  for consistent provenance. There is no per-run model switch. If the quota runs out, the run stops; resume it
+  after the reset on the same model.
+- Parallel runs: run them as `--dry-run` (they don't touch git), then apply each one in turn with `--from-run`.
+  A tradition takes about 1M tokens.
 - `--pr` (opt-in) also pushes the branch and opens a GitHub PR with `gh`, or prints a compare URL if `gh` isn't
   signed in to github.com.
 - Set `GIT_AUTHOR_NAME`/`GIT_AUTHOR_EMAIL` and `GIT_COMMITTER_NAME`/`GIT_COMMITTER_EMAIL` to control the commit identity.
@@ -51,4 +57,4 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
 - Read `research/runs/<run-id>/report.md`: the findings table (verified quotes, critic verdict, judge decision) and
   "Dissent and open objections".
 - `git checkout <branch> && npm run dev`, then focus the topic to see the change in the graph.
-- Unmodeled or rejected findings are listed in the report; re-run with a stronger `--judge-model` if decisions look weak.
+- Unmodeled or rejected findings are listed in the report.

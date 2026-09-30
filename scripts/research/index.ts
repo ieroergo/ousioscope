@@ -5,12 +5,15 @@
  *
  * The result is committed on a local branch `research/<topic>-<stamp>` for review and a local merge.
  *
- *   npm run research -- --topic debate.theotokos [--traditions jw,catholic|all] [--dry-run] [--pr]
- *                       [--model gemini-3.8-flash-high] [--judge-model gemini-3.1-pro-high] [--concurrency 3]
+ *   npm run research -- --topic debate.theotokos [--traditions jw,catholic|all] [--dry-run] [--pr] [--concurrency 3]
  *                       [--from-run <run-id>]   (reuse a saved run's agent outputs, e.g. to apply a reviewed dry run)
+ *                       [--resume <run-id>]     (continue an interrupted run: reuse saved stages, run only missing ones)
+ *
+ * Every role (and every repair) uses the same model, MODEL below, so all research data has consistent provenance.
+ * If its quota runs out the run stops; resume it later with --resume.
  */
 import { execFileSync, spawnSync } from "node:child_process";
-import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { parse, stringify } from "yaml";
 import { loadDataset } from "../../src/ontology";
@@ -42,13 +45,19 @@ if (flag("help") || !opt("topic")) {
   console.log(readFileSync(import.meta.filename, "utf8").match(/\/\*\*([\s\S]*?)\*\//)![1].replace(/^ \* ?/gm, ""));
   process.exit(opt("topic") ? 0 : 1);
 }
-const MODEL = opt("model", "gemini-3.8-flash-high")!;
-const JUDGE_MODEL = opt("judge-model", MODEL)!;
+/** The one model used for every role. Change it here (not per run) when a newer Gemini Flash is adopted. */
+const MODEL = "gemini-3.8-flash-high";
+const JUDGE_MODEL = MODEL;
+if (argv.includes("--model") || argv.includes("--judge-model")) {
+  console.error(`--model/--judge-model are not supported: every role uses ${MODEL} for consistency.`);
+  process.exit(1);
+}
 const DRY = flag("dry-run");
 /** Opt-in: also push the branch and open a GitHub PR. */
 const PR = flag("pr");
 const CONCURRENCY = Number(opt("concurrency", "3"));
 const FROM_RUN = opt("from-run");
+const RESUME = opt("resume");
 
 const git = (...args: string[]) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 
@@ -84,7 +93,7 @@ if (!traditions.length) {
 }
 
 const runId = `${new Date().toISOString().slice(0, 16).replace(/[:T]/g, "")}-${topicId.replace(/[^\w-]+/g, "-")}`;
-const runDir = join(root, "research/runs", FROM_RUN ?? runId);
+const runDir = join(root, "research/runs", FROM_RUN ?? RESUME ?? runId);
 mkdirSync(runDir, { recursive: true });
 const save = (name: string, v: unknown) => writeFileSync(join(runDir, name), typeof v === "string" ? v : stringify(v, { lineWidth: 0 }));
 const log = (line: string) => {
@@ -142,7 +151,16 @@ async function runTradition(t: Tradition): Promise<TraditionRun> {
   const tid = t.meta.tradition.id;
   const domains = t.meta.tradition.allowedDomains;
   let tokens = 0;
+  const saved = <T>(label: string): T | undefined => {
+    const f = join(runDir, `${tid}.${label}.yaml`);
+    return RESUME && existsSync(f) ? (parse(readFileSync(f, "utf8")) as T) : undefined;
+  };
   const agy = async <T>(label: string, prompt: string, schema: object, tools: boolean, model = MODEL) => {
+    const prior = saved<T>(label);
+    if (prior) {
+      log(`[${tid}/${label}] reusing saved output`);
+      return prior;
+    }
     save(`${tid}.${label}.prompt.md`, prompt);
     const r = await runAgy<T>({ prompt, schema, model, tools, label: `${tid}/${label}`, log });
     tokens += r.tokens ?? 0;
@@ -151,13 +169,13 @@ async function runTradition(t: Tradition): Promise<TraditionRun> {
   };
 
   const research = await agy<ResearchOutput>("1-research", researcherPrompt(focus, t, data.referents), RESEARCH_SCHEMA, true);
-  const checks = await verifyAll(research.findings.flatMap((f) => f.sources), domains);
+  const checks = saved<QuoteCheck[]>("2-verify") ?? (await verifyAll(research.findings.flatMap((f) => f.sources), domains));
   save(`${tid}.2-verify.yaml`, checks);
   log(`[${tid}] research: ${research.findings.length} findings, ${checks.filter((c) => c.status === "verified").length}/${checks.length} quotes verified`);
 
   const rec = await agy<ReconcileOutput>("3-reconcile", reconcilePrompt(focus, t, research, checks, data.topics, data.referents), RECONCILE_SCHEMA, false);
   const critic = await agy<CriticOutput>("4-critic", criticPrompt(focus, t, research, checks, rec, data.referents), CRITIC_SCHEMA, true);
-  const criticChecks = await verifyAll(criticSources(critic), domains);
+  const criticChecks = saved<QuoteCheck[]>("5-verify-critic") ?? (await verifyAll(criticSources(critic), domains));
   save(`${tid}.5-verify-critic.yaml`, criticChecks);
 
   const jp = judgePrompt(focus, t, research, checks, rec, critic, criticChecks, data.referents);
@@ -247,13 +265,15 @@ async function main() {
   }
 
   const original = git("rev-parse", "--abbrev-ref", "HEAD");
-  const branch = `research/${topicId.replace(/[^\w.-]+/g, "-")}-${runId.slice(0, 12)}`;
+  const branch = `research/${topicId.replace(/[^\w.-]+/g, "-")}-${runId.slice(0, 14)}`;
   git("checkout", "-b", branch);
   try {
     let errors: string[] = [];
+    // Verses a translation lacks (e.g. ESV omits Matt 12:47) are dropped from citations without asking the judge.
+    const missingVerses = new Set<string>();
     for (let attempt = 0; attempt <= 2; attempt++) {
       for (const r of withOps) {
-        r.apply = await applyOps(root, r.t.meta.tradition.id, r.judge.ops, verifiedQuotes(r), verifier, r.t.meta.tradition.allowedDomains);
+        r.apply = await applyOps(root, r.t.meta.tradition.id, r.judge.ops, verifiedQuotes(r), verifier, r.t.meta.tradition.allowedDomains, missingVerses);
         log(`[${r.t.meta.tradition.id}] applied ${r.apply.applied.length}, skipped ${r.apply.skipped.length}, stripped ${r.apply.strippedQuotes.length} quotes`);
       }
       const fetched = spawnSync("npm", ["run", "fetch:scripture"], { cwd: root, encoding: "utf8", timeout: 600_000 });
@@ -267,6 +287,14 @@ async function main() {
         ),
       ];
       if (!errors.length) break;
+      const missing = errors.map((e) => /: no .+ text for (.+?) \(run npm run fetch:scripture\)/.exec(e)?.[1]).filter((m): m is string => !!m);
+      if (missing.length === errors.length && missing.some((m) => !missingVerses.has(m))) {
+        missing.forEach((m) => missingVerses.add(m));
+        log(`Dropping verses the translation doesn't contain: ${missing.join(", ")}`);
+        git("checkout", "--", "data");
+        attempt--;
+        continue;
+      }
       log(`Validation failed (${errors.length}): ${errors.slice(0, 5).join(" | ")}`);
       if (attempt === 2) break;
       git("checkout", "--", "data");

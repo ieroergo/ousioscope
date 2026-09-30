@@ -118,7 +118,11 @@ First-version scope: Nature/being, Godhead/Trinity, Human origin/destiny.
 - Only machine-verified quotes (fetched page contains the quote; allowlisted domain) can be written into the data.
   Others are stripped. Scripture refs are normalized to the data's book abbreviations.
 - Artifacts are saved in `research/runs/<run-id>/` (git-ignored). `--from-run` re-applies a reviewed dry run
-  without calling agents.
+  without calling agents. `--resume <run-id>` continues an interrupted run, reusing saved stages.
+- Run parallel topics as dry runs (git-safe), then apply them one at a time with `--from-run`.
+- Model policy: every role uses the single pinned model `gemini-3.8-flash-high` (`MODEL` in
+  `scripts/research/index.ts`). Never switch models mid-run or across runs. If the quota runs out, stop and
+  `--resume` after the reset.
 - A tradition takes roughly 15–20 minutes and about 1M tokens with gemini-3.8-flash-high. Always run in the
   background and poll.
 
