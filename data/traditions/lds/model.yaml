@@ -80,29 +80,155 @@ nodes:
     label: Holy Ghost
     category: GodheadMember
     referent: ref.holy-spirit
-    description: The third member of the Godhead. A personage of spirit, and the messenger and revealer of the Father and the Son.
+    description: The third member of the Godhead. A personage of Spirit who bears witness of the Father and the Son, reveals truth, sanctifies the repentant, and serves as the Holy Spirit of Promise.
     attributes:
       - name: Body?
-        topics: [godhead]
-        value: No body of flesh and bones; "a personage of Spirit"
+        value: Has not a body of flesh and bones, but is a personage of Spirit (D&C 130:22). As a spirit personage He has size and dimensions and cannot be everywhere present in person, but His influence and power are omnipresent throughout all the works of God and dwell with individuals.
+        topics:
+          - godhead
         citations:
-          scripture: { bible: none-cited, other: [D&C 130:22] }
+          scripture:
+            bible: none-cited
+            other:
+              - D&C 130:22
+              - 1 Ne 11:11
           authority:
             - source: Doctrine and Covenants
               ref: D&C 130:22
               tier: standard-works
-              url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng&id=p22#p22
-              quote: the Holy Ghost has not a body of flesh and bones, but is a personage of Spirit
+              url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng
+              quote: The Father has a body of flesh and bones as tangible as man’s; the Son also; but the Holy Ghost has not a body of flesh and bones, but is a personage of Spirit. Were it not so, the Holy Ghost could not dwell in us.
+            - source: "Doctrines of the Gospel Student Manual, Chapter 5: The Holy Ghost"
+              ref: Chapter 5, p. 11-12
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/doctrines-of-the-gospel-student-manual/5-the-holy-ghost?lang=eng
+              quote: As a Spirit personage the Holy Ghost has size and dimensions. He does not fill the immensity of space, and cannot be everywhere present in person at the same time.
+      - name: Holy Spirit of Promise and First Comforter
+        value: The other Comforter promised by Jesus Christ to abide in hearts as the promise of eternal life and celestial glory (D&C 88:3-4). As the First Comforter, He gives peace, teaches, and testifies, distinct from the Second Comforter who is the personal presence of Jesus Christ.
+        topics:
+          - godhead
+        citations:
+          scripture:
+            bible:
+              - John 14:16
+              - John 14:26
+            other:
+              - D&C 88:3-4
+          authority:
+            - source: Doctrine and Covenants
+              ref: D&C 88:3-4
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng
+              quote: Wherefore, I now send upon you another Comforter, even upon you my friends, that it may abide in your hearts, even the Holy Spirit of promise; which other Comforter is the same that I promised unto my disciples, as is recorded in the testimony of John... This Comforter is the promise which I give unto you of eternal life, even the glory of the celestial kingdom;
+            - source: New Testament Teacher Resource Manual, John 13-17
+              ref: John 14
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/new-testament-teacher-resource-manual/the-gospel-according-to-saint-john/john-13-17?lang=eng
+              quote: The First Comforter is the Holy Ghost, who gives comfort and peace, teaches, testifies, reminds us of the Lord’s teachings, and reproves sinners. The Second Comforter is Jesus Christ, who will one day reveal Himself to those who love and serve Him.
+      - name: Sealing of covenants
+        value: All covenants, contracts, and performances must be sealed by the Holy Spirit of promise to retain efficacy, virtue, and force in and after the resurrection (D&C 132:7).
+        topics:
+          - godhead
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - D&C 132:7
+          authority:
+            - source: Doctrine and Covenants
+              ref: D&C 132:7
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/132?lang=eng
+              quote: All covenants, contracts, bonds, obligations, oaths, vows, performances, connections, associations, or expectations, that are not made and entered into and sealed by the Holy Spirit of promise, of him who is anointed, both as well for time and for all eternity... are of no efficacy, virtue, or force in and after the resurrection from the dead
+      - name: Distinction from the Light of Christ
+        value: The Holy Ghost is a personal being with a spirit body, distinct from the Light of Christ, which is an impersonal divine energy, power, or influence proceeding from God through Christ that fills space and gives light to all things.
+        topics:
+          - godhead
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - D&C 88:12-13
+              - Moro 7:16
+          authority:
+            - source: Gospel Topics, "Light of Christ"
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/light-of-christ?lang=eng
+              quote: The Light of Christ is the divine energy, power, or influence that proceeds from God through Christ and gives life and light to all things... The Light of Christ should not be confused with the Holy Ghost. It is not a personage, as the Holy Ghost is.
+      - name: Cleansing agent (fire)
+        value: Acts as a cleansing agent to purify and sanctify from all sin those who receive the gift of the Holy Ghost, spoken of scripturally as baptism with fire.
+        topics:
+          - first-principles
+        citations:
+          scripture:
+            bible:
+              - Matt 3:11
+            other:
+              - 2 Ne 31:17
+              - D&C 19:31
+          authority:
+            - source: Bible Dictionary, "Holy Ghost"
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/scriptures/bd/holy-ghost?lang=eng
+              quote: For those who receive this gift, the Holy Ghost acts as a cleansing agent to purify them and sanctify them from all sin. Thus it is often spoken of as “fire”
+      - name: Role in creation
+        value: During the organization of the earth, the Spirit of God moved (or brooded) upon the face of the waters (Moses 2:2; Abr 4:2), exercising divine care rather than executing physical organization.
+        topics:
+          - creation
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Moses 2:2
+              - Abr 4:2
+          authority:
+            - source: Pearl of Great Price
+              ref: Moses 2:2
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/2?lang=eng
+              quote: And the earth was without form, and void; and I caused darkness to come up upon the face of the deep; and my Spirit moved upon the face of the water; for I am God.
+            - source: Pearl of Great Price
+              ref: Abr 4:2
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng
+              quote: and the Spirit of the Gods was brooding upon the face of the waters.
+      - name: Gift of the Holy Ghost
+        value: There is an essential distinction between the Holy Ghost and the gift of the Holy Ghost. The gift of the Holy Ghost is bestowed through the laying on of hands following baptism, granting the right to the constant companionship of the Spirit.
+        topics:
+          - first-principles
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - A of F 1:4
+          authority:
+            - source: Articles of Faith
+              ref: A of F 1:4
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?lang=eng
+              quote: "We believe that the first principles and ordinances of the Gospel are: first, Faith in the Lord Jesus Christ; second, Repentance; third, Baptism by immersion for the remission of sins; fourth, Laying on of hands for the gift of the Holy Ghost."
+            - source: "Gospel Principles, Chapter 21: The Gift of the Holy Ghost"
+              ref: Chapter 21
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/manual/gospel-principles/chapter-21-the-gift-of-the-holy-ghost?lang=eng
+              quote: There is a difference between the Holy Ghost and the gift of the Holy Ghost. In this chapter we will learn what the gift of the Holy Ghost is and how we can receive this great gift from God.
     citations:
-      scripture: { bible: [Matt 28:19, John 14:26], other: [A of F 1:1, D&C 130:22] }
+      scripture:
+        bible:
+          - Matt 28:19
+          - John 14:26
+        other:
+          - A of F 1:1
+          - D&C 130:22
       authority:
-        - source: 'Topical Guide, "Holy Ghost"'
+        - source: Guide to the Scriptures, "Holy Ghost"
           tier: church-published
-          url: https://www.churchofjesuschrist.org/study/scriptures/tg/holy-ghost?lang=eng
+          url: https://www.churchofjesuschrist.org/study/scriptures/gs/holy-ghost?lang=eng
+          quote: The Holy Ghost performs several vital roles in the plan of salvation. (1) He bears witness of the Father and the Son... (2) He reveals the truth of all things... (3) He sanctifies those who have repented and become baptized... (4) He is the Holy Spirit of Promise
         - source: Topics and Questions, "Godhead" (2023)
           tier: church-published
           url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
-          quote: the Holy Spirit as the messenger and revealer of the Father and the Son
+          quote: From the Prophet’s account of the First Vision and from his other teachings, we know that the members of the Godhead are three separate beings. The Father and the Son have tangible bodies of flesh and bones, and the Holy Ghost is a personage of spirit.
 
   - id: lds.godhead
     label: The Godhead
@@ -288,6 +414,36 @@ nodes:
               ref: A of F 1:2
               tier: standard-works
               quote: We believe that men will be punished for their own sins, and not for Adam's transgression.
+      - name: Witness of the Holy Ghost
+        value: The Holy Ghost fell upon Adam, bearing record of the Father and the Son, proclaiming redemption through the Only Begotten by divine investiture of authority (Moses 5:9).
+        topics:
+          - plan
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Moses 5:9
+          authority:
+            - source: Pearl of Great Price
+              ref: Moses 5:9
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/5?lang=eng
+              quote: "And in that day the Holy Ghost fell upon Adam, which beareth record of the Father and the Son, saying: I am the Only Begotten of the Father from the beginning, henceforth and forever, that as thou hast fallen thou mayest be redeemed, and all mankind, even as many as will."
+      - name: Baptism of fire and the Holy Ghost
+        value: Adam was caught away by the Spirit, born of the Spirit, quickened in the inner man, and baptized with fire and with the Holy Ghost as the record of the Father and the Son (Moses 6:65-66).
+        topics:
+          - first-principles
+        citations:
+          scripture:
+            bible: none-cited
+            other:
+              - Moses 6:65-66
+          authority:
+            - source: Pearl of Great Price
+              ref: Moses 6:65-66
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/6?lang=eng
+              quote: And thus he was baptized, and the Spirit of God descended upon him, and thus he was born of the Spirit, and became quickened in the inner man... Thou art baptized with fire, and with the Holy Ghost. This is the record of the Father, and the Son, from henceforth and forever;
     citations:
       scripture: { bible: [Gen 1:26, Gen 2:7, Luke 3:38], other: [D&C 27:11] }
       authority:
@@ -437,14 +593,27 @@ edges:
     source: lds.holy-ghost
     rel: overshadows
     target: lds.mary
+    note: Mary was overshadowed and conceived by the power of the Holy Ghost (Alma 7:10). Jesus Christ was not begotten by the Holy Ghost, but was the Son of God the Eternal Father in the flesh.
     citations:
-      scripture: { bible: [{ ref: Luke 1:34-35, highlight: "the power of the Highest shall overshadow thee" }, Matt 1:20], other: [Alma 7:10, 1 Ne 11:19] }
+      scripture:
+        bible:
+          - ref: Luke 1:34-35
+            highlight: the power of the Highest shall overshadow thee
+          - Matt 1:20
+        other:
+          - Alma 7:10
+          - 1 Ne 11:19
       authority:
         - source: Book of Mormon
           ref: Alma 7:10
           tier: standard-works
-          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng&id=p10#p10
-          quote: who shall be overshadowed and conceive by the power of the Holy Ghost
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?lang=eng
+          quote: And behold, he shall be born of Mary, at Jerusalem which is the land of our forefathers, she being a virgin, a precious and chosen vessel, who shall be overshadowed and conceive by the power of the Holy Ghost, and bring forth a son, yea, even the Son of God.
+        - source: President Ezra Taft Benson, Five Marks of the Divinity of Jesus Christ
+          ref: Ensign, Dec. 2001
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/ensign/2001/12/five-marks-of-the-divinity-of-jesus-christ?lang=eng
+          quote: He was not the son of Joseph, nor was He begotten by the Holy Ghost. He is the Son of the Eternal Father!
 
   - id: lds.e.jesus-has-spirit
     source: lds.jesus
