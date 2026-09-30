@@ -49,7 +49,7 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose and doctrine, not three persons in one substance.
+    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose and doctrine, not three persons in one substance. The postbiblical creeds are rejected; the cited condemnation concerns the creeds, not the faithful seekers who believed in them.
     claims:
       - lds.e.godhead-father
       - lds.e.godhead-jesus
@@ -64,6 +64,7 @@ stances:
         other:
           - A of F 1:1
           - JS-H 1:17
+          - JS-H 1:19
       authority:
         - source: Topics and Questions, "Godhead"
           tier: church-published
@@ -73,6 +74,16 @@ stances:
           tier: general-authority
           url: https://www.churchofjesuschrist.org/study/general-conference/2007/10/the-only-true-god-and-jesus-christ-whom-he-hath-sent?lang=eng
           quote: I think it is accurate to say we believe They are one in every significant and eternal aspect imaginable except believing Them to be three persons combined in one substance, a Trinitarian notion never set forth in the scriptures because it is not true... We declare it is self-evident from the scriptures that the Father, the Son, and the Holy Ghost are separate persons, three divine beings
+        - source: Pearl of Great Price
+          ref: JS-H 1:19
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng
+          quote: all their creeds were an abomination in his sight;
+        - source: Apostasy and Restoration (Elder Dallin H. Oaks, April 1995 General Conference)
+          ref: Paragraph 18
+          tier: general-authority
+          url: https://www.churchofjesuschrist.org/study/general-conference/1995/04/apostasy-and-restoration?lang=eng
+          quote: The consequences persist in the various creeds of Christianity, which declare a Godhead of only one being and which describe that single being or God as “incomprehensible” and “without body, parts, or passions.” One of the distinguishing features of the doctrine of The Church of Jesus Christ of Latter-day Saints is its rejection of all of these postbiblical creeds ... God the Son told the boy prophet that all the “creeds” of the churches of that day “were an abomination in his sight” ... We affirm that this divine declaration was a condemnation of the creeds, not of the faithful seekers who believed in them.
   - debate: debate.son-created
     stance: reframes
     claims: ["lds.e.father-begets-jesus-spirit", "lds.jesus#Existence before birth"]

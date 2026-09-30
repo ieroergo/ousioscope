@@ -122,11 +122,29 @@ stances:
         - { source: Catechism of the Catholic Church, ref: CCC 404-405, tier: ordinary-magisterium, url: "https://www.vatican.va/archive/ENG0015/__P1C.HTM", quote: "original sin does not have the character of a personal fault in any of Adam's descendants" }
   - debate: debate.crucifixion
     stance: affirms
-    summary: 'Confessed in the Creed: "crucified, died, and was buried".'
+    summary: 'Confessed in the Creed: "crucified, died, and was buried". Constantinople II defined that he who was crucified in the flesh is true God, Lord of glory, and one of the Holy Trinity.'
+    claims:
+      - cath.son#Number of persons in Christ
     citations:
-      scripture: { bible: [Phil 2:8] }
+      scripture:
+        bible:
+          - Phil 2:8
+          - 1 Cor 2:8
       authority:
-        - { source: "Apostles' Creed", ref: "in CCC, The Credo", tier: dogma, url: "https://www.vatican.va/archive/ENG0015/__P13.HTM", quote: "Under Pontius Pilate He was crucified, died, and was buried." }
+        - source: Apostles' Creed
+          ref: in CCC, The Credo
+          tier: dogma
+          url: https://www.vatican.va/archive/ENG0015/__P13.HTM
+        - source: Second Council of Constantinople (553)
+          ref: Anathema 10
+          tier: dogma
+          url: https://www.newadvent.org/fathers/3812.htm
+          quote: "If anyone does not confess that our Lord Jesus Christ who was crucified in the flesh is true God and the Lord of Glory and one of the Holy Trinity: let him be anathema."
+        - source: Catechism of the Catholic Church
+          ref: CCC 468
+          tier: ordinary-magisterium
+          url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_two/artcile_3.html
+          quote: "After the Council of Chalcedon, some made of Christ's human nature a kind of personal subject. Against them, the fifth ecumenical council, at Constantinople in 553, confessed that \"there is but one hypostasis [or person], which is our Lord Jesus Christ, one of the Trinity.\"... Thus everything in Christ's human nature is to be attributed to his divine person as its proper subject, not only his miracles but also his sufferings and even his death: \"He who was crucified in the flesh, our Lord Jesus Christ, is true God, Lord of glory, and one of the Holy Trinity.\""
   - debate: debate.bodily-resurrection
     stance: affirms
     claims: ["cath.son#Resurrection"]

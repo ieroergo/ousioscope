@@ -40,6 +40,188 @@ nodes:
               ref: WCF 8.4
               tier: confessional
               url: https://www.opc.org/wcf.html#Chapter_08
+      - name: Offices of the Mediator
+        value: Ordained in God's eternal purpose to be Mediator between God and man, executing the offices of Prophet, Priest, King, Head and Saviour of his Church, Heir of all things, and Judge of the world (WCF 8.1; WLC 42).
+        topics:
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Isa 42:1
+              - 1 Pet 1:19-20
+              - 1 Tim 2:5
+              - Acts 3:22
+              - Heb 5:5-6
+              - Ps 2:6
+              - Eph 5:23
+              - Heb 1:2
+              - Acts 17:31
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.1
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: It pleased God, in his eternal purpose, to choose and ordain the Lord Jesus, his only-begotten Son, to be the Mediator between God and man...the Prophet...Priest...and King...the Head and Saviour of his Church...the Heir of all things...and Judge of the world
+            - source: Westminster Larger Catechism
+              ref: WLC 42
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: Our Mediator was called Christ, because he was anointed with the Holy Ghost above measure; and so set apart, and fully furnished with all authority and ability, to execute the offices of prophet, priest, and king of his Church, in the estate both of his humiliation and exaltation.
+      - name: Sanctification and spiritual endowments
+        value: In his human nature united to the divine, he was sanctified and anointed with the Holy Spirit above measure, possessing all treasures of wisdom and knowledge, being holy, harmless, undefiled, and full of grace and truth (WCF 8.3).
+        topics:
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Ps 45:7
+              - John 3:34
+              - Col 2:3
+              - Heb 7:26
+              - John 1:14
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.3
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: The Lord Jesus, in his human nature thus united to the divine, was sanctified and anointed with the Holy Spirit above measure...having in him all the treasures of wisdom and knowledge...to the end that, being holy, harmless, undefiled, and full of grace and truth...he might be thoroughly furnished to execute the office of a mediator and surety.
+      - name: Federal headship (Second Adam)
+        value: The covenant of grace was made with Christ as the second Adam, and in him with all the elect as his seed (WLC 31).
+        topics:
+          - wcf7
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Gal 3:16
+              - Rom 5:15-21
+              - Isa 53:10-11
+          authority:
+            - source: Westminster Larger Catechism
+              ref: WLC 31
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: The covenant of grace was made with Christ as the second Adam, and in him with all the elect as his seed.
+      - name: Seed of the woman
+        value: Revealed and signified from the beginning of the world in promises, types, and sacrifices to be the seed of the woman which should bruise the serpent's head, and the Lamb slain from the beginning of the world (WCF 8.6).
+        topics:
+          - wcf7
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Gen 3:15
+              - Gal 4:4-5
+              - Rev 13:8
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.6
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: the virtue, efficacy, and benefits thereof were communicated unto the elect, in all ages successively from the beginning of the world, in and by those promises, types, and sacrifices, wherein he was revealed, and signified to be the seed of the woman which should bruise the serpent’s head, and the Lamb slain from the beginning of the world
+      - name: Satisfaction and redemption
+        value: By his perfect obedience and sacrifice of himself offered through the eternal Spirit unto God, he fully satisfied divine justice and purchased reconciliation and an everlasting inheritance for the elect (WCF 8.5; WCF 8.8).
+        topics:
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Rom 3:25-26
+              - Rom 5:19
+              - Heb 9:14
+              - Eph 1:11
+              - Eph 1:14
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 8.5
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: The Lord Jesus, by his perfect obedience and sacrifice of himself, which he through the eternal Spirit once offered up unto God, hath fully satisfied the justice of his Father...and purchased not only reconciliation, but an everlasting inheritance in the kingdom of heaven, for all those whom the Father hath given unto him.
+            - source: Westminster Confession of Faith
+              ref: WCF 8.8
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: To all those for whom Christ hath purchased redemption he doth certainly and effectually apply and communicate the same...making intercession for them...and revealing unto them, in and by the Word, the mysteries of salvation...effectually persuading them by his Spirit to believe and obey; and governing their hearts by his Word and Spirit
+      - name: Head of the Church
+        value: The Lord Jesus Christ is the sole Head of the Church, and the Pope of Rome cannot in any sense be head thereof (WCF 25.6).
+        topics:
+          - wcf8
+          - wcf25
+        citations:
+          scripture:
+            bible:
+              - Col 1:18
+              - Eph 1:22
+              - Matt 23:8-10
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 25.6
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: There is no other Head of the Church but the Lord Jesus Christ...nor can the Pope of Rome, in any sense be head thereof
+      - name: Unrepresentability
+        value: As God incarnate, Christ cannot be represented inwardly in mind or outwardly in any creaturely likeness; all physical representations of him are forbidden under the second commandment, his true portrait being given only in Scripture (WLC 109; OPC QA 133, 417).
+        topics:
+          - wcf8
+          - wcf21
+        citations:
+          scripture:
+            bible:
+              - Deut 4:15-19
+              - Acts 17:29
+              - Rom 1:21-23
+              - Rom 1:25
+          authority:
+            - source: Westminster Larger Catechism
+              ref: WLC 109
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: The sins forbidden in the second commandment are...the making any representation of God, of all, or of any of the three Persons, either inwardly in our mind, or outwardly in any kind of image or likeness of any creature whatsoever; all worshiping of it, or God in it or by it
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 133"
+              ref: OPC QA 133
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=133
+              quote: Though Jesus was man, yet He is God incarnate in human flesh. And the Second Commandment forbids all material representations of God in worship...So we avoid all physical representations of Christ.
+            - source: "Question & Answer: The Orthodox Presbyterian Church, Question 417"
+              ref: OPC QA 417
+              tier: church-published
+              url: https://www.opc.org/qa.html?question_id=417
+              quote: The answer to your specific question, then, is that it is not OK “to have images of God or Christ” even though “we do not worship them.” The fact is that the only accurate and reliable “portrait” of Christ is the word portrait that God has given us in the Bible.
+      - name: Unrepeatable sacrifice
+        value: In the sacrament of the Lord's Supper Christ is not offered up nor is any real sacrifice made; his sacrifice on the cross was offered once for all, and the Roman Mass is abominably injurious to his one only sacrifice, the alone propitiation for the elect (WCF 29.2).
+        topics:
+          - wcf8
+          - wcf29
+        citations:
+          scripture:
+            bible:
+              - Heb 9:25-26
+              - Heb 9:28
+              - Heb 7:27
+              - Heb 10:11-12
+              - Heb 10:14
+          authority:
+            - source: Westminster Confession of Faith
+              ref: WCF 29.2
+              tier: confessional
+              url: https://thewestminsterstandard.org/the-westminster-confession/
+              quote: In this sacrament Christ is not offered up to his Father, nor any real sacrifice made at all for remission of sins of the quick or dead...so that the Popish sacrifice of the mass, as they call it, is most abominably injurious to Christ’s one only sacrifice, the alone propitiation for all the sins of the elect.
+      - name: Exclusive Saviour
+        value: There is salvation in none other but in Christ alone, who is the Saviour only of his body the Church; those who never hear the gospel cannot be saved by natural light or other religions (WLC 60).
+        topics:
+          - wcf8
+        citations:
+          scripture:
+            bible:
+              - Rom 10:14
+              - Acts 4:12
+              - Eph 5:23
+          authority:
+            - source: Westminster Larger Catechism
+              ref: WLC 60
+              tier: confessional
+              url: https://thewestminsterstandard.org/westminster-larger-catechism/
+              quote: They who, having never heard the gospel, know not Jesus Christ, and believe not in him, cannot be saved, be they never so diligent to frame their lives according to the light of nature, or the laws of that religion which they profess; neither is there salvation in any other, but in Christ alone, who is the Saviour only of his body the Church.
     citations:
       scripture: { bible: [John 1:1, John 1:14, 1 John 5:20] }
       authority:

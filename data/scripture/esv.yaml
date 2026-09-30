@@ -9,6 +9,7 @@ chapters:
   1 Cor 8: https://www.esv.org/1+Corinthians+8/
   1 Cor 15: https://www.esv.org/1+Corinthians+15/
   1 John 5: https://www.esv.org/1+John+5/
+  1 Pet 1: https://www.esv.org/1+Peter+1/
   1 Pet 3: https://www.esv.org/1+Peter+3/
   1 Tim 2: https://www.esv.org/1+Timothy+2/
   1 Tim 3: https://www.esv.org/1+Timothy+3/
@@ -16,6 +17,8 @@ chapters:
   2 Cor 13: https://www.esv.org/2+Corinthians+13/
   2 Pet 1: https://www.esv.org/2+Peter+1/
   Acts 1: https://www.esv.org/Acts+1/
+  Acts 3: https://www.esv.org/Acts+3/
+  Acts 4: https://www.esv.org/Acts+4/
   Acts 5: https://www.esv.org/Acts+5/
   Acts 15: https://www.esv.org/Acts+15/
   Acts 17: https://www.esv.org/Acts+17/
@@ -24,6 +27,8 @@ chapters:
   Deut 4: https://www.esv.org/Deuteronomy+4/
   Deut 6: https://www.esv.org/Deuteronomy+6/
   Eccl 12: https://www.esv.org/Ecclesiastes+12/
+  Eph 1: https://www.esv.org/Ephesians+1/
+  Eph 5: https://www.esv.org/Ephesians+5/
   Gal 3: https://www.esv.org/Galatians+3/
   Gal 4: https://www.esv.org/Galatians+4/
   Gen 1: https://www.esv.org/Genesis+1/
@@ -34,8 +39,13 @@ chapters:
   Heb 1: https://www.esv.org/Hebrews+1/
   Heb 2: https://www.esv.org/Hebrews+2/
   Heb 4: https://www.esv.org/Hebrews+4/
+  Heb 5: https://www.esv.org/Hebrews+5/
   Heb 7: https://www.esv.org/Hebrews+7/
+  Heb 9: https://www.esv.org/Hebrews+9/
+  Heb 10: https://www.esv.org/Hebrews+10/
   Heb 11: https://www.esv.org/Hebrews+11/
+  Isa 42: https://www.esv.org/Isaiah+42/
+  Isa 53: https://www.esv.org/Isaiah+53/
   Jer 17: https://www.esv.org/Jeremiah+17/
   Job 14: https://www.esv.org/Job+14/
   Job 15: https://www.esv.org/Job+15/
@@ -44,6 +54,7 @@ chapters:
   Job 33: https://www.esv.org/Job+33/
   John 1: https://www.esv.org/John+1/
   John 2: https://www.esv.org/John+2/
+  John 3: https://www.esv.org/John+3/
   John 4: https://www.esv.org/John+4/
   John 10: https://www.esv.org/John+10/
   John 14: https://www.esv.org/John+14/
@@ -58,15 +69,20 @@ chapters:
   Matt 10: https://www.esv.org/Matthew+10/
   Matt 12: https://www.esv.org/Matthew+12/
   Matt 13: https://www.esv.org/Matthew+13/
+  Matt 23: https://www.esv.org/Matthew+23/
   Matt 26: https://www.esv.org/Matthew+26/
   Matt 28: https://www.esv.org/Matthew+28/
   Phil 2: https://www.esv.org/Philippians+2/
+  Ps 2: https://www.esv.org/Psalms+2/
+  Ps 45: https://www.esv.org/Psalms+45/
   Ps 51: https://www.esv.org/Psalms+51/
+  Rev 13: https://www.esv.org/Revelation+13/
   Rev 19: https://www.esv.org/Revelation+19/
   Rom 1: https://www.esv.org/Romans+1/
   Rom 3: https://www.esv.org/Romans+3/
   Rom 5: https://www.esv.org/Romans+5/
   Rom 9: https://www.esv.org/Romans+9/
+  Rom 10: https://www.esv.org/Romans+10/
 verses:
   1 Cor 2:10: these things God has revealed to us through the Spirit. For the Spirit searches everything, even the depths of God.
   1 Cor 2:11: For who knows a person's thoughts except the spirit of that person, which is in him? So also no one comprehends the thoughts of God except the Spirit of God.
@@ -81,6 +97,8 @@ verses:
   1 Cor 15:45: Thus it is written, “The first man Adam became a living being”; the last Adam became a life-giving spirit.
   1 Cor 15:49: Just as we have borne the image of the man of dust, we shall also bear the image of the man of heaven.
   1 John 5:20: And we know that the Son of God has come and has given us understanding, so that we may know him who is true; and we are in him who is true, in his Son Jesus Christ. He is the true God and eternal life.
+  1 Pet 1:19: but with the precious blood of Christ, like that of a lamb without blemish or spot.
+  1 Pet 1:20: He was foreknown before the foundation of the world but was made manifest in the last times for the sake of you
   1 Pet 3:18: For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God, being put to death in the flesh but made alive in the spirit,
   1 Tim 2:5: For there is one God, and there is one mediator between God and men, the man Christ Jesus,
   1 Tim 3:16: "Great indeed, we confess, is the mystery of godliness: He was manifested in the flesh, vindicated by the Spirit, seen by angels, proclaimed among the nations, believed on in the world, taken up in glory. <div"
@@ -89,19 +107,34 @@ verses:
   2 Pet 1:20: knowing this first of all, that no prophecy of Scripture comes from someone's own interpretation.
   2 Pet 1:21: For no prophecy was ever produced by the will of man, but men spoke from God as they were carried along by the Holy Spirit. <div
   Acts 1:14: All these with one accord were devoting themselves to prayer, together with the women and Mary the mother of Jesus, and his brothers.
+  Acts 3:22: Moses said, ‘The Lord God will raise up for you a prophet like me from your brothers. You shall listen to him in whatever he tells you.
+  Acts 4:12: And there is salvation in no one else, for there is no other name under heaven given among men by which we must be saved.”
   Acts 5:3: But Peter said, “Ananias, why has Satan filled your heart to lie to the Holy Spirit and to keep back for yourself part of the proceeds of the land?
   Acts 5:4: While it remained unsold, did it not remain your own? And after it was sold, was it not at your disposal? Why is it that you have contrived this deed in your heart? You have not lied to man but to God.”
   Acts 15:15: And with this the words of the prophets agree, just as it is written,
   Acts 17:24: The God who made the world and everything in it, being Lord of heaven and earth, does not live in temples made by man,
   Acts 17:26: And he made from one man every nation of mankind to live on all the face of the earth, having determined allotted periods and the boundaries of their dwelling place,
+  Acts 17:29: Being then God's offspring, we ought not to think that the divine being is like gold or silver or stone, an image formed by the art and imagination of man.
+  Acts 17:31: because he has fixed a day on which he will judge the world in righteousness by a man whom he has appointed; and of this he has given assurance to all by raising him from the dead.”
   Col 1:16: For by him all things were created, in heaven and on earth, visible and invisible, whether thrones or dominions or rulers or authorities—all things were created through him and for him.
+  Col 1:18: And he is the head of the body, the church. He is the beginning, the firstborn from the dead, that in everything he might be preeminent.
+  Col 2:3: in whom are hidden all the treasures of wisdom and knowledge.
   Col 2:9: For in him the whole fullness of deity dwells bodily,
   Deut 4:15: “Therefore watch yourselves very carefully. Since you saw no form on the day that the Lord spoke to you at Horeb out of the midst of the fire,
   Deut 4:16: beware lest you act corruptly by making a carved image for yourselves, in the form of any figure, the likeness of male or female,
+  Deut 4:17: the likeness of any animal that is on the earth, the likeness of any winged bird that flies in the air,
+  Deut 4:18: the likeness of anything that creeps on the ground, the likeness of any fish that is in the water under the earth.
+  Deut 4:19: And beware lest you raise your eyes to heaven, and when you see the sun and the moon and the stars, all the host of heaven, you be drawn away and bow down to them and serve them, things that the Lord your God has allotted to all the peoples under the whole heaven.
   Deut 6:4: "“Hear, O Israel: The Lord our God, the Lord is one."
   Eccl 12:7: and the dust returns to the earth as it was, and the spirit returns to God who gave it.
+  Eph 1:11: In him we have obtained an inheritance, having been predestined according to the purpose of him who works all things according to the counsel of his will,
+  Eph 1:14: who is the guarantee of our inheritance until we acquire possession of it, to the praise of his glory.
+  Eph 1:22: And he put all things under his feet and gave him as head over all things to the church,
+  Eph 5:23: For the husband is the head of the wife even as Christ is the head of the church, his body, and is himself its Savior.
   Gal 3:12: But the law is not of faith, rather “The one who does them shall live by them.”
+  Gal 3:16: Now the promises were made to Abraham and to his offspring. It does not say, “And to offsprings,” referring to many, but referring to one, “And to your offspring,” who is Christ.
   Gal 4:4: But when the fullness of time had come, God sent forth his Son, born of woman, born under the law,
+  Gal 4:5: to redeem those who were under the law, so that we might receive adoption as sons.
   Gal 4:6: And because you are sons, God has sent the Spirit of his Son into our hearts, crying, “Abba! Father!”
   Gen 1:1: In the beginning, God created the heavens and the earth.
   Gen 1:2: The earth was without form and void, and darkness was over the face of the deep. And the Spirit of God was hovering over the face of the waters.
@@ -121,8 +154,21 @@ verses:
   Heb 2:14: Since therefore the children share in flesh and blood, he himself likewise partook of the same things, that through death he might destroy the one who has the power of death, that is, the devil,
   Heb 2:15: and deliver all those who through fear of death were subject to lifelong slavery.
   Heb 4:15: For we do not have a high priest who is unable to sympathize with our weaknesses, but one who in every respect has been tempted as we are, yet without sin.
+  Heb 5:5: So also Christ did not exalt himself to be made a high priest, but was appointed by him who said to him, “You are my Son, today I have begotten you”;
+  Heb 5:6: as he says also in another place, “You are a priest forever, after the order of Melchizedek.”
   Heb 7:26: For it was indeed fitting that we should have such a high priest, holy, innocent, unstained, separated from sinners, and exalted above the heavens.
+  Heb 7:27: He has no need, like those high priests, to offer sacrifices daily, first for his own sins and then for those of the people, since he did this once for all when he offered up himself.
+  Heb 9:14: how much more will the blood of Christ, who through the eternal Spirit offered himself without blemish to God, purify our conscience from dead works to serve the living God.
+  Heb 9:25: Nor was it to offer himself repeatedly, as the high priest enters the holy places every year with blood not his own,
+  Heb 9:26: for then he would have had to suffer repeatedly since the foundation of the world. But as it is, he has appeared once for all at the end of the ages to put away sin by the sacrifice of himself.
+  Heb 9:28: so Christ, having been offered once to bear the sins of many, will appear a second time, not to deal with sin but to save those who are eagerly waiting for him. <div
+  Heb 10:11: And every priest stands daily at his service, offering repeatedly the same sacrifices, which can never take away sins.
+  Heb 10:12: But when Christ had offered for all time a single sacrifice for sins, he sat down at the right hand of God,
+  Heb 10:14: For by a single offering he has perfected for all time those who are being sanctified.
   Heb 11:3: By faith we understand that the universe was created by the word of God, so that what is seen was not made out of things that are visible.
+  Isa 42:1: Behold my servant, whom I uphold, my chosen, in whom my soul delights; I have put my Spirit upon him; he will bring forth justice to the nations.
+  Isa 53:10: Yet it was the will of the Lord to crush him; he has put him to grief; when his soul makes an offering for guilt, he shall see his offspring; he shall prolong his days; the will of the Lord shall prosper in his hand.
+  Isa 53:11: Out of the anguish of his soul he shall see and be satisfied; by his knowledge shall the righteous one, my servant, make many to be accounted righteous, and he shall bear their iniquities.
   Jer 17:9: The heart is deceitful above all things, and desperately sick; who can understand it?
   Job 14:4: Who can bring a clean thing out of an unclean? There is not one.
   Job 15:14: What is man, that he can be pure? Or he who is born of a woman, that he can be righteous?
@@ -137,6 +183,7 @@ verses:
   John 1:18: No one has ever seen God; God the only Son, who is at the Father's side, he has made him known.
   John 2:5: His mother said to the servants, “Do whatever he tells you.”
   John 2:12: After this he went down to Capernaum, with his mother and his brothers and his disciples, and they stayed there for a few days.
+  John 3:34: For he whom God has sent utters the words of God, for he gives the Spirit without measure.
   John 4:24: God is spirit, and those who worship him must worship in spirit and truth.”
   John 10:30: I and the Father are one.”
   John 14:14: If you ask me anything in my name, I will do it.
@@ -168,12 +215,21 @@ verses:
   Matt 10:28: And do not fear those who kill the body but cannot kill the soul. Rather fear him who can destroy both soul and body in hell.
   Matt 12:46: While he was still speaking to the people, behold, his mother and his brothers stood outside, asking to speak to him.
   Matt 13:55: Is not this the carpenter's son? Is not his mother called Mary? And are not his brothers James and Joseph and Simon and Judas?
+  Matt 23:8: But you are not to be called rabbi, for you have one teacher, and you are all brothers.
+  Matt 23:9: And call no man your father on earth, for you have one Father, who is in heaven.
+  Matt 23:10: Neither be called instructors, for you have one instructor, the Christ.
   Matt 26:38: Then he said to them, “My soul is very sorrowful, even to death; remain here, and watch with me.”
   Matt 28:19: Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,
   Phil 2:6: who, though he was in the form of God, did not count equality with God a thing to be grasped,
   Phil 2:8: And being found in human form, he humbled himself by becoming obedient to the point of death, even death on a cross.
+  Ps 2:6: “As for me, I have set my King on Zion, my holy hill.”
+  Ps 45:7: you have loved righteousness and hated wickedness. Therefore God, your God, has anointed you with the oil of gladness beyond your companions;
   Ps 51:5: Behold, I was brought forth in iniquity, and in sin did my mother conceive me.
+  Rev 13:8: and all who dwell on earth will worship it, everyone whose name has not been written from the foundation of the world in the book of life of the Lamb who was slain.
   Rev 19:10: Then I fell down at his feet to worship him, but he said to me, “You must not do that! I am a fellow servant with you and your brothers who hold to the testimony of Jesus. Worship God.” For the testimony of Jesus is the spirit of prophecy.
+  Rom 1:21: For although they knew God, they did not honor him as God or give thanks to him, but they became futile in their thinking, and their foolish hearts were darkened.
+  Rom 1:22: Claiming to be wise, they became fools,
+  Rom 1:23: and exchanged the glory of the immortal God for images resembling mortal man and birds and animals and creeping things.
   Rom 1:25: because they exchanged the truth about God for a lie and worshiped and served the creature rather than the Creator, who is blessed forever! Amen.
   Rom 3:10: "as it is written: “None is righteous, no, not one;"
   Rom 3:11: no one understands; no one seeks for God.
@@ -185,6 +241,8 @@ verses:
   Rom 3:17: and the way of peace they have not known.”
   Rom 3:18: “There is no fear of God before their eyes.”
   Rom 3:19: Now we know that whatever the law says it speaks to those who are under the law, so that every mouth may be stopped, and the whole world may be held accountable to God.
+  Rom 3:25: whom God put forward as a propitiation by his blood, to be received by faith. This was to show God's righteousness, because in his divine forbearance he had passed over former sins.
+  Rom 3:26: It was to show his righteousness at the present time, so that he might be just and the justifier of the one who has faith in Jesus.
   Rom 5:12: Therefore, just as sin came into the world through one man, and death through sin, and so death spread to all men because all sinned—
   Rom 5:13: for sin indeed was in the world before the law was given, but sin is not counted where there is no law.
   Rom 5:14: Yet death reigned from Adam to Moses, even over those whose sinning was not like the transgression of Adam, who was a type of the one who was to come.
@@ -194,4 +252,6 @@ verses:
   Rom 5:18: Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men.
   Rom 5:19: For as by the one man's disobedience the many were made sinners, so by the one man's obedience the many will be made righteous.
   Rom 5:20: Now the law came in to increase the trespass, but where sin increased, grace abounded all the more,
+  Rom 5:21: so that, as sin reigned in death, grace also might reign through righteousness leading to eternal life through Jesus Christ our Lord. <div
   Rom 9:5: To them belong the patriarchs, and from their race, according to the flesh, is the Christ, who is God over all, blessed forever. Amen.
+  Rom 10:14: How then will they call on him in whom they have not believed? And how are they to believe in him of whom they have never heard? And how are they to hear without someone preaching?

@@ -91,10 +91,19 @@ stances:
   - debate: debate.crucifixion
     stance: reframes
     summary: Jesus died by execution, but on an upright stake, not a cross.
+    claims:
+      - jw.jesus#Instrument of death
     citations:
-      scripture: { bible: [John 19:17] }
+      scripture:
+        bible:
+          - John 19:17
+          - Acts 5:30
+          - Gal 3:13
       authority:
-        - { source: Did Jesus Die on a Cross? (jw.org), tier: watch-tower, url: "https://www.jw.org/en/bible-teachings/questions/did-jesus-die-on-cross/", quote: "the Bible provides evidence that Jesus died, not on a cross, but on an upright stake." }
+        - source: "What Does the Bible Really Teach?, Appendix: Why True Christians Do Not Use the Cross in Worship"
+          tier: watch-tower
+          url: https://www.jw.org/en/library/books/bible-teach/origin-cross-symbol-pagan/
+          quote: An important reason is that Jesus Christ did not die on a cross. The Greek word generally translated “cross” is stau·rosʹ. It basically means “an upright pale or stake.”... In several texts, Bible writers use another word for the instrument of Jesus’ death. It is the Greek word xyʹlon... This word simply means “timber” or “a stick, club, or tree.”
   - debate: debate.bodily-resurrection
     stance: rejects
     claims: ["jw.jesus#Resurrection", "jw.e.jesus-becomes-spirit"]
@@ -124,6 +133,22 @@ stances:
           tier: watch-tower
           url: https://www.jw.org/en/library/books/Reasoning-From-the-Scriptures/Mary-Jesus-Mother/
           quote: However, neither that expression nor the idea is found in the text of any translation of the Bible.
+  - debate: debate.two-natures
+    stance: rejects
+    summary: The doctrine of the Trinity and the teaching that Jesus had two natures are rejected. The Father knows more than the Son, disproving equality in knowledge.
+    claims:
+      - jw.jesus#Equal to Almighty God?
+    citations:
+      scripture:
+        bible:
+          - Matt 24:36
+          - John 1:18
+          - John 17:3
+      authority:
+        - source: "What Does the Bible Really Teach?, Appendix: The Truth About the Father, the Son, and the Holy Spirit"
+          tier: watch-tower
+          url: https://www.jw.org/en/library/books/bible-teach/father-son-holy-spirit-trinity/
+          quote: "Jesus says that the Father knows more than the Son does. If Jesus were part of Almighty God, however, he would know the same facts as his Father. So, then, the Son and the Father cannot be equal. Yet, some will say: ‘Jesus had two natures. Here he speaks as a man.’ But even if that were so, what about the holy spirit?"
 
 # Categories use the vocabulary of Watch Tower publications on jw.org.
 categories:
