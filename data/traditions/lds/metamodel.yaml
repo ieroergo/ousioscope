@@ -49,12 +49,34 @@ topics:
 stances:
   - debate: debate.trinity
     stance: rejects
-    claims: ["lds.e.godhead-father", "lds.e.godhead-jesus", "lds.e.godhead-holy-ghost", "lds.e.jesus-one-with-father"]
-    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose, not one substance.
+    summary: The Father, Son, and Holy Ghost are three separate beings, one in purpose, not one substance. The historical post-biblical creeds defining God as a single being without body, parts, or passions are rejected as an abomination in the sight of the Lord.
+    claims:
+      - lds.e.godhead-father
+      - lds.e.godhead-jesus
+      - lds.e.godhead-holy-ghost
+      - lds.e.jesus-one-with-father
     citations:
-      scripture: { bible: [Matt 28:19], other: [JS-H 1:17] }
+      scripture:
+        bible:
+          - Matt 28:19
+        other:
+          - JS-H 1:17
+          - JS-H 1:19
       authority:
-        - { source: 'Topics and Questions, "Godhead"', tier: church-published, url: "https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng", quote: "we know that the members of the Godhead are three separate beings" }
+        - source: Topics and Questions, "Godhead"
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+          quote: The Church’s first article of faith states, “We believe in God, the Eternal Father, and in His Son, Jesus Christ, and in the Holy Ghost.” ... But where Latter-day Saints differ from other Christian religions is in their belief that God and Jesus Christ are glorified, physical beings and that each member of the Godhead is a separate being.
+        - source: Pearl of Great Price
+          ref: JS-H 1:19
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/pgp/js-h/1?lang=eng
+          quote: all their creeds were an abomination in his sight;
+        - source: Apostasy and Restoration (Elder Dallin H. Oaks, April 1995 General Conference)
+          ref: Paragraph 18
+          tier: general-authority
+          url: https://www.churchofjesuschrist.org/study/general-conference/1995/04/apostasy-and-restoration?lang=eng
+          quote: The consequences persist in the various creeds of Christianity, which declare a Godhead of only one being and which describe that single being or God as “incomprehensible” and “without body, parts, or passions.” One of the distinguishing features of the doctrine of The Church of Jesus Christ of Latter-day Saints is its rejection of all of these postbiblical creeds ... God the Son told the boy prophet that all the “creeds” of the churches of that day “were an abomination in his sight” ... We affirm that this divine declaration was a condemnation of the creeds, not of the faithful seekers who believed in them.
   - debate: debate.son-created
     stance: reframes
     claims: ["lds.e.father-begets-jesus-spirit", "lds.jesus#Existence before birth"]

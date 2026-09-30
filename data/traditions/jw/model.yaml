@@ -95,6 +95,117 @@ nodes:
               tier: watch-tower
               url: https://www.jw.org/en/library/magazines/wp20080701/Look-Jehovahs-Slave-Girl/
               quote: Elizabeth heard Mary’s greeting and immediately felt the infant in her womb leap for joy. She was filled with holy spirit and spoke of Mary as “the mother of my Lord.” God revealed to Elizabeth that Mary’s son would become her Lord, the Messiah.
+      - name: "Title: The Word"
+        value: Describes his role as God's Spokesman communicating God's commands and instructions to others.
+        topics:
+          - jesus
+        citations:
+          scripture:
+            bible:
+              - John 1:1
+              - John 1:14
+              - Rev 1:1
+          authority:
+            - source: John 1:1 Explained—'In the Beginning Was the Word'
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/bible-verses/john-1-1/
+              quote: The title “the Word” apparently describes Jesus’ role in communicating God’s commands and instructions to others... The phrase “the Word was a god” describes the divine or godlike nature that Jesus possessed before he came to earth. He can be described in this way because of his role as God’s Spokesman and his unique position as the firstborn Son of God through whom God created all other things.
+      - name: "Nature: a god"
+        value: Possesses a divine or godlike nature as a mighty one, called "Mighty God" (Isaiah 9:6) rather than Almighty God, both in his prehuman life and his exalted heavenly state.
+        topics:
+          - jesus
+        citations:
+          scripture:
+            bible:
+              - John 1:1
+              - Isa 9:6
+              - Col 1:15-16
+          authority:
+            - source: John 1:1 Explained—'In the Beginning Was the Word'
+              tier: watch-tower
+              url: https://www.jw.org/en/bible-teachings/bible-verses/john-1-1/
+              quote: The title “the Word” apparently describes Jesus’ role in communicating God’s commands and instructions to others... The phrase “the Word was a god” describes the divine or godlike nature that Jesus possessed before he came to earth. He can be described in this way because of his role as God’s Spokesman and his unique position as the firstborn Son of God through whom God created all other things.
+            - source: Insight on the Scriptures, Volume 2, p. 54
+              tier: watch-tower
+              url: https://wol.jw.org/en/wol/d/r1/lp-e/1200002451
+              quote: The Messianic prophecy at Isaiah 9:6 foretold that he would be called “Mighty God,” though not the Almighty God, and that he would be the “Eternal Father” of all those privileged to live as his subjects.
+      - name: Last Adam and corresponding ransom
+        value: Jesus is "the last Adam" whose perfect human life served as a "corresponding ransom" ("life will be for life") to redeem Adam's descendants from inherited sin. Adam and Eve themselves sinned willfully and do not benefit from the ransom.
+        topics:
+          - jesus
+          - salvation
+        citations:
+          scripture:
+            bible:
+              - 1 Cor 15:45
+              - 1 Tim 2:6
+              - Rom 5:19
+              - Deut 19:21
+          authority:
+            - source: What Does the Bible Really Teach?, chap. 5, par. 9, 11
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/bible-teach/the-ransom-jesus-sacrifice/
+              quote: "What was needed was a ransom equal in value to what was lost. This is in harmony with the principle of perfect justice found in God’s Word, which says: “Life will be for life.” ... Another perfect human life was the “corresponding ransom” that was required... Jesus, whom the Bible calls “the last Adam,” had a perfect human life, and he never sinned... In a sense, Jesus stepped into Adam’s place in order to save us. By sacrificing, or giving up, his perfect life in flawless obedience to God, Jesus paid the price for Adam’s sin."
+            - source: The Watchtower, March 15, 1965, p. 182
+              tier: watch-tower
+              url: https://wol.jw.org/en/wol/d/r1/lp-e/1965201
+              quote: That the many descendants of Adam and Eve are to benefit from this “corresponding ransom” of Jesus Christ and are to have a resurrection from Sheol or Haʹdes to an opportunity to gain human perfection on a Paradise earth, the Bible plainly teaches
+      - name: Instrument of death
+        value: Put to death on an upright pale or stake (stauros/xylon), not on a two-beamed cross, which is rejected as an unscriptural pagan symbol (clarified in 1936, replacing earlier use of the cross symbol).
+        topics:
+          - jesus
+          - worship
+        citations:
+          scripture:
+            bible:
+              - Acts 5:30
+              - Acts 10:39
+              - Gal 3:13
+          authority:
+            - source: "What Does the Bible Really Teach?, Appendix: Why True Christians Do Not Use the Cross in Worship"
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/bible-teach/origin-cross-symbol-pagan/
+              quote: An important reason is that Jesus Christ did not die on a cross. The Greek word generally translated “cross” is stau·rosʹ. It basically means “an upright pale or stake.”... In several texts, Bible writers use another word for the instrument of Jesus’ death. It is the Greek word xyʹlon... This word simply means “timber” or “a stick, club, or tree.”
+            - source: The Watchtower, May 15, 1995, p. 20
+              tier: watch-tower
+              url: https://wol.jw.org/en/wol/d/r1/lp-e/1995364
+              quote: The book Riches, published by the Society in 1936, made clear that Jesus Christ was executed, not on a cross, but on an upright pole, or stake.
+      - name: King of God's Kingdom
+        value: Installed as King of God's heavenly Kingdom in October 1914 at the conclusion of the 2,520-year "appointed times of the nations" (Gentile Times).
+        topics:
+          - jesus
+          - kingdom
+        citations:
+          scripture:
+            bible:
+              - Dan 4:10-16
+              - Luke 21:24
+              - Dan 7:13-14
+              - Ps 2:1-6
+          authority:
+            - source: "What Does the Bible Really Teach?, Appendix: 1914—A Significant Year in Bible Prophecy"
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/bible-teach/1914-significant-year-bible-prophecy/
+              quote: At that time, “the appointed times of the nations” ended, and Jesus Christ was installed as God’s heavenly King.
+      - name: Seed of the woman
+        value: The primary part of the promised "seed" of the symbolic woman (Genesis 3:15), who is God's heavenly organization of holy angels rather than Eve or Mary; spirit-begotten Christians make up the secondary part of the seed.
+        topics:
+          - jesus
+          - salvation
+        citations:
+          scripture:
+            bible:
+              - Gen 3:15
+              - Jer 3:14
+          authority:
+            - source: God’s Eternal Purpose in His Anointed One Is Formed, chap. 4, par. 20
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/Gods-Eternal-Purpose-Now-Triumphing-for-Mans-Good/Gods-Eternal-Purpose-in-His-Anointed-One-Is-Formed/
+              quote: Eve was a personal transgressor against God’s law and was an enticer of her husband Adam into transgression. So she herself was not worthy of being the personal mother of the promised “seed.” The “woman” of God’s prophecy must be a symbolic woman... In a like manner God’s heavenly organization of holy angels is as a wife to Jehovah God, and she is the heavenly mother of the “seed.”
+            - source: Revelation—Its Grand Climax at Hand!, chap. 3, p. 12
+              tier: watch-tower
+              url: https://wol.jw.org/en/wol/d/r1/lp-e/1101988002
+              quote: They become a secondary part of the seed, Christ Jesus being the primary part. The congregation of these spirit-begotten Christians on earth make up God’s visible organization that serves under his womanlike organization in the heavens, where they will be united with Christ Jesus at their resurrection.
     citations:
       scripture: { bible: [John 1:1, John 17:5, John 6:38] }
       authority:
@@ -228,6 +339,22 @@ nodes:
         - source: What Was the Original Sin? (jw.org)
           tier: watch-tower
           url: https://www.jw.org/en/bible-teachings/questions/original-sin/
+    attributes:
+      - name: Mother of the promised seed?
+        value: No; personal transgression against God's law and enticing Adam into sin disqualified Eve from being the mother of the promised seed of Genesis 3:15.
+        topics:
+          - evil
+          - salvation
+        citations:
+          scripture:
+            bible:
+              - Gen 3:6
+              - Gen 3:15
+          authority:
+            - source: God’s Eternal Purpose in His Anointed One Is Formed, chap. 4, par. 20
+              tier: watch-tower
+              url: https://www.jw.org/en/library/books/Gods-Eternal-Purpose-Now-Triumphing-for-Mans-Good/Gods-Eternal-Purpose-in-His-Anointed-One-Is-Formed/
+              quote: Eve was a personal transgressor against God’s law and was an enticer of her husband Adam into transgression. So she herself was not worthy of being the personal mother of the promised “seed.” The “woman” of God’s prophecy must be a symbolic woman... In a like manner God’s heavenly organization of holy angels is as a wife to Jehovah God, and she is the heavenly mother of the “seed.”
 
 edges:
   - id: jw.e.jehovah-creates-jesus

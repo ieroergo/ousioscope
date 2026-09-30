@@ -95,6 +95,69 @@ nodes:
               tier: ordinary-magisterium
               url: https://www.vatican.va/archive/ENG0015/__P1S.HTM
               quote: this authentic, real body possesses the new properties of a glorious body
+      - name: Two wills and operations
+        value: Two natural wills and two natural operations, divine and human, not contrary to each other; his human will follows and submits to his divine and omnipotent will
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - John 6:38
+          authority:
+            - source: Third Council of Constantinople (680-681)
+              ref: The Definition of Faith
+              tier: dogma
+              url: https://www.newadvent.org/fathers/3813.htm
+              quote: "defining all this we likewise declare that in him are two natural wills and two natural operations indivisibly, inconvertibly, inseparably, inconfusedly, according to the teaching of the holy Fathers. And these two natural wills are not contrary the one to the other (God forbid!) as the impious heretics assert, but his human will follows and that not as resisting and reluctant, but rather as subject to his divine and omnipotent will... as he himself says: I came down from heaven, not that I might do my own will but the will of the Father which sent me! where he calls his own will the will of his flesh, inasmuch as his flesh was also his own."
+            - source: Catechism of the Catholic Church
+              ref: CCC 475
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_two/artcile_3.html
+              quote: Similarly, at the sixth ecumenical council, Constantinople III in 681, the Church confessed that Christ possesses two wills and two natural operations, divine and human. They are not opposed to each other, but co-operate in such a way that the Word made flesh willed humanly in obedience to his Father all that he had decided divinely with the Father and the Holy Spirit for our salvation... Christ's human will "does not resist or oppose but rather submits to his divine and almighty will."
+      - name: "Name: Jesus"
+        value: In Hebrew signifies "God saves"; expresses his proper name, personal identity as Son made man, and universal mission to save his people from their sins
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Matt 1:21
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 430
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_two/article_2.html
+              quote: 'Jesus means in Hebrew: "God saves." At the annunciation, the angel Gabriel gave him the name Jesus as his proper name, which expresses both his identity and his mission... Since God alone can forgive sins, it is God who, in Jesus his eternal Son made man, "will save his people from their sins".'
+      - name: "Title: Christ"
+        value: Translates Hebrew Messiah ("anointed"); designates his consecration by the Holy Spirit to fulfill Israel's hope in the threefold office of priest, prophet, and king
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Luke 2:11
+              - Matt 16:16
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 436
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_two/article_2/ii_christ.index.html
+              quote: The word "Christ" comes from the Greek translation of the Hebrew Messiah, which means "anointed". It became the name proper to Jesus only because he accomplished perfectly the divine mission that "Christ" signifies... It was necessary that the Messiah be anointed by the Spirit of the Lord at once as king and priest, and also as prophet... Jesus fulfilled the messianic hope of Israel in his threefold office of priest, prophet and king.
+      - name: "Title: Lord"
+        value: Greek Kyrios, translating the ineffable Hebrew divine name YHWH; used in the New Testament to recognize Jesus directly as God Himself, possessing divine sovereignty
+        topics:
+          - christ
+        citations:
+          scripture:
+            bible:
+              - Ex 3:14
+              - 1 Cor 2:8
+          authority:
+            - source: Catechism of the Catholic Church
+              ref: CCC 446
+              tier: ordinary-magisterium
+              url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_two/article_2/iv_lord.index.html
+              quote: In the Greek translation of the Old Testament, the ineffable Hebrew name YHWH, by which God revealed himself to Moses... is rendered as Kyrios, "Lord". From then on, "Lord" becomes the more usual name by which to indicate the divinity of Israel's God. the New Testament uses this full sense of the title "Lord" both for the Father and - what is new - for Jesus, who is thereby recognized as God Himself.
     citations:
       scripture: { bible: [John 1:1, John 1:14, Col 1:15, Heb 1:3] }
       authority:
@@ -477,14 +540,25 @@ edges:
     source: cath.son
     rel: creates
     target: cath.creation
+    note: Creation is the common work of the Trinity (opera ad extra sunt indivisa); all things were made through the eternal Word.
     citations:
-      scripture: { bible: [{ ref: John 1:1-3, highlight: "All things came to be through him" }, { ref: Col 1:16-17, highlight: "all things were created through him and for him" }] }
+      scripture:
+        bible:
+          - ref: John 1:1-3
+            highlight: All things came to be through him
+          - ref: Col 1:16-17
+            highlight: all things were created through him and for him
       authority:
+        - source: First Council of Nicaea (325)
+          ref: The Nicene Creed
+          tier: dogma
+          url: https://www.newadvent.org/fathers/3801.htm
+          quote: By whom all things were made, both which be in heaven and in earth.
         - source: Catechism of the Catholic Church
           ref: CCC 291
           tier: ordinary-magisterium
-          url: https://www.vatican.va/archive/ENG0015/__P19.HTM
-          quote: The New Testament reveals that God created everything by the eternal Word, his beloved Son.
+          url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_one/article_1/paragraph_4_the_creator.html
+          quote: '"In the beginning was the Word. . . and the Word was God. . . all things were made through him, and without him was not anything made that was made."... The New Testament reveals that God created everything by the eternal Word, his beloved Son. In him "all things were created, in heaven and on earth.. . all things were created through him and for him. He is before all things, and in him all things hold together."'
 
   - id: cath.e.spirit-creates
     source: cath.spirit

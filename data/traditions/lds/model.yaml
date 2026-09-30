@@ -65,6 +65,51 @@ nodes:
               tier: church-published
               url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/resurrection?lang=eng
               quote: When the resurrected Lord appeared to His Apostles, He helped them understand that He had a body of flesh and bones.
+      - name: Premortal foreordination
+        value: Chosen from the beginning in the premortal council to be the Savior because He sought the Father's will and glory, unlike Satan who sought self-exaltation and was cast down
+        topics:
+          - christ
+          - plan
+        citations:
+          scripture:
+            bible:
+              - Luke 22:42
+            other:
+              - Moses 4:2
+              - Abr 3:27
+              - Moses 7:39
+          authority:
+            - source: Pearl of Great Price
+              ref: Moses 4:2
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/pgp/moses/4?lang=eng
+              quote: my Beloved Son, which was my Beloved and Chosen from the beginning, said unto me—Father, thy will be done, and the glory be thine forever.
+      - name: Atonement
+        value: Planned in the premortal life to atone for the Fall of Adam and for individual sins on condition of repentance; looses the bands of temporal death so that all are unconditionally resurrected, while redeeming from spiritual death conditionally through faith and repentance
+        topics:
+          - atonement
+          - fall
+          - resurrection
+        citations:
+          scripture:
+            bible:
+              - 1 Cor 15:22
+            other:
+              - Alma 11:42
+              - Alma 11:44
+              - 1 Ne 10:6
+              - 2 Ne 2:4
+              - Mosiah 3:19
+          authority:
+            - source: Guide to the Scriptures, "Fall of Adam and Eve"
+              tier: church-published
+              url: https://www.churchofjesuschrist.org/study/scriptures/gs/fall-of-adam-and-eve?lang=eng
+              quote: Because God knew that the Fall would occur, He had planned in the premortal life for a Savior. Jesus Christ came in the meridian of time to atone for the Fall of Adam and also for man’s individual sins on condition of man’s repentance.
+            - source: Book of Mormon
+              ref: Alma 11:42, 44
+              tier: standard-works
+              url: https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/11?lang=eng
+              quote: Now, there is a death which is called a temporal death; and the death of Christ shall loose the bands of this temporal death, that all shall be raised from this temporal death. ... Now, this restoration shall come to all, both old and young, both bond and free, both male and female, both the wicked and the righteous; and even there shall not so much as a hair of their heads be lost; but every thing shall be restored to its perfect frame
     citations:
       scripture: { bible: [John 1:3], other: [D&C 130:22] }
       authority:
@@ -364,17 +409,29 @@ edges:
   - id: lds.e.father-begets-jesus-spirit
     source: lds.father
     rel: begets
-    topics: [godhead, christ]
     target: lds.jesus
     asTo: SpiritBody
-    note: '"The Firstborn of the Father", before the world was.'
+    note: '"The Firstborn of the Father", before the world was. As the eldest of the spirit children of Elohim, all mankind are His brothers and sisters.'
+    topics:
+      - godhead
+      - christ
     citations:
-      scripture: { bible: [Col 1:15, Rom 8:29, Heb 1:6], other: [D&C 93:21] }
+      scripture:
+        bible:
+          - Col 1:15
+          - Rom 8:29
+          - Heb 1:6
+        other:
+          - D&C 93:21
       authority:
+        - source: Guide to the Scriptures, "God, Godhead"
+          tier: church-published
+          url: https://www.churchofjesuschrist.org/study/scriptures/gs/god-godhead?lang=eng
+          quote: All mankind are His brothers and sisters, for He is the eldest of the spirit children of Elohim.
         - source: The Living Christ (2000)
           tier: official-declaration
           url: https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng
-          quote: He was the Firstborn of the Father
+          quote: He was the Great Jehovah of the Old Testament, the Messiah of the New. Under the direction of His Father, He was the creator of the earth. ... He was the Firstborn of the Father, the Only Begotten Son in the flesh, the Redeemer of the world.
         - source: Topical Guide, "Jesus Christ, Firstborn"
           tier: church-published
           url: https://www.churchofjesuschrist.org/study/scriptures/tg/jesus-christ-firstborn?lang=eng
@@ -451,14 +508,29 @@ edges:
     rel: hasPart
     targetKind: SpiritBody
     quantifier: some
+    note: '"Behold, this body, which ye now behold, is the body of my spirit; and man have I created after the body of my spirit" (Ether 3:16). Before His mortal birth, Christ possessed a spirit body in whose likeness humanity was created.'
     citations:
-      scripture: { bible: [Gen 2:7, Ezek 37:14], other: [D&C 88:15, D&C 93:21, D&C 93:23] }
+      scripture:
+        bible:
+          - Gen 1:26
+          - Gen 2:7
+          - Ezek 37:14
+        other:
+          - D&C 17:1
+          - D&C 88:15
+          - D&C 93:21
+          - D&C 93:23
+          - Ether 3:16
       authority:
+        - source: Book of Mormon
+          ref: Ether 3:16
+          tier: standard-works
+          url: https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/3?lang=eng
+          quote: Behold, this body, which ye now behold, is the body of my spirit; and man have I created after the body of my spirit; and even as I appear unto thee to be in the spirit will I appear unto my people in the flesh.
         - source: Doctrine and Covenants
           ref: D&C 88:15
           tier: standard-works
-          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng&id=p15#p15
-          quote: And the spirit and the body are the soul of man.
+          url: https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/88?lang=eng
 
   - id: lds.e.jesus-has-body
     source: lds.jesus
