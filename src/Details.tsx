@@ -1,12 +1,12 @@
 import type React from "react";
 import type { ReactNode } from "react";
-import { categoryColor } from "./graph";
+import { categoryColor, type GroupColors } from "./graph";
 import { categoryPath, describeAxiom, describeEdge, isA, versesCited } from "./ontology";
 import { MATCH_LABEL, type CrosswalkLink } from "./crosswalk";
 import { ScriptureList, type ScriptureCtx } from "./ScripturePanel";
 import type { ClaimTarget } from "./validator/claim";
 import { ValidateClaim } from "./validator/ValidatePanel";
-import type { Axiom, Citations as CitationsT, Edge, OriginalEntry, Referent, RegistryTopic, ScriptureStore, Tradition } from "./schema";
+import type { Axiom, Citations as CitationsT, Edge, OriginalEntry, Referent, RegistryTopic, ScriptureStore, Term, Tradition } from "./schema";
 import { edgeTopicIds, KIND_LABEL, possessive, topicCoverage } from "./topics";
 import type { Selection, Side } from "./selection";
 
@@ -20,6 +20,8 @@ export interface Ctx {
   otherVerses: Set<string>;
   /** Crosswalk links for the current pair, oriented left → right (empty in single mode). */
   crosswalks: CrosswalkLink[];
+  /** Group colors in use for this pane (shared with the other pane when comparing). */
+  colors: GroupColors;
   /** Shared topic registry (doctrines, salvation, life, debates). */
   topics: RegistryTopic[];
   onSelect: (s: Selection) => void;
@@ -48,11 +50,11 @@ function Citations({ c, ctx }: { c: CitationsT; ctx: Ctx }) {
   const bibleBlock = (
     <section className="cite-sec">
       <h5>
-        {parallel ? "Bible parallel" : "Bible"} <span>{bible.label}</span>
+        {parallel ? "Bible parallel" : (meta.tradition.bibleLabel ?? "Bible")} <span>{bible.label}</span>
         {parallel && <em> · not scripture in this tradition</em>}
       </h5>
       {c.scripture.bible === "none-cited" ? (
-        <p className="cite-none">{parallel ? "No parallel passage." : "No Bible verse cited by the authority."}</p>
+        <p className="cite-none">{parallel ? "No parallel passage." : `No ${meta.tradition.bibleLabel ?? "Bible"} verse cited by the authority.`}</p>
       ) : (
         <div className={parallel ? "parallel" : undefined}>
           <ScriptureList items={c.scripture.bible} ctx={bible} />
@@ -117,8 +119,8 @@ function CategoryPath({ categoryId, ctx }: { categoryId: string; ctx: Ctx }) {
           {i > 0 && <span className="sep">›</span>}
           <button
             className="crumb"
-            style={{ "--dot": categoryColor(ctx.t.meta, c.id) } as React.CSSProperties}
-            title={c.definition}
+            style={{ "--dot": categoryColor(ctx.t.meta, c.id, ctx.colors) } as React.CSSProperties}
+            title={`${c.definition}${c.term.kind === "editorial" ? " (editorial label)" : ""}`}
             onClick={() => ctx.onSelect({ side: ctx.side, kind: "category", id: c.id })}
           >
             {c.label}
@@ -307,6 +309,35 @@ function AxiomDetail({ id, ctx }: { id: string; ctx: Ctx }) {
   );
 }
 
+/** Where a category's name comes from: the tradition's own term (with the quote that uses it) or an editorial label. */
+function TermSource({ term }: { term: Term }) {
+  if (term.kind === "editorial")
+    return (
+      <div className="term-source editorial">
+        <span className="meta-label">Name</span> <strong>Editorial label</strong>
+        <span className="muted"> · {term.note}</span>
+      </div>
+    );
+  const where = term.url ? new URL(term.url).hostname.replace(/^www\./, "") : term.ref;
+  return (
+    <div className="term-source own">
+      <span className="meta-label">Name</span> <strong>The tradition's own term</strong>
+      <span className="muted">
+        {" "}
+        ·{" "}
+        {term.url ? (
+          <a href={term.url} target="_blank" rel="noreferrer">
+            {where}
+          </a>
+        ) : (
+          where
+        )}
+      </span>
+      <blockquote>“{term.quote}”</blockquote>
+    </div>
+  );
+}
+
 function CategoryDetail({ id, ctx }: { id: string; ctx: Ctx }) {
   const { meta, model } = ctx.t;
   const c = meta.categories.find((x) => x.id === id);
@@ -327,6 +358,7 @@ function CategoryDetail({ id, ctx }: { id: string; ctx: Ctx }) {
       <div className="bridge-note muted">Category (kind)</div>
       <h3>{c.label}</h3>
       <CategoryPath categoryId={id} ctx={ctx} />
+      <TermSource term={c.term} />
       <p>{c.definition}</p>
       <Citations c={c.citations} ctx={ctx} />
       <Validate ctx={ctx} target={{ kind: "category", id: c.id }} />

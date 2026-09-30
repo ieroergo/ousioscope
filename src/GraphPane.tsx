@@ -1,7 +1,7 @@
 import cytoscape, { type Core, type StylesheetJson } from "cytoscape";
 import fcose from "cytoscape-fcose";
 import { useEffect, useMemo, useRef } from "react";
-import { metamodelElements, modelElements, type Grouping, type View } from "./graph";
+import { metamodelElements, modelElements, type GroupColors, type Grouping, type View } from "./graph";
 import type { Tradition } from "./schema";
 import type { Mark, Selection, Side } from "./selection";
 
@@ -192,9 +192,11 @@ interface Props {
   layoutKey?: number;
   /** Metamodel isolate: spotlight ids to keep (everything else is left out). */
   metaKeep?: Set<string>;
+  /** Group colors shared with the other pane when comparing. */
+  colors?: GroupColors;
 }
 
-export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter, spotlight, pulse, layoutKey = 0, metaKeep }: Props) {
+export function GraphPane({ side, tradition, view, grouping, visible, minTier, marks, onSelect, onInstance, edgeFilter, spotlight, pulse, layoutKey = 0, metaKeep, colors }: Props) {
   const container = useRef<HTMLDivElement>(null);
   const cy = useRef<Core | null>(null);
   const onSelectRef = useRef(onSelect);
@@ -203,8 +205,9 @@ export function GraphPane({ side, tradition, view, grouping, visible, minTier, m
   onInstanceRef.current = onInstance;
 
   const elements = useMemo(
-    () => (view === "model" ? modelElements(tradition, visible, minTier, grouping, edgeFilter) : metamodelElements(tradition, metaKeep)),
-    [tradition, view, visible, minTier, grouping, edgeFilter, metaKeep],
+    () =>
+      view === "model" ? modelElements(tradition, visible, minTier, grouping, edgeFilter, colors) : metamodelElements(tradition, metaKeep, colors),
+    [tradition, view, visible, minTier, grouping, edgeFilter, metaKeep, colors],
   );
 
   useEffect(() => {

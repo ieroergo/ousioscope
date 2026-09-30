@@ -134,8 +134,8 @@ function PassageCard({ p, ctx }: { p: Passage; ctx: ScriptureCtx }) {
         <em className="muted"> text not available</em>
       )}
       {ctx.store?.originals && verses.some((v) => ctx.store!.originals![v]) && (
-        <div className={`store-original ${ctx.store.originalLang === "ar" ? "arabic rtl" : ""}`} lang={ctx.store.originalLang}>
-          {verses.map((v) => ctx.store!.originals![v]).filter(Boolean).join(" ۝ ")}
+        <div className={`store-original ${ctx.store.originalLang === "ar" ? "arabic rtl" : ctx.store.originalLang === "hbo" ? "heb rtl" : ""}`} lang={ctx.store.originalLang === "hbo" ? "he" : ctx.store.originalLang}>
+          {verses.map((v) => ctx.store!.originals![v]).filter(Boolean).join(ctx.store.originalLang === "ar" ? " ۝ " : " ")}
         </div>
       )}
       {originals.map((e) => (

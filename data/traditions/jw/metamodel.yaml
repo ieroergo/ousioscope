@@ -114,6 +114,10 @@ stances:
 categories:
   - id: AlmightyGod
     label: Almighty God
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/trinity/
+      quote: Is Jesus Christ the same as Almighty God?
     group: true
     definition: '"The only true God", whose name is Jehovah. Not a Trinity: "God is only one."'
     citations:
@@ -126,6 +130,10 @@ categories:
 
   - id: ActiveForce
     label: Active force (impersonal)
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/what-is-the-holy-spirit/
+      quote: The Bible’s answer The holy spirit is God’s power in action, his active force.
     group: true
     definition: God's power in action, which he projects to accomplish his will. It is not a person.
     citations:
@@ -138,6 +146,10 @@ categories:
 
   - id: Creation
     label: Creation
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+      quote: ( Luke 3:38 ) However, because Jesus was God’s first creation and the only one created directly by him, the Bible describes Jesus as the foremost Son of God.
     group: true
     definition: Everything other than God. Jesus was God's first creation, and everything else was created through him.
     citations:
@@ -150,6 +162,10 @@ categories:
 
   - id: SpiritCreature
     label: Spirit creature
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+      quote: Jesus was a spirit creature in heaven before he was born as a human on earth.
     parent: Creation
     definition: An invisible, heavenly creature (Jesus in his prehuman and resurrected life, and the angels). Spirit creatures can take on human form temporarily.
     citations:
@@ -162,6 +178,10 @@ categories:
 
   - id: Soul
     label: Living soul (human)
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/what-is-a-soul/
+      quote: "Consider how the Bible shows that the human soul is the whole person: Adam was not given a soul​—he “became a living soul”"
     parent: Creation
     definition: '"The soul, then, is the entire creature, not something inside that survives the death of the body." A human does not have a soul; a human is a soul.'
     citations:
@@ -174,6 +194,10 @@ categories:
 
   - id: Universe
     label: Physical universe
+    term:
+      kind: own
+      url: https://www.jw.org/en/bible-teachings/questions/jesus-son-of-god/
+      quote: This creation included all other spirit creatures , as well as the physical universe.
     parent: Creation
     definition: The material heavens and earth, created by God through his Son.
     citations:

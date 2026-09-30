@@ -40,6 +40,14 @@ npm run research -- --topic <id> [--traditions all|catholic,lds,reformed,jw,sunn
 - Artifacts (every prompt, role output, quote check, log, and `report.md`) go to `research/runs/<run-id>/`
   (git-ignored).
 
+## New traditions
+
+`npm run research:new -- --id <id> --name "<name>" --scope "<stream>" --store <scripture store> [--bible-label <label>]
+[--dry-run] [--resume <run-id>]` bootstraps a tradition with the same protocol (blind research → verification → critic →
+judge → re-check → validate with repairs → local branch). The judge writes the whole `metamodel.yaml` and `model.yaml`
+(using an existing tradition as the format template) and the tradition's names for each subject. Dry-run first; then
+`--resume <run-id>` (no `--dry-run`) applies it. The scripture store must exist in `scripts/fetch-scripture.ts`.
+
 ## Roles (each is a separate headless `agy` turn in an empty, new-project workspace)
 
 1. **Blind researcher** (web): sees the topic, the tradition's authority tiers, its own rule of interpretation, and

@@ -181,6 +181,10 @@ stances:
 categories:
   - id: God
     label: God (uncreated)
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_02
+      quote: There is but one only, living, and true God
     group: true
     definition: '"One only, living, and true God ... a most pure spirit, invisible, without body, parts, or passions".'
     citations:
@@ -194,6 +198,10 @@ categories:
 
   - id: Godhead
     label: Godhead
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_02
+      quote: "the unity of the Godhead there be three persons, of one substance, power, and eternity: God the Father, God the Son, and God the Holy Ghost: the Father is of none, neither begotten, nor proceeding; the Son is"
     parent: God
     definition: The one divine substance in which the three persons are united ("the unity of the Godhead").
     citations:
@@ -206,7 +214,11 @@ categories:
           quote: In the unity of the Godhead there be three persons, of one substance, power, and eternity
 
   - id: DivinePerson
-    label: Divine Person
+    label: Person in the Trinity
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_08
+      quote: Son of God, the second person in the Trinity, being very and eternal God, of one substance and equal with the Father, did, when the fullness of time was come, take upon him man’s nature, with all the essential
     parent: God
     definition: Father, Son, or Holy Ghost, "distinguished by their personal properties" (begetting, being begotten, proceeding).
     citations:
@@ -220,6 +232,10 @@ categories:
 
   - id: Creature
     label: Creature (made of nothing)
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_04
+      quote: not standing in need of any creatures which he hath made
     group: true
     definition: Everything God made "of nothing ... whether visible or invisible".
     citations:
@@ -233,6 +249,10 @@ categories:
 
   - id: World
     label: The world
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_04
+      quote: to create, or make of nothing, the world, and all things therein whether visible or invisible
     parent: Creature
     definition: '"The world, and all things therein".'
     citations:
@@ -245,6 +265,10 @@ categories:
 
   - id: Manhood
     label: Man's nature (manhood)
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_08
+      quote: one substance and equal with the Father, did, when the fullness of time was come, take upon him man’s nature, with all the essential properties, and common infirmities thereof, yet without sin; being conceived by
     parent: Creature
     definition: 'Human nature "with all the essential properties, and common infirmities thereof": a true body and a reasonable soul.'
     citations:
@@ -258,6 +282,10 @@ categories:
 
   - id: Man
     label: Man (human person)
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_04
+      quote: he created man, male and female, with reasonable and immortal souls
     parent: Creature
     definition: A human being, created "male and female, with reasonable and immortal souls ... after his own image".
     citations:
@@ -270,7 +298,11 @@ categories:
           quote: he created man, male and female, with reasonable and immortal souls
 
   - id: Soul
-    label: Reasonable, immortal soul
+    label: Reasonable and immortal soul
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_32
+      quote: God had made all other creatures, he created man, male and female, with reasonable and immortal souls, endued with knowledge, righteousness, and true holiness, after his own image; having the law of God written
     parent: Creature
     definition: The soul, which does not die or sleep but has "an immortal subsistence".
     citations:
@@ -287,6 +319,10 @@ categories:
 
   - id: Body
     label: Body
+    term:
+      kind: own
+      url: https://www.opc.org/wcf.html#Chapter_32
+      quote: The bodies of men, after death, return to dust, and see corruption
     parent: Creature
     definition: The human body, which returns to dust at death and will be raised "with the selfsame bodies".
     citations:

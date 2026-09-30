@@ -173,7 +173,7 @@ export function loadDataset(files: Record<string, string>): { dataset?: Dataset;
   const topics = read("data/topics.yaml", TopicRegistry)?.topics;
   if (errors.length || !referents || !original || !crosswalks || !topics) return { errors };
   const dataset = { referents, traditions, stores, original, crosswalks, topics };
-  errors.push(...validateDataset(dataset), ...validateCrosswalks(dataset), ...validateTopics(dataset));
+  errors.push(...validateDataset(dataset), ...validateCrosswalks(dataset), ...validateTopics(dataset), ...validateTerms(dataset));
   return { dataset, errors };
 }
 
@@ -204,6 +204,61 @@ export function resolveClaimRef({ meta, model }: Tradition, ref: string): ClaimR
   }
   if (model.edges.some((e) => e.id === ref)) return { kind: "edge", id: ref };
   if (model.nodes.some((n) => n.id === ref)) return { kind: "node", id: ref };
+}
+
+const normTerm = (s: string) =>
+  s
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[‘’ʼ`´]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+
+/** The word(s) a category label stands for: parentheticals and a leading article removed ("The Creator (Allah)" → "Creator"). */
+export const labelTerm = (label: string) =>
+  label
+    .replace(/\s*\(.*?\)\s*/g, " ")
+    .replace(/^(The|A)\s+/i, "")
+    .trim();
+
+/** Whether `text` contains the label's term as whole words (allowing a plural: -s, -es, -y → -ies). */
+export function textHasTerm(text: string, label: string): boolean {
+  const t = normTerm(labelTerm(label)).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const alt = t.endsWith("y") ? `|${t.slice(0, -1)}ies` : "";
+  return new RegExp(`(?<![a-z0-9])(?:${t}(?:s|es)?${alt})(?![a-z0-9])`).test(normTerm(text));
+}
+
+/**
+ * Category names: an "own" term must appear in its quote; a scripture-based quote must match the tradition's own
+ * translation of that verse. (Whether a URL quote is on its live page is checked by `npm run check:terms`.)
+ */
+function validateTerms({ traditions, stores }: Dataset): string[] {
+  const errors: string[] = [];
+  for (const { meta } of traditions) {
+    const tid = meta.tradition.id;
+    for (const c of meta.categories) {
+      const t = c.term;
+      if (t.kind !== "own") continue;
+      if (!textHasTerm(t.quote!, c.label)) errors.push(`[${tid}] category ${c.id}: term quote does not contain "${labelTerm(c.label)}"`);
+      if (t.ref) {
+        const verse = [meta.tradition.scripture.other, meta.tradition.scripture.bible].map((sid) => stores[sid]?.verses[t.ref!]).find(Boolean);
+        if (!verse) errors.push(`[${tid}] category ${c.id}: no scripture text for term ref ${t.ref}`);
+        else {
+          // Each fragment between "..." omissions must appear in the verse, in order.
+          const v = normTerm(verse);
+          let at = 0;
+          const found = normTerm(t.quote!)
+            .split(/\s*(?:\.\.\.|…)\s*/)
+            .filter(Boolean)
+            .every((frag) => (at = v.indexOf(frag, at)) >= 0 && (at += frag.length) > 0);
+          if (!found) errors.push(`[${tid}] category ${c.id}: term quote not found in ${t.ref}`);
+        }
+      }
+    }
+  }
+  return errors;
 }
 
 function validateTopics({ traditions, topics }: Dataset): string[] {

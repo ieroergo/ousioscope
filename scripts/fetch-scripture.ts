@@ -229,6 +229,38 @@ const quranChapter = (transId: string) => async (chapter: string): Promise<Chapt
   return { url: `https://tanzil.net/#trans/${transId}/${sura}:1`, verses, originals };
 };
 
+// ---------- Tanakh (Sefaria: JPS 1917 English + Masoretic Hebrew) ----------
+const JPS1917 = "The Holy Scriptures: A New Translation (JPS 1917)";
+/** Sefaria book name from the canonical OT name ("1 Samuel" → "I_Samuel"). */
+const sefariaBook = (name: string) => name.replace(/^1 /, "I ").replace(/^2 /, "II ").replace(/ /g, "_");
+const stripHtml = (t: string) =>
+  t
+    .replace(/<sup[^>]*>[^]*?<\/sup>/g, "")
+    .replace(/<i class="footnote">[^]*?<\/i>/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+async function sefariaChapter(chapter: string): Promise<ChapterResult> {
+  const [, abbr, ch] = chapter.match(/^(.+) (\d+)$/)!;
+  const book = BOOKS.find((b) => b.abbr === abbr);
+  if (!book || !book.wol || book.wol > 39) throw new Error(`Not a Tanakh book: ${abbr}`);
+  const ref = `${sefariaBook(book.name)}.${ch}`;
+  const api = `https://www.sefaria.org/api/v3/texts/${ref}?version=${encodeURIComponent(`english|${JPS1917}`)}&version=hebrew`;
+  const res = await fetch(api, { headers: { "User-Agent": "Mozilla/5.0 onto-ontology-tool" }, signal: AbortSignal.timeout(30000) });
+  if (!res.ok) throw new Error(`${api}: HTTP ${res.status}`);
+  const data = (await res.json()) as { versions: { language: string; versionTitle: string; text: string[] }[] };
+  const en = data.versions.find((v) => v.language === "en" && v.versionTitle === JPS1917)?.text ?? [];
+  const he = data.versions.find((v) => v.language === "he")?.text ?? [];
+  const verses: Record<number, string> = {};
+  const originals: Record<number, string> = {};
+  en.forEach((t, i) => t && (verses[i + 1] = stripHtml(t)));
+  // Keep vowel points; drop cantillation marks (U+0591–U+05AF) for readability.
+  he.forEach((t, i) => t && (originals[i + 1] = stripHtml(t).replace(/[\u0591-\u05AF]/g, "")));
+  if (!Object.keys(verses).length) throw new Error(`JPS 1917: no verses at ${api}`);
+  return { url: `https://www.sefaria.org/${ref}?ven=${encodeURIComponent(JPS1917)}&lang=bi`, verses, originals };
+}
+
 interface ChapterResult {
   url: string;
   verses: Record<number, string>;
@@ -294,6 +326,18 @@ const STORES: Record<string, { meta: Record<string, string>; fetchChapter: (ch: 
     },
     fetchChapter: quranChapter("en.qarai"),
     concurrency: 1,
+  },
+  jps1917: {
+    meta: {
+      id: "jps1917",
+      name: "The Holy Scriptures: A New Translation (JPS 1917), with the Masoretic Hebrew text",
+      abbreviation: "JPS 1917",
+      publisher: "Jewish Publication Society; text via Sefaria (sefaria.org)",
+      copyright: "JPS 1917 English translation: public domain. Hebrew: Miqra according to the Masorah (Sefaria), verbatim.",
+      originalLang: "hbo",
+    },
+    fetchChapter: sefariaChapter,
+    concurrency: 3,
   },
   nabre: {
     meta: {

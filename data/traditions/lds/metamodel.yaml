@@ -126,6 +126,10 @@ stances:
 categories:
   - id: Intelligence
     label: Intelligence
+    term:
+      kind: own
+      ref: D&C 93:29
+      quote: Intelligence, or the light of truth, was not created or made, neither indeed can be.
     group: true
     definition: '"Intelligence, or the light of truth, was not created or made, neither indeed can be."'
     citations:
@@ -138,6 +142,10 @@ categories:
 
   - id: Matter
     label: Matter
+    term:
+      kind: own
+      ref: D&C 131:7
+      quote: There is no such thing as immaterial matter. All spirit is matter
     group: true
     definition: All that exists in space, including spirit. "There is no such thing as immaterial matter."
     citations:
@@ -151,6 +159,10 @@ categories:
 
   - id: SpiritMatter
     label: Spirit (refined matter)
+    term:
+      kind: own
+      ref: D&C 131:7
+      quote: All spirit is matter, but it is more fine or pure, and can only be discerned by purer eyes
     parent: Matter
     group: true
     definition: Matter that is "more fine or pure, and can only be discerned by purer eyes".
@@ -164,6 +176,10 @@ categories:
 
   - id: SpiritBody
     label: Spirit body
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/3?lang=eng
+      quote: Christ shows His spirit body to the brother of Jared
     parent: SpiritMatter
     definition: An individual spirit. Spirits "have no beginning"; mortals were "in the beginning with the Father".
     citations:
@@ -177,6 +193,10 @@ categories:
 
   - id: Element
     label: Element (physical matter)
+    term:
+      kind: own
+      ref: D&C 93:33
+      quote: The elements are eternal, and spirit and element, inseparably connected, receive a fulness of joy
     parent: Matter
     group: true
     definition: Physical matter. "The elements are eternal."
@@ -191,6 +211,10 @@ categories:
 
   - id: PhysicalBody
     label: Tabernacle (physical body)
+    term:
+      kind: own
+      ref: D&C 93:4
+      quote: I was in the world and made flesh my tabernacle, and dwelt among the sons of men
     parent: Element
     definition: A body of flesh (and, when resurrected, flesh and bones), described as a "tabernacle".
     citations:
@@ -203,7 +227,11 @@ categories:
           quote: made flesh my tabernacle, and dwelt among the sons of men
 
   - id: World
-    label: Organized world
+    label: The heavens and the earth (organized)
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/4?lang=eng&id=p1#p1
+      quote: And they went down at the beginning, and they, that is the Gods , organized and formed the heavens and the earth.
     parent: Element
     definition: An earth or heaven organized and formed from existing materials.
     citations:
@@ -217,6 +245,10 @@ categories:
 
   - id: Being
     label: Being
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+      quote: God and Jesus Christ are glorified, physical beings
     group: true
     definition: A personal being. Each member of the Godhead is "a separate being".
     citations:
@@ -232,6 +264,10 @@ categories:
 
   - id: GodheadMember
     label: Member of the Godhead
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+      quote: each member of the Godhead is a separate being
     parent: Being
     definition: One of the three beings who make up the Godhead and "preside over this world".
     citations:
@@ -246,7 +282,11 @@ categories:
           quote: These three beings make up the Godhead. They preside over this world and all other creations of our Father in Heaven.
 
   - id: ChildOfGod
-    label: Child of God (human)
+    label: Spirit child of Heavenly Father (human)
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/scriptures/tg/man-a-spirit-child-of-heavenly-father?lang=eng
+      quote: Man, a Spirit Child of Heavenly Father
     parent: Being
     definition: A human being, a spirit begotten "unto God", living on earth in a physical body.
     citations:
@@ -263,6 +303,10 @@ categories:
 
   - id: Godhead
     label: Godhead
+    term:
+      kind: own
+      url: https://www.churchofjesuschrist.org/study/manual/gospel-topics/godhead?lang=eng
+      quote: These three beings make up the Godhead.
     group: true
     definition: The three separate beings who together "preside over this world and all other creations of our Father in Heaven".
     citations:

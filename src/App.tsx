@@ -5,7 +5,7 @@ import { CrosswalkOverlay } from "./CrosswalkOverlay";
 import { dataset, errors } from "./data";
 import { CrosswalkDetail, Details, Sources, type Ctx } from "./Details";
 import { GraphPane } from "./GraphPane";
-import { categoryColor, maxDegree, neighborhood, type Grouping, type View } from "./graph";
+import { categoryColor, groupColors, maxDegree, metamodelFocus, neighborhood, pairColors, type GroupColors, type Grouping, type View } from "./graph";
 import { categoryPath, versesCited } from "./ontology";
 import type { Tradition } from "./schema";
 import { marksFor, selectedReferent, type Selection, type Side } from "./selection";
@@ -319,13 +319,13 @@ function Compare() {
     }),
     [focusCoverage, isolate, trads.left, trads.right],
   );
-  const spotlight = useMemo(
-    () =>
-      focusCoverage && !isolate
-        ? { left: spotlightIds(trads.left, focusCoverage.left, view), right: spotlightIds(trads.right, focusCoverage.right, view) }
-        : undefined,
-    [focusCoverage, isolate, trads.left, trads.right, view],
-  );
+  const spotlight = useMemo(() => {
+    if (!focusCoverage || isolate) return undefined;
+    // In the metamodel, In context lights exactly what Isolate would draw (same focus set).
+    const lit = (t: Tradition, side: Side) =>
+      view === "metamodel" ? metamodelFocus(t.meta, spotlightIds(t, focusCoverage[side], "metamodel")) : spotlightIds(t, focusCoverage[side], view);
+    return { left: lit(trads.left, "left"), right: lit(trads.right, "right") };
+  }, [focusCoverage, isolate, trads.left, trads.right, view]);
   const metaKeep = useMemo(
     () =>
       focusCoverage && isolate && view === "metamodel"
@@ -334,6 +334,12 @@ function Compare() {
     [focusCoverage, isolate, trads.left, trads.right, view],
   );
   const [hover, setHover] = useState<{ side: Side; ids: string[] } | null>(null);
+  // Shared categories get the same color (and legend swatch) in both panes.
+  const palettes = useMemo((): Record<Side, GroupColors> => {
+    if (single) return { left: groupColors(trads.left.meta), right: groupColors(trads.right.meta) };
+    const [left, right] = pairColors(trads.left.meta, trads.right.meta, crosswalks);
+    return { left, right };
+  }, [single, trads.left, trads.right, crosswalks]);
 
   const pane = (side: Side) => {
     const t = trads[side];
@@ -424,6 +430,7 @@ function Compare() {
           edgeFilter={focusCoverage && isolate ? focusCoverage[side].edges : undefined}
           layoutKey={layoutKey[side]}
           metaKeep={metaKeep?.[side]}
+          colors={palettes[side]}
           spotlight={spotlight?.[side]}
           pulse={hover?.side === side ? hover.ids : undefined}
         />
@@ -445,7 +452,7 @@ function Compare() {
             )}
           </div>
         )}
-        <Legend t={t} />
+        <Legend t={t} colors={palettes[side]} />
       </section>
     );
   };
@@ -461,6 +468,7 @@ function Compare() {
       original: originalByRef,
       otherVerses: single ? new Set<string>() : new Set(verses[other].keys()),
       crosswalks: links,
+      colors: palettes[side],
       topics,
       onSelect: setSel,
       onHover: (ids) => setHover(ids ? { side, ids } : null),
@@ -598,13 +606,13 @@ function Compare() {
   );
 }
 
-function Legend({ t }: { t: Tradition }) {
+function Legend({ t, colors }: { t: Tradition; colors: GroupColors }) {
   const groups = t.meta.categories.filter((c) => c.group);
   return (
     <div className="legend">
       {groups.map((g) => (
         <span key={g.id} title={g.definition}>
-          <i style={{ background: categoryColor(t.meta, g.id) }} />
+          <i style={{ background: categoryColor(t.meta, g.id, colors) }} />
           {categoryPath(t.meta, g.id)
             .map((c) => c.label)
             .join(" › ")}

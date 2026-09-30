@@ -86,9 +86,26 @@ export const Attribute = z.object({
 
 export const Tier = z.object({ id, label: z.string() });
 
+/**
+ * Where a category's name comes from. `own`: the tradition's own term, shown by a verbatim `quote` containing it,
+ * from a source page (`url`) or from the tradition's scripture (`ref`). `editorial`: a structural label chosen by the
+ * project, explained in `note`. Checked offline by the validator and online by `npm run check:terms`.
+ */
+export const Term = z
+  .object({
+    kind: z.enum(["own", "editorial"]),
+    quote: z.string().min(1).optional(),
+    url: z.string().url().optional(),
+    ref: z.string().optional(),
+    note: z.string().min(1).optional(),
+  })
+  .refine((t) => t.kind !== "own" || (!!t.quote && (!!t.url || !!t.ref)), { message: "own term needs quote and url or ref" })
+  .refine((t) => t.kind !== "editorial" || !!t.note, { message: "editorial label needs a note" });
+
 export const Category = z.object({
   id,
   label: z.string(),
+  term: Term,
   parent: id.optional(),
   group: z.boolean().optional(),
   definition: z.string(),
@@ -164,6 +181,8 @@ export const Metamodel = z.object({
      */
     bibleRole: z.enum(["canonical", "parallel"]).default("canonical"),
     otherScriptureLabel: z.string(),
+    /** What the tradition calls its Bible store's scripture (default "Bible"), e.g. "Tanakh". */
+    bibleLabel: z.string().optional(),
     tiers: z.array(Tier).min(1),
     /** The tradition's own stated rule for interpreting scripture. Used when checking a claim's scripture support. */
     hermeneutic: z.object({ summary: z.string().min(1), citations: z.lazy(() => Citations) }),
@@ -242,6 +261,7 @@ export type Authority = z.infer<typeof Authority>;
 export type Citations = z.infer<typeof Citations>;
 export type Attribute = z.infer<typeof Attribute>;
 export type Category = z.infer<typeof Category>;
+export type Term = z.infer<typeof Term>;
 export type RelationshipType = z.infer<typeof RelationshipType>;
 export type Quantifier = z.infer<typeof Quantifier>;
 export type Axiom = z.infer<typeof Axiom>;

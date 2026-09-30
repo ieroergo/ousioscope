@@ -136,6 +136,9 @@ export const JUDGE_RULES = `RULES FOR CHANGES
   the quote field. Unverifiable quotes are stripped automatically.
 - Use the tradition's own vocabulary and its existing ids, categories, relationship types, and tier ids. Add a category or
   relationship type only if nothing existing fits (and give it definition, domain, range, topics, citations).
+- Every new category needs "term": kind own (a verbatim quote from a verified source that contains the category
+  label's word, with its url, or a scripture ref) or kind editorial (a note on why no source term exists). Name
+  categories with the source's own wording.
 - Every individual needs a registered referent (existing id, or add_referent first). Every relationship type needs
   "topics" (the tradition's own outline topic ids).
 - Debates: set_stance with position, summary, citations, and "claims" linking the modeled claims that express it

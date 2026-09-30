@@ -39,6 +39,8 @@ scripture and authority.*
   about (referents) and the topics they address. Category correspondences live in an optional crosswalk layer that
   says where two categories part ways.
 - **It does not invent proof texts.** Scripture appears only where the tradition's own authority cites it.
+- **It does not rename a tradition's categories.** Each category's name is the tradition's own term, shown with a
+  verbatim quote, unless it is marked as an editorial heading with a note explaining why.
 
 ## Quick start
 
@@ -54,11 +56,13 @@ Other commands:
 
 | Command | What it does |
 |---|---|
-| `npm run validate` | Checks every data file: schema, integrity, citations, verse text, stance links |
+| `npm run validate` | Checks every data file: schema, integrity, citations, verse text, stance links, category names |
+| `npm run check:terms` | Confirms online that each category's name appears on its quoted source page |
 | `npm run build` | Validate, type-check, and build for production into `dist/` |
 | `npm run fetch:scripture` | Fetches the exact text of any newly cited verse into `data/scripture/` |
 | `npm run fetch:original` | Rebuilds the Greek and Hebrew notes from `data/scripture/original-curation.yaml` |
 | `npm run research -- --topic <id>` | Runs the agentic research workflow (see below) |
+| `npm run research:new -- --id <id> ...` | Bootstraps a new tradition with the same agent protocol |
 
 `fetch:scripture` and the research quote checker drive a local Google Chrome for some sites. Set `CHROME_PATH` if
 Chrome isn't in the default macOS location.

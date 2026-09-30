@@ -140,6 +140,10 @@ stances:
 categories:
   - id: Being
     label: Being
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+      quote: governed by chance, blind fate, anonymous necessity, or by a transcendent, intelligent and good Being called
     definition: All that is.
     citations:
       scripture: { bible: [Gen 1:1] }
@@ -151,7 +155,11 @@ categories:
           quote: '"Creator of heaven and earth", "of all that is, seen and unseen" (Nicene Creed).'
 
   - id: UncreatedBeing
-    label: Uncreated
+    label: Creator
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P19.HTM
+      quote: the eternal God gave a beginning to all that exists outside of himself; he alone is Creator
     parent: Being
     group: true
     definition: God, who has no beginning and gives a beginning to all that exists outside himself.
@@ -166,6 +174,10 @@ categories:
 
   - id: DivineNature
     label: Divine Nature
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+      quote: the whole divine economy makes known both what is proper to the divine persons, and their one divine nature
     parent: UncreatedBeing
     definition: The one divine substance, essence or nature. Not divided or shared out among the persons.
     citations:
@@ -184,6 +196,10 @@ categories:
 
   - id: DivinePerson
     label: Divine Person
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P17.HTM
+      quote: 68 The Holy Spirit is thus revealed as another divine person with Jesus and the Father.
     parent: UncreatedBeing
     definition: Father, Son, or Holy Spirit. Really distinct from one another only by their relations of origin.
     citations:
@@ -200,7 +216,11 @@ categories:
           quote: It is the Father who generates, the Son who is begotten, and the Holy Spirit who proceeds.
 
   - id: CreatedBeing
-    label: Created
+    label: Creature
+    term:
+      kind: own
+      url: https://www.vatican.va/content/catechism/en/part_one/section_one/chapter_one/iv_how_can_we_speak_about_god.html
+      quote: between Creator and creature no similitude can be expressed without implying an even greater dissimilitude
     parent: Being
     group: true
     definition: Everything that is not God. Made by God freely, out of nothing.
@@ -217,7 +237,11 @@ categories:
           quote: God needs no pre-existent thing or any help in order to create ... God creates freely "out of nothing"
 
   - id: CreatedWorld
-    label: Created World
+    label: Heaven and earth (all creation)
+    term:
+      kind: own
+      url: https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_one/article_1/paragraph_5_heaven_and_earth.html
+      quote: 'The Scriptural expression "heaven and earth" means all that exists, creation in its entirety'
     parent: CreatedBeing
     definition: '"The heavens and the earth": the totality of what exists outside God.'
     citations:
@@ -231,6 +255,10 @@ categories:
 
   - id: HumanNature
     label: Human Nature
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P1J.HTM
+      quote: Did they not move God to descend to human nature and visit it, since humanity was in so miserable and unhappy a state?
     parent: CreatedBeing
     definition: What a human is. One nature formed by the union of spiritual soul and material body.
     citations:
@@ -244,6 +272,10 @@ categories:
 
   - id: HumanPerson
     label: Human Person
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+      quote: 362 The human person, created in the image of God, is a being at once corporeal and spiritual.
     parent: CreatedBeing
     definition: A created "someone", in the image of God, at once corporeal and spiritual.
     citations:
@@ -257,6 +289,10 @@ categories:
 
   - id: SpiritualSoul
     label: Spiritual Soul
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+      quote: the unity of its nature, composed equally in all men of a material body and a spiritual soul; in the unity of its immediate end and its mission in the world; in the unity of its dwelling, the earth, whose benefits
     parent: CreatedBeing
     definition: The spiritual principle in man. Created immediately by God, immortal, and the "form" of the body.
     citations:
@@ -270,6 +306,10 @@ categories:
 
   - id: HumanBody
     label: Human Body
+    term:
+      kind: own
+      url: https://www.vatican.va/archive/ENG0015/__P1B.HTM
+      quote: 'The human body shares in the dignity of "the image of God": it is a human body precisely because it is animated by a spiritual soul, and it is the whole human person that is intended to become, in the body of'
     parent: CreatedBeing
     definition: Body made of matter, which is a living human body because it is animated by a spiritual soul.
     citations:

@@ -373,3 +373,7 @@ button:hover > .tip, button:focus-visible > .tip { opacity: 1; visibility: visib
 .original .caret { margin-left: 0; }
 .detail .attribute { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line-soft); }
 .detail .attribute > div:first-child { font-size: 13px; line-height: 1.45; }
+.term-source { font-size: 12px; margin: 2px 0 8px; color: #475569; }
+.term-source strong { font-weight: 600; color: #334155; }
+.term-source blockquote { margin: 3px 0 0 0; padding-left: 10px; border-left: 2px solid #e2e8f0; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-style: italic; font-size: 13px; color: #475569; }
+.term-source.editorial strong { color: #92400e; }

@@ -10,7 +10,8 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
 - Vite + React + TypeScript + Cytoscape.js (+ cytoscape-fcose layout), zod schema, YAML data
 
 ## Commands
-- `npm run validate`: schema + integrity + citation + verb-lint checks on `data/` (runs before dev/build)
+- `npm run validate`: schema + integrity + citation + verb-lint + category-name checks on `data/` (runs before dev/build)
+- `npm run check:terms`: fetches each category's term source page and confirms the quoted name is there (online)
 - `npm run dev`: validate, then start Vite
 - `npm run typecheck`: `tsc --noEmit`
 - `npm run build`: validate + typecheck + production build
@@ -61,6 +62,14 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
 ## Modeling decisions
 - Each tradition has its own metamodel: its own category tree AND its own relationship types.
 - Categories come from each tradition's own sources and vocabulary.
+- Every category records where its NAME comes from in `term`:
+  - `kind: own`: the tradition's own word. `quote` is verbatim text containing the label's term (the label minus
+    parentheticals and a leading "The"/"A"; plurals allowed), from a cited page (`url`) or from the tradition's own
+    translation of a verse (`ref`). Prefer the source's exact wording for the label (e.g. "Person in the Trinity",
+    not "Divine Person", for Westminster).
+  - `kind: editorial`: a structural heading the sources don't use as a name, with a `note` explaining it.
+  - `npm run validate` checks that the quote contains the term and matches the verse. `npm run check:terms` checks
+    that URL quotes are on the live page.
 - No fixed depth cap on category trees; go as deep as each tradition's sources require.
 - Decomposition discipline (EA-like, not EA notation):
   - Elements are nouns with a definition and one parent category.
@@ -163,6 +172,14 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
   from the same `main` can conflict with each other; to combine several, check out a combined branch and apply the
   saved runs on top of it in sequence (`--from-run`), fast-forwarding each result.
 - Set `GIT_AUTHOR_*` / `GIT_COMMITTER_*` (ckudelka@gmail.com for this repo) when running it.
+- New traditions: `npm run research:new -- --id <id> --name "<name>" --scope "<stream>" --store <scripture store>
+  [--bible-label <label>] [--dry-run] [--resume <run-id>]` (`scripts/research/new-tradition.ts`). Same protocol: blind
+  researcher (proposes tiers, allowed sites, rule of interpretation, outline, categories, relationships, subjects,
+  stances) → quote verification → critic → judge writes `metamodel.yaml` + `model.yaml` + referent aliases → live
+  quote re-check against the judge's allowed domains → `fetch:scripture` → validate (up to 3 repairs) → local branch
+  `research/new-<id>-<stamp>`. Run it as `--dry-run` first, then `--resume <run-id>` without `--dry-run` to apply.
+- Scripture stores live in `scripts/fetch-scripture.ts` (`STORES`); `jps1917` is the JPS 1917 Tanakh (public domain)
+  with the Masoretic Hebrew, via the Sefaria API. `tradition.bibleLabel` renames the Bible label (e.g. "Tanakh").
 - Model policy: every role uses the single pinned model `gemini-3.8-flash-high` (`MODEL` in
   `scripts/research/index.ts`). Never switch models mid-run or across runs. If the quota runs out, stop and
   `--resume` after the reset.

@@ -8,11 +8,13 @@
     "dev": "npm run validate && vite",
     "build": "npm run validate && tsc --noEmit && vite build",
     "validate": "tsx scripts/validate.ts",
+    "check:terms": "tsx scripts/check-terms.ts",
     "fetch:scripture": "tsx scripts/fetch-scripture.ts",
     "fetch:original": "tsx scripts/fetch-original.ts",
     "typecheck": "tsc --noEmit",
     "preview": "vite preview",
-    "research": "tsx scripts/research/index.ts"
+    "research": "tsx scripts/research/index.ts",
+    "research:new": "tsx scripts/research/new-tradition.ts"
   },
   "dependencies": {
     "cytoscape": "^3.34.3",

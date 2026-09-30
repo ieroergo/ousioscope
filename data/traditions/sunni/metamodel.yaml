@@ -101,7 +101,11 @@ stances:
 
 categories:
   - id: Creator
-    label: Allah, the Creator
+    label: The Creator (Allah)
+    term:
+      kind: own
+      url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+      quote: Allah is the Supreme Authority in the heavens and earth, and He is the Creator, Provider and Sustainer Who decides all the affairs of the creation as He wills.
     group: true
     definition: '"He is Allah, [who is] One ... He neither begets nor is born, nor is there to Him any equivalent."'
     citations:
@@ -118,6 +122,10 @@ categories:
 
   - id: Creation
     label: Creation
+    term:
+      kind: own
+      url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+      quote: Allah is the Supreme Authority in the heavens and earth, and He is the Creator, Provider and Sustainer Who decides all the affairs of the creation as He wills.
     group: true
     definition: Everything other than Allah, brought into being by His command "Be".
     citations:
@@ -131,6 +139,10 @@ categories:
 
   - id: Angel
     label: Angel (malak)
+    term:
+      kind: own
+      url: https://quran.com/19:17/tafsirs/en-tafisr-ibn-kathir
+      quote: Then We sent to her Our angel, ˹Gabriel,˺ appearing before her as a man, perfectly formed.
     parent: Creation
     definition: A created being sent by Allah as a messenger. Jibril is the angel of revelation.
     citations:
@@ -144,6 +156,10 @@ categories:
 
   - id: Human
     label: Human (servant of Allah)
+    term:
+      kind: own
+      url: https://quran.com/2:117/tafsirs/en-tafisr-ibn-kathir
+      quote: He says, `Be a human' and he becomes a human."
     parent: Creation
     definition: A created human being and servant of Allah.
     citations:
@@ -155,6 +171,10 @@ categories:
 
   - id: Messenger
     label: Messenger (rasul)
+    term:
+      kind: own
+      url: https://quran.com/5:75/tafsirs/en-tafisr-ibn-kathir
+      quote: he is one of the servants of Allah and one of His honorable Messengers
     parent: Human
     definition: A human prophet sent by Allah with a message. "Isa is just like the previous Prophets".
     citations:
@@ -168,6 +188,10 @@ categories:
 
   - id: HeavensEarth
     label: The heavens and the earth
+    term:
+      kind: own
+      ref: Quran 21:30
+      quote: the heavens and the earth were a joined entity
     parent: Creation
     definition: The created cosmos, "joined together" and then separated.
     citations:
