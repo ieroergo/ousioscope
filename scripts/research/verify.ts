@@ -35,11 +35,13 @@ export const normalize = (s: string) =>
 /** A quote matches if every fragment between ellipses occurs in the page text, in order. */
 export function quoteInText(quote: string, text: string): boolean {
   const hay = normalize(text);
+  const fragments = quote.split(/\s*(?:\[\.\.\.\]|\.\.\.|…)\s*/).map((f) => normalize(f).replace(/^["']|["']$/g, "").trim()).filter(Boolean);
+  if (!fragments.length) return false;
   let at = 0;
-  for (const frag of quote.split(/\s*(?:\.\.\.|…|\[\.\.\.\])\s*/).map(normalize).filter((f) => f.length > 2)) {
-    const i = hay.indexOf(frag.replace(/^["']|["']$/g, ""), at);
+  for (const frag of fragments) {
+    const i = hay.indexOf(frag, at);
     if (i < 0) return false;
-    at = i + frag.length - 1;
+    at = i + frag.length;
   }
   return true;
 }
@@ -67,18 +69,35 @@ export class Verifier {
     return htmlText(await res.text());
   }
 
-  private async renderedText(url: string) {
+  /** Rendered pages are fetched one at a time; some sites (e.g. chabad.org) block rapid headless requests. */
+  private renderQueue: Promise<unknown> = Promise.resolve();
+
+  private async renderedText(url: string): Promise<string> {
+    const run = this.renderQueue.then(() => this.renderOnce(url));
+    this.renderQueue = run.catch(() => undefined);
+    return run;
+  }
+
+  private async renderOnce(url: string): Promise<string> {
     // One profile per process, so parallel research runs don't lock each other's Chrome profile.
     this.browser ??= puppeteer.launch({ executablePath: CHROME, headless: true, userDataDir: `/tmp/ousio-research-profile-${process.pid}` });
-    const page = await (await this.browser).newPage();
-    try {
-      await page.setUserAgent(UA);
-      await page.goto(url, { waitUntil: "networkidle2", timeout: 45000 });
-      await new Promise((r) => setTimeout(r, 1500));
-      return await page.evaluate(() => document.body.innerText);
-    } finally {
-      await page.close();
+    let text = "";
+    // A near-empty page is usually a bot check or rate limit: back off and retry before giving up.
+    for (let attempt = 0; attempt < 4; attempt++) {
+      if (attempt) await new Promise((r) => setTimeout(r, 8000 * attempt));
+      const page = await (await this.browser).newPage();
+      try {
+        await page.setUserAgent(UA);
+        const response = await page.goto(url, { waitUntil: "networkidle2", timeout: 45000 });
+        if (!response?.ok()) throw new Error(response ? `HTTP ${response.status()}` : "No HTTP response");
+        await new Promise((r) => setTimeout(r, 1500));
+        text = await page.evaluate(() => document.body.innerText);
+      } finally {
+        await page.close();
+      }
+      if (text.length > 1000) break;
     }
+    return text;
   }
 
   private page(url: string, rendered: boolean) {

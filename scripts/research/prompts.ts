@@ -132,6 +132,10 @@ exact URL; quotes are machine-checked.`;
 export const JUDGE_RULES = `RULES FOR CHANGES
 - Accept a finding only if it rests on at least one VERIFIED quote and survives blocking objections. Otherwise reject it
   and say why.
+- A verified quote proves retrieval, not support. It must support the exact claim in context; a dissenting passage cannot
+  serve as the sole support for the position it challenges. Do not expand a source into claims it does not make.
+- A failed fetch is a verification gap, not doctrinal disagreement. A source's silence is not an explicit rejection;
+  use stance none when no stated position can be sourced, rather than filling every debate by inference.
 - Any "quote" you write into an authority entry must be copied exactly from a verified quote below; if none fits, omit
   the quote field. Unverifiable quotes are stripped automatically.
 - Use the tradition's own vocabulary and its existing ids, categories, relationship types, and tier ids. Add a category or

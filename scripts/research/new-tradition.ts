@@ -232,6 +232,10 @@ WHAT TO WRITE
 
 RULES
 - Accept a finding only if it rests on at least one VERIFIED quote and survives blocking objections; say why otherwise.
+- A verified quote proves retrieval, not support. It must support the exact claim in context; a dissenting passage cannot
+  serve as the sole support for the position it challenges. Do not expand a source into claims it does not make.
+- A failed fetch is a verification gap, not doctrinal disagreement. A source's silence is not an explicit rejection;
+  use stance none when no stated position can be sourced, rather than filling every debate by inference.
 - Every authority "quote" must be copied exactly from the verified quotes; omit the field if none fits (unverified quotes
   are stripped automatically).
 - Every node and edge, category, relationship type, axiom, stance (except "none"), and the hermeneutic needs citations:

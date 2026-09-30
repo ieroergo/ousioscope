@@ -14,6 +14,7 @@ Mary), each tradition's own outline of teaching, and 11 debate propositions with
 - `npm run check:terms`: fetches each category's term source page and confirms the quoted name is there (online)
 - `npm run dev`: validate, then start Vite
 - `npm run typecheck`: `tsc --noEmit`
+- `npx tsx --test scripts/research/verify.test.ts`: quote-matching and rendered HTTP-error regression tests (offline)
 - `npm run build`: validate + typecheck + production build
 - `npm run fetch:scripture`: fetch the exact text of every newly cited verse into `data/scripture/<store>.yaml`
   (NABRE from bible.usccb.org via puppeteer-core + local Chrome; KJV/Restoration from churchofjesuschrist.org).
